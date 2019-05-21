@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!-- saved from url=(0138)http://argelius.github.io/frame-auto-style/?refresh=true&platform=ios&src=http://argelius.github.io/react-onsenui-redux-weather/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Mockups App</title>
+
+
+</head>
+
+<style>
+  #wrapper {
+    width: 350px;
+    height: 750px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #mockup {
+    box-sizing: border-box;
+    background-size: contain;
+    width: 350px;
+    height: 705px;
+    padding: 78px 20px 80px 20px;
+    vertical-align: middle;
+    margin-bottom: 30px;
+  }
+
+  .mockup-ios {
+    background-image: url('./mockups/iphone6plus_350x705.png');
+  }
+
+  .mockup-android {
+    background-image: url('./mockups/nexus4_350x705.png');
+  }
+
+  #mockup iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    opacity: 0;
+    transition: 0.9s ease-in-out opacity;
+  }
+
+  #mockup iframe.loaded {
+    opacity: 1;
+  }
+
+  #placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -57px;
+    margin-left: -54px;
+    animation: pulse 0.5s ease-in-out infinite alternate;
+  }
+
+  /* Toggle button */
+  #styler {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #FC3429;
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: 0;
+    text-decoration: none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;
+  }
+
+  .styler-ios, .styler-android {
+    cursor: pointer;
+    width: 80px;
+    height: 100%;
+    display: inline-block;
+  }
+
+  .selected {
+    background-color: #FC3429;
+    color: #FFF;
+  }
+
+  @-webkit-keyframes pulse {
+    from {
+      -webkit-transform: scale(1.5);
+              transform: scale(1.5);
+    }
+    to {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+
+  @keyframes pulse {
+    from {
+      -webkit-transform: scale(1.5);
+              transform: scale(1.5);
+    }
+    to {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+</style>
+
+<body>
+
+  <div id="wrapper">
+    <!-- Styler tabbar -->
+    <div id="styler">
+      <label onclick="onClick('ios')" class="styler-ios selected">iOS Style</label>
+      <label onclick="onClick('android')" class="styler-android">MD Style</label>
+    </div>
+
+    <!-- App -->
+    <div id="mockup" class="mockup-ios">
+      <iframe id="app-iframe" scrolling="no" src="http://localhost:3000" class="loaded"></iframe>
+    </div>
+
+    <!-- Placeholder -->
+
+
+    <!-- Preload images -->
+    <div class="mockup-ios mockup-android" style="display: none"></div>
+  </div>
+
+
+  <script>
+
+    var getParam = function(param) {
+      var regex = new RegExp(param + '=([^&]+)');
+      return ((window.location.search.match(regex) || [])[1] || '');
+    };
+
+    // Default selected platform
+    var defaultPlatform = getParam('platform').trim().toLowerCase();
+    if (['ios', 'android'].indexOf(defaultPlatform) === -1) {
+      defaultPlatform = 'ios';
+    }
+    // Add mockup
+    document.querySelector('#mockup').classList.add('mockup-' + defaultPlatform);
+    document.querySelector('.styler-' + defaultPlatform).classList.add('selected');
+
+    // Hide scrollbar
+    var style = document.createElement('style');
+    style.innerHTML = '.hide-scrollbar ::-webkit-scrollbar { display: none }';
+
+    var styler = {
+      ios: document.querySelector('.styler-ios'),
+      android: document.querySelector('.styler-android')
+    };
+
+    var refresh = getParam('refresh').trim().toLowerCase() === 'true';
+    var selectedPlatform = defaultPlatform;
+    var onClick = function(platform) {
+      console.log(platform);
+      if (platform !== selectedPlatform) {
+        selectedPlatform = platform;
+        if (refresh) {
+          document.querySelector('#app-iframe').setAttribute('src', appSrc);
+        } else {
+          //window.frames[0]._superSecretOns.forcePlatformStyling(platform);
+        }
+
+        Object.keys(styler).forEach(function(p) {
+          styler[p].classList.toggle('selected');
+          document.querySelector('#mockup').classList.toggle('mockup-' + p);
+        });
+      }
+    };
+
+    // Apply everything when the iframe is ready
+    document.querySelector('#app-iframe').onload = function() {
+
+      console.log(window.frames[0]);
+      //window.frames[0]._superSecretOns.platform.select(selectedPlatform);
+
+      //window.frames[0].document.body.appendChild(style);
+      //window.frames[0].document.body.classList.add('hide-scrollbar');
+
+      var placeholder = document.querySelector('#placeholder');
+      if (placeholder) {
+        styler.ios.onclick = onClick.bind(null, 'ios');
+        styler.android.onclick = onClick.bind(null, 'android');
+        placeholder.remove();
+        document.querySelector('#app-iframe').classList.add('loaded');
+      }
+    };
+
+    // Set source URL
+    var appSrc = getParam('src').trim();
+    document.querySelector('#app-iframe').setAttribute('src', appSrc);
+
+  </script>
+
+
+</body>
+</html>

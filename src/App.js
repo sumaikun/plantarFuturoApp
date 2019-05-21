@@ -3,6 +3,24 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { image: "" };
+  }
+
+  takepic = ev => {
+    if (window.cordova) {
+      window.navigator.camera.getPicture(image => {
+        this.setState({
+          image
+        });
+        console.log(this.state);
+      }, console.log);
+    } else console.log("please run the cordova project");
+  }
+
+
   render() {
     return (
       <div className="App">
@@ -11,6 +29,8 @@ class App extends Component {
           <p>
             Edit <code>src/App.js</code> and save to reload.
           </p>
+          <img src={this.state.image} alt="picture" />
+          <button onClick={this.takepic}>Take picture</button>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -20,6 +40,7 @@ class App extends Component {
             Learn React
           </a>
         </header>
+
       </div>
     );
   }

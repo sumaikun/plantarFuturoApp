@@ -1,0 +1,16 @@
+.simpleForm input{
+  font-size:14px !important;
+  widows: 100%;
+}
+
+.simpleForm input[type=date]{
+  font-size:14px !important;
+  color:gray !important;
+  widows: 100%;
+}
+
+.simpleForm select{
+  font-size:14px !important;
+  color:gray !important;
+  widows: 100%;
+}
