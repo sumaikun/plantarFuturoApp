@@ -98,31 +98,38 @@ class FormInventory extends Component {
 
         navigator.camera.getPicture(image => {
 
-          getFileContentAsBase64(image,function(base64Image){
+            getFileContentAsBase64(image,function(base64Image){
 
-            console.log("react ambit post cordova");
+              console.log("react ambit post cordova");
 
-            console.log(self);
+              console.log(self);
 
-            //window.open(base64Image);
-            console.log(base64Image);
-            // Then you'll be able to handle the myimage.png file as base64
+              //window.open(base64Image);
+              console.log(base64Image);
+              // Then you'll be able to handle the myimage.png file as base64
 
-            self.setState({
-              formData:
-              {
-                ...self.state.formData,
-                [key]:base64Image
-              }
-            },()=>{
-                console.log(self.state);
+              self.setState({
+                formData:
+                {
+                  ...self.state.formData,
+                  [key]:base64Image
+                }
+              },()=>{
+                  console.log(self.state);
+              });
+
+
             });
 
 
-          });
+          }, null,{
+            destinationType : navigator.Camera.DestinationType.DATA_URL,
+            sourceType : navigator.Camera.PictureSourceType.CAMERA,
+            quality : 50,
+            encodingType : navigator.Camera.EncodingType.JPEG,
+            correctOrientation : true
+        });
 
-
-        }, null);
       } else{
         console.log("please run the cordova project");
       }
@@ -393,9 +400,15 @@ class FormInventory extends Component {
               <div>
                 <img src={this.state.formData.id_image ? this.state.formData.id_image : placeholderImage } style={{width:"100%"}} />
               </div>
-              <Button style={styles.buttonCard}
-                onClick={()=>{this.saveImage("id_image")}}
-              >Tomar foto</Button>
+              <Row>
+                <Button style={styles.buttonCard}
+                  onClick={()=>{this.saveImage("id_image")}}
+                >Tomar foto</Button>
+                <label className="fileContainer">
+                  Subir archivo
+                  <input  type="file"  accept="image/png, image/jpeg" />
+                </label>
+              </Row>
             </Card>
           </Col>
         </Row>
