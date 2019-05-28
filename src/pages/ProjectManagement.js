@@ -21,7 +21,7 @@ import CardButton from "../components/CardButton";
 import AppPage from '../containers/AppPage';
 
 //flux
-import { setProjectPhase , goToProjects , fetchProjects } from '../flux/actions';
+import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement } from '../flux/actions';
 import { connect } from 'react-redux';
 
 class ProjectManagement extends Component {
@@ -79,6 +79,15 @@ class ProjectManagement extends Component {
                 infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
                 />
             </div>
+            <div style={{height:"10px"}} ></div>
+            <div onClick={()=>{this.props.goToRiskManagement()}}>
+              <CardButton
+                imgIcon = {checkList}
+                title="Riesgo"
+                subtitle="Total proyectos"
+                infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+               />
+             </div>
         </div>
       </AppPage>
     );
@@ -91,4 +100,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { fetchProjects , goToProjects , setProjectPhase })(ProjectManagement);
+export default  connect(mapStateToProps, { fetchProjects , goToProjects , setProjectPhase, goToRiskManagement })(ProjectManagement);

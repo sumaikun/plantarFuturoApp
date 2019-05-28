@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 import { createForestUnitPhase3 , updateForestUnitPhase3 , getForestalUnits } from '../flux/actions';
 //helper
 
-import { getFileContentAsBase64 } from '../helpers/imageHandler';
+import { getFileContentAsBase64 , getInputFileBase64 } from '../helpers/imageHandler';
 
 const styles = {
   cardInput:{
@@ -76,6 +76,7 @@ class FormCompensation extends Component {
       projectInfo:this.props.appState.selectedProject };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
     console.log(this.props);
   }
 
@@ -91,6 +92,36 @@ class FormCompensation extends Component {
       },()=>{
         console.log(this.state);
       });
+    }
+  }
+
+  fileUpload(key,e){
+
+     const file = e.target.files[0];
+     const  fileType = file['type'];
+     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+     if (validImageTypes.includes(fileType)) {
+        console.log(key);
+        let self = this;
+        getInputFileBase64(e.target.files[0]).then(
+          base64Image => {
+
+          //console.log(base64Image);
+
+                  self.setState({
+                    formData:
+                    {
+                      ...self.state.formData,
+                      [key]:base64Image
+                    }
+                  },()=>{
+                      console.log(self.state);
+                  });
+        });
+    }
+    else{
+      e.preventDefault();
+      Ons.notification.alert({title:"",message:"No se pueden subir otros archivos que no sean imagenes"});
     }
   }
 
@@ -130,7 +161,10 @@ class FormCompensation extends Component {
           });
 
 
-        }, null);
+        }, null,{
+            quality : 40,
+            correctOrientation : true
+        });
       } else{
         console.log("please run the cordova project");
       }
@@ -460,9 +494,18 @@ class FormCompensation extends Component {
               <div>
                 <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
               </div>
-              <Button style={styles.buttonCard}
-                onClick={this.saveImage}
-              >Tomar foto</Button>
+              <Row>
+                <Button style={styles.buttonCard}
+                  onClick={this.saveImage}
+                >Tomar foto</Button>
+                <label className="fileContainer" style={{ "font-size": "17px",
+                  color: "white"
+                }}>
+                  Subir archivo
+                  <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                     />
+                </label>
+              </Row>
             </Card>
           </Col>
           </Row>

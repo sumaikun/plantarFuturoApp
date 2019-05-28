@@ -2,6 +2,8 @@ import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS, SET_
 SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS, SET_FORESTAL_UNIT, SET_FUNCTIONAL_UNIT,
 SELECT_PROJECT  } from "../types";
 
+let initialUser = { id : 3 };
+
 let initialProjects = []
 
 let initialForestalUnits = [];
@@ -10,14 +12,38 @@ let initialFunctionalUnits = [];
 
 let initialForestalUnitE = null;
 
-let initialSelectedProject = null;
+let initialSelectedProject = { id : 1 };
 
 let initialCurrentFE = null;
+
+//risk RiskManagement
+let initialCurrentProject = null;
+
+let initialHillsideMovement = null;
+
+let initialcurrentTunnelDeformation = {
+    "id": 1,
+    "code": "456",
+    "report_date": "2019-05-27 01:00:00",
+    "longitude": 456,
+    "width": 456,
+    "new": "Nueva",
+    "location": "456",
+    "description": "456",
+    "level": 1,
+    "responsible_name": "re",
+    "responsible_id": "1019080782",
+    "observations": "obs",
+    "project_id": 1,
+    "user_id": 3,
+    "created_at": "2019-05-27 22:11:40",
+    "updated_at": "2019-05-27 22:11:40"
+  };
 
 const initialState = {
   isFetching:false,
   isOpen:false,
-  user:{},
+  user:initialUser,
   projects:initialProjects,
   functionalUnits:initialFunctionalUnits,
   forestalUnits:initialForestalUnits,
@@ -25,6 +51,12 @@ const initialState = {
   forestalUnitE:initialForestalUnitE,
   currentFunctionalUnit:initialCurrentFE,
   selectedProject:initialSelectedProject,
+
+  /* risk process  */
+
+  currentHillsideMovement:initialHillsideMovement,
+  currentTunnelDeformation:initialcurrentTunnelDeformation,
+
 };
 
 const appReducer = (state = initialState, action) => {

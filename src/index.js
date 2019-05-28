@@ -13,6 +13,19 @@ import FormProcess from './pages/FormProcess';
 import FormCompensation from './pages/FormCompensation';
 
 
+
+//risks
+
+import RiskManagement from './pages/RiskManagement/RiskManagement';
+import TunnelDeformation from './pages/RiskManagement/TunnelDeformation';
+import Rainfall from './pages/RiskManagement/Rainfall';
+import HillsideCollapse from './pages/RiskManagement/HillsideCollapse';
+import RiverCollapse from './pages/RiskManagement/RiverCollapse';
+import RiskIndicators from './pages/RiskManagement/RiskIndicators';
+import HillsideMovement from './pages/RiskManagement/HillsideMovement';
+
+
+
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -29,8 +42,8 @@ const store = createStoreWithMiddleware(reducers);
 
 
 const appInit = _ =>
-  ReactDOM.render(<Provider store={store}>
-    <AppNavigation/>
+  ReactDOM.render(<Provider store={store}>  
+    <TunnelDeformation/>
   </Provider>, document.getElementById('root'));
 
 if (window.cordova) document.addEventListener("deviceready", appInit);

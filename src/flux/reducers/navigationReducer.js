@@ -6,8 +6,19 @@ import FormInventory from '../../pages/FormInventory'
 import FormProcess from '../../pages/FormProcess'
 import FormCompensation from '../../pages/FormCompensation'
 
+//Risk Management
+
+import HillsideCollapse from '../../pages/RiskManagement/HillsideCollapse'
+import Rainfall from '../../pages/RiskManagement/Rainfall'
+import RiskIndicators from '../../pages/RiskManagement/RiskIndicators'
+import RiskManagement from '../../pages/RiskManagement/RiskManagement'
+import RiverCollapse from '../../pages/RiskManagement/RiverCollapse'
+import TunnelDeformation from '../../pages/RiskManagement/TunnelDeformation'
+import HillsideMovement from '../../pages/RiskManagement/HillsideMovement'
+
 import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, INSERT_NAVIGATOR,
-GO_TO_FORM_INVENTORY, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION } from "../types";
+GO_TO_FORM_INVENTORY, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION , GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
+GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS, GO_TO_HILLSIDE_MOVEMENT } from "../types";
 
 var Pagenavigator = null;
 
@@ -73,6 +84,46 @@ const navigationReducer = (state = initialState, action) => {
     case GO_TO_FORM_COMPENSATION:
       if(currentPage.key != 'COMPENSATION_FORM'){
         state.navigator.pushPage({ component: FormCompensation , key: 'COMPENSATION_FORM'  });
+      }
+      return state;
+    case GO_TO_RISK_MANAGEMENT:
+      if(currentPage.key != 'RISK_MANAGEMENT'){
+        state.navigator.pushPage({ component: RiskManagement , key: 'RISK_MANAGEMENT'  });
+      }
+      return state;
+    case GO_TO_RISK_MANAGEMENT:
+      if(currentPage.key != 'RISK_MANAGEMENT'){
+        state.navigator.pushPage({ component: RiskManagement , key: 'RISK_MANAGEMENT'  });
+      }
+      return state;
+    case GO_TO_HILLSIDE_COLLAPSE:
+      if(currentPage.key != 'HILLSIDE_COLLAPSE_FORM'){
+        state.navigator.pushPage({ component: HillsideCollapse , key: 'HILLSIDE_COLLAPSE_FORM'  });
+      }
+      return state;
+    case GO_TO_RAIN_FALL:
+      if(currentPage.key != 'RAIN_FALL_FORM'){
+        state.navigator.pushPage({ component: Rainfall , key: 'RAIN_FALL_FORM'  });
+      }
+      return state;
+    case GO_TO_RIVER_COLLAPSE:
+      if(currentPage.key != 'RIVER_COLLAPSE_FORM'){
+        state.navigator.pushPage({ component: RiverCollapse , key: 'RIVER_COLLAPSE_FORM'  });
+      }
+      return state;
+    case GO_TO_TUNNEL_DEFORMATION:
+      if(currentPage.key != 'TUNNEL_DEFORMATION_FORM'){
+        state.navigator.pushPage({ component: TunnelDeformation , key: 'TUNNEL_DEFORMATION_FORM'  });
+      }
+      return state;
+    case GO_TO_RISK_INDICATORS:
+      if(currentPage.key != 'RISK_INDICATORS'){
+        state.navigator.pushPage({ component: RiskIndicators , key: 'RISK_INDICATORS'  });
+      }
+      return state;
+    case GO_TO_HILLSIDE_MOVEMENT:
+      if(currentPage.key != 'HILLSIDE_MOVEMENT'){
+        state.navigator.pushPage({ component: HillsideMovement , key: 'HILLSIDE_MOVEMENT'  });
       }
       return state;
     case GO_BACK:
