@@ -42,3 +42,16 @@ export const GET_PROJECTS_URL = BASE_URL+"/api/project";
 export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit' : 'http://plantarfuturo.com/ws/api/functional-unit';
 export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/functional-units/' : 'http://plantarfuturo.com/ws/api/project/functional-units/';
 export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit/forest-units/' : 'http://plantarfuturo.com/ws/api/functional-unit/forest-units/';
+
+//RiskManagement navigation
+export const GO_TO_RISK_MANAGEMENT = "GO_TO_RISK_MANAGEMENT";
+export const GO_TO_HILLSIDE_MOVEMENT = "GO_TO_HILLSIDE_MOVEMENT";
+export const GO_TO_HILLSIDE_COLLAPSE = "GO_TO_HILLSIDE_COLLAPSE";
+export const GO_TO_RAIN_FALL = "GO_TO_RAIN_FALL";
+export const GO_TO_RIVER_COLLAPSE = "GO_TO_RIVER_COLLAPSE";
+export const GO_TO_TUNNEL_DEFORMATION = "GO_TO_TUNNEL_DEFORMATION";
+export const GO_TO_RISK_INDICATORS = "GO_TO_RISK_INDICATORS";
+
+//RiskManagement navigation
+export const HALL_SIDE_MOVEMENT_URL = BASE_URL+"/api/risks/hillside-displacement";
+export const TUNNEL_DEFORMATION_URL = BASE_URL+"/api/risks/tunnel-deformation";

@@ -19,7 +19,7 @@ import { connect } from 'react-redux';
 import { createForestUnitPhase2 , updateForestUnitPhase1 , getForestalUnits , updateForestUnitPhase2 } from '../flux/actions';
 //helper
 
-import { getFileContentAsBase64 } from '../helpers/imageHandler';
+import { getFileContentAsBase64 , getInputFileBase64 } from '../helpers/imageHandler';
 
 const styles = {
   cardInput:{
@@ -78,6 +78,7 @@ class FormProcess extends Component {
     };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
+    this.fileUpload = this.fileUpload.bind(this);
     console.log(this.props);
   }
 
@@ -117,6 +118,35 @@ class FormProcess extends Component {
 
   }
 
+  fileUpload(key,e){
+    const file = e.target.files[0];
+    const  fileType = file['type'];
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+    if (validImageTypes.includes(fileType)) {
+       console.log(key);
+       let self = this;
+       getInputFileBase64(e.target.files[0]).then(
+         base64Image => {
+
+         //console.log(base64Image);
+
+                 self.setState({
+                   formData:
+                   {
+                     ...self.state.formData,
+                     [key]:base64Image
+                   }
+                 },()=>{
+                     console.log(self.state);
+                 });
+       });
+   }
+   else{
+     e.preventDefault();
+     Ons.notification.alert({title:"",message:"No se pueden subir otros archivos que no sean imagenes"});
+   }
+  }
+
   saveImage(key){
 
       let self = this;
@@ -153,7 +183,10 @@ class FormProcess extends Component {
           });
 
 
-        }, null);
+        }, null,{
+            quality : 40,
+            correctOrientation : true
+        });
       } else{
         console.log("please run the cordova project");
       }
@@ -481,9 +514,18 @@ class FormProcess extends Component {
                   <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
                 </div>
                 {this.state.formData.general_image ?  null :
-                  <Button style={{...styles.buttonCard, 'font-size':"13px"}}
-                    onClick={()=>{this.saveImage('general_image')}}
-                  >Tomar foto</Button>
+                  <Row>
+                    <Button style={{...styles.buttonCard, 'font-size':"13px"}}
+                      onClick={()=>{this.saveImage('general_image')}}
+                    >Tomar foto</Button>
+                    <label className="fileContainer" style={{ "font-size": "17px",
+                      color: "white"
+                    }}>
+                      Subir archivo
+                      <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                         />
+                    </label>
+                  </Row>
                 }
 
               </Card>
@@ -497,9 +539,18 @@ class FormProcess extends Component {
                 </div>
                 {this.state.formData.id_image ?
                   null:
-                  <Button style={{...styles.buttonCard, 'font-size':"13px"}}
-                    onClick={()=>{this.saveImage('id_image')}}
-                  >Tomar foto</Button>
+                  <Row>
+                    <Button style={{...styles.buttonCard, 'font-size':"13px"}}
+                      onClick={()=>{this.saveImage('id_image')}}
+                    >Tomar foto</Button>
+                    <label className="fileContainer" style={{ "font-size": "17px",
+                      color: "white"
+                    }}>
+                      Subir archivo
+                      <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}
+                         />
+                    </label>
+                  </Row>
                 }
               </Card>
             </Col>
@@ -523,9 +574,18 @@ class FormProcess extends Component {
                 <div>
                   <img src={this.state.formData.after_image ? this.state.formData.after_image : placeholderImage } style={{width:"100%"}} />
                 </div>
-                <Button style={styles.buttonCard}
-                  onClick={()=>{this.saveImage('after_image')}}
-                >Tomar foto</Button>
+                <Row>
+                  <Button style={styles.buttonCard}
+                    onClick={()=>{this.saveImage('after_image')}}
+                  >Tomar foto</Button>
+                  <label className="fileContainer" style={{ "font-size": "17px",
+                    color: "white"
+                  }}>
+                    Subir archivo
+                    <input  type="file" onChange={(event)=>{this.fileUpload("after_image",event)}}
+                       />
+                  </label>
+                </Row>
               </Card>
             </Col>
           </Row>

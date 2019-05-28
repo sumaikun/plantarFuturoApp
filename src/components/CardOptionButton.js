@@ -26,7 +26,7 @@ const styles = {
   accordionIcons:{
     "background-color": "#006828",
     "width": "25px",
-    "height": "15px",
+    "height": "25px",
     "border-radius": "50%",
     display: "flex",
     "justify-content": "center",
