@@ -10,7 +10,8 @@
 
 .Social-logo {
   /*animation: App-logo-spin infinite 20s linear;*/
-  height: 11vmin;
+  height: 8vmin;
+  margin-right: 5%;
   pointer-events: none;
 }
 
@@ -39,7 +40,7 @@
 }
 
 .input-icon-wrap {
-  border: 1px solid #ddd;
+  border: 6px solid #ddd;
   display: flex;
   flex-direction: row;
 }

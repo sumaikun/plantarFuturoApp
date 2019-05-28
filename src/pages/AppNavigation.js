@@ -50,10 +50,10 @@ class AppNavigation extends Component {
 
     return (
       <Splitter>
-      <SplitterSide side='left' width={220} collapse={true} swipeable={false} isOpen={this.props.appState.isOpen} >
-        <CollapseMenu/>
-      </SplitterSide>
-        <SplitterContent>
+        <SplitterSide side='left' width={220} collapse={true} swipeable={false} isOpen={this.props.appState.isOpen} >
+          <CollapseMenu/>
+        </SplitterSide>
+          <SplitterContent>
             <Navigator
               renderPage={this.renderPage}
               initialRoute={this.props.navigation.initialRoute}

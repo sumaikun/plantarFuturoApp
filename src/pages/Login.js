@@ -90,14 +90,14 @@ class Login extends Component {
 
     return (
       <Page id="login">
-
         { isFetching ? <ProgressBar indeterminate  /> : null }
 
            <div className="login-wrap" id="backgContainer" style={{backgroundSize:'cover',overflow:'hidden'}} >
             <div style={{marginTop:"-25px",height:"120%",backgroundColor:"#5a5b5d42"}}>
-              <div className="login-html">
+              <div className="login-html" onScroll="no">
               <ReactResizeDetector handleWidth handleHeight onResize={this.onResize} />
-               <div className="App">
+               <div className="App"> 
+                <i class="fas fa-phone fa-lg fa-2x phone"></i>
                 <br/>
                 <img id='logo' className="App-logo" src={logo} />
                   <div id='logoTitle'>
@@ -110,19 +110,21 @@ class Login extends Component {
                 </div>
                 <div className="login-form">
                   <div className="group">
-
-                    <input className="input" placeholder="&#61447; correo" type="email" ref={(input) => this.userName = input}  style={{fontFamily:'Arial, FontAwesome'}} />
+                    <input className="input" placeholder="Usuario" type="email" ref={(input) => this.userName = input}/>
+                    <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
                   </div>
                   <div className="group">
-                    <input  className="input fontAwesome" placeholder="&#61475; Contraseña" type="password" ref={(input) => this.userPassword = input}  />
+                    <input  className="input fontAwesome" placeholder="Contraseña" type="password" ref={(input) => this.userPassword = input}  />
+                    <i class="fas fa-lock fa-lg fa-fw" aria-hidden="true"></i>
                   </div>
                   <div className="group">
                     <Button id='signIn' onClick={this.makeLogin}  modifier="large"
                       style={{fontSize:"24px",padding:'5px'}}
-                      ><b>Ingresar</b></Button>
+                      >Ingresar</Button>
                   </div>
+                  <a href="" className="a">Olvidaste tu contraseña?</a>
                 </div>
-                <div style={{display:'flex',justifyContent:'space-evenly', marginTop:'25%'}}>
+                <div style={{display:'flex',justifyContent:'center', marginTop:'35%'}}>
                       <img id='logo' className="Social-logo"  src={fbicon} />
                       <img id='logo' className="Social-logo" src={insicon} />
                       <img id='logo' className="Social-logo" src={youicon} />

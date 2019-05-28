@@ -30,7 +30,7 @@ const store = createStoreWithMiddleware(reducers);
 
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>
-    <FormInventory/>
+    <AppNavigation/>
   </Provider>, document.getElementById('root'));
 
 if (window.cordova) document.addEventListener("deviceready", appInit);
