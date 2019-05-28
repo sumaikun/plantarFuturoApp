@@ -22,7 +22,7 @@ import AppPage from '../containers/AppPage';
 
 //flux
 import { goToForestalUnits , createFunctionalUnit , getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, fetchProjects,
-resetFunctionalUnits, selectProject } from '../flux/actions';
+resetFunctionalUnits, selectProject , goToRiskManagement } from '../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -223,7 +223,14 @@ class ProjectList extends Component {
 
           currentPhaseProjects.map((project, i) => {
               return(
-              <div onClick={()=>{ console.log(project); this.props.selectProject(project) }}>
+              <div onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
+                    console.log("fase de riesgos");
+                    console.log(project); this.props.selectProject(project);
+                    this.props.goToRiskManagement();
+                  })(): (()=>{
+                      console.log(project); this.props.selectProject(project)
+                    })()
+                  }}>
                 <ListAccordion counter={i+1} projectName={project.name} projectInfo={project.customer.name} >
                   <Row>
                     <Col width="6%">
@@ -313,4 +320,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { goToForestalUnits , createFunctionalUnit, getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, fetchProjects, resetFunctionalUnits, selectProject })(ProjectList);
+export default  connect(mapStateToProps, { goToForestalUnits , createFunctionalUnit, getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, fetchProjects, resetFunctionalUnits, selectProject , goToRiskManagement })(ProjectList);

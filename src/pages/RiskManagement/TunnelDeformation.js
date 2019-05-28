@@ -35,8 +35,7 @@ class TunnelDeformation extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props);
-    console.log(this.props.appState.currentTunnelDeformation.report_date.split(" ")[1]);
+  
     if(this.props.appState.currentTunnelDeformation)
     {
       this.setState({

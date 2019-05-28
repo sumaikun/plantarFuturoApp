@@ -55,3 +55,20 @@ export const GO_TO_RISK_INDICATORS = "GO_TO_RISK_INDICATORS";
 //RiskManagement navigation
 export const HALL_SIDE_MOVEMENT_URL = BASE_URL+"/api/risks/hillside-displacement";
 export const TUNNEL_DEFORMATION_URL = BASE_URL+"/api/risks/tunnel-deformation";
+export const HILL_SIDE_COLLAPSE_URL = BASE_URL+"/api/risks/hillside-round";
+export const RAIN_FALL_URL = BASE_URL+"/api/risks/precipitation";
+export const RIVER_COLLAPSE_URL = BASE_URL+"/api/risks/dryravine-round";
+
+//
+export const SET_TUNNEL_DEFORMATION_LIST = "SET_TUNNEL_DEFORMATION_LIST";
+export const HILL_SIDE_MOVEMENT_LIST = "HILL_SIDE_MOVEMENT_LIST";
+export const RAIN_FALL_LIST = "RAIN_FALL_LIST";
+export const HILL_SIDE_COLLAPSE_LIST = "HILL_SIDE_COLLAPSE_LIST";
+export const RIVER_COLLAPSE_LIST = "RIVER_COLLAPSE_LIST";
+
+
+export const SET_TUNNEL_DEFORMATION = "SET_TUNNEL_DEFORMATION";
+export const SET_HILL_SIDE_MOVEMENT = "SET_HILL_SIDE_MOVEMENT";
+export const SET_RAIN_FALL = "SET_RAIN_FALL";
+export const SET_HILL_SIDE_COLLAPSE = "SET_HILL_SIDE_COLLAPSE";
+export const SET_RIVER_COLLAPSE = "SET_RIVER_COLLAPSE";

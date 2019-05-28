@@ -17,30 +17,39 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-//import {  } from '../flux/actions';
+import { createRainfall , updateRainfall } from '../../flux/actions';
 //helper
 
+import moment from 'moment';
+
 const styles = formCardStyles;
+
 
 
 class Rainfall extends Component {
   constructor(props) {
     super(props);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} , selectSearch:{} };
+    this.state = { isDisable:false, formData:{} , selectSearch:{} };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
+    this.enableForm = this.enableForm.bind(this);
     console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
-    if(this.props.appState.tunnelDeformationE)
+  
+    if(this.props.appState.currentRainfall)
     {
       this.setState({
+        isDisable:true,
         formData:{
           ...this.state.formData,
-          ...this.props.appState.forestalUnitE
+          ...this.props.appState.currentRainfall,
+          date:this.props.appState.currentRainfall.report_date.split(" ")[0],
+          hour:this.props.appState.currentRainfall.report_date.split(" ")[1],
+          start:moment(new Date(this.props.appState.currentRainfall.start)).utc().format().slice(0, -4),
+          finish:moment(new Date(this.props.appState.currentRainfall.finish)).utc().format().slice(0, -4)
         }
       },()=>{
         console.log(this.state);
@@ -48,11 +57,17 @@ class Rainfall extends Component {
     }
   }
 
+  enableForm(){
 
+    this.setState({ isDisable: !this.state.isDisable },()=>{
+      console.log(this.state);
+    });
+
+  }
 
   handleChangeInput(event){
 
-    if(event.target.name && event.target.value.length > 0)
+    if(event.target.name && event.target.value.length > -1)
     {
       console.log(event.target.name);
       console.log(event.target.value);
@@ -72,6 +87,31 @@ class Rainfall extends Component {
 
   submitData(e){
 
+    e.preventDefault();
+
+    if(this.props.appState.isFetching)
+    {
+      return Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
+    }
+
+    if(this.props.appState.currentRainfall)
+    {
+      let data = this.state.formData;
+      data.user_id = this.props.appState.user.id;
+      data.report_date = data.date+" "+data.hour;
+      console.log(data);
+      this.props.updateRainfall(this.state.formData.id,data);
+    }
+    else
+    {
+      let data = this.state.formData;
+      data.user_id = this.props.appState.user.id;
+      data.project_id = this.props.appState.selectedProject.id;
+      data.report_date = data.date+" "+data.hour;
+      console.log(data);
+      this.props.createRainfall(data);
+
+    }
 
 
   }
@@ -82,23 +122,29 @@ class Rainfall extends Component {
 
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
         <br/>
+        {
+          this.props.appState.currentRainfall ?
+             <Row>
+              <button onClick={this.enableForm} style={styles.disableButton}>Habilitar edición</button>
+            </Row>:null
+        }
         <form className="simpleForm"  onSubmit={this.submitData}>
           <Row>
             <Col width="34%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                 <label>Hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="time" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="time" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.hour} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
           </Row>
@@ -115,9 +161,13 @@ class Rainfall extends Component {
 
 
           <Row>
-            <Col width="34%">
+            <Col width="50%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                <Select style={{width:"100%"}} value={ this.state.formData.type === "Llovizna" || this.state.formData.type === "1" ? 1:
+                  this.state.formData.type === "Lluvia" || this.state.formData.type === "2" ? 2:
+                  this.state.formData.type === "Lluvia Torrencial" || this.state.formData.type === "3" ? 3:
+                  this.state.formData.type === "Tormenta" || this.state.formData.type === "4" ? 4 : ""
+                 } onChange={this.handleChangeInput} disabled={this.state.isDisable} name='type'>
                   <option value="" disabled selected>Tipo</option>
                   <option value="1">LLovizna</option>
                   <option value="2">Lluvia</option>
@@ -126,18 +176,18 @@ class Rainfall extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="33%">
+            <Col width="50%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
-                  <label>Minutos:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                  <label>Milimetros/hora:</label>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="mm_hours" onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-            <Col width="33%">
+            {/*<Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                 <label>Horas:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} disabled={this.state.isDisable} required/>
               </Card>
-            </Col>
+            </Col>*/}
           </Row>
 
 
@@ -155,13 +205,13 @@ class Rainfall extends Component {
             <Col width="50%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
               <label>Inicio:</label>
-            <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+            <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local"  onChange={this.handleChangeInput} value={this.state.formData.start} name="start" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="50%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Final:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local"  onChange={this.handleChangeInput} value={this.state.formData.finish} name="finish" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
 
@@ -172,10 +222,15 @@ class Rainfall extends Component {
           <Row>
             <Col width="100%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                  <option value="" disabled selected>Estado de emergencia</option>
-                  <option value="1">Leve</option>
-                  <option value="2">Grave</option>
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
+                  <option value="level" disabled selected>Estado de emergencia</option>
+                  <option value="1">
+                    Estado de emergencia: 1
+                  </option>
+                  <option value="2">Estado de emergencia: 2</option>
+                  <option value="3">Estado de emergencia: 3</option>
+                  <option value="4">Estado de emergencia: 4</option>
+                  <option value="5">Estado de emergencia: 5</option>
                 </Select>
               </Card>
             </Col>
@@ -185,13 +240,13 @@ class Rainfall extends Component {
 
             <Col width="60%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Responsable" required />
+                <Input style={styles.textInput} name="responsible_name" value={this.state.formData.responsible_name} disabled={this.state.isDisable} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
             <Col width="40%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Identificación" required />
+                <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
             </Col>
 
@@ -201,7 +256,7 @@ class Rainfall extends Component {
             <Col width="100%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
 
               </Card>
             </Col>
@@ -224,11 +279,19 @@ class Rainfall extends Component {
 
   render() {
 
+    const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
       <AppPage  title={["", <strong>Precipitación</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
 
-        {this.contentPage()}
+        {  isFetching ?
+          <div style={{backgroundColor:"white",height:"100%"}}>
+            <Loading/>
+          </div> :
+
+           this.contentPage()
+
+        }
 
       </AppPage>
     );
@@ -242,4 +305,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, {})(Rainfall);
+export default  connect(mapStateToProps, { createRainfall , updateRainfall })(Rainfall);

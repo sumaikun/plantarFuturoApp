@@ -48,7 +48,7 @@ export const updateTunnelDeformation = (id,data,successCallBack  ,errorCallBack)
     }
 
 
-    Request.postRequest(
+    Request.putRequest( 
       TUNNEL_DEFORMATION_URL+"/"+id,
       data,
       SuccessCallBack,

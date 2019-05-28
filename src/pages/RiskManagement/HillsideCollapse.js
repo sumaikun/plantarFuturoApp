@@ -17,7 +17,7 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-//import {  } from '../flux/actions';
+import { createHillsideCollapse , updateHillsideCollapse } from '../../flux/actions';
 //helper
 
 const styles = formCardStyles;
@@ -27,20 +27,24 @@ class hillsideCollapse extends Component {
   constructor(props) {
     super(props);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} , selectSearch:{} };
+    this.state = { isDisable:false, formData:{} , selectSearch:{} };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
+    this.enableForm = this.enableForm.bind(this);
     console.log(this.props);
   }
 
   componentDidMount(){
     console.log(this.props);
-    if(this.props.appState.tunnelDeformationE)
+    if(this.props.appState.currentHillsideCollapse)
     {
       this.setState({
+        isDisable:true,
         formData:{
           ...this.state.formData,
-          ...this.props.appState.forestalUnitE
+          ...this.props.appState.currentHillsideCollapse,
+          date:this.props.appState.currentHillsideCollapse.report_date.split(" ")[0],
+          hour:this.props.appState.currentHillsideCollapse.report_date.split(" ")[1]
         }
       },()=>{
         console.log(this.state);
@@ -48,11 +52,17 @@ class hillsideCollapse extends Component {
     }
   }
 
+  enableForm(){
 
+    this.setState({ isDisable: !this.state.isDisable },()=>{
+      console.log(this.state);
+    });
+
+  }
 
   handleChangeInput(event){
 
-    if(event.target.name && event.target.value.length > 0)
+    if(event.target.name && event.target.value.length > -1)
     {
       console.log(event.target.name);
       console.log(event.target.value);
@@ -60,7 +70,7 @@ class hillsideCollapse extends Component {
          {
            formData:{
                ...this.state.formData,
-               [event.target.name] : event.target.value
+               [event.target.name] : event.target.value,
            }
 
          },() => {
@@ -72,6 +82,33 @@ class hillsideCollapse extends Component {
 
   submitData(e){
 
+    e.preventDefault();
+
+    if(this.props.appState.isFetching)
+    {
+      return Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
+    }
+
+    if(this.props.appState.currentHillsideCollapse)
+    {
+      let data = this.state.formData;
+      data.user_id = this.props.appState.user.id;
+      data.report_date = data.date+" "+data.hour;
+      console.log(data);
+      console.log("edit hall side movement");
+      this.props.updateHillsideCollapse(this.state.formData.id,data);
+    }
+    else
+    {
+      let data = this.state.formData;
+      data.user_id = this.props.appState.user.id;
+      data.project_id = this.props.appState.selectedProject.id;
+      data.report_date = data.date+" "+data.hour;
+      console.log(data);
+      console.log("create hall side movement");
+      this.props.createHillsideCollapse(data);
+
+    }
 
 
   }
@@ -82,18 +119,31 @@ class hillsideCollapse extends Component {
 
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
         <br/>
+        {
+          this.props.appState.currentHillsideCollapse ?
+             <Row>
+              <button onClick={this.enableForm} style={styles.disableButton}>Habilitar edición</button>
+            </Row>:null
+        }
         <form className="simpleForm"  onSubmit={this.submitData}>
+          <Row>
+            <Col width="100%">
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" disabled={this.state.isDisable} maxLength="10" required/>
+              </Card>
+            </Col>
+          </Row>
           <Row>
             <Col width="50%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
               <label>fecha:</label>
-            <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+            <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="50%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Hora reporte:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="time" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="time" name="hour" onChange={this.handleChangeInput}value={this.state.formData.hour} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
           </Row>
@@ -113,7 +163,9 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
-                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='landslides' value={ this.state.formData.landslides === "Si" || this.state.formData.landslides === "1" ? 1 :
+                    this.state.formData.landslides === "No" || this.state.formData.landslides === "2" ? 2 : ""
+                 }  disabled={this.state.isDisable}>
                     <option value="" disabled selected></option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
@@ -125,7 +177,7 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="100%">
                 <Card style={styles.cardInput}>
-                  <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
+                  <Input style={styles.textInput} name="ls_location" value={this.state.formData.ls_location} onChange={this.handleChangeInput} placeholder="Ubicación" disabled={this.state.isDisable} required />
                 </Card>
               </Col>
             </Row>
@@ -134,7 +186,7 @@ class hillsideCollapse extends Component {
               <Col width="100%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
-                  <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
+                  <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="ls_description" value={this.state.formData.ls_description}  placeholder="Descripción" disabled={this.state.isDisable}></textarea>
 
                 </Card>
               </Col>
@@ -158,7 +210,8 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
-                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} value={this.state.formData.rockfall === "Si" || this.state.formData.rockfall === "1" ? 1 :
+                    this.state.formData.rockfall === "No" || this.state.formData.rockfall === "2" ? 2 : ""} disabled={this.state.isDisable} name='rockfall'>
                     <option value="" disabled selected></option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
@@ -170,7 +223,7 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="100%">
                 <Card style={styles.cardInput}>
-                  <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
+                  <Input style={styles.textInput} name="rf_location" value={this.state.formData.rf_location} onChange={this.handleChangeInput} placeholder="Ubicación" disabled={this.state.isDisable} required />
                 </Card>
               </Col>
             </Row>
@@ -179,7 +232,7 @@ class hillsideCollapse extends Component {
               <Col width="100%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
-                  <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
+                  <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="rf_description" value={this.state.formData.rf_description}  placeholder="Descripción" disabled={this.state.isDisable}></textarea>
 
                 </Card>
               </Col>
@@ -204,7 +257,8 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
-                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} value={this.state.formData.noises === "Si" || this.state.formData.noises === "1" ? 1 :
+                    this.state.formData.noises === "No" || this.state.formData.noises === "2" ? 2 : ""}  disabled={this.state.isDisable} name='noises'>
                     <option value="" disabled selected></option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
@@ -216,7 +270,7 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="100%">
                 <Card style={styles.cardInput}>
-                  <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
+                  <Input style={styles.textInput} name="ns_location" value={this.state.formData.ns_location} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Ubicación" required />
                 </Card>
               </Col>
             </Row>
@@ -225,7 +279,7 @@ class hillsideCollapse extends Component {
               <Col width="100%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
-                  <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
+                  <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="ns_description" value={this.state.formData.ns_description} disabled={this.state.isDisable}  placeholder="Descripción"></textarea>
 
                 </Card>
               </Col>
@@ -235,16 +289,33 @@ class hillsideCollapse extends Component {
 
 
           <Row>
+            <Col width="100%">
+              <Card style={styles.cardInput}>
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
+                  <option value="level" disabled selected>Estado de emergencia</option>
+                  <option value="1">
+                    Estado de emergencia: 1
+                  </option>
+                  <option value="2">Estado de emergencia: 2</option>
+                  <option value="3">Estado de emergencia: 3</option>
+                  <option value="4">Estado de emergencia: 4</option>
+                  <option value="5">Estado de emergencia: 5</option>
+                </Select>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
 
             <Col width="60%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Responsable" required />
+                <Input style={styles.textInput} name="responsible_name" value={this.state.formData.responsible_name} disabled={this.state.isDisable} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
             <Col width="40%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Identificación" required />
+                <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
             </Col>
 
@@ -254,7 +325,7 @@ class hillsideCollapse extends Component {
             <Col width="100%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
 
               </Card>
             </Col>
@@ -277,11 +348,19 @@ class hillsideCollapse extends Component {
 
   render() {
 
+    const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
       <AppPage  title={["Recorrido de ", <strong>Ladera</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
 
-        {this.contentPage()}
+        {  isFetching ?
+          <div style={{backgroundColor:"white",height:"100%"}}>
+            <Loading/>
+          </div> :
+
+           this.contentPage()
+
+        }
 
       </AppPage>
     );
@@ -295,4 +374,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, {})(hillsideCollapse);
+export default  connect(mapStateToProps, { createHillsideCollapse , updateHillsideCollapse })(hillsideCollapse);

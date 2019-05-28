@@ -1,6 +1,7 @@
 import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS, SET_PROJECT_PHASE,
 SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS, SET_FORESTAL_UNIT, SET_FUNCTIONAL_UNIT,
-SELECT_PROJECT  } from "../types";
+SELECT_PROJECT, SET_TUNNEL_DEFORMATION_LIST , HILL_SIDE_MOVEMENT_LIST, RAIN_FALL_LIST, HILL_SIDE_COLLAPSE_LIST, RIVER_COLLAPSE_LIST,
+SET_TUNNEL_DEFORMATION, SET_HILL_SIDE_MOVEMENT, SET_RAIN_FALL, SET_HILL_SIDE_COLLAPSE, SET_RIVER_COLLAPSE } from "../types";
 
 let initialUser = { id : 3 };
 
@@ -21,24 +22,13 @@ let initialCurrentProject = null;
 
 let initialHillsideMovement = null;
 
-let initialcurrentTunnelDeformation = {
-    "id": 1,
-    "code": "456",
-    "report_date": "2019-05-27 01:00:00",
-    "longitude": 456,
-    "width": 456,
-    "new": "Nueva",
-    "location": "456",
-    "description": "456",
-    "level": 1,
-    "responsible_name": "re",
-    "responsible_id": "1019080782",
-    "observations": "obs",
-    "project_id": 1,
-    "user_id": 3,
-    "created_at": "2019-05-27 22:11:40",
-    "updated_at": "2019-05-27 22:11:40"
-  };
+let initialcurrentTunnelDeformation = null;
+
+let initialHillsideCollapse = null;
+
+let initialCurrentRainfall = null;
+
+let initialRiverCollapse = null;
 
 const initialState = {
   isFetching:false,
@@ -56,6 +46,17 @@ const initialState = {
 
   currentHillsideMovement:initialHillsideMovement,
   currentTunnelDeformation:initialcurrentTunnelDeformation,
+  currentHillsideCollapse:initialHillsideCollapse,
+  currentRainfall:initialCurrentRainfall,
+  currentRiverCollapse:initialRiverCollapse,
+
+//
+
+  TunnelDeformationList: [],
+  HillsideMovementList:[],
+  RainfallList:[],
+  HallsideCollapseList:[],
+  RiverCollapseList:[]
 
 };
 
@@ -166,6 +167,92 @@ const appReducer = (state = initialState, action) => {
       }
       console.log(state);
       return state;
+    case SET_TUNNEL_DEFORMATION_LIST:
+      state={
+        ...state,
+        TunnelDeformationList:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case HILL_SIDE_MOVEMENT_LIST:
+      state={
+        ...state,
+        HillsideMovementList:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case RAIN_FALL_LIST:
+      state={
+        ...state,
+        RainfallList:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case HILL_SIDE_COLLAPSE_LIST:
+      state={
+        ...state,
+        HallsideCollapseList:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case RIVER_COLLAPSE_LIST:
+      state={
+        ...state,
+        RiverCollapseList:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_TUNNEL_DEFORMATION:
+
+      state={
+        ...state,
+        currentTunnelDeformation:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_HILL_SIDE_MOVEMENT:
+
+      state={
+        ...state,
+        currentHillsideMovement:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_RAIN_FALL:
+
+      state={
+        ...state,
+        currentRainfall:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_HILL_SIDE_COLLAPSE:
+
+      state={
+        ...state,
+        currentHillsideCollapse:action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_RIVER_COLLAPSE:
+
+      state={
+        ...state,
+        currentRiverCollapse:action.payload
+      }
+      console.log(state);
+      return state;
+
+
     default:
       return state;
   }
