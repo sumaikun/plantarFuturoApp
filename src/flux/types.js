@@ -51,6 +51,7 @@ export const GO_TO_RAIN_FALL = "GO_TO_RAIN_FALL";
 export const GO_TO_RIVER_COLLAPSE = "GO_TO_RIVER_COLLAPSE";
 export const GO_TO_TUNNEL_DEFORMATION = "GO_TO_TUNNEL_DEFORMATION";
 export const GO_TO_RISK_INDICATORS = "GO_TO_RISK_INDICATORS";
+export const GO_TO_RISK_REPORT = "GO_TO_RISK_REPORT";
 
 //RiskManagement navigation
 export const HALL_SIDE_MOVEMENT_URL = BASE_URL+"/api/risks/hillside-displacement";
@@ -72,3 +73,4 @@ export const SET_HILL_SIDE_MOVEMENT = "SET_HILL_SIDE_MOVEMENT";
 export const SET_RAIN_FALL = "SET_RAIN_FALL";
 export const SET_HILL_SIDE_COLLAPSE = "SET_HILL_SIDE_COLLAPSE";
 export const SET_RIVER_COLLAPSE = "SET_RIVER_COLLAPSE";
+export const SET_CURRENT_RISK_PHASE = "SET_CURRENT_RISK_PHASE";

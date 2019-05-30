@@ -21,8 +21,7 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { goToHillsideCollapse, goToRainFall, goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement , getTunnelsDeformation
-, getHillsidesMovement, getRainfalls, getHillsidesCollapse, getRiversCollapse , setTunnelDeformation, setHillsideMovement, setRainfall,
-setHillSideCollapse,  setRiverCollapse } from '../../flux/actions';
+, getHillsidesMovement, getRainfalls, getHillsidesCollapse, getRiversCollapse, goToRiskReport, setCurrentRiskPhase  } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -60,7 +59,7 @@ class RiskManagement extends Component {
       }
     }
 
-    this.renderRisk = this.renderRisk.bind(this);
+
 
   }
 
@@ -68,34 +67,7 @@ class RiskManagement extends Component {
 
   }
 
-  renderRisk(data,callback){
-    console.log("en función");
-    return(
 
-    data.map((el, i) => {
-      console.log(el);
-      return(
-            <List>
-                    <ListItem  onClick={()=>{ callback(el); }}  tappable style={{
-                      color: "rgb(53, 40, 101)",
-                      fontSize: "12px",
-                      fontWeight: "bold"}}
-                    >
-                      <div className="center" style={{display: "flex",  justifyContent: "space-around"   }}>
-
-                        <span style={{color:"gray"}} >{i+1}</span>
-
-                      </div>
-                      <div>
-                        {el.code}
-
-                      </div>
-                    </ListItem>
-              </List>
-          );
-      })
-   )
-  }
 
 
 
@@ -130,7 +102,11 @@ class RiskManagement extends Component {
                         </div>
                       </Col>
                       <Col width="47%">
-                        <div style={styles.centerAll} onClick={()=>{  this.props.getTunnelsDeformation(this.props.appState.selectedProject.id)  }}>
+                        <div style={styles.centerAll} onClick={()=>{
+                            this.props.getTunnelsDeformation(this.props.appState.selectedProject.id),
+                            this.props.setCurrentRiskPhase(1);
+                            this.props.goToRiskReport();
+                        }}>
 
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
@@ -146,17 +122,6 @@ class RiskManagement extends Component {
                       </Col>
                     </Row>
 
-                    <Row>
-                      <Col width="20%"></Col>
-                      <Col width="80%">
-
-                        { this.props.appState.TunnelDeformationList  ?  this.renderRisk(this.props.appState.TunnelDeformationList,(el) => {
-                          this.props.setTunnelDeformation(el);
-                          this.props.goToTunnelDeformation();
-                        }) : null  }
-
-                      </Col>
-                    </Row>
                   </ListAccordion>
                 </div>
               </div>
@@ -184,7 +149,11 @@ class RiskManagement extends Component {
                         </div>
                       </Col>
                       <Col width="47%">
-                        <div style={styles.centerAll}>
+                        <div style={styles.centerAll} onClick={()=>{
+                            this.props.getHillsidesMovement(this.props.appState.selectedProject.id),
+                            this.props.setCurrentRiskPhase(2);
+                            this.props.goToRiskReport();
+                        }}>
 
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
@@ -199,18 +168,7 @@ class RiskManagement extends Component {
                       </Col>
                     </Row>
 
-                    <Row>
-                      <Col width="20%"></Col>
-                      <Col width="80%">
-
-                      { this.props.appState.HillsideMovementList  ?  this.renderRisk(this.props.appState.HillsideMovementList,(el) => {
-                        this.props.setHillsideMovement(el);
-                        this.props.goToHillsideMovement();
-                      }) : null  }
-
-                      </Col>
-                    </Row>
-                  </ListAccordion>
+                    </ListAccordion>
                 </div>
               </div>
 
@@ -239,7 +197,11 @@ class RiskManagement extends Component {
                         </div>
                       </Col>
                       <Col width="47%">
-                        <div style={styles.centerAll}>
+                        <div style={styles.centerAll} onClick={()=>{
+                            this.props.getRainfalls(this.props.appState.selectedProject.id),
+                            this.props.setCurrentRiskPhase(3);
+                            this.props.goToRiskReport();
+                        }}>
 
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
@@ -254,17 +216,6 @@ class RiskManagement extends Component {
                       </Col>
                     </Row>
 
-                    <Row>
-                      <Col width="20%"></Col>
-                      <Col width="80%">
-
-                      { this.props.appState.RainfallList  ?  this.renderRisk(this.props.appState.RainfallList,(el) => {
-                        this.props.setRainfall(el);
-                        this.props.goToRainFall();
-                      }) : null  }
-
-                      </Col>
-                    </Row>
                   </ListAccordion>
                 </div>
               </div>
@@ -294,7 +245,11 @@ class RiskManagement extends Component {
                         </div>
                       </Col>
                       <Col width="47%">
-                        <div style={styles.centerAll}>
+                        <div style={styles.centerAll} onClick={()=>{
+                            this.props.getHillsidesCollapse(this.props.appState.selectedProject.id),
+                            this.props.setCurrentRiskPhase(4);
+                            this.props.goToRiskReport();
+                        }}>
 
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
@@ -309,17 +264,6 @@ class RiskManagement extends Component {
                       </Col>
                     </Row>
 
-                    <Row>
-                      <Col width="20%"></Col>
-                      <Col width="80%">
-
-                      { this.props.appState.HallsideCollapseList  ?  this.renderRisk(this.props.appState.HallsideCollapseList,(el) => {
-                        this.props.setHillSideCollapse(el);
-                        this.props.goToHillsideCollapse();
-                      }) : null  }
-
-                      </Col>
-                    </Row>
                   </ListAccordion>
                 </div>
               </div>
@@ -349,7 +293,11 @@ class RiskManagement extends Component {
                         </div>
                       </Col>
                       <Col width="47%">
-                        <div style={styles.centerAll}>
+                        <div style={styles.centerAll} onClick={()=>{
+                            this.props.getRiversCollapse(this.props.appState.selectedProject.id),
+                            this.props.setCurrentRiskPhase(5);
+                            this.props.goToRiskReport();
+                        }}>
 
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
@@ -368,10 +316,6 @@ class RiskManagement extends Component {
                       <Col width="20%"></Col>
                       <Col width="80%">
 
-                      { this.props.appState.RiverCollapseList  ?  this.renderRisk(this.props.appState.RiverCollapseList,(el) => {
-                        this.props.setRiverCollapse(el);
-                        this.props.goToRiverCollapse();
-                      }) : null  }
 
                       </Col>
                     </Row>
@@ -391,5 +335,7 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps,{goToHillsideCollapse, goToRainFall, goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement, getTunnelsDeformation, setHillsideMovement, setRainfall,
-setHillSideCollapse,  setRiverCollapse, setTunnelDeformation})(RiskManagement);
+export default  connect(mapStateToProps,{goToHillsideCollapse, goToRainFall,
+goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement,
+goToRiskReport, setCurrentRiskPhase, getTunnelsDeformation, getHillsidesMovement,
+getRainfalls, getHillsidesCollapse, getRiversCollapse })(RiskManagement);

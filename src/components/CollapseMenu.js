@@ -10,7 +10,7 @@ import Ons from 'onsenui';
 // Pages
 
 //flux
-import { goToProjects  , LogOut , setProjectPhase } from '../flux/actions';
+import { goToProjects  , LogOut , setProjectPhase , goToMain } from '../flux/actions';
 import { connect } from 'react-redux';
 
 class CollapseMenu extends Component {
@@ -29,6 +29,9 @@ class CollapseMenu extends Component {
       <Page>
         <div style = {{ backgroundColor:" white", height: '100%' }}>
           <List>
+            <ListItem   tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToMain()}}>
+              <span style={{marginRight:"15px"}}>Inicio</span> <Icon icon="fa-home" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+            </ListItem>
             <ListItem   tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToProjects()}}>
               <span style={{marginRight:"15px"}}>Inventario</span> <Icon icon="fa-check" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
             </ListItem>
@@ -41,7 +44,16 @@ class CollapseMenu extends Component {
             <ListItem   tappable onClick={this.props.goToProjects}>
               <span style={{marginRight:"15px"}}>Vivero</span> <Icon icon="fa-leaf" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
             </ListItem>
-            <ListItem   tappable onClick={this.props.LogOut}>
+            <ListItem   tappable onClick={()=>{
+              Ons.notification.confirm('!Estas seguro!').then(function(res) {
+                res ? (()=>{
+                  localStorage.clear();
+                  this.props.LogOut();
+                })() : false;
+                //ons.notification.alert('Hello ' + name);
+              });
+
+            }}>
               <span style={{marginRight:"15px"}}>Finalizar sesión</span> <Icon icon="fa-key" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
             </ListItem>
           </List>
@@ -61,4 +73,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { goToProjects , LogOut , setProjectPhase })(CollapseMenu);
+export default  connect(mapStateToProps, { goToProjects , LogOut , setProjectPhase, goToMain })(CollapseMenu);

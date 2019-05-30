@@ -14,7 +14,7 @@ import CollapseMenu from "../components/CollapseMenu";
 
 // REDUX
 import { connect } from 'react-redux';
-import { insertNavigator , closeMenu } from '../flux/actions';
+import { insertNavigator , closeMenu , runfromStorage } from '../flux/actions';
 
 
 class AppNavigation extends Component {
@@ -22,12 +22,21 @@ class AppNavigation extends Component {
   constructor() {
     super();
     this.renderPage = this.renderPage.bind(this);
-
-
   }
 
   componentDidMount(){
     this.props.insertNavigator(this.navigator);
+
+    let storedData = JSON.parse(localStorage.getItem('state'));
+    //console.log(storedData);
+    if(storedData)
+    {
+      if(storedData.navigationIndex)
+      {
+        //console.log(storedData.navigationIndex);
+        this.props.runfromStorage(storedData.navigationIndex);
+      }
+    }
 
   }
 
@@ -50,10 +59,10 @@ class AppNavigation extends Component {
 
     return (
       <Splitter>
-      <SplitterSide side='left' width={220} collapse={true} swipeable={false} isOpen={this.props.appState.isOpen} >
-        <CollapseMenu/>
-      </SplitterSide>
-        <SplitterContent>
+        <SplitterSide side='left' width={220} collapse={true} swipeable={false} isOpen={this.props.appState.isOpen} >
+          <CollapseMenu/>
+        </SplitterSide>
+          <SplitterContent>
             <Navigator
               renderPage={this.renderPage}
               initialRoute={this.props.navigation.initialRoute}
@@ -73,4 +82,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { insertNavigator , closeMenu })(AppNavigation);
+export default  connect(mapStateToProps, { insertNavigator , closeMenu, runfromStorage })(AppNavigation);

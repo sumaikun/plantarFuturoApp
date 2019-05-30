@@ -16,13 +16,17 @@ import RiverCollapse from '../../pages/RiskManagement/RiverCollapse'
 import TunnelDeformation from '../../pages/RiskManagement/TunnelDeformation'
 import HillsideMovement from '../../pages/RiskManagement/HillsideMovement'
 
+import RiskReport from '../../pages/RiskManagement/RiskReport'
+
 import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, INSERT_NAVIGATOR,
 GO_TO_FORM_INVENTORY, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION , GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
-GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS, GO_TO_HILLSIDE_MOVEMENT } from "../types";
+GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS, GO_TO_HILLSIDE_MOVEMENT,
+GO_TO_RISK_REPORT } from "../types";
 
 var Pagenavigator = null;
 
 const initialState = {
+  currentPagekey:null,
   navigator: {},
   initialRoute:{ component: Login , key: "LOGIN_PAGE"  },
 };
@@ -50,83 +54,148 @@ const navigationReducer = (state = initialState, action) => {
 
       return state;
     case GO_TO_LOGIN:
-      if(currentPage.key != 'BACK_PAGE'){
-        state.navigator.resetPage({ component: Login , key: 'BACK_PAGE'  }, { animation: 'fade' });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_LOGIN
+      }
+      if(currentPage.key != GO_TO_LOGIN){
+        state.navigator.resetPage({ component: Login , key: GO_TO_LOGIN  }, { animation: 'fade' });
       }
       return state;
     case GO_TO_MANAGEMENT:
-      if(currentPage.key != 'MANAGEMENT_PAGE'){
+      state = {
+        ...state,
+        currentPagekey: GO_TO_MANAGEMENT
+      }
+      if(currentPage.key != GO_TO_MANAGEMENT){
         setTimeout(()=>{
-          state.navigator.resetPage({ component: ProjectManagement , key: 'MANAGEMENT_PAGE'  }, { animation: 'fade' });
+          state.navigator.resetPage({ component: ProjectManagement , key: GO_TO_MANAGEMENT  }, { animation: 'fade' });
         },1)
       }
       return state;
     case GO_TO_PROJECTS:
-      if(currentPage.key != 'PROJECTS_PAGE'){
-        state.navigator.pushPage({ component: ProjectList , key: 'PROJECTS_PAGE'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_PROJECTS
+      }
+      if(currentPage.key != GO_TO_PROJECTS){
+        state.navigator.pushPage({ component: ProjectList , key: GO_TO_PROJECTS  });
       }
       return state;
     case GO_TO_FORESTAL_UNITS:
-      if(currentPage.key != 'FUNCTIONALS_PAGE'){
-        state.navigator.pushPage({ component: ForestalUnitList , key: 'PROJECTS_PAGE'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_FORESTAL_UNITS
+      }
+      if(currentPage.key != GO_TO_FORESTAL_UNITS){
+        state.navigator.pushPage({ component: ForestalUnitList , key: GO_TO_FORESTAL_UNITS  });
       }
       return state;
     case GO_TO_FORM_INVENTORY:
-      if(currentPage.key != 'INVENTORY_FORM'){
-        state.navigator.pushPage({ component: FormInventory , key: 'INVENTORY_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_FORM_INVENTORY
+      }
+      if(currentPage.key != GO_TO_FORM_INVENTORY){
+        state.navigator.pushPage({ component: FormInventory , key: GO_TO_FORM_INVENTORY  });
       }
       return state;
     case GO_TO_FORM_PROCESS:
-      if(currentPage.key != 'PROCESS_FORM'){
-        state.navigator.pushPage({ component: FormProcess , key: 'PROCESS_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_FORM_PROCESS
+      }
+      if(currentPage.key != GO_TO_FORM_PROCESS){
+        state.navigator.pushPage({ component: FormProcess , key: GO_TO_FORM_PROCESS  });
       }
       return state;
     case GO_TO_FORM_COMPENSATION:
-      if(currentPage.key != 'COMPENSATION_FORM'){
-        state.navigator.pushPage({ component: FormCompensation , key: 'COMPENSATION_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_FORM_COMPENSATION
+      }
+      if(currentPage.key != GO_TO_FORM_COMPENSATION){
+        state.navigator.pushPage({ component: FormCompensation , key: GO_TO_FORM_COMPENSATION  });
       }
       return state;
     case GO_TO_RISK_MANAGEMENT:
-      if(currentPage.key != 'RISK_MANAGEMENT'){
-        state.navigator.pushPage({ component: RiskManagement , key: 'RISK_MANAGEMENT'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_RISK_MANAGEMENT
       }
-      return state;
-    case GO_TO_RISK_MANAGEMENT:
-      if(currentPage.key != 'RISK_MANAGEMENT'){
-        state.navigator.pushPage({ component: RiskManagement , key: 'RISK_MANAGEMENT'  });
+      if(currentPage.key != GO_TO_RISK_MANAGEMENT){
+        state.navigator.pushPage({ component: RiskManagement , key: GO_TO_RISK_MANAGEMENT  });
       }
       return state;
     case GO_TO_HILLSIDE_COLLAPSE:
-      if(currentPage.key != 'HILLSIDE_COLLAPSE_FORM'){
-        state.navigator.pushPage({ component: HillsideCollapse , key: 'HILLSIDE_COLLAPSE_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_HILLSIDE_COLLAPSE
+      }
+      if(currentPage.key != GO_TO_HILLSIDE_COLLAPSE){
+        state.navigator.pushPage({ component: HillsideCollapse , key: GO_TO_HILLSIDE_COLLAPSE  });
       }
       return state;
     case GO_TO_RAIN_FALL:
-      if(currentPage.key != 'RAIN_FALL_FORM'){
-        state.navigator.pushPage({ component: Rainfall , key: 'RAIN_FALL_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_RAIN_FALL
+      }
+      if(currentPage.key != GO_TO_RAIN_FALL){
+        state.navigator.pushPage({ component: Rainfall , key: GO_TO_RAIN_FALL  });
       }
       return state;
     case GO_TO_RIVER_COLLAPSE:
-      if(currentPage.key != 'RIVER_COLLAPSE_FORM'){
-        state.navigator.pushPage({ component: RiverCollapse , key: 'RIVER_COLLAPSE_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_RIVER_COLLAPSE
+      }
+      if(currentPage.key != GO_TO_RIVER_COLLAPSE){
+        state.navigator.pushPage({ component: RiverCollapse , key: GO_TO_RIVER_COLLAPSE  });
       }
       return state;
     case GO_TO_TUNNEL_DEFORMATION:
-      if(currentPage.key != 'TUNNEL_DEFORMATION_FORM'){
-        state.navigator.pushPage({ component: TunnelDeformation , key: 'TUNNEL_DEFORMATION_FORM'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_TUNNEL_DEFORMATION
+      }
+      if(currentPage.key != GO_TO_TUNNEL_DEFORMATION){
+        state.navigator.pushPage({ component: TunnelDeformation , key: GO_TO_TUNNEL_DEFORMATION  });
       }
       return state;
     case GO_TO_RISK_INDICATORS:
-      if(currentPage.key != 'RISK_INDICATORS'){
-        state.navigator.pushPage({ component: RiskIndicators , key: 'RISK_INDICATORS'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_RISK_INDICATORS
+      }
+      if(currentPage.key != GO_TO_RISK_INDICATORS){
+        state.navigator.pushPage({ component: RiskIndicators , key: GO_TO_RISK_INDICATORS  });
       }
       return state;
     case GO_TO_HILLSIDE_MOVEMENT:
-      if(currentPage.key != 'HILLSIDE_MOVEMENT'){
-        state.navigator.pushPage({ component: HillsideMovement , key: 'HILLSIDE_MOVEMENT'  });
+      state = {
+        ...state,
+        currentPagekey: GO_TO_HILLSIDE_MOVEMENT
+      }
+      if(currentPage.key != GO_TO_HILLSIDE_MOVEMENT){
+        state.navigator.pushPage({ component: HillsideMovement , key: GO_TO_HILLSIDE_MOVEMENT  });
+      }
+      return state;
+    case GO_TO_RISK_REPORT:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_RISK_REPORT
+      }
+      if(currentPage.key != GO_TO_RISK_REPORT){
+        state.navigator.pushPage({ component: RiskReport , key: GO_TO_RISK_REPORT  });
       }
       return state;
     case GO_BACK:
+      state = {
+        ...state,
+        currentPagekey: state.navigator.pages.slice(-1)[0].key
+      }
+      console.log(state.navigator);
       state.navigator.popPage();
       return state;
     default:

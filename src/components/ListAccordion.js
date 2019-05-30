@@ -53,8 +53,18 @@ class ListAccordion extends Component {
   constructor(props) {
     super(props);
 
+
+    let self = this;
+
+
     window.fn = {};
     window.fn.toggle = function(el) {
+
+        if(self.props.phase == 4 )
+        {
+          return;
+        }
+
         el.classList.toggle("active");
         el.nextElementSibling.classList.toggle("show");
     }

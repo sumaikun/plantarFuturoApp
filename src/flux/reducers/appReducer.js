@@ -1,9 +1,11 @@
 import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS, SET_PROJECT_PHASE,
 SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS, SET_FORESTAL_UNIT, SET_FUNCTIONAL_UNIT,
 SELECT_PROJECT, SET_TUNNEL_DEFORMATION_LIST , HILL_SIDE_MOVEMENT_LIST, RAIN_FALL_LIST, HILL_SIDE_COLLAPSE_LIST, RIVER_COLLAPSE_LIST,
-SET_TUNNEL_DEFORMATION, SET_HILL_SIDE_MOVEMENT, SET_RAIN_FALL, SET_HILL_SIDE_COLLAPSE, SET_RIVER_COLLAPSE } from "../types";
+SET_TUNNEL_DEFORMATION, SET_HILL_SIDE_MOVEMENT, SET_RAIN_FALL, SET_HILL_SIDE_COLLAPSE, SET_RIVER_COLLAPSE,
+SET_CURRENT_RISK_PHASE } from "../types";
 
-let initialUser = { id : 3 };
+
+let initialUser = null;
 
 let initialProjects = []
 
@@ -13,7 +15,7 @@ let initialFunctionalUnits = [];
 
 let initialForestalUnitE = null;
 
-let initialSelectedProject = { id : 1 };
+let initialSelectedProject = null;
 
 let initialCurrentFE = null;
 
@@ -30,7 +32,12 @@ let initialCurrentRainfall = null;
 
 let initialRiverCollapse = null;
 
-const initialState = {
+
+let storedData = JSON.parse(localStorage.getItem('state'));
+
+console.log(storedData);
+
+const initialState =  storedData ? storedData.appState :   {
   isFetching:false,
   isOpen:false,
   user:initialUser,
@@ -56,7 +63,9 @@ const initialState = {
   HillsideMovementList:[],
   RainfallList:[],
   HallsideCollapseList:[],
-  RiverCollapseList:[]
+  RiverCollapseList:[],
+
+  currentRiskPhase:null,
 
 };
 
@@ -252,6 +261,14 @@ const appReducer = (state = initialState, action) => {
       console.log(state);
       return state;
 
+    case SET_CURRENT_RISK_PHASE:
+
+      state={
+        ...state,
+        currentRiskPhase:action.payload
+      }
+      console.log(state);
+      return state;
 
     default:
       return state;

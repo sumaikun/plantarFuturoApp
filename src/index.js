@@ -36,10 +36,18 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import reducers from "./flux/reducers/";
 
+//localStorage
+import {loadState, saveState} from './helpers/appStorage';
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
 
+store.subscribe( function () {
+  //console.log("listener activated");
+  //console.log(store.getState());
+  saveState(store.getState())
+})
 
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>

@@ -6,6 +6,7 @@ import chart from "../img/chart.png";
 import plant from "../img/plant.png";
 import yellowArrow from "../img/yellowArrow.png";
 import "../css/accordion.css";
+import { workingRowStyles } from "../jsStyles/Styles";
 
 
 //Onsen Ui
@@ -24,68 +25,7 @@ import AppPage from '../containers/AppPage';
 import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../flux/actions';
 import { connect } from 'react-redux';
 
-const styles = {
-  mainListItem:{
-    display: "flex",
-    justifyContent: "space-around"
-  },
-  counter:{
-    color: "#e6e7e8"
-  },
-  projectName:{
-    color: "#352865",
-    fontSize: "18px",
-    fontWeight: "bold"
-  },
-  projectInfo:{
-    color: "#e6e7e8",
-    fontSize: "10px",
-  },
-  ProjectButton:{
-    color:"orange",
-    fontWeight:"bold",
-    fontSize:"18px"
-  },
-  buttonContainer:{
-    backgroundColor: "#f1f2f2",
-    width: "30px",
-    height: "30px",
-    borderRadius: "50%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  CardHeaders:{
-    height:"35px",
-    backgroundColor: "#61af2e",
-    fontSize:"10px",
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-    textTransform:"none",
-    padding:"5px",
-    color:"white"
-  },
-  searchInputContainer:{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    margin:"10px"
-  },
-  formContainer:{
-    overflow:"hidden",
-    backgroundColor:"orange"
-  },
-  searchButton:{
-    backgroundColor: "#c5873d",
-    height: "25px",
-    width: "25px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "50px"
-  }
-}
+const styles = workingRowStyles;
 
 class ForestalUnitList extends Component {
   constructor(props) {

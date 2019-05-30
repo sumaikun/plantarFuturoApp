@@ -211,6 +211,9 @@ class ProjectList extends Component {
       case 3:
         titlePage = "COMPENSACIÓN"
         break;
+      case 4:
+        titlePage = "RIESGO"
+        break;
     }
 
     //console.log(currentPhaseProjects);
@@ -231,7 +234,7 @@ class ProjectList extends Component {
                       console.log(project); this.props.selectProject(project)
                     })()
                   }}>
-                <ListAccordion counter={i+1} projectName={project.name} projectInfo={project.customer.name} >
+                <ListAccordion counter={i+1} projectName={project.name}  phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
                   <Row>
                     <Col width="6%">
                     </Col>
