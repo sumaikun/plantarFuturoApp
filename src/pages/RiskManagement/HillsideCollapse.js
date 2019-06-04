@@ -140,7 +140,7 @@ class hillsideCollapse extends Component {
             <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-            <Col width="50%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Hora reporte:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="time" name="hour" onChange={this.handleChangeInput}value={this.state.formData.hour} disabled={this.state.isDisable} required/>
@@ -163,10 +163,15 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
+<<<<<<< HEAD
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='landslides' value={ this.state.formData.landslides === "Si" || this.state.formData.landslides === "1" ? 1 :
                     this.state.formData.landslides === "No" || this.state.formData.landslides === "2" ? 2 : ""
                  }  disabled={this.state.isDisable}>
                     <option value="" disabled selected></option>
+=======
+                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                    <option value="" disabled selected>Si / No</option>
+>>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -175,7 +180,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="ls_location" value={this.state.formData.ls_location} onChange={this.handleChangeInput} placeholder="Ubicación" disabled={this.state.isDisable} required />
                 </Card>
@@ -183,7 +188,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="ls_description" value={this.state.formData.ls_description}  placeholder="Descripción" disabled={this.state.isDisable}></textarea>
@@ -210,9 +215,14 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
+<<<<<<< HEAD
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} value={this.state.formData.rockfall === "Si" || this.state.formData.rockfall === "1" ? 1 :
                     this.state.formData.rockfall === "No" || this.state.formData.rockfall === "2" ? 2 : ""} disabled={this.state.isDisable} name='rockfall'>
                     <option value="" disabled selected></option>
+=======
+                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                    <option value="" disabled selected>Si / No</option>
+>>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -221,7 +231,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="rf_location" value={this.state.formData.rf_location} onChange={this.handleChangeInput} placeholder="Ubicación" disabled={this.state.isDisable} required />
                 </Card>
@@ -229,7 +239,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="rf_description" value={this.state.formData.rf_description}  placeholder="Descripción" disabled={this.state.isDisable}></textarea>
@@ -257,9 +267,14 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
+<<<<<<< HEAD
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} value={this.state.formData.noises === "Si" || this.state.formData.noises === "1" ? 1 :
                     this.state.formData.noises === "No" || this.state.formData.noises === "2" ? 2 : ""}  disabled={this.state.isDisable} name='noises'>
                     <option value="" disabled selected></option>
+=======
+                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
+                    <option value="" disabled selected>Si / No</option>
+>>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -268,7 +283,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="ns_location" value={this.state.formData.ns_location} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Ubicación" required />
                 </Card>
@@ -276,7 +291,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="ns_description" value={this.state.formData.ns_description} disabled={this.state.isDisable}  placeholder="Descripción"></textarea>
@@ -307,13 +322,13 @@ class hillsideCollapse extends Component {
 
           <Row>
 
-            <Col width="60%">
+            <Col width="59.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_name" value={this.state.formData.responsible_name} disabled={this.state.isDisable} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
-            <Col width="40%">
+            <Col width="39.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
@@ -322,10 +337,14 @@ class hillsideCollapse extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
+<<<<<<< HEAD
                 <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
+=======
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+>>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
 
               </Card>
             </Col>
@@ -333,8 +352,8 @@ class hillsideCollapse extends Component {
 
           <Row>
             <button type="submit"
-              style={{fontSize:"18px",padding:'5px',marginTop:"10px",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 10px 10px -2px",
-              color:"white",width:"100%",borderRadius:"10%"}}
+              style={{fontSize:"18px",padding:'5px',marginTop:"10px",marginLeft:"50%",marginRight:"1%",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
+              color:"white",width:"50%",borderRadius:"10%"}}
               ><b>Registrar</b></button>
           </Row>
         </form>

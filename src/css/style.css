@@ -1,0 +1,20 @@
+.margin{
+    margin-left: 3%;
+    margin-right: 5%;
+}
+.margin2{
+    position:absolute;  
+    left:0;
+    margin-left: 85%; 
+}
+.nextButton{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color:#faa61f;
+    border:2px solid #faa61f;
+    position:absolute;  
+    left:0;
+    margin-top: -15px;
+    margin-left: 70%;
+  }

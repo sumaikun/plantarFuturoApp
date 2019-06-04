@@ -50,7 +50,11 @@ store.subscribe( function () {
 })
 
 const appInit = _ =>
+<<<<<<< HEAD
   ReactDOM.render(<Provider store={store}>
+=======
+  ReactDOM.render(<Provider store={store}>  
+>>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
     <AppNavigation/>
   </Provider>, document.getElementById('root'));
 

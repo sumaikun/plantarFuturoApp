@@ -137,7 +137,7 @@ class RiverCollapse extends Component {
             <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-            <Col width="50%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Hora reporte:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="time" name="hour" onChange={this.handleChangeInput} value={this.state.formData.hour} disabled={this.state.isDisable} required/>
@@ -172,7 +172,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="wd_location" value={this.state.formData.wd_location} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Ubicación" required />
                 </Card>
@@ -180,7 +180,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="wd_description" value={this.state.formData.wd_description} disabled={this.state.isDisable}  placeholder="Descripción" ></textarea>
@@ -219,7 +219,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="md_location" value={this.state.formData.md_location} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Ubicación" required />
                 </Card>
@@ -227,7 +227,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="md_description" value={this.state.formData.md_description} disabled={this.state.isDisable}  placeholder="Descripción"></textarea>
@@ -274,7 +274,7 @@ class RiverCollapse extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
                 <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="ns_description" value={this.state.formData.ns_description} disabled={this.state.isDisable}  placeholder="Descripción"></textarea>

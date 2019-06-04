@@ -1,9 +1,10 @@
 export const formCardStyles = {
   cardInput:{
-    height: "40px",
+    marginRight: "0.2px",
+    height: "28px",
     display: "flex",
     alignItems: "center",
-    padding:"3px"
+    padding:"3px",
   },
   cardRadio:{
     height: "40px",
@@ -36,9 +37,17 @@ export const formCardStyles = {
     textAlign:"center"
   },
   disableButton:{
-    backgroundColor: "rgb(97, 175, 46)",
-    marginLeft: "5px",
+    marginLeft: "6px",
     color: "white",
+    fontSize:"12px",
+    padding:'5px',
+    marginTop:"1px",
+    marginBottom:"5px",
+    backgroundColor:"#61af2e",
+    boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
+    color:"white",
+    width:"30%",
+    borderRadius:"10%"
   }
 }
 
