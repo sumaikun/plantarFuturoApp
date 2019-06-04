@@ -159,7 +159,7 @@ class hillsideCollapse extends Component {
               <Col width="40%">
                 <Card style={styles.cardInput}>
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>Si / No</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -168,7 +168,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
                 </Card>
@@ -176,7 +176,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
@@ -205,7 +205,7 @@ class hillsideCollapse extends Component {
               <Col width="40%">
                 <Card style={styles.cardInput}>
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>Si / No</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -214,7 +214,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
                 </Card>
@@ -222,7 +222,7 @@ class hillsideCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
@@ -236,13 +236,13 @@ class hillsideCollapse extends Component {
 
           <Row>
 
-            <Col width="60%">
+            <Col width="59.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
-            <Col width="40%">
+            <Col width="39.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Identificación" required />
               </Card>
@@ -251,10 +251,10 @@ class hillsideCollapse extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
 
               </Card>
             </Col>

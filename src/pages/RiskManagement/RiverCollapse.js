@@ -84,13 +84,13 @@ class RiverCollapse extends Component {
         <br/>
         <form className="simpleForm"  onSubmit={this.submitData}>
           <Row>
-            <Col width="50%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
               <label>fecha:</label>
             <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
               </Card>
             </Col>
-            <Col width="50%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Hora reporte:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="time" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
@@ -114,7 +114,7 @@ class RiverCollapse extends Component {
               <Col width="40%">
                 <Card style={styles.cardInput}>
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>Si / No</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -123,7 +123,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
                 </Card>
@@ -131,7 +131,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
@@ -159,7 +159,7 @@ class RiverCollapse extends Component {
               <Col width="40%">
                 <Card style={styles.cardInput}>
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>Si / No</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -168,7 +168,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
                 </Card>
@@ -176,7 +176,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
@@ -202,10 +202,10 @@ class RiverCollapse extends Component {
           <div>
 
             <Row>
-              <Col width="40%">
+              <Col width="39%">
                 <Card style={styles.cardInput}>
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected></option>
+                    <option value="" disabled selected>Si / No</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -214,7 +214,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={styles.cardInput}>
                   <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Ubicación" required />
                 </Card>
@@ -222,7 +222,7 @@ class RiverCollapse extends Component {
             </Row>
 
             <Row>
-              <Col width="100%">
+              <Col width="99%">
                 <Card style={{...styles.cardInput, height:"auto"}}>
 
                   <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Descripción"></textarea>
@@ -236,13 +236,13 @@ class RiverCollapse extends Component {
 
           <Row>
 
-            <Col width="60%">
+            <Col width="59.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
-            <Col width="40%">
+            <Col width="39.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Identificación" required />
               </Card>
@@ -251,10 +251,10 @@ class RiverCollapse extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
 
               </Card>
             </Col>
@@ -262,8 +262,8 @@ class RiverCollapse extends Component {
 
           <Row>
             <button type="submit"
-              style={{fontSize:"18px",padding:'5px',marginTop:"10px",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 10px 10px -2px",
-              color:"white",width:"100%",borderRadius:"10%"}}
+              style={{fontSize:"18px",padding:'5px',marginTop:"10px",marginLeft:"50%",marginRight:"1%",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
+              color:"white",width:"50%",borderRadius:"10%"}}
               ><b>Registrar</b></button>
           </Row>
         </form>

@@ -174,7 +174,7 @@ class HillsideMovement extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="location" value={this.state.formData.location} onChange={this.handleChangeInput}  disabled={this.state.isDisable} placeholder="Ubicación" required />
               </Card>
@@ -182,7 +182,7 @@ class HillsideMovement extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
                 <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="description" value={this.state.formData.description} disabled={this.state.isDisable} placeholder="Descripción" ></textarea>
@@ -192,7 +192,7 @@ class HillsideMovement extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
                   <option value="level" disabled selected>Estado de emergencia</option>
@@ -210,13 +210,13 @@ class HillsideMovement extends Component {
 
           <Row>
 
-            <Col width="60%">
+            <Col width="59.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_name" value={this.state.formData.responsible_name} disabled={this.state.isDisable} onChange={this.handleChangeInput} placeholder="Responsable" required />
               </Card>
             </Col>
 
-            <Col width="40%">
+            <Col width="39.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
@@ -225,7 +225,7 @@ class HillsideMovement extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
                 <textarea onKeyUp={this.handleChangeInput} style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones"></textarea>
