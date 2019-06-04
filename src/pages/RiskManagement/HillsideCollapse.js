@@ -163,15 +163,11 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
-<<<<<<< HEAD
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='landslides' value={ this.state.formData.landslides === "Si" || this.state.formData.landslides === "1" ? 1 :
                     this.state.formData.landslides === "No" || this.state.formData.landslides === "2" ? 2 : ""
                  }  disabled={this.state.isDisable}>
                     <option value="" disabled selected></option>
-=======
-                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected>Si / No</option>
->>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
+
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -215,14 +211,11 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
-<<<<<<< HEAD
+
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} value={this.state.formData.rockfall === "Si" || this.state.formData.rockfall === "1" ? 1 :
                     this.state.formData.rockfall === "No" || this.state.formData.rockfall === "2" ? 2 : ""} disabled={this.state.isDisable} name='rockfall'>
                     <option value="" disabled selected></option>
-=======
-                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected>Si / No</option>
->>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
+
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -267,14 +260,10 @@ class hillsideCollapse extends Component {
             <Row>
               <Col width="40%">
                 <Card style={styles.cardInput}>
-<<<<<<< HEAD
+
                   <Select style={{width:"100%"}} onChange={this.handleChangeInput} value={this.state.formData.noises === "Si" || this.state.formData.noises === "1" ? 1 :
                     this.state.formData.noises === "No" || this.state.formData.noises === "2" ? 2 : ""}  disabled={this.state.isDisable} name='noises'>
                     <option value="" disabled selected></option>
-=======
-                  <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin'>
-                    <option value="" disabled selected>Si / No</option>
->>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
                     <option value="1">Si</option>
                     <option value="2">No</option>
                   </Select>
@@ -340,11 +329,8 @@ class hillsideCollapse extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-<<<<<<< HEAD
+
                 <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
-=======
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
->>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
 
               </Card>
             </Col>

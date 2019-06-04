@@ -83,15 +83,11 @@ class ProjectManagement extends Component {
                 />
             </div>
             <div style={{height:"10px"}} ></div>
-<<<<<<< HEAD
+
             <div onClick={()=>{this.props.setProjectPhase(4),
               this.props.goToProjects()
               }}>
               <CardButton
-=======
-            <div onClick={()=>{this.props.goToRiskManagement()}}>
-              <CardButton 
->>>>>>> 27168855fbf6650c8b5585db5996ff601328c649
                 imgIcon = {checkList}
                 title="Riesgo"
                 subtitle="Total proyectos"
