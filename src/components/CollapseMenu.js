@@ -45,10 +45,11 @@ class CollapseMenu extends Component {
               <span style={{marginRight:"15px"}}>Vivero</span> <Icon icon="fa-leaf" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
             </ListItem>
             <ListItem   tappable onClick={()=>{
+              let self = this;
               Ons.notification.confirm('!Estas seguro!').then(function(res) {
                 res ? (()=>{
                   localStorage.clear();
-                  this.props.LogOut();
+                  self.props.LogOut();
                 })() : false;
                 //ons.notification.alert('Hello ' + name);
               });

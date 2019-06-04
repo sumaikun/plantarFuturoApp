@@ -1,4 +1,4 @@
-#Thu May 30 04:05:27 COT 2019
+#Tue Jun 04 12:13:45 COT 2019
 base.0=C\:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\tutorial\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
