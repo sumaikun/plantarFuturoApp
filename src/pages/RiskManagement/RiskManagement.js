@@ -90,8 +90,8 @@ class RiskManagement extends Component {
                           accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"8px", color:"white"}}
                           iconReference="fas fa-plus fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"8px"}}
-                          imgStyles={{height:"5vmin"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3px"}}
                           image={yellowArrow}
                           title="Nuevo registro"
                           />
@@ -104,8 +104,8 @@ class RiskManagement extends Component {
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
                           iconReference="fas fa-eye fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"8px"}}
-                          imgStyles={{height:"5vmin", marginLeft:"5px"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3.5px"}}
                           image={yellowArrow}
                           title="Reporte"
                           />
@@ -139,8 +139,8 @@ class RiskManagement extends Component {
                           accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"8px", color:"white"}}
                           iconReference="fas fa-plus fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"10px"}}
-                          imgStyles={{height:"5vmin"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3px"}}
                           image={yellowArrow}
                           title="Nuevo registro"
                           />
@@ -152,8 +152,8 @@ class RiskManagement extends Component {
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
                           iconReference="fas fa-eye fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"8px"}}
-                          imgStyles={{height:"5vmin", marginLeft:"5px"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3.5px"}}
                           image={yellowArrow}
                           title="Reporte"
                           />
@@ -187,8 +187,8 @@ class RiskManagement extends Component {
                           accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"8px", color:"white"}}
                           iconReference="fas fa-plus fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"10px"}}
-                          imgStyles={{height:"5vmin"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3px"}}
                           image={yellowArrow}
                           title="Nuevo registro"
                           />
@@ -201,8 +201,8 @@ class RiskManagement extends Component {
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
                           iconReference="fas fa-eye fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"8px"}}
-                          imgStyles={{height:"5vmin", marginLeft:"5px"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3.5px"}}
                           image={yellowArrow}
                           title="Reporte"
                           />
@@ -236,8 +236,8 @@ class RiskManagement extends Component {
                           accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"8px", color:"white"}}
                           iconReference="fas fa-plus fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"10px"}}
-                          imgStyles={{height:"5vmin"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3px"}}
                           image={yellowArrow}
                           title="Nuevo registro"
                           />
@@ -250,8 +250,8 @@ class RiskManagement extends Component {
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
                           iconReference="fas fa-eye fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"8px"}}
-                          imgStyles={{height:"5vmin", marginLeft:"5px"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3.5px"}}
                           image={yellowArrow}
                           title="Reporte"
                           />
@@ -285,8 +285,8 @@ class RiskManagement extends Component {
                           accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"8px", color:"white"}}
                           iconReference="fas fa-plus fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"10px"}}
-                          imgStyles={{height:"5vmin"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3px"}}
                           image={yellowArrow}
                           title="Nuevo registro"
                           />
@@ -299,8 +299,8 @@ class RiskManagement extends Component {
                         <CardOptionButton accordionIconsStyles={styles.accordionIcons}
                           iconStyles={{fontSize:"10px", color:"white"}}
                           iconReference="fas fa-eye fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"8px"}}
-                          imgStyles={{height:"5vmin", marginLeft:"5px"}}
+                          textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                          imgStyles={{height:"5vmin", marginTop:"3.5px"}}
                           image={yellowArrow}
                           title="Reporte"
                           />

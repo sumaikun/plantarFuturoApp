@@ -12,13 +12,13 @@ class NotFound extends Component {
 
   render() {
     return (
-      <div className="ballonBackg">
+      <div>
         <br/>
         <Card style={{textAlign:"center"}}>
           <span >
             ¡ No hay datos que mostrar !
           </span>
-          <div class="ballaozin">
+          <div>
           </div>
         </Card>
       </div>

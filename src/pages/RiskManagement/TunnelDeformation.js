@@ -131,18 +131,18 @@ class TunnelDeformation extends Component {
 
         <form className="simpleForm"  onSubmit={this.submitData}>
           <Row>
-            <Col width="34%">
+            <Col width="53%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" disabled={this.state.isDisable} maxLength="10" required/>
               </Card>
             </Col>
-            <Col width="33%">
+            <Col width="23%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-            <Col width="33%">
+            <Col width="23%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                 <label>Hora:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="time" name="hour" onChange={this.handleChangeInput} value={this.state.formData.hour} disabled={this.state.isDisable} required/>
@@ -151,17 +151,17 @@ class TunnelDeformation extends Component {
           </Row>
 
           <Row>
-            <Col width="30%">
+            <Col width="26.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="longitude" value={this.state.formData.longitude} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
               </Card>
             </Col>
-            <Col width="30%">
+            <Col width="26.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="width" value={this.state.formData.width} onChange={this.handleChangeInput} placeholder="Ancho" disabled={this.state.isDisable} required />
               </Card>
             </Col>
-            <Col width="40%">
+            <Col width="46%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} onChange={this.handleChangeInput} name="new" disabled={this.state.isDisable} value={
                   this.state.formData.new === "Nueva" || this.state.formData.new === "1"  ? 1:
@@ -176,7 +176,7 @@ class TunnelDeformation extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="location" value={this.state.formData.location} disabled={this.state.isDisable} onChange={this.handleChangeInput}placeholder="Ubicación" required />
               </Card>
@@ -184,7 +184,7 @@ class TunnelDeformation extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
                 <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.note}  placeholder="Descripción"></textarea>
@@ -194,7 +194,7 @@ class TunnelDeformation extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
                   <option value="level" disabled selected>Estado de emergencia</option>
@@ -218,7 +218,7 @@ class TunnelDeformation extends Component {
               </Card>
             </Col>
 
-            <Col width="40%">
+            <Col width="39%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
@@ -227,10 +227,10 @@ class TunnelDeformation extends Component {
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.note} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.note} disabled={this.state.isDisable}  placeholder="Observaciones" />
 
               </Card>
             </Col>
@@ -238,8 +238,8 @@ class TunnelDeformation extends Component {
 
           <Row>
             <button type="submit" disabled={this.state.isDisable}
-              style={{fontSize:"18px",padding:'5px',marginTop:"10px",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 10px 10px -2px",
-              color:"white",width:"100%",borderRadius:"10%"}}
+              style={{fontSize:"18px",padding:'5px',marginTop:"10px",marginLeft:"50%",marginRight:"1%",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
+              color:"white",width:"50%",borderRadius:"10%"}}
               ><b>Registrar</b></button>
           </Row>
         </form>

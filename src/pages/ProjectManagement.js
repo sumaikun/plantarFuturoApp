@@ -24,6 +24,9 @@ import AppPage from '../containers/AppPage';
 import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement } from '../flux/actions';
 import { connect } from 'react-redux';
 
+//css
+import "../css/style.css";
+
 class ProjectManagement extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +39,7 @@ class ProjectManagement extends Component {
   render() {
 
     return (
-      <AppPage  title={["Gestion de ", <strong>PROYECTOS</strong>]}>
+      <AppPage  title={["GESTION DE ", <strong>PROYECTOS</strong>]}>
         <div style={{height:"100%",backgroundColor:"white"}}>
           <br/>
 
@@ -81,7 +84,7 @@ class ProjectManagement extends Component {
             </div>
             <div style={{height:"10px"}} ></div>
             <div onClick={()=>{this.props.goToRiskManagement()}}>
-              <CardButton
+              <CardButton 
                 imgIcon = {checkList}
                 title="Riesgo"
                 subtitle="Total proyectos"

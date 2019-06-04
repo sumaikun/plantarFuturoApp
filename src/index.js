@@ -43,7 +43,7 @@ const store = createStoreWithMiddleware(reducers);
 
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>  
-    <TunnelDeformation/>
+    <AppNavigation/>
   </Provider>, document.getElementById('root'));
 
 if (window.cordova) document.addEventListener("deviceready", appInit);

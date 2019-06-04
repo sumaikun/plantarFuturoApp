@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 //Onsen Ui
 import {  Card , Icon } from 'react-onsenui';
 import Ons from 'onsenui';
-
 //Libraries
 
 //components
@@ -12,7 +11,8 @@ import Ons from 'onsenui';
 //container
 import AppPage from '../containers/AppPage';
 
-
+//css
+import "../css/style.css";
 
 const styles = {
   cardButton:{
@@ -21,6 +21,7 @@ const styles = {
     backgroundColor:'#f1f2f2',
   },
   imageIcon:{
+    "marginTop": "5px",
     "backgroundColor":"#00471c",
     "display": "flex",
     "borderRadius": "50%",
@@ -31,37 +32,27 @@ const styles = {
   },
   title:{
     "fontWeight":"bold",
-    "fontSize":"18px",
+    "fontSize":"18px"
   },
   subTitle:{
     "fontSize":"12px"
   },
-  nextButton:{
-    "display": "flex",
-    "borderRadius": "50%",
-    "width": "30px",
-    "height": "30px",
-    "justifyContent":"center",
-    "alignItems":"center",
-    "color":"#faa61f",
-    "border":"2px solid #faa61f"
-  },
   buttonContainer:{
     backgroundColor:'#f1f2f2',
     "display": "flex",
-    "justifyContent": "space-around",
     "alignItems": "center"
   },
   infoContainer:{
     fontSize: "12px",
     marginTop: "13px",
+    marginLeft: "-5px",
+    marginBottom: "-5px",
     backgroundColor: "#e6e7e8",
     height: "30px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   }
-
 }
 
 class CardButton extends Component {
@@ -75,8 +66,8 @@ class CardButton extends Component {
     return (
         <Card style={styles.cardButton}>
           <div style={styles.buttonContainer}>
-            <div style={styles.imageIcon}>
-                <img id='logo' className="Social-logo" style={{height:"8vmin"}}  src={this.props.imgIcon} />
+            <div className="margin" style={styles.imageIcon}>
+                <img style={{height:"6vmin"}}  src={this.props.imgIcon} />
             </div>
             <div>
               <span style={styles.title}>{this.props.title}</span>
@@ -84,11 +75,11 @@ class CardButton extends Component {
               <span style={styles.subTitle}>{this.props.subTitle}</span>
             </div>
             <div>
-              <button style={styles.nextButton}>
-                <i className="fas fa-arrow-right fontAwesome"></i>
+              <button className="nextButton">
+                <i className="fas fa-arrow-right font Awesome"></i>
               </button>
             </div>
-            <div style={{backgroundColor:"#8dc63f",width:"8px",height:"8px",borderRadius:"50%"}}>
+            <div className="margin2" style={{backgroundColor:"#8dc63f",width:"10px",height:"10px",borderRadius:"50%"}}>
             </div>
           </div>
           <div style={styles.infoContainer}>
