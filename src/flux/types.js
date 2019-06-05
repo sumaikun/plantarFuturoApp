@@ -1,6 +1,6 @@
 //PROPERTIES
 
-const LOCAL_MODE = true;
+const LOCAL_MODE = false;
 
 //ajax
 export const SUCCESS = "SUCCESS";

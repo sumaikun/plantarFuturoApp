@@ -79,9 +79,9 @@ class Modal extends Component {
         <div class="modal-content" style={this.props.ModalStyles.content}>
           <div class="modal-header" style={this.props.ModalStyles.header}>
             <div>
-              <span className="close" style={this.props.ModalStyles.closeButton} >&times;</span>
+              <span className="close">&times;</span>
             </div>
-            <br/>
+            <br/> 
             <div style={{textAlign:"center"}}>
               <span style={this.props.ModalStyles.title} >{this.props.title}</span>
             </div>
