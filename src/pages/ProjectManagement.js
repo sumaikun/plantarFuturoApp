@@ -84,6 +84,7 @@ class ProjectManagement extends Component {
             </div>
             <div style={{height:"10px"}} ></div>
 
+          { this.props.appState.user.risk ?
             <div onClick={()=>{this.props.setProjectPhase(4),
               this.props.goToProjects()
               }}>
@@ -93,7 +94,9 @@ class ProjectManagement extends Component {
                 subtitle="Total proyectos"
                 infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
                />
-             </div>
+             </div> : null
+          }
+
         </div>
       </AppPage>
     );
@@ -102,7 +105,8 @@ class ProjectManagement extends Component {
 
 const mapStateToProps = state => {
   return {
-    navigation: state.navigation
+    navigation: state.navigation,
+    appState: state.appState
   };
 }
 

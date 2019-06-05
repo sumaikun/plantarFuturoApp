@@ -21,7 +21,8 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { goToHillsideCollapse, goToRainFall, goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement , getTunnelsDeformation
-, getHillsidesMovement, getRainfalls, getHillsidesCollapse, getRiversCollapse, goToRiskReport, setCurrentRiskPhase  } from '../../flux/actions';
+, getHillsidesMovement, getRainfalls, getHillsidesCollapse, getRiversCollapse, goToRiskReport, setCurrentRiskPhase,
+setTunnelDeformation, setHillsideMovement, setRainfall,  setHillSideCollapse,  setRiverCollapse  } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -86,7 +87,9 @@ class RiskManagement extends Component {
                       <Col width="6%">
                       </Col>
                       <Col width="47%">
-                        <div onClick={()=>{ this.props.goToTunnelDeformation() }}>
+                        <div onClick={()=>{
+                          this.props.setTunnelDeformation(null);
+                          this.props.goToTunnelDeformation(); }}>
 
                         <CardOptionButton
                           className="modal-btn"
@@ -135,7 +138,10 @@ class RiskManagement extends Component {
                       <Col width="6%">
                       </Col>
                       <Col width="47%">
-                        <div onClick={()=>{this.props.goToHillsideMovement()}}>
+                        <div onClick={()=>{
+                          this.props.setHillsideMovement(null);
+                          this.props.goToHillsideMovement()
+                        }}>
                         <CardOptionButton
                           className="modal-btn"
                           accordionIconsStyles={styles.accordionIcons}
@@ -181,7 +187,10 @@ class RiskManagement extends Component {
                       <Col width="6%">
                       </Col>
                       <Col width="47%">
-                        <div onClick={()=>{this.props.goToRainFall()}}>
+                        <div onClick={()=>{
+                          this.props.setRainfall(null);
+                          this.props.goToRainFall()
+                        }}>
 
                         <CardOptionButton
                           className="modal-btn"
@@ -229,7 +238,10 @@ class RiskManagement extends Component {
                       <Col width="6%">
                       </Col>
                       <Col width="47%">
-                        <div onClick={()=>{this.props.goToHillsideCollapse()}}>
+                        <div onClick={()=>{
+                          this.props.setHillSideCollapse(null);
+                          this.props.goToHillsideCollapse()
+                        }}>
 
                         <CardOptionButton
                           className="modal-btn"
@@ -277,7 +289,10 @@ class RiskManagement extends Component {
                       <Col width="6%">
                       </Col>
                       <Col width="47%">
-                        <div onClick={()=>{ this.props.goToRiverCollapse() }}>
+                        <div onClick={()=>{
+                          this.props.setRiverCollapse(null);
+                          this.props.goToRiverCollapse()
+                         }}>
 
                         <CardOptionButton
                           className="modal-btn"
@@ -338,4 +353,5 @@ const mapStateToProps = state => {
 export default  connect(mapStateToProps,{goToHillsideCollapse, goToRainFall,
 goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement,
 goToRiskReport, setCurrentRiskPhase, getTunnelsDeformation, getHillsidesMovement,
-getRainfalls, getHillsidesCollapse, getRiversCollapse })(RiskManagement);
+getRainfalls, getHillsidesCollapse, getRiversCollapse, setTunnelDeformation,
+setHillsideMovement, setRainfall,  setHillSideCollapse,  setRiverCollapse })(RiskManagement);
