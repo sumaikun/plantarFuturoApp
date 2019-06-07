@@ -6,6 +6,7 @@ import chart from "../../img/chart.png";
 import plant from "../../img/plant.png";
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
+import "../../css/style.css";
 import { workingRowStyles , riskColors } from "../../jsStyles/Styles";
 
 //Onsen Ui
@@ -103,12 +104,12 @@ class RiskReport extends Component {
 
 
     return(
-    <div className="ballonBackg">
+    <div>
       <div style={styles.formContainer}>
         <div className="login-form" >
 
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
             <i class="fas fa-search" style={{top:"5%"}}></i>
           </div>
         </div>
@@ -131,17 +132,17 @@ class RiskReport extends Component {
 
                   }}>
                   <div className="center" style={styles.mainListItem}>
-                    <span style={styles.counter}>{i+1}</span>
-                    <span style={styles.projectName}>{risk.code}</span>
+                    <span className="Level4" style={styles.counter}>{i+1}</span>
+                    <span className="Level3" style={styles.projectName}>{risk.code}</span>
                     <div>
-                      <div style={{...styles.projectInfo,
+                      <div className="Level2" style={{...styles.projectInfo,
                         ...riskColors['level'+risk.level],
                         "text-align":"center",
                       }}>Riesgo nivel {" "+risk.level}</div>
                       <br/>
                       <span style={styles.projectInfo}>{risk.report_date}</span>
                     </div>
-                    <div style={styles.buttonContainer}>
+                    <div className="Level" style={styles.buttonContainer}>
                       <div style={styles.ProjectButton}>
                         <i className="fas fa-arrow-right fontAwesome"></i>
                       </div>

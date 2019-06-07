@@ -18,3 +18,23 @@
     margin-top: -15px;
     margin-left: 70%;
   }
+
+.Level{
+    margin-left: 40%;
+    position:absolute;  
+}
+.Level2{
+    width: 25%;
+    position:absolute;  
+}
+.Level3{
+    margin-left:-20%;
+    width: 30%;
+    position:absolute;  
+}
+.Level4{
+    margin-left: -13%;
+    margin-right: -20%;
+    width: 30%;
+    
+}
