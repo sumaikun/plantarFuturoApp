@@ -1,6 +1,6 @@
 import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS,
 SET_PROJECT_PHASE, SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS,
-SET_FORESTAL_UNIT , SET_FUNCTIONAL_UNIT , SELECT_PROJECT } from "../types";
+SET_FORESTAL_UNIT , SET_FUNCTIONAL_UNIT , SELECT_PROJECT, SET_RISK_OVERVIEW } from "../types";
 
 export const openMenu = () => ({
   type: MENU_OPEN
@@ -27,7 +27,10 @@ export const setProjects = (data) => ({
   type: SET_PROJECTS,
   payload: data
 });
-
+export const setRiskOverview = (data) => ({
+  type: SET_RISK_OVERVIEW,
+  payload: data
+})
 export const setProjectPhase = (data) => ({
   type: SET_PROJECT_PHASE,
   payload: data

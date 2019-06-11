@@ -18,23 +18,21 @@
     margin-top: -15px;
     margin-left: 70%;
   }
-
-.Level{
-    margin-left: 40%;
-    position:absolute;  
-}
-.Level2{
-    width: 25%;
-    position:absolute;  
-}
-.Level3{
-    margin-left:-20%;
-    width: 30%;
-    position:absolute;  
-}
-.Level4{
-    margin-left: -13%;
-    margin-right: -20%;
-    width: 30%;
-    
-}
+  .Green{
+      background-color: #00FF00 !important; 
+  }
+  .Yellow{
+      background-color: #fffd03 !important; 
+  }
+  .Orange{
+      background-color: #f6931b !important; 
+  }
+  .Red{
+      background-color: #fe0100 !important; 
+  }
+  .RedWine{
+      background-color: #891a20 !important; 
+  }
+  .left{
+      text-align: left !important;
+  }

@@ -209,21 +209,15 @@ class ProjectList extends Component {
         titlePage = "APROVECHAMIENTO"
         break;
       case 3:
-        titlePage = "COMPENSACIÓN"
+        titlePage = "GEOREFERENCIACIÓN"
         break;
       case 4:
         titlePage = "RIESGO"
         break;
     }
-
-    //console.log(currentPhaseProjects);
-
     return (
       <AppPage  title={[<strong>{titlePage}</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.fetchProjects() }}>
-
         { currentPhaseProjects.length > 0  ?
-
-
           currentPhaseProjects.map((project, i) => {
               return(
               <div onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
@@ -281,23 +275,17 @@ class ProjectList extends Component {
                   <Row>
                     <Col width="20%"></Col>
                     <Col width="80%">
-
                       { this.state.functionalList[project.id] ? this.renderFunctionalList(functionalUnits , project) : null }
-
                     </Col>
                   </Row>
                 </ListAccordion>
               </div>
               );
             })
-
           :<NotFound/>
-
         }
-
         <Modal title="Registro de información" ModalStyles={styles.modalStyles}>
           <form onSubmit={this.registerUnit}>
-
             <div className="input-icon-wrap">
               <span className="input-icon"><span className="fa fa-user fontAwesome"></span></span>
               <input type="text" ref={(input) => this.Code = input} style={{width:"50%"}} className="input-with-icon" placeholder="Codigo" id="form-name"   maxLength="10"  required/>
@@ -306,11 +294,8 @@ class ProjectList extends Component {
             <button  type="submit" id="functionalSubmitButton"   modifier="large"
               style={{fontSize:"18px",padding:'5px',backgroundColor:"#61af2e",boxShadow:" 10px 10px 5px -2px rgba(0,0,0,0.75)",width:"100%"}}
               ><b>Registrar</b></button>
-
           </form>
         </Modal>
-
-
       </AppPage>
     );
   }

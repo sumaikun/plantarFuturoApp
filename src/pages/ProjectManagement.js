@@ -68,7 +68,7 @@ class ProjectManagement extends Component {
              this.props.goToProjects()}}>
             <CardButton
               imgIcon = {plant}
-              title="Compensacion"
+              title="Georeferenciación"
               subtitle="Total proyectos"
               infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
               />

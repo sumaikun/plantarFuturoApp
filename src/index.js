@@ -23,6 +23,7 @@ import HillsideCollapse from './pages/RiskManagement/HillsideCollapse';
 import RiverCollapse from './pages/RiskManagement/RiverCollapse';
 import RiskIndicators from './pages/RiskManagement/RiskIndicators';
 import HillsideMovement from './pages/RiskManagement/HillsideMovement';
+import RiskOverview from './pages/RiskManagement/RiskOverview';
 
 
 

@@ -132,3 +132,21 @@ export const riskColors = {
     backgroundColor:"#b20811",
   }
 }
+
+export const OverviewColors = {
+  level1:{
+    backgroundColor:"green",
+  },
+  level2:{
+    backgroundColor:"yellow",
+  },
+  level3:{
+    backgroundColor:"orange",
+  },
+  level4:{
+    backgroundColor:"red",
+  },
+  level5:{
+    backgroundColor:"pink",
+  }
+}

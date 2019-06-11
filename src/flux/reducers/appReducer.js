@@ -2,7 +2,7 @@ import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS, SET_
 SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS, SET_FORESTAL_UNIT, SET_FUNCTIONAL_UNIT,
 SELECT_PROJECT, SET_TUNNEL_DEFORMATION_LIST , HILL_SIDE_MOVEMENT_LIST, RAIN_FALL_LIST, HILL_SIDE_COLLAPSE_LIST, RIVER_COLLAPSE_LIST,
 SET_TUNNEL_DEFORMATION, SET_HILL_SIDE_MOVEMENT, SET_RAIN_FALL, SET_HILL_SIDE_COLLAPSE, SET_RIVER_COLLAPSE,
-SET_CURRENT_RISK_PHASE } from "../types";
+SET_CURRENT_RISK_PHASE, SET_RISK_OVERVIEW } from "../types";
 
 
 let initialUser = null;
@@ -58,7 +58,7 @@ const initialState =  storedData ? storedData.appState :   {
   currentRiverCollapse:initialRiverCollapse,
 
 //
-
+  RiskOverview: {},
   TunnelDeformationList: [],
   HillsideMovementList:[],
   RainfallList:[],
@@ -149,6 +149,12 @@ const appReducer = (state = initialState, action) => {
         isFetching:false
       }
       return state;
+    case SET_RISK_OVERVIEW:
+    state={
+      ...state,
+      RiskOverview:action.payload
+    }
+    return state;
     case MENU_OPEN:
       state={
         ...state,
