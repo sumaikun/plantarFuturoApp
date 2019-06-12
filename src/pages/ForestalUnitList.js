@@ -65,12 +65,12 @@ class ForestalUnitList extends Component {
 
   contentPage(currentPhase,forestalUnits){
     return(
-    <div className="ballonBackg">
+    <div>
       <div style={styles.formContainer}>
         <div className="login-form" >
 
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="&#61442; buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
             <div style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);

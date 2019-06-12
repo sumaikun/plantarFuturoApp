@@ -1,7 +1,7 @@
 import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, GO_TO_FORM_INVENTORY,
    INSERT_NAVIGATOR, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION, GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
    GO_TO_HILLSIDE_MOVEMENT,  GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS,
-   GO_TO_INVENTORY_MANAGEMENT, GO_TO_MACHINERY_FORM, APP_ERROR } from "../types";
+   GO_TO_INVENTORY_MANAGEMENT, GO_TO_MACHINERY_FORM, APP_ERROR, GO_TO_RISK_OVERVIEW } from "../types";
 
 import { closeMenu , notFetching } from "./appActions";
 
@@ -40,6 +40,10 @@ export const goToLogin = () => ({
 
 export const goToCompensationForm = () => ({
   type: GO_TO_FORM_COMPENSATION
+});
+
+export const goToRiskOverview = () => ({
+  type: GO_TO_RISK_OVERVIEW
 });
 
 export const goToRiskManagement = () => ({

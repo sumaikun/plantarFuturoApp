@@ -15,6 +15,7 @@ import RiskManagement from '../../pages/RiskManagement/RiskManagement'
 import RiverCollapse from '../../pages/RiskManagement/RiverCollapse'
 import TunnelDeformation from '../../pages/RiskManagement/TunnelDeformation'
 import HillsideMovement from '../../pages/RiskManagement/HillsideMovement'
+import RiskOverview from '../../pages/RiskManagement/RiskOverview'
 
 import RiskReport from '../../pages/RiskManagement/RiskReport'
 
@@ -28,7 +29,7 @@ import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
 import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, INSERT_NAVIGATOR,
 GO_TO_FORM_INVENTORY, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION , GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
 GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS, GO_TO_HILLSIDE_MOVEMENT,
-GO_TO_RISK_REPORT, GO_TO_INVENTORY_MANAGEMENT , GO_TO_MACHINERY_FORM, APP_ERROR } from "../types";
+GO_TO_RISK_REPORT, GO_TO_INVENTORY_MANAGEMENT , GO_TO_MACHINERY_FORM, APP_ERROR, GO_TO_RISK_OVERVIEW } from "../types";
 
 var Pagenavigator = null;
 
@@ -79,6 +80,15 @@ const navigationReducer = (state = initialState, action) => {
         setTimeout(()=>{
           state.navigator.resetPage({ component: ProjectManagement , key: GO_TO_MANAGEMENT  }, { animation: 'fade' });
         },1)
+      }
+      return state;
+    case GO_TO_RISK_OVERVIEW:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_RISK_OVERVIEW
+      }
+      if(currentPage.key != GO_TO_RISK_OVERVIEW){
+        state.navigator.pushPage({ component: RiskOverview , key: GO_TO_RISK_OVERVIEW  });
       }
       return state;
     case GO_TO_PROJECTS:
@@ -235,7 +245,6 @@ const navigationReducer = (state = initialState, action) => {
         ...state,
         currentPagekey: state.navigator.pages.slice(-1)[0].key
       }
-      console.log(state.navigator);
       state.navigator.popPage();
       return state;
     default:

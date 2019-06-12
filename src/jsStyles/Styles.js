@@ -133,6 +133,7 @@ export const riskColors = {
   }
 }
 
+
 export const modalStyles = {
   modalStyles:
   {
@@ -143,5 +144,23 @@ export const modalStyles = {
     title:{fontSize:"18px"},
     body:{backgroundColor:"#008931"},
     footer:{fontSize:"8px",display:"none"}
+  }
+}
+
+export const OverviewColors = {
+  level1:{
+    backgroundColor:"green",
+  },
+  level2:{
+    backgroundColor:"yellow",
+  },
+  level3:{
+    backgroundColor:"orange",
+  },
+  level4:{
+    backgroundColor:"red",
+  },
+  level5:{
+    backgroundColor:"pink",
   }
 }
