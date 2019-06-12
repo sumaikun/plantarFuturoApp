@@ -35,7 +35,7 @@ class TunnelDeformation extends Component {
   }
 
   componentDidMount(){
-  
+
     if(this.props.appState.currentTunnelDeformation)
     {
       this.setState({
@@ -186,7 +186,7 @@ class TunnelDeformation extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.note}  placeholder="Descripción"></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.description}  placeholder="Descripción"></textarea>
 
               </Card>
             </Col>
@@ -229,7 +229,7 @@ class TunnelDeformation extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.note} disabled={this.state.isDisable}  placeholder="Observaciones" />
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
 
               </Card>
             </Col>

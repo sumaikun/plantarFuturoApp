@@ -132,3 +132,16 @@ export const riskColors = {
     backgroundColor:"#b20811",
   }
 }
+
+export const modalStyles = {
+  modalStyles:
+  {
+    view:{display:"none"},
+    content:{width:"80%"},
+    header:{backgroundColor:"#006828"},
+    closeButton:{marginLeft:"15px",fontSize:"10px"},
+    title:{fontSize:"18px"},
+    body:{backgroundColor:"#008931"},
+    footer:{fontSize:"8px",display:"none"}
+  }
+}

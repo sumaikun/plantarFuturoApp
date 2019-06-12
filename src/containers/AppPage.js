@@ -7,6 +7,9 @@ import { Page, Toolbar,  BackButton,  Icon,  ToolbarButton, ProgressBar } from '
 import { openMenu , closeMenu , goBack } from '../flux/actions';
 import { connect } from 'react-redux';
 
+//components
+//import ErrorBoundary from './ErrorBoundary';
+
 const styles = {
    customToolBar:{
      backgroundColor: '#006828'
@@ -38,6 +41,42 @@ const styles = {
   }
  }
 
+ class ErrorBoundary extends Component {
+   constructor(props) {
+     super(props);
+     this.state = { error: null, errorInfo: null };
+   }
+
+   componentDidCatch(error, errorInfo) {
+     console.log(error);
+     console.log(errorInfo);
+     // Catch errors in any components below and re-render with error message
+     this.setState({
+       error: error,
+       errorInfo: errorInfo
+     })
+     // You can also log error messages to an error reporting service here
+   }
+
+   render() {
+     if (this.state.errorInfo) {
+       // Error path
+       return (
+         <div>
+           <h2>Something went wrong.</h2>
+           <details style={{ whiteSpace: 'pre-wrap' }}>
+             {this.state.error && this.state.error.toString()}
+             <br />
+             {this.state.errorInfo.componentStack}
+           </details>
+         </div>
+       );
+     }else{
+       // Normally, just render children
+       return this.props.children;
+     }
+   }
+ }
 
 class AppPage extends Component {
 
@@ -48,8 +87,20 @@ class AppPage extends Component {
     this.showMenu = this.showMenu.bind(this);
   }
 
+  componentDidCatch(error, errorInfo) {
+    console.log(error);
+    console.log(errorInfo);
+    // Catch errors in any components below and re-render with error message
+    this.setState({
+      error: error,
+      errorInfo: errorInfo
+    })
+    // You can also log error messages to an error reporting service here
+  }
+
   componentDidMount(){
 
+    console.log(this.props.children);
 
   }
 
@@ -86,12 +137,16 @@ class AppPage extends Component {
     //console.log(this.props.styles);
     const { isFetching } = this.props.appState;
     return (
+
       <Page id="ListProjects"
-        renderToolbar={this.appToolBar}
-      >
-      { isFetching ? <ProgressBar indeterminate  /> : null }
-        {this.props.children}
+          renderToolbar={this.appToolBar}
+        >
+        { isFetching ? <ProgressBar indeterminate  /> : null }
+          <ErrorBoundary>
+            {this.props.children}
+          </ErrorBoundary>
       </Page>
+
     );
   }
 }

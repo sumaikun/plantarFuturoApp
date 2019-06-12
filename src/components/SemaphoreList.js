@@ -53,13 +53,13 @@ class SemaphoreList extends Component {
           </div>
           <div className="right">
             <ol class="risk-level">
-              <li>Level 1</li>
+              <li className={ this.props.outStand == 1 ?  " isActive" : null  }>Level 1</li>
               <li style={{display:"none"}}>Level 2</li>
               <li style={{display:"none"}}>Level 3</li>
-              <li className="isActive">Level 4</li>
-              <li>Level 5</li>
-              <li>Level 6</li>
-              <li>Level 7</li>
+              <li className={ this.props.outStand == 2 ?  " isActive" : null  } >Level 4</li>
+              <li className={ this.props.outStand == 3 ?  " isActive" : null  }>Level 5</li>
+              <li className={ this.props.outStand == 4 ?  " isActive" : null  }>Level 6</li>
+              <li className={ this.props.outStand == 5 ?  " isActive" : null  }>Level 7</li>
             </ol>
           </div>
         </ListItem>

@@ -1,6 +1,6 @@
 //PROPERTIES
 
-const LOCAL_MODE = true;
+const LOCAL_MODE = false;
 
 //ajax
 export const SUCCESS = "SUCCESS";
@@ -59,7 +59,7 @@ export const TUNNEL_DEFORMATION_URL = BASE_URL+"/api/risks/tunnel-deformation";
 export const HILL_SIDE_COLLAPSE_URL = BASE_URL+"/api/risks/hillside-round";
 export const RAIN_FALL_URL = BASE_URL+"/api/risks/precipitation";
 export const RIVER_COLLAPSE_URL = BASE_URL+"/api/risks/dryravine-round";
-
+export const RISK_INDICATORS_URL = BASE_URL+"/api/project/risks";
 //
 export const SET_TUNNEL_DEFORMATION_LIST = "SET_TUNNEL_DEFORMATION_LIST";
 export const HILL_SIDE_MOVEMENT_LIST = "HILL_SIDE_MOVEMENT_LIST";
@@ -74,3 +74,13 @@ export const SET_RAIN_FALL = "SET_RAIN_FALL";
 export const SET_HILL_SIDE_COLLAPSE = "SET_HILL_SIDE_COLLAPSE";
 export const SET_RIVER_COLLAPSE = "SET_RIVER_COLLAPSE";
 export const SET_CURRENT_RISK_PHASE = "SET_CURRENT_RISK_PHASE";
+
+//Risk indicators
+export const SET_RISK_INDICATORS = "SET_RISK_INDICATORS";
+
+//Inventory Management
+export const GO_TO_INVENTORY_MANAGEMENT = "GO_TO_INVENTORY_MANAGEMENT";
+export const GO_TO_MACHINERY_FORM = "GO_TO_MACHINERY_FORM";
+
+//Errors
+export const APP_ERROR = "APP_ERROR";

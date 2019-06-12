@@ -248,7 +248,7 @@ class hillsideCollapse extends Component {
             <Col width="100%">
               <Card style={styles.cardLabel}>
                 <span>
-                  Precencia de ruidos
+                  Presencia de ruidos
                 </span>
               </Card>
             </Col>

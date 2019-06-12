@@ -12,7 +12,9 @@ import AppNavigation from './pages/AppNavigation';
 import FormProcess from './pages/FormProcess';
 import FormCompensation from './pages/FormCompensation';
 
+//errorHandler
 
+import ErrorBoundary from './containers/ErrorBoundary';
 
 //risks
 
@@ -24,7 +26,9 @@ import RiverCollapse from './pages/RiskManagement/RiverCollapse';
 import RiskIndicators from './pages/RiskManagement/RiskIndicators';
 import HillsideMovement from './pages/RiskManagement/HillsideMovement';
 
+//Inventory
 
+import MachineryForm from './pages/InventoryManagement/MachineryForm';
 
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';
@@ -51,7 +55,9 @@ store.subscribe( function () {
 
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>
-    <AppNavigation/> 
+    <ErrorBoundary>
+      <AppNavigation/>
+    </ErrorBoundary>
   </Provider>, document.getElementById('root'));
 
 if (window.cordova) document.addEventListener("deviceready", appInit);

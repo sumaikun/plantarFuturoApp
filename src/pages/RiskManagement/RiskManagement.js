@@ -22,7 +22,8 @@ import AppPage from '../../containers/AppPage';
 //flux
 import { goToHillsideCollapse, goToRainFall, goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement , getTunnelsDeformation
 , getHillsidesMovement, getRainfalls, getHillsidesCollapse, getRiversCollapse, goToRiskReport, setCurrentRiskPhase,
-setTunnelDeformation, setHillsideMovement, setRainfall,  setHillSideCollapse,  setRiverCollapse  } from '../../flux/actions';
+setTunnelDeformation, setHillsideMovement, setRainfall,  setHillSideCollapse,  setRiverCollapse, setRiskIndicators,
+getRiskIndicators  } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -338,6 +339,16 @@ class RiskManagement extends Component {
                 </div>
               </div>
 
+              <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
+
+              <div  style={{display:"flex",justifyContent:"center"}} >
+                <div style={{width:"95%"}} onClick={()=>{ this.props.goToRiskIndicator(); this.props.getRiskIndicators(this.props.appState.selectedProject.id)  }} >
+                  <ListAccordion counter={6} projectName={"Reporte de riesgos"} projectInfo={""} >
+
+                  </ListAccordion>
+                </div>
+              </div>
+
       </AppPage>
     );
   }
@@ -354,4 +365,5 @@ export default  connect(mapStateToProps,{goToHillsideCollapse, goToRainFall,
 goToRiverCollapse, goToTunnelDeformation, goToRiskIndicator, goToHillsideMovement,
 goToRiskReport, setCurrentRiskPhase, getTunnelsDeformation, getHillsidesMovement,
 getRainfalls, getHillsidesCollapse, getRiversCollapse, setTunnelDeformation,
-setHillsideMovement, setRainfall,  setHillSideCollapse,  setRiverCollapse })(RiskManagement);
+setHillsideMovement, setRainfall,  setHillSideCollapse,  setRiverCollapse, setRiskIndicators,
+getRiskIndicators })(RiskManagement);

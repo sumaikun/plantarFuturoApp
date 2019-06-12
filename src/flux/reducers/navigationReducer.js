@@ -18,10 +18,17 @@ import HillsideMovement from '../../pages/RiskManagement/HillsideMovement'
 
 import RiskReport from '../../pages/RiskManagement/RiskReport'
 
+
+//Inventory Management
+
+
+import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
+import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
+
 import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, INSERT_NAVIGATOR,
 GO_TO_FORM_INVENTORY, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION , GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
 GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS, GO_TO_HILLSIDE_MOVEMENT,
-GO_TO_RISK_REPORT } from "../types";
+GO_TO_RISK_REPORT, GO_TO_INVENTORY_MANAGEMENT , GO_TO_MACHINERY_FORM, APP_ERROR } from "../types";
 
 var Pagenavigator = null;
 
@@ -58,6 +65,7 @@ const navigationReducer = (state = initialState, action) => {
         ...state,
         currentPagekey: GO_TO_LOGIN
       }
+      console.log(state);
       if(currentPage.key != GO_TO_LOGIN){
         state.navigator.resetPage({ component: Login , key: GO_TO_LOGIN  }, { animation: 'fade' });
       }
@@ -190,6 +198,38 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: RiskReport , key: GO_TO_RISK_REPORT  });
       }
       return state;
+
+    case GO_TO_INVENTORY_MANAGEMENT:
+
+      state = {
+        ...state,
+        currentPagekey: GO_TO_INVENTORY_MANAGEMENT
+      }
+      if(currentPage.key != GO_TO_RISK_REPORT){
+        state.navigator.pushPage({ component: InventoryManagement , key: GO_TO_INVENTORY_MANAGEMENT  });
+      }
+      return state;
+
+    case GO_TO_MACHINERY_FORM:
+
+      state = {
+        ...state,
+        currentPagekey: GO_TO_MACHINERY_FORM
+      }
+      if(currentPage.key != GO_TO_MACHINERY_FORM){
+        state.navigator.pushPage({ component: MachineryForm , key: GO_TO_MACHINERY_FORM  });
+      }
+      return state;
+
+    case APP_ERROR:
+
+      state = {
+        ...state,
+        currentPagekey: GO_TO_LOGIN
+      }
+
+      return state;
+
     case GO_BACK:
       state = {
         ...state,

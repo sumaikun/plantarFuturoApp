@@ -21,7 +21,7 @@ import CardButton from "../components/CardButton";
 import AppPage from '../containers/AppPage';
 
 //flux
-import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement } from '../flux/actions';
+import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement , goToInventoryManagement } from '../flux/actions';
 import { connect } from 'react-redux';
 
 //css
@@ -85,17 +85,44 @@ class ProjectManagement extends Component {
             <div style={{height:"10px"}} ></div>
 
           { this.props.appState.user.risk ?
-            <div onClick={()=>{this.props.setProjectPhase(4),
-              this.props.goToProjects()
-              }}>
-              <CardButton
-                imgIcon = {checkList}
-                title="Riesgo"
-                subtitle="Total proyectos"
-                infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-               />
+            <div>
+              <div onClick={()=>{this.props.setProjectPhase(4),
+                this.props.goToProjects()
+                }}>
+                <CardButton
+                  imgIcon = {checkList}
+                  title="Riesgo"
+                  subtitle="Total proyectos"
+                  infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+                 />
+               </div>
+              <div style={{height:"10px"}} ></div>
              </div> : null
           }
+
+          <div onClick={()=>{
+            this.props.goToInventoryManagement();
+          }}>
+            <CardButton
+              imgIcon = {chart}
+              title="Gestión de inventarios"
+              subtitle="Total reportes"
+              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+              />
+          </div>
+          <div style={{height:"10px"}} ></div>
+
+          <div onClick={()=>{
+            this.props.goToInventoryManagement();
+          }}>
+            <CardButton
+              imgIcon = {chart}
+              title="Combustible"
+              subtitle="Total reportes"
+              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+              />
+          </div>
+          <div style={{height:"10px"}} ></div>
 
         </div>
       </AppPage>
@@ -110,4 +137,6 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { fetchProjects , goToProjects , setProjectPhase, goToRiskManagement })(ProjectManagement);
+export default  connect(mapStateToProps, { fetchProjects , goToProjects , setProjectPhase,
+   goToRiskManagement, goToInventoryManagement
+ })(ProjectManagement);

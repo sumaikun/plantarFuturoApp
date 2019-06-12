@@ -22,6 +22,7 @@ class AppNavigation extends Component {
   constructor() {
     super();
     this.renderPage = this.renderPage.bind(this);
+    
   }
 
   componentDidMount(){
