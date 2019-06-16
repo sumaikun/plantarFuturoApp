@@ -103,24 +103,24 @@ class ProjectManagement extends Component {
           <div onClick={()=>{
             this.props.goToInventoryManagement();
           }}>
-            <CardButton
+            {/*<CardButton
               imgIcon = {chart}
               title="Gestión de inventarios"
               subtitle="Total reportes"
               infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-              />
+              />*/}
           </div>
           <div style={{height:"10px"}} ></div>
 
           <div onClick={()=>{
             this.props.goToInventoryManagement();
           }}>
-            <CardButton
+            {/*<CardButton
               imgIcon = {chart}
               title="Combustible"
               subtitle="Total reportes"
               infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-              />
+              />*/}
           </div>
           <div style={{height:"10px"}} ></div>
 

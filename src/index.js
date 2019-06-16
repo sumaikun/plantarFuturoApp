@@ -31,6 +31,18 @@ import RiskOverview from './pages/RiskManagement/RiskOverview';
 
 import MachineryForm from './pages/InventoryManagement/MachineryForm';
 
+
+import GeoReferencingForm from "./pages/InventoryManagement/GeoReferencingForm";
+import AsistantList from "./pages/InventoryManagement/AsistantList";
+
+import WorkingReportForm from "./pages/InventoryManagement/WorkingReportForm";
+
+
+//plantation
+
+import Establishment from './pages/Plantation/Establishment';
+
+
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -57,7 +69,7 @@ store.subscribe( function () {
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>
     <ErrorBoundary>
-      <AppNavigation/>
+      <AsistantList/>
     </ErrorBoundary>
   </Provider>, document.getElementById('root'));
 
