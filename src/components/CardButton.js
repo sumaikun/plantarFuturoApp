@@ -25,14 +25,14 @@ const styles = {
     "backgroundColor":"#00471c",
     "display": "flex",
     "borderRadius": "50%",
-    "width": "40px",
-    "height": "40px",
+    "width": "32.5px",
+    "height": "32.5px",
     "justifyContent":"center",
     "alignItems":"center"
   },
   title:{
     "fontWeight":"bold",
-    "fontSize":"18px"
+    "fontSize":"19.25px",
   },
   subTitle:{
     "fontSize":"12px"
@@ -70,7 +70,7 @@ class CardButton extends Component {
                 <img style={{height:"6vmin"}}  src={this.props.imgIcon} />
             </div>
             <div>
-              <span style={styles.title}>{this.props.title}</span>
+              <span className={'project-management-title-font'} style={styles.title}>{this.props.title}</span>
               <br/>
               <span style={styles.subTitle}>{this.props.subTitle}</span>
             </div>
@@ -79,7 +79,7 @@ class CardButton extends Component {
                 <i className="fas fa-arrow-right font Awesome"></i>
               </button>
             </div>
-            <div className="margin2" style={{backgroundColor:"#8dc63f",width:"10px",height:"10px",borderRadius:"50%"}}>
+            <div className="margin2 review-status">
             </div>
           </div>
           <div style={styles.infoContainer}>

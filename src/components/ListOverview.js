@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //Onsen Ui
-import {  List , ListItem } from 'react-onsenui';
+import { List , ListItem } from 'react-onsenui';
 
 const styles = {
   mainListItem:{
@@ -19,21 +19,25 @@ const styles = {
     color: "#e6e7e8",
     fontSize: "10px",
   },
-  buttonContainer:{
-    align:"left",
-    display:"block",
+  button:{
     backgroundColor: "#f1f2f2",
-    width: "15px",
-    height: "15px",
+    width: "13px",
+    height: "13px",
     borderRadius: "50%",
+    margin: "0.5px",
+    textAlign: "center",
+    lineHeight: "25px",
+    fontSize: "30px",
+  },
+  buttonContainer: {
     display: "flex",
-    alignItems: "flex-start",
-    marginRight:"-15px"
+    justifyContent: "space-around",
   },
   green:{
     backgroundColor:"green"
   }
 }
+
 class ListOverview extends Component {
   constructor(props) {
     super(props);
@@ -53,15 +57,19 @@ class ListOverview extends Component {
   render() {
     return (
       <List key={1}>
-        <ListItem key={1}   tappable class="accordion" onclick="fn.toggle(this)">
+        <ListItem key={1} tappable class="accordion" onclick="fn.toggle(this)">
           <div className="center" style={styles.mainListItem}>
             <span className="left" style={styles.counter}>{this.props.counter}</span>
-            <div className="left" style={{width:"55%"}}><span className="left" style={styles.projectName}>{this.props.projectName}</span></div>               
-              <div style={styles.buttonContainer} className={this.props.value >= 1 ? 'Green' : ''} />
-              <div style={styles.buttonContainer} className={this.props.value >= 2 ? 'Yellow' : ''}/>
-              <div style={styles.buttonContainer} className={this.props.value >= 3 ? 'Orange' : ''}/>
-              <div style={styles.buttonContainer} className={this.props.value >= 4 ? 'Red' : ''}/>
-              <div style={styles.buttonContainer} className={this.props.value >= 5 ? 'RedWine' : ''}/>
+            <div className={'list__accordion__center'}>
+              <div className="left" ><span className="left" style={styles.projectName}>{this.props.projectName}</span></div>
+            </div>
+            <div style={styles.buttonContainer}>
+              <div style={styles.button} className={this.props.value >= 1 ? 'Green' : ''} />
+              <div style={styles.button} className={this.props.value >= 2 ? 'Yellow' : ''}/>
+              <div style={styles.button} className={this.props.value >= 3 ? 'Orange' : ''}/>
+              <div style={styles.button} className={this.props.value >= 4 ? 'Red' : ''}/>
+              <div style={styles.button} className={this.props.value >= 5 ? 'RedWine' : ''}/>
+            </div>
           </div>
         </ListItem>
         <div className="panel">

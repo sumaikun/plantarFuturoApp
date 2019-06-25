@@ -21,8 +21,7 @@ import CardOptionButton from "../../components/CardOptionButton";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import {  goToRiskOverview, setRiskOverview, getRiskOverview
-} from '../../flux/actions';
+import {  goToRiskOverview, setRiskOverview, getRiskOverview } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
@@ -42,31 +41,31 @@ class Riskoverview extends Component {
             <span style={{color:"white", fontSize:"0.8em" }}>NIVELES DE RIESGO</span>
           </div>
           <div  style={{marginTop:"25px"}} >
-            <div style={{width:"95%"}} >
+            <div style={{width:"100%"}} >
               <ListOverview counter={1} projectName={"Deformación tunel"} value={this.OverviewRisk.tunnel_deformations.round_avg || 0}>
               </ListOverview>
             </div>
           </div>
           <div  style={{marginTop:"5px"}} >
-            <div style={{width:"95%"}} >
+            <div style={{width:"100%"}} >
               <ListOverview counter={2} projectName={"Desplazamiento ladera"} value={this.OverviewRisk.hillside_displacements.round_avg || 0} >
               </ListOverview>
             </div>
           </div>
           <div  style={{marginTop:"5px"}} >
-            <div style={{width:"95%"}} >
+            <div style={{width:"100%"}} >
               <ListOverview counter={3} projectName={"Precipitación"} value={this.OverviewRisk.precipitations.round_avg || 0}>
               </ListOverview>
             </div>
           </div>
           <div  style={{marginTop:"5px"}} >
-            <div style={{width:"95%"}} >
+            <div style={{width:"100%"}} >
               <ListOverview counter={4} projectName={"Recorrido Ladera"} value={this.OverviewRisk.dry_ravine_rounds.round_avg || 0}>
               </ListOverview>
             </div>
           </div>
           <div  style={{marginTop:"5px"}} >
-            <div style={{width:"95%"}} >
+            <div style={{width:"100%"}} >
               <ListOverview counter={5} projectName={"Inspección quebrada"} value={this.OverviewRisk.hillside_rounds.round_avg || 0}>
               </ListOverview>
             </div>

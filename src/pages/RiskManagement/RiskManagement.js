@@ -57,7 +57,7 @@ class RiskManagement extends Component {
     return (
       <AppPage  title={[<strong>{"Gestión de riesgos"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}>
         <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-        <div  style={{display:"flex",justifyContent:"center"}} >
+        <div style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
             <ListAccordion counter={1} projectName={"Deformación de tunel"} projectInfo={""} >
               <Row>
@@ -66,17 +66,17 @@ class RiskManagement extends Component {
                 <Col width="47%">
                   <div onClick={()=>{
                     this.props.setTunnelDeformation(null);
-                    this.props.goToTunnelDeformation(); }}>
-
-                  <CardOptionButton
-                    className="modal-btn"
-                    accordionIconsStyles={styles.accordionIcons}
-                    iconStyles={{fontSize:"8px", color:"white"}}
-                    iconReference="fas fa-plus fontAwesome"
-                    textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
-                    imgStyles={{height:"5vmin", marginTop:"3px"}}
-                    image={yellowArrow}
-                    title="Nuevo registro"
+                    this.props.goToTunnelDeformation();
+                  }}>
+                    <CardOptionButton
+                      className="modal-btn"
+                      accordionIconsStyles={styles.accordionIcons}
+                      iconStyles={{fontSize:"8px", color:"white"}}
+                      iconReference="fas fa-plus fontAwesome"
+                      textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                      imgStyles={{height:"5vmin", marginTop:"3px"}}
+                      image={yellowArrow}
+                      title="Nuevo registro"
                     />
                   </div>
                 </Col>
@@ -86,13 +86,13 @@ class RiskManagement extends Component {
                       this.props.setCurrentRiskPhase(1);
                       this.props.goToRiskReport();
                   }}>
-                  <CardOptionButton accordionIconsStyles={styles.accordionIcons}
-                    iconStyles={{fontSize:"10px", color:"white"}}
-                    iconReference="fas fa-eye fontAwesome"
-                    textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
-                    imgStyles={{height:"5vmin", marginTop:"3.5px"}}
-                    image={yellowArrow}
-                    title="Reporte"
+                    <CardOptionButton accordionIconsStyles={styles.accordionIcons}
+                      iconStyles={{fontSize:"10px", color:"white"}}
+                      iconReference="fas fa-eye fontAwesome"
+                      textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
+                      imgStyles={{height:"5vmin", marginTop:"3.5px"}}
+                      image={yellowArrow}
+                      title="Reporte"
                     />
                   </div>
                 </Col>
@@ -100,7 +100,7 @@ class RiskManagement extends Component {
             </ListAccordion>
           </div>
         </div>
-        <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
+        <div style={{height:"10px", backgroundColor:"#efeff4"}}></div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
             <ListAccordion counter={2} projectName={"Desplazamiento de ladera"} projectInfo={""} >
@@ -144,7 +144,7 @@ class RiskManagement extends Component {
             </ListAccordion>
           </div>
         </div>
-        <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
+        <div style={{height:"10px", backgroundColor:"#efeff4"}}></div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
             <ListAccordion counter={3}  projectName={["Precipitación",<span>{"   "}</span>]} projectInfo={""} >
@@ -188,7 +188,7 @@ class RiskManagement extends Component {
             </ListAccordion>
           </div>
         </div>
-        <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
+        <div style={{height:"10px", backgroundColor:"#efeff4"}}></div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
             <ListAccordion counter={4} projectName={"Recorrido de ladera"} projectInfo={""} >
@@ -232,7 +232,7 @@ class RiskManagement extends Component {
             </ListAccordion>
           </div>
         </div>
-        <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
+        <div style={{height:"10px", backgroundColor:"#efeff4"}}></div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
             <ListAccordion counter={5} projectName={"Inspección de quebrada"} projectInfo={""} >
@@ -280,7 +280,7 @@ class RiskManagement extends Component {
             </ListAccordion>
           </div>
         </div>
-        <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
+        <div style={{height:"10px", backgroundColor:"#efeff4"}}></div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
             <ListAccordion counter={6} projectName={"Reporte General"} projectInfo={""} >

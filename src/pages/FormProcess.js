@@ -280,8 +280,8 @@ class FormProcess extends Component {
               </Card>
             </Col>
             <Col width="25%">
-              <Card style={{...styles.textInCard, 'fontSize':"8px"}}>
-                {this.state.projectInfo.enviromental_control}
+              <Card style={{...styles.cardInput}}>
+                <Input style={styles.textInput} name="common_name" value={this.state.projectInfo.enviromental_control} onChange={this.handleChangeInput} placeholder="Autoridad" />
               </Card>
             </Col>
             <Col width="50%">
@@ -341,12 +341,12 @@ class FormProcess extends Component {
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Nombre" required />
+                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput} placeholder="Nombre" required />
               </Card>
             </Col>
             <Col width="50%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="scientific_name" value={this.state.formData.scientific_name} onChange={this.handleChangeInput}placeholder="Nombre cientifico" />
+                <Input style={styles.textInput} name="scientific_name" value={this.state.formData.scientific_name} onChange={this.handleChangeInput} placeholder="Nombre cientifico" />
               </Card>
             </Col>
           </Row>
@@ -399,7 +399,7 @@ class FormProcess extends Component {
           </Row>
 
           <Row>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput} >
                 <Select onChange={this.handleChangeInput} style={{width:"100%"}} name='condition' value = {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
@@ -413,7 +413,7 @@ class FormProcess extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
               <Select onChange={this.handleChangeInput} style={{width:"100%"}} value = {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
@@ -466,7 +466,6 @@ class FormProcess extends Component {
                 </Select>
               </Card>
             </Col>
-
           </Row>
 
 

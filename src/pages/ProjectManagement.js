@@ -26,6 +26,7 @@ import { connect } from 'react-redux';
 
 //css
 import "../css/style.css";
+import ListAccordion from "../components/ListAccordion";
 
 class ProjectManagement extends Component {
   constructor(props) {
@@ -39,10 +40,10 @@ class ProjectManagement extends Component {
   render() {
 
     return (
+
       <AppPage  title={["GESTION DE ", <strong>PROYECTOS</strong>]}>
         <div style={{height:"100%",backgroundColor:"white"}}>
           <br/>
-
           <div onClick={()=>{this.props.setProjectPhase(1);
              this.props.goToProjects()}}>
             <CardButton

@@ -4,8 +4,14 @@
 }
 .margin2{
     position:absolute;  
-    left:0;
+    left:15px;
     margin-left: 85%; 
+}
+.review-status {
+    background-color: #8dc63f;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 .nextButton{
     border-radius: 50%;
@@ -14,7 +20,7 @@
     color:#faa61f;
     border:2px solid #faa61f;
     position:absolute;  
-    left:0;
+    left:25px;
     margin-top: -15px;
     margin-left: 70%;
   }
@@ -35,4 +41,35 @@
   }
   .left{
       text-align: left !important;
+  }
+  .first-gap-list-element {
+      height: 25px;
+      background-color: #efeff4
+  }
+  .gap-list-element {
+      height: 10px;
+      background-color: #efeff4
+  }
+
+  /* Project Management */
+    /* Card Button Title */
+  .project-management-title-font {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 900;
+  }
+
+  /* Project List */
+  .project-list-title-font {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 500;
+  }
+
+  .project-list-functional-unit {
+      flex-grow: 1;
+      margin-left: 15px;
+      width: 70%;
+      white-space: normal;
+      /* Font */
+      font-family: 'Raleway', sans-serif;
+      font-weight: 200;
   }

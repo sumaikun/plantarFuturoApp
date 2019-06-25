@@ -67,11 +67,13 @@ store.subscribe( function () {
 })
 
 const appInit = _ =>
-  ReactDOM.render(<Provider store={store}>
-    <ErrorBoundary>
-      <AsistantList/>
-    </ErrorBoundary>
-  </Provider>, document.getElementById('root'));
+  ReactDOM.render(
+      <Provider store={store}>
+        <ErrorBoundary>
+          <AppNavigation />
+        </ErrorBoundary>
+      </Provider>
+      , document.getElementById('root'));
 
 if (window.cordova) document.addEventListener("deviceready", appInit);
 else appInit();

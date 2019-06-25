@@ -6,7 +6,7 @@ import chart from "../img/chart.png";
 import plant from "../img/plant.png";
 import "../css/accordion.css";
 //Onsen Ui
-import {  List , ListItem } from 'react-onsenui';
+import { List, ListItem } from 'react-onsenui';
 import Ons from 'onsenui';
 
 //Libraries
@@ -18,15 +18,15 @@ import Ons from 'onsenui';
 const styles = {
   mainListItem:{
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   counter:{
     color: "#e6e7e8"
   },
   projectName:{
     color: "#352865",
-    fontSize: "13px",
-    fontWeight: "bold"
+    fontSize: "15px",
+    //fontWeight: "bold"
   },
   projectInfo:{
     color: "#e6e7e8",
@@ -75,11 +75,13 @@ class ListAccordion extends Component {
 
     return (
       <List key={1}>
-        <ListItem key={1}   tappable class="accordion" onclick="fn.toggle(this)">
+        <ListItem key={1} tappable class="accordion" onclick="fn.toggle(this)">
           <div className="center" style={styles.mainListItem}>
             <span style={styles.counter}>{this.props.counter}</span>
-            <span style={styles.projectName}>{this.props.projectName}</span>
-            <span style={styles.projectInfo}>{this.props.projectInfo}</span>
+            <div className={'list__accordion__center'}>
+              <span className={'project-list-title-font'} style={styles.projectName}>{this.props.projectName}</span>
+              <span style={styles.projectInfo}>{this.props.projectInfo}</span>
+            </div>
             <div style={styles.buttonContainer}>
               <div style={styles.ProjectButton}><span>...</span></div>
             </div>

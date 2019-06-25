@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import yellowArrow from "../img/yellowArrow.png";
 import "../css/accordion.css";
 import "../css/Modal.css";
+import "../css/style.css";
 
 //Onsen Ui
 import {  Col, Row, Card, Button, List, ListItem} from 'react-onsenui';
@@ -159,26 +160,38 @@ class ProjectList extends Component {
                 fontSize: "12px",
                 fontWeight: "bold"}}
               >
-                <div className="center" style={{display: "flex",
-                  justifyContent: "space-around"
-                }}>
+                <div className="center"
+                     style={{display: "flex", justifyContent: "space-around"}}
+                >
+                  <span style={{color:"gray"}}
+                        onClick={()=>{
+                          console.log("nav");
+                          //this.props.goToForestalUnits();
+                          this.props.getForestalUnits(funit.id);
+                          this.props.setFunctionalUnit(funit);
+                          this.props.goToForestalUnits();
+                        }}
+                  >
+                    {i+1}
+                  </span>
 
-                  <span style={{color:"gray"}} >{i+1}</span>
-
-                  <span onClick={()=>{
-                    console.log("nav");
-                    //this.props.goToForestalUnits();
-                    this.props.getForestalUnits(funit.id);
-                    this.props.setFunctionalUnit(funit);
-                    this.props.goToForestalUnits();
-                  }} >{funit.code}</span>
+                  <span className={'project-list-functional-unit'}
+                        onClick={()=>{
+                          console.log("nav");
+                          //this.props.goToForestalUnits();
+                          this.props.getForestalUnits(funit.id);
+                          this.props.setFunctionalUnit(funit);
+                          this.props.goToForestalUnits();
+                        }}
+                  >
+                    {funit.code}
+                  </span>
 
                   <div>
-                    <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"20px",height:"20px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                    <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"25px",height:"25px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
                       <i className="fas fa-edit fontAwesome"></i>
                     </button>
                   </div>
-
                 </div>
 
               </ListItem>
@@ -228,57 +241,62 @@ class ProjectList extends Component {
                       console.log(project); this.props.selectProject(project)
                     })()
                   }}>
-                <ListAccordion counter={i+1} projectName={project.name}  phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
-                  <Row>
-                    <Col width="6%">
-                    </Col>
-                    <Col width="47%">
-                      <div onClick={ ()=>{
-                        this.props.getFunctionalUnits(project.id);
-                        this.setState({
-                          functionalList:{
-                            ...this.state.functionalList,
-                            [project.id] : this.state.functionalList[project.id] ? !this.state.functionalList[project.id] : true
-                          }
-                        },()=>{
-                          console.log(this.state);
-                        });
-                      }}>
-                        <CardOptionButton accordionIconsStyles={styles.accordionIcons}
-                          iconStyles={{fontSize:"10px", color:"white"}}
-                          iconReference="fas fa-eye fontAwesome"
-                          textStyles={{fontSize:"11px", marginLeft:"10px"}}
-                          imgStyles={{height:"5vmin"}}
-                          image={yellowArrow}
-                          title="Ver unidades funcionales"
-                          />
-                        </div>
-                    </Col>
-                    <Col width="47%">
-                      <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
-                          button.textContent = "Registrar";
-                          this.project_id = project.id; }}>
-                      <CardOptionButton
-                        className="modal-btn"
-                        accordionIconsStyles={styles.accordionIcons}
-                        iconStyles={{fontSize:"10px", color:"white"}}
-                        iconReference="fas fa-plus fontAwesome"
-                        textStyles={{fontSize:"11px", marginLeft:"10px"}}
-                        imgStyles={{height:"5vmin"}}
-                        image={yellowArrow}
-                        title="Nueva unidad funcional"
-                        />
-                      </div>
-                    </Col>
-                  </Row>
-
-                  <Row>
-                    <Col width="20%"></Col>
-                    <Col width="80%">
-                      { this.state.functionalList[project.id] ? this.renderFunctionalList(functionalUnits , project) : null }
-                    </Col>
-                  </Row>
-                </ListAccordion>
+                <div className={ ( i < 1 ) ? 'first-gap-list-element' : 'gap-list-element' }></div>
+                <div  style={{display:"flex",justifyContent:"center"}} >
+                  <div style={{width:"95%"}} >
+                    <ListAccordion counter={i+1} projectName={project.name} phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
+                      <Row>
+                        <Col width="6%">
+                        </Col>
+                        <Col width="47%">
+                          <div onClick={ ()=>{
+                            this.props.getFunctionalUnits(project.id);
+                            this.setState({
+                              functionalList:{
+                                ...this.state.functionalList,
+                                [project.id] : this.state.functionalList[project.id] ? !this.state.functionalList[project.id] : true
+                              }
+                            },()=>{
+                              console.log(this.state);
+                            });
+                          }}>
+                            <CardOptionButton
+                              accordionIconsStyles={styles.accordionIcons}
+                              iconStyles={{fontSize:"10px", color:"white"}}
+                              iconReference="fas fa-eye fontAwesome"
+                              textStyles={{fontSize:"11px", marginLeft:"10px"}}
+                              imgStyles={{height:"5vmin"}}
+                              image={yellowArrow}
+                              title="Ver unidades funcionales"
+                            />
+                          </div>
+                        </Col>
+                        <Col width="47%">
+                          <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
+                              button.textContent = "Registrar";
+                              this.project_id = project.id; }}>
+                          <CardOptionButton
+                            className="modal-btn"
+                            accordionIconsStyles={styles.accordionIcons}
+                            iconStyles={{fontSize:"10px", color:"white"}}
+                            iconReference="fas fa-plus fontAwesome"
+                            textStyles={{fontSize:"11px", marginLeft:"10px"}}
+                            imgStyles={{height:"5vmin"}}
+                            image={yellowArrow}
+                            title="Nueva unidad funcional"
+                            />
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col width="20%"></Col>
+                        <Col width="80%">
+                          { this.state.functionalList[project.id] ? this.renderFunctionalList(functionalUnits , project) : null }
+                        </Col>
+                      </Row>
+                    </ListAccordion>
+                  </div>
+                </div>
               </div>
               );
             })

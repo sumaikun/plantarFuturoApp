@@ -8,6 +8,7 @@
   , "indent": 4
   , "unused": "vars"
   , "latedef": "nofunc"
+  , "esversion": 8
   , "globals": {
         "module": false,
         "exports": false,
