@@ -13,6 +13,9 @@ import Ons from 'onsenui';
 import { goToProjects  , LogOut , setProjectPhase , goToMain } from '../flux/actions';
 import { connect } from 'react-redux';
 
+// CSS
+import './../css/style.css';
+
 class CollapseMenu extends Component {
 
   constructor() {
@@ -29,20 +32,20 @@ class CollapseMenu extends Component {
       <Page>
         <div style = {{ backgroundColor:" white", height: '100%' }}>
           <List>
-            <ListItem   tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToMain()}}>
-              <span style={{marginRight:"15px"}}>Inicio</span> <Icon icon="fa-home" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+            <ListItem className={'collapse-menu-list'} tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToMain()}}>
+              <Icon icon="fa-home" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Inicio</span>
             </ListItem>
-            <ListItem   tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToProjects()}}>
-              <span style={{marginRight:"15px"}}>Inventario</span> <Icon icon="fa-check" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+            <ListItem tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToProjects()}}>
+              <Icon icon="fa-check" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Inventario</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{this.props.setProjectPhase(2); this.props.goToProjects()}}>
-              <span style={{marginRight:"15px"}}>Aprovechamiento</span> <Icon icon="fa-tree" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+              <Icon icon="fa-tree" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Aprovechamiento</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{this.props.setProjectPhase(3); this.props.goToProjects()}}>
-              <span style={{marginRight:"15px"}}>Compensación</span> <Icon icon="fa-chart-line" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+              <Icon icon="fa-chart-line" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Compensación</span>
             </ListItem>
             <ListItem   tappable onClick={this.props.goToProjects}>
-              <span style={{marginRight:"15px"}}>Vivero</span> <Icon icon="fa-leaf" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+              <Icon icon="fa-leaf" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Vivero</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{
               let self = this;
@@ -55,13 +58,13 @@ class CollapseMenu extends Component {
               });
 
             }}>
-              <span style={{marginRight:"15px"}}>Finalizar sesión</span> <Icon icon="fa-key" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon>
+              <Icon icon="fa-key" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Finalizar sesión</span>
             </ListItem>
           </List>
         </div>
         <BottomToolbar modifier="material" style={{backgroundColor:"#2a6317"}}>
           <br/>
-          <span style={{fontWeight:"bold",fontStyle:"italic",marginLeft:"25px"}}>Plantar Futuro</span>
+          <span className={'collapse-menu-footer'} style={{fontWeight:"bold",fontStyle:"italic"}}>Plantar <span className={'collapse-menu-footer-futuro'} style={{fontWeight:"bold",fontStyle:"italic"}}>Futuro</span></span>
         </BottomToolbar>
       </Page>
     );
