@@ -6,6 +6,9 @@ import {   List, ListItem, Icon, BottomToolbar, Page } from 'react-onsenui';
 
 import Ons from 'onsenui';
 
+//helpers
+
+import { removeFromJsonString } from '../helpers/objectMethods';
 
 // Pages
 
@@ -46,9 +49,11 @@ class CollapseMenu extends Component {
             </ListItem>
             <ListItem   tappable onClick={()=>{
               let self = this;
-              Ons.notification.confirm('!Estas seguro!').then(function(res) {
+              Ons.notification.confirm({title:"",message:'!Estas seguro!'}).then(function(res) {
                 res ? (()=>{
-                  localStorage.clear();
+                  //localStorage.clear();
+                  localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
+                  console.log(localStorage);
                   self.props.LogOut();
                 })() : false;
                 //ons.notification.alert('Hello ' + name);

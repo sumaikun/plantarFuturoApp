@@ -90,3 +90,7 @@ export const GO_TO_MACHINERY_FORM = "GO_TO_MACHINERY_FORM";
 export const APP_ERROR = "APP_ERROR";
 
 export const SET_RISK_OVERVIEW = "SET_RISK_OVERVIEW";
+
+
+//MemoryActions
+export const ADD_LOGGED_USER = "ADD_LOGGED_USER";

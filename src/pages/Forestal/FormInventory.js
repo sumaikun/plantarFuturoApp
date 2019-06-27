@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //sources
-import "../css/simpleForm.css";
-import placeholderImage from "../img/image-placeholder.png";
+import "../../css/simpleForm.css";
+import placeholderImage from "../../img/image-placeholder.png";
 
 //Onsen Ui
 import {  Col, Row, Card, Button, Input, Select, Radio} from 'react-onsenui';
@@ -10,16 +10,16 @@ import Ons from 'onsenui';
 //Libraries
 
 //components
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
 //container
-import AppPage from '../containers/AppPage';
+import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase1 , updateForestUnitPhase1 , getForestalUnits } from '../flux/actions';
+import { createForestUnitPhase1 , updateForestUnitPhase1 , getForestalUnits } from '../../flux/actions';
 //helper
 
-import { getFileContentAsBase64 , getInputFileBase64 } from '../helpers/imageHandler';
+import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
 
 const styles = {
   cardInput:{

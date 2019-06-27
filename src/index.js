@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 
+//assets
+
+import './index.css';
+import './css/App.css';
+import './css/Login.css';
 //import App from './App';
-import Login from './pages/Login';
-import ProjectManagement from './pages/ProjectManagement';
-import ProjectList from './pages/ProjectList';
-import ForestalUnitList from './pages/ForestalUnitList';
-import FormInventory from './pages/FormInventory';
-import AppNavigation from './pages/AppNavigation';
-import FormProcess from './pages/FormProcess';
-import FormCompensation from './pages/FormCompensation';
+
+import AppNavigation from './pages/main/AppNavigation';
 
 //errorHandler
 
@@ -18,29 +16,14 @@ import ErrorBoundary from './containers/ErrorBoundary';
 
 //risks
 
-import RiskManagement from './pages/RiskManagement/RiskManagement';
-import TunnelDeformation from './pages/RiskManagement/TunnelDeformation';
-import Rainfall from './pages/RiskManagement/Rainfall';
-import HillsideCollapse from './pages/RiskManagement/HillsideCollapse';
-import RiverCollapse from './pages/RiskManagement/RiverCollapse';
-import RiskIndicators from './pages/RiskManagement/RiskIndicators';
-import HillsideMovement from './pages/RiskManagement/HillsideMovement';
-import RiskOverview from './pages/RiskManagement/RiskOverview';
+
 
 //Inventory
 
-import MachineryForm from './pages/InventoryManagement/MachineryForm';
-
-
-import GeoReferencingForm from "./pages/InventoryManagement/GeoReferencingForm";
-import AsistantList from "./pages/InventoryManagement/AsistantList";
-
-import WorkingReportForm from "./pages/InventoryManagement/WorkingReportForm";
 
 
 //plantation
 
-import Establishment from './pages/Plantation/Establishment';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -69,7 +52,7 @@ store.subscribe( function () {
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>
     <ErrorBoundary>
-      <AsistantList/>
+      <AppNavigation/>
     </ErrorBoundary>
   </Provider>, document.getElementById('root'));
 

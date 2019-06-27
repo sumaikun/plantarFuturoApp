@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //sources
-import "../css/simpleForm.css";
-import placeholderImage from "../img/image-placeholder.png";
+import "../../css/simpleForm.css";
+import placeholderImage from "../../img/image-placeholder.png";
 
 //Onsen Ui
 import {  Col, Row, Card, Button, Input, Select, Radio} from 'react-onsenui';
@@ -10,16 +10,16 @@ import Ons from 'onsenui';
 //Libraries
 
 //components
-import Loading from "../components/Loading";
+import Loading from "../../components/Loading";
 //container
-import AppPage from '../containers/AppPage';
+import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase2 , updateForestUnitPhase1 , getForestalUnits , updateForestUnitPhase2 } from '../flux/actions';
+import { createForestUnitPhase3 , updateForestUnitPhase3 , getForestalUnits } from '../../flux/actions';
 //helper
 
-import { getFileContentAsBase64 , getInputFileBase64 } from '../helpers/imageHandler';
+import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
 
 const styles = {
   cardInput:{
@@ -67,15 +67,13 @@ const styles = {
   }
 }
 
-class FormProcess extends Component {
+class FormCompensation extends Component {
   constructor(props) {
     super(props);
     this.saveImage = this.saveImage.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} ,
-     selectSearch:{},
-     projectInfo:this.props.appState.selectedProject
-    };
+    this.state = { formData:{} , selectSearch:{} ,
+      projectInfo:this.props.appState.selectedProject };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
@@ -86,26 +84,6 @@ class FormProcess extends Component {
     console.log(this.props);
     if(this.props.appState.forestalUnitE)
     {
-
-
-      if(this.props.appState.forestalUnitE.products)
-      {
-        console.log("try to change");
-          this.props.appState.forestalUnitE.products = this.props.appState.forestalUnitE.products == "Leña" ? 1 :
-          this.props.appState.forestalUnitE.products == "Madera" ? 2 : null;
-
-        console.log(this.props.appState.forestalUnitE.products);
-      }
-
-      if(this.props.appState.forestalUnitE.treatment)
-      {
-          console.log("try to change");
-          this.props.appState.forestalUnitE.treatment = this.props.appState.forestalUnitE.treatment == "Tala" ? 1 :
-          this.props.appState.forestalUnitE.treatment == "Perman. Y/poda" ? 2 :
-          this.props.appState.forestalUnitE.treatment == "Bloque y T." ? 3 :
-          this.props.appState.forestalUnitE.treatment == "Plantar" ? 4 :  null;
-      }
-
       this.setState({
         formData:{
           ...this.state.formData,
@@ -115,39 +93,39 @@ class FormProcess extends Component {
         console.log(this.state);
       });
     }
-
   }
 
   fileUpload(key,e){
-    const file = e.target.files[0];
-    const  fileType = file['type'];
-    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-    if (validImageTypes.includes(fileType)) {
-       console.log(key);
-       let self = this;
-       getInputFileBase64(e.target.files[0]).then(
-         base64Image => {
 
-         //console.log(base64Image);
+     const file = e.target.files[0];
+     const  fileType = file['type'];
+     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+     if (validImageTypes.includes(fileType)) {
+        console.log(key);
+        let self = this;
+        getInputFileBase64(e.target.files[0]).then(
+          base64Image => {
 
-                 self.setState({
-                   formData:
-                   {
-                     ...self.state.formData,
-                     [key]:base64Image
-                   }
-                 },()=>{
-                     console.log(self.state);
-                 });
-       });
-   }
-   else{
-     e.preventDefault();
-     Ons.notification.alert({title:"",message:"No se pueden subir otros archivos que no sean imagenes"});
-   }
+          //console.log(base64Image);
+
+                  self.setState({
+                    formData:
+                    {
+                      ...self.state.formData,
+                      [key]:base64Image
+                    }
+                  },()=>{
+                      console.log(self.state);
+                  });
+        });
+    }
+    else{
+      e.preventDefault();
+      Ons.notification.alert({title:"",message:"No se pueden subir otros archivos que no sean imagenes"});
+    }
   }
 
-  saveImage(key){
+  saveImage(){
 
       let self = this;
 
@@ -163,7 +141,7 @@ class FormProcess extends Component {
 
             console.log("react ambit post cordova");
 
-            //console.log(self);
+            console.log(self);
 
             //window.open(base64Image);
             console.log(base64Image);
@@ -173,7 +151,7 @@ class FormProcess extends Component {
               formData:
               {
                 ...self.state.formData,
-                [key]:base64Image
+                general_image:base64Image
               }
             },()=>{
                 console.log(self.state);
@@ -225,16 +203,15 @@ class FormProcess extends Component {
         console.log("editMode");
         console.log(this.state.formData);
         console.log(this.state.formData.id);
+        //return;
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
-
-        //return;
-        this.props.updateForestUnitPhase2(this.state.formData.id,data);
+        this.props.updateForestUnitPhase3(this.state.formData.id,data);
       }else{
         let data = this.state.formData;
         data.functional_unit_id = this.props.appState.currentFunctionalUnit.id;
         data.user_id = this.props.appState.user.id;
-        this.props.createForestUnitPhase2(data);
+        this.props.createForestUnitPhase3(data);
         console.log("createMode");
       }
     }
@@ -252,6 +229,84 @@ class FormProcess extends Component {
         <br/>
         <form className="simpleForm"  onSubmit={this.submitData}>
 
+        <Row>
+          <Col>
+            <Card style={styles.cardLabel}>
+              <span>
+                INFORMACIÓN GENERAL
+              </span>
+            </Card>
+          </Col>
+        </Row>
+
+
+        <Row>
+          <Col width="25%">
+            <Card style={styles.cardLabel}>
+              <span>
+                Autoridad
+              </span>
+            </Card>
+          </Col>
+          <Col width="25%">
+            <Card style={{...styles.textInCard, 'fontSize':"8px"}}>
+              {this.state.projectInfo.enviromental_control}
+            </Card>
+          </Col>
+          <Col width="50%">
+            <Card style={{...styles.cardLabel, "text-align":"center" }}>
+              <span>
+                INFORMACIÓN GENERAL
+              </span>
+            </Card>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Card style={styles.textInCard}>
+              {this.state.projectInfo.name}
+            </Card>
+          </Col>
+          <Col width="50%">
+            <Card style={styles.textInCard}>
+              {this.state.projectInfo.administrative_act}
+            </Card>
+          </Col>
+        </Row>
+
+
+        <Row>
+          <Col>
+            <Card style={styles.textInCard}>
+              Este: {this.state.projectInfo.east_coord}
+            </Card>
+          </Col>
+          <Col>
+            <Card style={styles.textInCard}>
+              Norte: {this.state.projectInfo.north_coord}
+            </Card>
+          </Col>
+          <Col>
+            <Card style={styles.textInCard}>
+              Plantar Futuro
+            </Card>
+          </Col>
+          <Col>
+            <Card style={styles.textInCard}>
+              {this.state.projectInfo.inspector}
+            </Card>
+          </Col>
+        </Row>
+
+        <Row>
+          <Col>
+            <Card style={styles.textInCard}>
+              {this.state.projectInfo.responsible}
+            </Card>
+          </Col>
+        </Row>
+
           <Row>
             <Col>
               <Card style={styles.cardInput}>
@@ -260,80 +315,11 @@ class FormProcess extends Component {
             </Col>
           </Row>
 
-          <Row>
-            <Col>
-              <Card style={styles.cardLabel}>
-                <span>
-                  INFORMACIÓN GENERAL
-                </span>
-              </Card>
-            </Col>
-          </Row>
-
-
-          <Row>
-            <Col width="25%">
-              <Card style={styles.cardLabel}>
-                <span>
-                  Autoridad
-                </span>
-              </Card>
-            </Col>
-            <Col width="25%">
-              <Card style={{...styles.textInCard, 'fontSize':"8px"}}>
-                {this.state.projectInfo.enviromental_control}
-              </Card>
-            </Col>
-            <Col width="50%">
-              <Card style={{...styles.cardLabel, "text-align":"center" }}>
-                <span>
-                  INFORMACIÓN GENERAL
-                </span>
-              </Card>
-            </Col>
-          </Row>
 
           <Row>
             <Col>
-              <Card style={styles.textInCard}>
-                {this.state.projectInfo.name}
-              </Card>
-            </Col>
-            <Col width="50%">
-              <Card style={styles.textInCard}>
-                {this.state.projectInfo.administrative_act}
-              </Card>
-            </Col>
-          </Row>
-
-
-          <Row>
-            <Col>
-              <Card style={styles.textInCard}>
-                Este: {this.state.projectInfo.east_coord}
-              </Card>
-            </Col>
-            <Col>
-              <Card style={styles.textInCard}>
-                Norte:{this.state.projectInfo.north_coord}
-              </Card>
-            </Col>
-            <Col>
-              <Card style={styles.textInCard}>
-                Plantar Futuro
-              </Card>
-            </Col>
-            <Col>
-              <Card style={styles.textInCard}>
-                {this.state.projectInfo.inspector}
-              </Card>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col>
-              <Card style={styles.textInCard}>
-                {this.state.projectInfo.responsible}
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} name="compensation_site" value={this.state.formData.compensation_site} onChange={this.handleChangeInput} maxLength={10}  placeholder="Sitio de compensacion"  required/>
               </Card>
             </Col>
           </Row>
@@ -350,8 +336,6 @@ class FormProcess extends Component {
               </Card>
             </Col>
           </Row>
-
-
           <Row>
             <Col width="50%">
               <Card style={styles.cardInput}>
@@ -380,7 +364,36 @@ class FormProcess extends Component {
               </Card>
             </Col>
           </Row>
-
+          <Row>
+          <Col>
+            <Card style={styles.cardInput}>
+              <Select style={{width:"100%"}} name="cup_density" onChange={this.handleChangeInput} value={this.state.formData.cup_density === "1" || this.state.formData.cup_density === 'Clara'  ?  1 :
+               this.state.formData.cup_density === "2" || this.state.formData.cup_density === 'Media'  ? 2 :
+               this.state.formData.cup_density === "3" || this.state.formData.cup_density === 'Espesa' ? 3:''
+            } required>
+                <option value="" disabled selected>Densidad de copa</option>
+                <option value="1">Clara</option>
+                <option value="2">Media</option>
+                <option value="3">Espesa</option>
+              </Select>
+            </Card>
+          </Col>
+          <Col>
+            <Card style={styles.cardRadio}>
+                <span style={{fontSize:"10px",color:"gray"}} >
+                  Epifitas
+                </span>
+                <span style={{fontSize:"10px",color:"gray"}} >
+                  Si
+                </span>
+                <Radio onChange={this.handleChangeInput}name="epiphytes" value="1" checked={this.state.formData.epiphytes === "1" || this.state.formData.epiphytes === 'Si'} modifier='material' />
+                <span style={{fontSize:"10px",color:"gray"}} >
+                  No
+                </span>
+                <Radio onChange={this.handleChangeInput}name="epiphytes" value="2" checked={this.state.formData.epiphytes === "2" || this.state.formData.epiphytes === 'No'}  modifier='material' />
+            </Card>
+          </Col>
+          </Row>
           <Row>
             <Col>
               <Card style={styles.cardLabel}>
@@ -397,7 +410,6 @@ class FormProcess extends Component {
               </Card>
             </Col>
           </Row>
-
           <Row>
             <Col width="30%">
               <Card style={styles.cardInput} >
@@ -438,47 +450,17 @@ class FormProcess extends Component {
               </Card>
             </Col>
           </Row>
-
-          <Row>
-
-          <Col>
-            <Card style={styles.cardInput}>
-              <Select style={{width:"100%"}} name="treatment" onChange={this.handleChangeInput} value={this.state.formData.treatment} required>
-                <option value="" disabled selected>Tipo de manejo</option>
-                <option value="1">Tala</option>
-                <option value="2">Perman. Y/poda</option>
-                <option value="3">Bloque y T.</option>
-                <option value="4">Plantar</option>
-              </Select>
-            </Card>
-          </Col>
-
-            <Col>
-              <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} name="cup_density" onChange={this.handleChangeInput} value={this.state.formData.cup_density === "1" || this.state.formData.cup_density === 'Clara'  ?  1 :
-                 this.state.formData.cup_density === "2" || this.state.formData.cup_density === 'Media'  ? 2 :
-                 this.state.formData.cup_density === "3" || this.state.formData.cup_density === 'Espesa' ? 3:''
-              } required>
-                  <option value="" disabled selected>Densidad de copa</option>
-                  <option value="1">Clara</option>
-                  <option value="2">Media</option>
-                  <option value="3">Espesa</option>
-                </Select>
-              </Card>
-            </Col>
-
-          </Row>
-
-
-
           <Row>
             <Col width="50%">
+              <Card style={styles.cardLabel}>
+                  <span>
+                    Coordenadas
+                  </span>
+              </Card>
+            </Col>
+            <Col>
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} name="products" onChange={this.handleChangeInput} value={this.state.formData.products} required>
-                  <option value="" disabled selected>Posible uso</option>
-                  <option value="1">Leña</option>
-                  <option value="2">Madera</option>
-                </Select>
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="number" required />
               </Card>
             </Col>
           </Row>
@@ -496,108 +478,43 @@ class FormProcess extends Component {
 
           <Row>
 
+            <Row>
               <Col>
                 <Card style={styles.cardLabel}>
                   <span>
-                    Fotografias Antes
+                    Evidencias Fotográficas
                   </span>
                 </Card>
               </Col>
+            </Row>
+
+          <Col>
+            <br/>
+            <Card style={styles.greenCard} >
+              <div>
+                <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
+              </div>
+              <Row>
+                <Button style={styles.buttonCard}
+                  onClick={this.saveImage}
+                >Tomar foto</Button>
+                <label className="fileContainer" style={{ "font-size": "17px",
+                  color: "white"
+                }}>
+                  Subir archivo
+                  <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                     />
+                </label>
+              </Row>
+            </Card>
+          </Col>
           </Row>
-
-          <Row>
-
-            <Col width="50%">
-              <br/>
-              <Card style={styles.greenCard} >
-                <div>
-                  <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
-                </div>
-                {this.state.formData.general_image ?  null :
-                  <Row>
-                    <Button style={{...styles.buttonCard, 'font-size':"13px"}}
-                      onClick={()=>{this.saveImage('general_image')}}
-                    >Tomar foto</Button>
-                    <label className="fileContainer" style={{ "font-size": "17px",
-                      color: "white"
-                    }}>
-                      Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
-                         />
-                    </label>
-                  </Row>
-                }
-
-              </Card>
-            </Col>
-
-            <Col width="50%">
-              <br/>
-              <Card style={styles.greenCard} >
-                <div>
-                  <img src={this.state.formData.id_image ? this.state.formData.id_image : placeholderImage } style={{width:"100%"}} />
-                </div>
-                {this.state.formData.id_image ?
-                  null:
-                  <Row>
-                    <Button style={{...styles.buttonCard, 'font-size':"13px"}}
-                      onClick={()=>{this.saveImage('id_image')}}
-                    >Tomar foto</Button>
-                    <label className="fileContainer" style={{ "font-size": "17px",
-                      color: "white"
-                    }}>
-                      Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}
-                         />
-                    </label>
-                  </Row>
-                }
-              </Card>
-            </Col>
-
-          </Row>
-
-          <Row>
-              <Col>
-                <Card style={styles.cardLabel}>
-                  <span>
-                    Fotografia después
-                  </span>
-                </Card>
-              </Col>
-          </Row>
-
-          <Row>
-            <Col>
-              <br/>
-              <Card style={styles.greenCard} >
-                <div>
-                  <img src={this.state.formData.after_image ? this.state.formData.after_image : placeholderImage } style={{width:"100%"}} />
-                </div>
-                <Row>
-                  <Button style={styles.buttonCard}
-                    onClick={()=>{this.saveImage('after_image')}}
-                  >Tomar foto</Button>
-                  <label className="fileContainer" style={{ "font-size": "17px",
-                    color: "white"
-                  }}>
-                    Subir archivo
-                    <input  type="file" onChange={(event)=>{this.fileUpload("after_image",event)}}
-                       />
-                  </label>
-                </Row>
-              </Card>
-            </Col>
-          </Row>
-
           <Row>
             <button type="submit"
               style={{fontSize:"18px",padding:'5px',marginTop:"10px",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 10px 10px -2px",
               color:"white",width:"100%",borderRadius:"10%"}}
               ><b>Registrar</b></button>
           </Row>
-
-
         </form>
       </div>
 
@@ -608,19 +525,20 @@ class FormProcess extends Component {
 
 
   render() {
+
     const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
-      <AppPage  title={["", <strong>APROVECHAMIENTO</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getForestalUnits(currentFunctionalUnit.id) }} >
+      <AppPage  title={["Formulario de ", <strong>COMPENSACIÓN</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getForestalUnits(currentFunctionalUnit.id) }}>
 
-        {  isFetching ?
-          <div style={{backgroundColor:"white",height:"100%"}}>
-            <Loading/>
-          </div> :
+          {  isFetching ?
+            <div style={{backgroundColor:"white",height:"100%"}}>
+              <Loading/>
+            </div> :
 
-           this.contentPage()
+             this.contentPage()
 
-        }
+          }
 
       </AppPage>
     );
@@ -634,4 +552,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { createForestUnitPhase2 ,  updateForestUnitPhase2 , getForestalUnits })(FormProcess);
+export default  connect(mapStateToProps, { createForestUnitPhase3 ,  updateForestUnitPhase3 , getForestalUnits })(FormCompensation);

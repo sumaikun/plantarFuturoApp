@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 
 //images
-import logo from '../img/Logo.png';
-import fbicon from '../img/fbIcon.png';
-import insicon from '../img/InstagramIcon.png';
-import youicon from '../img/youtubeIcon.png';
-
-//css
-import '../css/App.css';
-import '../css/Login.css';
+import logo from '../../img/Logo.png';
+import fbicon from '../../img/fbIcon.png';
+import insicon from '../../img/InstagramIcon.png';
+import youicon from '../../img/youtubeIcon.png';
 
 //components or pages
 //Libraries
@@ -21,12 +17,12 @@ import Ons from 'onsenui';
 
 
 //flux
-import { fetchLogin } from '../flux/actions';
+import { fetchLogin } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 
 //helpers
-import { formValidation } from '../helpers/formValidation';
+import { formValidation } from '../../helpers/formValidation';
 
 class Login extends Component {
 
@@ -96,7 +92,7 @@ class Login extends Component {
             <div style={{marginTop:"-25px",height:"120%",backgroundColor:"#5a5b5d42"}}>
               <div className="login-html" onScroll="no">
               <ReactResizeDetector handleWidth handleHeight onResize={this.onResize} />
-               <div className="App"> 
+               <div className="App">
                 <i class="fas fa-phone fa-lg fa-2x phone"></i>
                 <br/>
                 <img id='logo' className="App-logo" src={logo} />

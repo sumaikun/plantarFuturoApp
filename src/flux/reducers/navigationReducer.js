@@ -1,10 +1,14 @@
-import Login from "../../pages/Login"
-import ProjectManagement from '../../pages/ProjectManagement'
-import ProjectList from '../../pages/ProjectList'
-import ForestalUnitList from '../../pages/ForestalUnitList'
-import FormInventory from '../../pages/FormInventory'
-import FormProcess from '../../pages/FormProcess'
-import FormCompensation from '../../pages/FormCompensation'
+//main
+import Login from "../../pages/main/Login";
+import ProjectManagement from '../../pages/main/ProjectManagement'
+import ProjectList from '../../pages/main/ProjectList'
+
+
+
+import ForestalUnitList from '../../pages/Forestal/ForestalUnitList'
+import FormInventory from '../../pages/Forestal/FormInventory'
+import FormProcess from '../../pages/Forestal/FormProcess'
+import FormCompensation from '../../pages/Forestal/FormCompensation'
 
 //Risk Management
 

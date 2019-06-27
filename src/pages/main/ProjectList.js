@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //sources
-import yellowArrow from "../img/yellowArrow.png";
-import "../css/accordion.css";
-import "../css/Modal.css";
+import yellowArrow from "../../img/yellowArrow.png";
+import "../../css/accordion.css";
+import "../../css/Modal.css";
 
 //Onsen Ui
 import {  Col, Row, Card, Button, List, ListItem} from 'react-onsenui';
@@ -12,21 +12,21 @@ import Ons from 'onsenui';
 //Libraries
 
 //components
-import ListAccordion from "../components/ListAccordion";
-import CardOptionButton from "../components/CardOptionButton";
-import Modal from "../components/Modal";
-import NotFound from "../components/NotFound";
+import ListAccordion from "../../components/ListAccordion";
+import CardOptionButton from "../../components/CardOptionButton";
+import Modal from "../../components/Modal";
+import NotFound from "../../components/NotFound";
 
 //container
-import AppPage from '../containers/AppPage';
+import AppPage from '../../containers/AppPage';
 
 //flux
 import { goToForestalUnits , createFunctionalUnit , getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, fetchProjects,
-resetFunctionalUnits, selectProject , goToRiskManagement } from '../flux/actions';
+resetFunctionalUnits, selectProject , goToRiskManagement } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
-import { formValidation } from '../helpers/formValidation';
+import { formValidation } from '../../helpers/formValidation';
 
 
 const styles = {

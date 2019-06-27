@@ -9,12 +9,12 @@ import Ons from 'onsenui';
 // Pages
 
 //components
-import CollapseMenu from "../components/CollapseMenu";
+import CollapseMenu from "../../components/CollapseMenu";
 
 
 // REDUX
 import { connect } from 'react-redux';
-import { insertNavigator , closeMenu , runfromStorage } from '../flux/actions';
+import { insertNavigator , closeMenu , runfromStorage } from '../../flux/actions';
 
 
 class AppNavigation extends Component {
@@ -22,20 +22,21 @@ class AppNavigation extends Component {
   constructor() {
     super();
     this.renderPage = this.renderPage.bind(this);
-    
+
   }
 
   componentDidMount(){
     this.props.insertNavigator(this.navigator);
 
     let storedData = JSON.parse(localStorage.getItem('state'));
-    //console.log(storedData);
+    console.log(storedData);
     if(storedData)
     {
-      if(storedData.navigationIndex)
+      if(storedData.navigationIndex && storedData.navigationIndex != "GO_TO_LOGIN" )
       {
         //console.log(storedData.navigationIndex);
-        this.props.runfromStorage(storedData.navigationIndex);
+        //this.props.runfromStorage(storedData.navigationIndex);
+        this.props.runfromStorage("GO_TO_MANAGEMENT");
       }
     }
 

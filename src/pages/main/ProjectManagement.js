@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 //sources
-import checkList from "../img/checkList.png";
-import tree from "../img/tree.png";
-import chart from "../img/chart.png";
-import plant from "../img/plant.png";
-import yellowArrow from "../img/yellowArrow.png";
-import "../css/accordion.css";
-import "../css/Modal.css";
+import checkList from "../../img/checkList.png";
+import tree from "../../img/tree.png";
+import chart from "../../img/chart.png";
+import plant from "../../img/plant.png";
+import yellowArrow from "../../img/yellowArrow.png";
+import "../../css/accordion.css";
+import "../../css/Modal.css";
 
 //Onsen Ui
 import {  Col, Row, Card, Button} from 'react-onsenui';
@@ -15,17 +15,17 @@ import Ons from 'onsenui';
 //Libraries
 
 //components
-import CardButton from "../components/CardButton";
+import CardButton from "../../components/CardButton";
 
 //container
-import AppPage from '../containers/AppPage';
+import AppPage from '../../containers/AppPage';
 
 //flux
-import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement , goToInventoryManagement } from '../flux/actions';
+import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement , goToInventoryManagement } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //css
-import "../css/style.css";
+import "../../css/style.css";
 
 class ProjectManagement extends Component {
   constructor(props) {
