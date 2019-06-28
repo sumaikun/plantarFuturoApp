@@ -69,7 +69,7 @@ store.subscribe( function () {
 const appInit = _ =>
   ReactDOM.render(<Provider store={store}>
     <ErrorBoundary>
-      <AsistantList/>
+      <AppNavigation/>
     </ErrorBoundary>
   </Provider>, document.getElementById('root'));
 

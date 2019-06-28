@@ -33,16 +33,17 @@ class ForestalUnitList extends Component {
     this.renderHeader = this.renderHeader.bind(this);
     this.contentPage = this.contentPage.bind(this);
   }
-
   renderHeader(){
     return(
-      <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">
+      <ListHeader style={{position: "fixed", zIndex:1,width:"100%", fontSize: 15, padding:"0px",marginTop:"-38px"}} className="testClass">
         <Row>
           <Col width="50%" style={{
             backgroundColor: "rgba(99, 177, 48, 0.88)",
             textAlign: "center",
             color: "white",
-            fontWeight: "bold"}}>
+            fontWeight: "bold",
+            display: "fixed"
+            }}>
             {/*<Card style={styles.CardHeaders}>*/}
               <span>Individuo Forestal</span>
             {/*</Card>*/}
@@ -64,13 +65,21 @@ class ForestalUnitList extends Component {
   }
 
   contentPage(currentPhase,forestalUnits){
+    /*tableData*/
+    forestalUnits.sort((a,b) => {
+      if (a.created_at > b.created_at) return -1
+      if (a.created_at < b.created_at) return 1
+      return 0
+    })
     return(
     <div>
-      <div style={styles.formContainer}>
+      <div style={{backgroundColor:"orange", position:"fixed", width:"100%", zIndex:"1"}}>
         <div className="login-form" >
 
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            <div>  
+              <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            </div>
             <div style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);
@@ -93,10 +102,9 @@ class ForestalUnitList extends Component {
               <span className="fas fa-plus fontAwesome" ></span>
             </div>
           </div>
-
         </div>
       </div>
-
+      <br/><br/><br/><br/><br/><br/>
 
         { forestalUnits.length > 0  ?
 
@@ -107,7 +115,7 @@ class ForestalUnitList extends Component {
 
               return (
               <div>
-                <ListItem tappable onClick={()=>{
+                <ListItem  tappable onClick={()=>{
                     this.props.setForestalUnit(unit);
                     switch(currentPhase)
                     {
@@ -152,7 +160,9 @@ class ForestalUnitList extends Component {
           </List>:<NotFound/>
 
         }
+        <br/>
       </div>
+      
     );
   }
 

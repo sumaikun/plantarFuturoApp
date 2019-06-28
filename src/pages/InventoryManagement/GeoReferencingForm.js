@@ -176,7 +176,7 @@ class GeoReferencingForm extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.ls_description}  placeholder="Objetivo" disabled={this.state.isDisable} ></textarea>
+                <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.ls_description}  placeholder="Objetivo" disabled={this.state.isDisable} />
 
               </Card>
             </Col>

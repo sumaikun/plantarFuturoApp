@@ -229,7 +229,7 @@ class TunnelDeformation extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
+                <Input onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
 
               </Card>
             </Col>

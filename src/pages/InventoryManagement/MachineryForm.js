@@ -280,7 +280,7 @@ class MachineryForm extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones"></textarea>
+                <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones" />
 
               </Card>
             </Col>
