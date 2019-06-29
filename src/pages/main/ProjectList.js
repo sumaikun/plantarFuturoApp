@@ -21,8 +21,16 @@ import NotFound from "../../components/NotFound";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToForestalUnits , createFunctionalUnit , getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, fetchProjects,
-resetFunctionalUnits, selectProject , goToRiskManagement } from '../../flux/actions';
+import { goToForestalUnits,
+  createFunctionalUnit,
+  getFunctionalUnits,
+  updateFunctionalUnit,
+  getForestalUnits,
+  setFunctionalUnit,
+  getProjectByUser,
+  resetFunctionalUnits,
+  selectProject,
+  goToRiskManagement } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -216,7 +224,7 @@ class ProjectList extends Component {
         break;
     }
     return (
-      <AppPage  title={[<strong>{titlePage}</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.fetchProjects() }}>
+      <AppPage  title={[<strong>{titlePage}</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getProjectByUser(this.props.appState.user.id) }}>
         { currentPhaseProjects.length > 0  ?
           currentPhaseProjects.map((project, i) => {
               return(
@@ -308,4 +316,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { goToForestalUnits , createFunctionalUnit, getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, fetchProjects, resetFunctionalUnits, selectProject , goToRiskManagement })(ProjectList);
+export default  connect(mapStateToProps, { goToForestalUnits , createFunctionalUnit, getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, getProjectByUser, resetFunctionalUnits, selectProject , goToRiskManagement })(ProjectList);

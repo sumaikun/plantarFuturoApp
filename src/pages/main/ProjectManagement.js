@@ -21,7 +21,13 @@ import CardButton from "../../components/CardButton";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { setProjectPhase , goToProjects , fetchProjects, goToRiskManagement , goToInventoryManagement } from '../../flux/actions';
+import {
+  setProjectPhase,
+  goToProjects,
+  fetchProjects,
+  goToRiskManagement,
+  goToInventoryManagement,
+  } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //css
@@ -33,47 +39,96 @@ class ProjectManagement extends Component {
   }
 
   componentDidMount(){
-    this.props.fetchProjects();
+    //this.props.fetchProjects();
   }
 
   render() {
+
+    let phase1Projects = this.props.appState.projects.filter( project => {
+
+      return project.phase == 1
+
+    });
+    let phase2Projects = this.props.appState.projects.filter( project => {
+
+      return project.phase == 2
+
+    });
+    let phase3Projects = this.props.appState.projects.filter( project => {
+
+      return project.phase == 3
+
+    });
+    let phase4Projects = this.props.appState.projects.filter( project => {
+
+      return project.phase == 4
+
+    });
 
     return (
       <AppPage  title={["GESTION DE ", <strong>PROYECTOS</strong>]}>
         <div style={{height:"100%",backgroundColor:"white"}}>
           <br/>
 
-          <div onClick={()=>{this.props.setProjectPhase(1);
-             this.props.goToProjects()}}>
-            <CardButton
-              imgIcon = {checkList}
-              title="Inventario"
-              subtitle="Total proyectos"
-              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-             />
-           </div>
+          {
+            phase1Projects.length > 0   ?
 
-           <div style={{height:"10px"}} ></div>
-          <div onClick={()=>{this.props.setProjectPhase(2);
-             this.props.goToProjects()}}>
-            <CardButton
-              imgIcon = {tree}
-              title="Aprovechamiento"
-              subtitle="Total proyectos"
-              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-              />
-           </div>
-            <div style={{height:"10px"}} ></div>
-          <div onClick={()=>{this.props.setProjectPhase(3);
-             this.props.goToProjects()}}>
-            <CardButton
-              imgIcon = {plant}
-              title="Georeferenciación"
-              subtitle="Total proyectos"
-              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-              />
+            <div>
+
+              <div onClick={()=>{this.props.setProjectPhase(1);
+                 this.props.goToProjects()}}>
+                <CardButton
+                  imgIcon = {checkList}
+                  title="Inventario"
+                  subtitle = {"Total proyectos "+phase1Projects.length }
+                  infoContainer = { "Ultima actualizacion "+phase1Projects[phase1Projects.length -1 ].created_at }
+                 />
+               </div>
+
+               <div style={{height:"10px"}} ></div>
+
             </div>
-            <div style={{height:"10px"}} ></div>
+
+             : null
+           }
+
+           {
+             phase2Projects.length > 0   ?
+             <div>
+              <div onClick={()=>{this.props.setProjectPhase(2);
+                 this.props.goToProjects()}}>
+                <CardButton
+                  imgIcon = {tree}
+                  title="Aprovechamiento"
+                  subtitle = {"Total proyectos "+phase2Projects.length }
+                  infoContainer = { "Ultima actualizacion "+phase2Projects[phase2Projects.length -1 ].created_at }
+                  />
+               </div>
+                <div style={{height:"10px"}} ></div>
+              </div> : null
+
+           }
+
+           {
+             phase3Projects.length > 0   ?
+             <div>
+              <div onClick={()=>{this.props.setProjectPhase(3);
+                 this.props.goToProjects()}}>
+                <CardButton
+                  imgIcon = {plant}
+                  title="Georeferenciación"
+                  subtitle = {"Total proyectos "+phase3Projects.length }
+                  infoContainer = { "Ultima actualizacion "+phase3Projects[phase3Projects.length -1 ].created_at }
+                  />
+                </div>
+                <div style={{height:"10px"}} ></div>
+              </div> : null
+
+             }
+
+
+
+
             <div onClick={()=>{Ons.notification.alert({title:"",message:"¡Proximamente!"})}}>
               <CardButton
                 imgIcon = {chart}
@@ -84,7 +139,7 @@ class ProjectManagement extends Component {
             </div>
             <div style={{height:"10px"}} ></div>
 
-          { this.props.appState.user.risk ?
+          { this.props.appState.user.risk  && phase4Projects.length > 0 ?
             <div>
               <div onClick={()=>{this.props.setProjectPhase(4),
                 this.props.goToProjects()
@@ -92,8 +147,8 @@ class ProjectManagement extends Component {
                 <CardButton
                   imgIcon = {checkList}
                   title="Riesgo"
-                  subtitle="Total proyectos"
-                  infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+                  subtitle = {"Total proyectos "+phase4Projects.length }
+                  infoContainer = { "Ultima actualizacion "+phase4Projects[phase4Projects.length -1 ].created_at }
                  />
                </div>
               <div style={{height:"10px"}} ></div>

@@ -129,7 +129,7 @@ const appReducer = (state = initialState, action) => {
         functionalUnits:functionalArray
       }
       console.log(state);
-      return state;
+      return state;      
     case RESET_FUNCTIONAL_UNITS:
       state={
         ...state,

@@ -1,6 +1,6 @@
 //PROPERTIES
 
-const LOCAL_MODE = false;
+const LOCAL_MODE = true;
 
 //ajax
 export const SUCCESS = "SUCCESS";
@@ -43,7 +43,8 @@ export const GET_PROJECTS_URL = BASE_URL+"/api/project";
 export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit' : 'http://plantarfuturo.com/ws/api/functional-unit';
 export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/functional-units/' : 'http://plantarfuturo.com/ws/api/project/functional-units/';
 export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit/forest-units/' : 'http://plantarfuturo.com/ws/api/functional-unit/forest-units/';
-export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://plantarfuturo.com/ws/api/project/risks/' : 'http://plantarfuturo.com/ws/api/project/risks/';
+export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/risks/' : 'http://plantarfuturo.com/ws/api/project/risks/';
+export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/users/projects/' : 'http://plantarfuturo.com/ws/api/users/projects/';
 
 
 //RiskManagement navigation

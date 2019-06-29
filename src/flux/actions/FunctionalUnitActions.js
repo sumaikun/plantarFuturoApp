@@ -35,6 +35,14 @@ export const createFunctionalUnit = (data,componentSuccess) => {
 export const getFunctionalUnits = (id) => {
   return async dispatch => {
 
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+        dispatch(notFetching());
+        return;
+      }
+
+
       console.log(id);
 
       dispatch(fetching());
@@ -54,7 +62,7 @@ export const getFunctionalUnits = (id) => {
         dispatch(notFetching());
       }
 
-      console.log(String(FUNCTIONAL_UNIT_URL+id));
+      //console.log(String(FUNCTIONAL_UNIT_URL+id));
 
       Request.getRequest(
         GET_FUNCTIONAL_UNITS+id,

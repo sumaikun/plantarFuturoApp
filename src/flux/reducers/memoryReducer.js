@@ -1,6 +1,17 @@
 import {  ADD_LOGGED_USER  }  from "../types";
 
-const initialState = {
+let storedData;
+
+try
+{
+ storedData = JSON.parse(localStorage.getItem('state'));
+}
+catch(err){
+  console.log("error getting data");
+}
+
+const initialState =  storedData ? storedData.memory :
+{
   userLogged:{},
 };
 
