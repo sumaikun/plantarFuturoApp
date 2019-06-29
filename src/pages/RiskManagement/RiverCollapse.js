@@ -78,6 +78,9 @@ class RiverCollapse extends Component {
          }
        );
     }
+    if (event.target.value[0] == "="){
+      event.target.value = event.target.value.substr(1)
+    }
   }
 
   submitData(e){

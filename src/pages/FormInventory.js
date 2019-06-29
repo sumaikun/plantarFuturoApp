@@ -179,11 +179,13 @@ class FormInventory extends Component {
                ...this.state.formData,
                [event.target.name] : event.target.value
            }
-
          },() => {
            console.log(this.state);
          }
        );
+    }
+    if (event.target.value[0] == "="){
+      event.target.value = event.target.value.substr(1)
     }
   }
 

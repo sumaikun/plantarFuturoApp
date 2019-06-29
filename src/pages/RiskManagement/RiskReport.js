@@ -34,6 +34,10 @@ class RiskReport extends Component {
     super(props);
 
     this.contentPage = this.contentPage.bind(this);
+    this.state = {
+      searchName: '',
+      searchDate: ''
+    }
   }
 
 

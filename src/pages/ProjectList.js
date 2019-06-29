@@ -216,7 +216,7 @@ class ProjectList extends Component {
         break;
     }
     return (
-      <AppPage  title={[<strong>{titlePage}</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.fetchProjects() }}>
+      <AppPage  title={[<strong>{titlePage}</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.fetchProjects(/*this.props.appState.user.id*/) }}>
         { currentPhaseProjects.length > 0  ?
           currentPhaseProjects.map((project, i) => {
               return(

@@ -5,7 +5,7 @@ import { GET_PROJECTS_URL } from "../types"
 
 
 
-export const fetchProjects = () => {
+export const fetchProjects = (id) => {
   return async dispatch => {
 
       dispatch(fetching());
@@ -20,7 +20,7 @@ export const fetchProjects = () => {
       }
 
       Request.getRequest(
-        GET_PROJECTS_URL,
+        GET_PROJECTS_URL/* + '/'+ id*/,
         SuccessCallBack,
         ErrorCallBack
       );

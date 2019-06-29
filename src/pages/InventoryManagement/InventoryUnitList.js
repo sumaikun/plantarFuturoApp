@@ -32,6 +32,10 @@ class InventoryUnitList extends Component {
     super(props);
     this.renderHeader = this.renderHeader.bind(this);
     this.contentPage = this.contentPage.bind(this);
+    this.state = {
+      searchName: '',
+      searchDate: ''
+    }
   }
 
   renderHeader(){
@@ -68,9 +72,9 @@ class InventoryUnitList extends Component {
     <div>
       <div style={styles.formContainer}>
         <div className="login-form" >
-
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="&#61442; buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+              <input id="search" value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} />
+              <input type="date" value={searchDate}  onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
             <div style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);
@@ -97,13 +101,12 @@ class InventoryUnitList extends Component {
         </div>
       </div>
 
-
         { forestalUnits.length > 0  ?
 
           <List
             renderHeader={this.renderHeader}>
 
-           {forestalUnits.map((unit, i) => {
+           {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
 
               return (
               <div>
