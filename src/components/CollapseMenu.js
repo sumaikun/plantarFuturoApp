@@ -51,6 +51,25 @@ class CollapseMenu extends Component {
               let self = this;
               Ons.notification.confirm({title:"",message:'!Estas seguro!'}).then(function(res) {
                 res ? (()=>{
+
+                  console.log("Empezando a sincronizar actualizaciones del servidor");
+
+                  console.log("Empezando a sincronizar unidades funcionales");
+
+                  console.log("Empezando a sincronizar unidades forestales");
+
+
+                })() : false;
+
+              });
+
+            }}>
+              <span style={{marginRight:"15px"}}>Sincronizar al servidor</span> <i class="fas fa-upload"></i>
+            </ListItem>
+            <ListItem   tappable onClick={()=>{
+              let self = this;
+              Ons.notification.confirm({title:"",message:'!Estas seguro!'}).then(function(res) {
+                res ? (()=>{
                   //localStorage.clear();
                   localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
                   console.log(localStorage);

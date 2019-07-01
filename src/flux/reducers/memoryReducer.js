@@ -4,11 +4,21 @@ UPDATE_SERVER_FUNCTIONAL_UNIT,
 UPDATE_OFFLINE_FUNCTIONAL_UNIT,
 REMOVE_FROM_UPDATE_SERVER_FUNIT,
 REMOVE_FROM_OFFLINE_FUNIT,
-ADD_FOREST_UNIT_OFFLINE,
+ADD_FOREST_UNIT_OFFLINE_PHASE1,
 UPDATE_SERVER_FOREST_UNIT_PHASE1,
 UPDATE_OFFLINE_FOREST_UNIT_PHASE1,
 REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE1,
-REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE1  }  from "../types";
+REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE1,
+ADD_FOREST_UNIT_OFFLINE_PHASE2,
+UPDATE_SERVER_FOREST_UNIT_PHASE2,
+UPDATE_OFFLINE_FOREST_UNIT_PHASE2,
+REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE2,
+REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE2,
+ADD_FOREST_UNIT_OFFLINE_PHASE3,
+UPDATE_SERVER_FOREST_UNIT_PHASE3,
+UPDATE_OFFLINE_FOREST_UNIT_PHASE3,
+REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE3,
+REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3  }  from "../types";
 
 import { editOrAddToArray, removeFromArray } from "../../helpers/objectMethods"
 
@@ -31,7 +41,11 @@ const initialState =  storedData ? storedData.memory :
   serverFunctionalUnits:[],
   hasDataToSychro: false,
   offLineForestUnitsPhase1:[],
-  serverForestUnitsPhase1:[]
+  serverForestUnitsPhase1:[],
+  offLineForestUnitsPhase2:[],
+  serverForestUnitsPhase2:[],
+  offLineForestUnitsPhase3:[],
+  serverForestUnitsPhase3:[]
 };
 
 const generateRandomId = () => {
@@ -57,6 +71,13 @@ const removeFromState = ( state, stateParameter, action ) => {
 
 const updateFromState = ( state, stateParameter, action ) => {
 
+  //console.log(stateParameter);
+
+  if(!action.payload.ToSynchro)
+  {
+    action.payload.ToSynchroEdit = true;
+  }
+
   let workingVariable = state[stateParameter];
 
   workingVariable = editOrAddToArray(workingVariable,action.payload);
@@ -65,13 +86,15 @@ const updateFromState = ( state, stateParameter, action ) => {
     ...state,
     [stateParameter]:workingVariable
   }
-
+  console.log(state);
   return state;
 }
 
 const createOnState = ( state, stateParameter, action ) => {
 
   action.payload.id = generateRandomId();
+
+  action.payload.ToSynchro = true;
 
   state = {
     ...state,
@@ -185,13 +208,13 @@ const memoryReducer = (state = initialState, action) => {
 
       return state;
 
-    case ADD_FOREST_UNIT_OFFLINE:
+    case ADD_FOREST_UNIT_OFFLINE_PHASE1:
 
       state = createOnState(state,'offLineForestUnitsPhase1',action);
 
       return state;
 
-    case UPDATE_SERVER_FOREST_UNIT_PHASE1:
+    case UPDATE_OFFLINE_FOREST_UNIT_PHASE1:
 
       state = updateFromState(state,'offLineForestUnitsPhase1',action);
 
@@ -212,6 +235,66 @@ const memoryReducer = (state = initialState, action) => {
     case REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE1:
 
       state = removeFromState(state,'offLineForestUnitsPhase1',action);
+
+      return state;
+
+    case ADD_FOREST_UNIT_OFFLINE_PHASE2:
+
+      state = createOnState(state,'offLineForestUnitsPhase2',action);
+
+      return state;
+
+    case UPDATE_SERVER_FOREST_UNIT_PHASE2:
+
+      state = updateFromState(state,'serverForestUnitsPhase2',action);
+
+      return state;
+
+    case UPDATE_SERVER_FOREST_UNIT_PHASE2:
+
+      state = updateFromState(state,'offLineForestUnitsPhase2',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE2:
+
+      state = removeFromState(state,'serverForestUnitsPhase2',action);
+
+      return state;
+
+    case REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE2:
+
+      state = removeFromState(state,'offLineForestUnitsPhase2',action);
+
+      return state;
+
+    case ADD_FOREST_UNIT_OFFLINE_PHASE3:
+
+      state = createOnState(state,'offLineForestUnitsPhase3',action);
+
+      return state;
+
+    case UPDATE_SERVER_FOREST_UNIT_PHASE3:
+
+      state = updateFromState(state,'serverForestUnitsPhase3',action);
+
+      return state;
+
+    case UPDATE_SERVER_FOREST_UNIT_PHASE3:
+
+      state = updateFromState(state,'offLineForestUnitsPhase3',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE3:
+
+      state = removeFromState(state,'serverForestUnitsPhase3',action);
+
+      return state;
+
+    case REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3:
+
+      state = removeFromState(state,'offLineForestUnitsPhase3',action);
 
       return state;
 

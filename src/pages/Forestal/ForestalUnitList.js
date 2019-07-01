@@ -9,6 +9,7 @@ import "../../css/accordion.css";
 import { workingRowStyles } from "../../jsStyles/Styles";
 
 
+
 //Onsen Ui
 import {  List , ListItem, Col, Row, Card, ListHeader } from 'react-onsenui';
 import Ons from 'onsenui';
@@ -22,7 +23,18 @@ import Loading from "../../components/Loading";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../../flux/actions';
+import { goToInventoryForm,
+   setForestalUnit,
+  goToProcessForm,
+  goToCompensationForm,
+  removeFromForestUnitP1ServerUpdate,
+  removeFromOfflineForestUnitP1,
+  removeFromForestUnitP2ServerUpdate,
+  removeFromOfflineForestUnitP2,
+  removeFromForestUnitP3ServerUpdate,
+  removeFromOfflineForestUnitP3
+} from '../../flux/actions';
+
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
@@ -64,13 +76,19 @@ class ForestalUnitList extends Component {
   }
 
   contentPage(currentPhase,forestalUnits){
+
+    //console.log("Unidades forestales");
+    //console.log(forestalUnits);
+    let foundIndex;
+
     return(
     <div>
       <div style={styles.formContainer}>
         <div className="login-form" >
 
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            <input className="input fontAwesome" placeholder="Buscar" type="text"
+               style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
             <div style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);
@@ -105,6 +123,34 @@ class ForestalUnitList extends Component {
 
            {forestalUnits.map((unit, i) => {
 
+             switch(currentPhase)
+             {
+               case 1:
+
+                 foundIndex = this.props.memory.serverForestUnitsPhase1.findIndex( memory =>   memory.id == unit.id  );
+                 //console.log("foundIndex"+foundIndex);
+                 unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase1[foundIndex] : unit ;
+
+                 break;
+               case 2:
+
+                 foundIndex = this.props.memory.serverForestUnitsPhase2.findIndex( memory =>   memory.id == unit.id  );
+                 //console.log("foundIndex"+foundIndex);
+                 unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase2[foundIndex] : unit ;
+
+                 break;
+               case 3:
+
+                foundIndex = this.props.memory.serverForestUnitsPhase3.findIndex( memory =>   memory.id == unit.id  );
+                //console.log("foundIndex"+foundIndex);
+                unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase3[foundIndex] : unit ;
+
+                 break;
+               default:
+                   break;
+             }
+
+
               return (
               <div>
                 <ListItem tappable onClick={()=>{
@@ -126,7 +172,62 @@ class ForestalUnitList extends Component {
 
                   }}>
                   <div className="center" style={styles.mainListItem}>
-                    <span style={styles.counter}>{i+1}</span>
+                    <div onClick={(e)=>{
+
+                      e.stopPropagation();
+
+                      console.log(unit);
+
+                      let self = this;
+
+                      if(unit.ToSynchro || unit.ToSynchroEdit)
+                      {
+                        Ons
+                        .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
+                        .then(function(res) {
+                          if(res){
+                            console.log("cancelar sincronización");
+                            if(unit.ToSynchro)
+                            {
+                              if(currentPhase === 1)
+                              {
+                                self.props.removeFromOfflineForestUnitP1(unit);
+                              }
+                              if(currentPhase === 2)
+                              {
+                                self.props.removeFromOfflineForestUnitP2(unit);
+                              }
+                              if(currentPhase === 3)
+                              {
+                                self.props.removeFromOfflineForestUnitP3(unit);
+                              }
+
+                              Ons.notification.alert({ title:'',message: 'Datos eliminados de memoria' })
+                            }
+                            if(unit.ToSynchroEdit)
+                            {
+                              if(currentPhase === 1)
+                              {
+                                self.props.removeFromForestUnitP1ServerUpdate(unit);
+                              }
+                              if(currentPhase === 2)
+                              {
+                                self.props.removeFromForestUnitP2ServerUpdate(unit);
+                              }
+                              if(currentPhase === 3)
+                              {
+                                self.props.removeFromForestUnitP3ServerUpdate(unit);
+                              }
+
+                              Ons.notification.alert({ title:'',message: 'Datos eliminados de memoria' });
+                            }
+                          }
+                        })
+                      }
+                    }}>
+                      <span style={styles.counter}>{i+1}</span>
+                      { unit.ToSynchro || unit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
+                    </div>
                     <span style={styles.projectName}>{unit.code}</span>
                     <div>
                       <span style={styles.projectInfo}>{unit.state}</span>
@@ -159,10 +260,35 @@ class ForestalUnitList extends Component {
   render() {
 
 
-      const {  isFetching ,currentPhase , forestalUnits } = this.props.appState
+      let {  isFetching ,currentPhase , forestalUnits } = this.props.appState;
+
+
+      if(this.props.appState.currentFunctionalUnit.ToSynchro){
+        forestalUnits = [];
+      }
+
+      switch(currentPhase)
+      {
+        case 1:
+            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase1.filter(
+              memory => memory.functional_unit_id === this.props.appState.currentFunctionalUnit.id
+            ));
+          break;
+        case 2:
+            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase2);
+          break;
+        case 3:
+            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase3);
+          break;
+        default:
+            break;
+      }
+
+      forestalUnits = forestalUnits.reverse();
 
     return (
-      <AppPage  title={["Unidad funcional ", <strong>{this.props.appState.currentFunctionalUnit.code}</strong>]} backButton={true} >
+      <AppPage  title={["Unidad funcional ", <strong>{this.props.appState.currentFunctionalUnit.code}</strong>]}
+       backButton={true} >
 
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>
@@ -181,8 +307,19 @@ class ForestalUnitList extends Component {
 const mapStateToProps = state => {
   return {
     navigation: state.navigation,
-    appState: state.appState
+    appState: state.appState,
+    memory: state.memory
   };
 }
 
-export default  connect(mapStateToProps, { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm })(ForestalUnitList);
+export default  connect(mapStateToProps, { goToInventoryForm,
+   setForestalUnit,
+   goToProcessForm,
+   goToCompensationForm,
+   removeFromOfflineForestUnitP1,
+   removeFromForestUnitP1ServerUpdate,
+   removeFromForestUnitP2ServerUpdate,
+   removeFromOfflineForestUnitP2,
+   removeFromForestUnitP3ServerUpdate,
+   removeFromOfflineForestUnitP3
+})(ForestalUnitList);

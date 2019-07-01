@@ -16,7 +16,11 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase3 , updateForestUnitPhase3 , getForestalUnits } from '../../flux/actions';
+import { createForestUnitPhase3,
+   updateForestUnitPhase3,
+   getForestalUnits,
+   addOfflineForestUnitP3,
+   updateOfflineForestUnitP3  } from '../../flux/actions';
 //helper
 
 import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
@@ -206,11 +210,28 @@ class FormCompensation extends Component {
         //return;
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
+
+        if(this.props.appState.currentFunctionalUnit.ToSynchro)
+        {
+          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
+          this.props.updateOfflineForestUnitP3(data);
+          return;
+        }
+
+
         this.props.updateForestUnitPhase3(this.state.formData.id,data);
       }else{
         let data = this.state.formData;
         data.functional_unit_id = this.props.appState.currentFunctionalUnit.id;
         data.user_id = this.props.appState.user.id;
+
+        if(this.props.appState.currentFunctionalUnit.ToSynchro)
+        {
+          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
+          this.props.addOfflineForestUnitP3(data);
+          return;
+        }
+
         this.props.createForestUnitPhase3(data);
         console.log("createMode");
       }
@@ -552,4 +573,8 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { createForestUnitPhase3 ,  updateForestUnitPhase3 , getForestalUnits })(FormCompensation);
+export default  connect(mapStateToProps, { createForestUnitPhase3,
+    updateForestUnitPhase3,
+    getForestalUnits,
+    addOfflineForestUnitP3,
+    updateOfflineForestUnitP3 })(FormCompensation);

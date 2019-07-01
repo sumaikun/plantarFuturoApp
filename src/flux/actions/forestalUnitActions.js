@@ -2,7 +2,17 @@ import { Request } from '../../helpers/request'
 import { fetching , notFetching, setForestalUnits } from "./appActions";
 import { GET_FORESTAL_UNITS_URL , BASE_URL } from "../types"
 import Ons from 'onsenui';
-
+import {
+  addOfflineForestUnitP1,
+  updateServerForestUnitP1,
+  updateOfflineForestUnitP1,
+  addOfflineForestUnitP2,
+  updateServerForestUnitP2,
+  updateOfflineForestUnitP2,
+  addOfflineForestUnitP3,
+  updateServerForestUnitP3,
+  updateOfflineForestUnitP3
+} from "./memoryActions";
 
 export const getForestalUnits = (id) => {
   return async dispatch => {
@@ -44,7 +54,10 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-      
+
+      dispatch(addOfflineForestUnitP1(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      return;
     }
 
     dispatch(fetching());
@@ -97,6 +110,27 @@ export const updateForestUnitPhase1 = (id,data) => {
 
       data.origin = !data.origin ? null : data.origin;
 
+
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerForestUnitP1(data));
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflineForestUnitP1(data));
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
+        return;
+      }
+
+
       dispatch(fetching());
 
       let SuccessCallBack = (response) => {
@@ -124,6 +158,15 @@ export const updateForestUnitPhase1 = (id,data) => {
 
 export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
+
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+
+      dispatch(addOfflineForestUnitP2(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      return;
+    }
 
     dispatch(fetching());
 
@@ -174,6 +217,25 @@ export const updateForestUnitPhase2 = (id,data) => {
 
       data.origin = !data.origin ? null : data.origin;
 
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerForestUnitP2(data));
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflineForestUnitP2(data));
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
+        return;
+      }
+
       dispatch(fetching());
 
       let SuccessCallBack = (response) => {
@@ -201,6 +263,15 @@ export const updateForestUnitPhase2 = (id,data) => {
 
 export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
+
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+
+      dispatch(addOfflineForestUnitP3(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      return;
+    }
 
     dispatch(fetching());
 
@@ -250,6 +321,25 @@ export const updateForestUnitPhase3 = (id,data) => {
       data.health_status === "3" || data.health_status === 'Bueno' ? "3": null;
 
       data.origin = !data.origin ? null : data.origin;
+
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerForestUnitP3(data));
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflineForestUnitP3(data));
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
+        return;
+      }
 
       dispatch(fetching());
 

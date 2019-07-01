@@ -16,7 +16,13 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase1 , updateForestUnitPhase1 , getForestalUnits } from '../../flux/actions';
+import {
+   createForestUnitPhase1,
+   updateForestUnitPhase1,
+   getForestalUnits,
+   addOfflineForestUnitP1,
+   updateOfflineForestUnitP1
+} from '../../flux/actions';
 //helper
 
 import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
@@ -169,7 +175,7 @@ class FormInventory extends Component {
 
   handleChangeInput(event){
 
-    if(event.target.name && event.target.value.length > 0)
+    if(event.target.name && event.target.value.length > -1)
     {
       console.log(event.target.name);
       console.log(event.target.value);
@@ -201,11 +207,27 @@ class FormInventory extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         //return;
+
+        if(this.props.appState.currentFunctionalUnit.ToSynchro)
+        {
+          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
+          this.props.updateOfflineForestUnitP1(data);
+          return;
+        }
+
         this.props.updateForestUnitPhase1(this.state.formData.id,data);
       }else{
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         data.functional_unit_id = this.props.appState.currentFunctionalUnit.id;
+
+        if(this.props.appState.currentFunctionalUnit.ToSynchro)
+        {
+          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
+          this.props.addOfflineForestUnitP1(data);
+          return;
+        }
+
         this.props.createForestUnitPhase1(data);
         console.log("createMode");
       }
@@ -531,4 +553,9 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { createForestUnitPhase1 ,  updateForestUnitPhase1 , getForestalUnits })(FormInventory);
+export default  connect(mapStateToProps, { createForestUnitPhase1,
+    updateForestUnitPhase1,
+    getForestalUnits,
+    addOfflineForestUnitP1,
+    updateOfflineForestUnitP1
+})(FormInventory);

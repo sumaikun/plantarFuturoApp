@@ -16,7 +16,13 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase2 , updateForestUnitPhase1 , getForestalUnits , updateForestUnitPhase2 } from '../../flux/actions';
+import { createForestUnitPhase2,
+   updateForestUnitPhase1,
+  getForestalUnits,
+  updateForestUnitPhase2,
+  addOfflineForestUnitP2,
+  updateOfflineForestUnitP2
+} from '../../flux/actions';
 //helper
 
 import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
@@ -79,7 +85,6 @@ class FormProcess extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
-    console.log(this.props);
   }
 
   componentDidMount(){
@@ -196,7 +201,7 @@ class FormProcess extends Component {
 
   handleChangeInput(event){
 
-    if(event.target.name && event.target.value.length > 0)
+    if(event.target.name && event.target.value.length > -1)
     {
       console.log(event.target.name);
       console.log(event.target.value);
@@ -228,12 +233,28 @@ class FormProcess extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
 
+        if(this.props.appState.currentFunctionalUnit.ToSynchro)
+        {
+          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
+          this.props.updateOfflineForestUnitP2(data);
+          return;
+        }
+
         //return;
         this.props.updateForestUnitPhase2(this.state.formData.id,data);
       }else{
         let data = this.state.formData;
         data.functional_unit_id = this.props.appState.currentFunctionalUnit.id;
         data.user_id = this.props.appState.user.id;
+
+        if(this.props.appState.currentFunctionalUnit.ToSynchro)
+        {
+          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
+          this.props.addOfflineForestUnitP2(data);
+          return;
+        }
+
+
         this.props.createForestUnitPhase2(data);
         console.log("createMode");
       }
@@ -634,4 +655,8 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { createForestUnitPhase2 ,  updateForestUnitPhase2 , getForestalUnits })(FormProcess);
+export default  connect(mapStateToProps, { createForestUnitPhase2,
+    updateForestUnitPhase2,
+    getForestalUnits,
+    addOfflineForestUnitP2,
+    updateOfflineForestUnitP2 })(FormProcess);
