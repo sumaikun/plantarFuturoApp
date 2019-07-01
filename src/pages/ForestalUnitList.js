@@ -8,6 +8,8 @@ import yellowArrow from "../img/yellowArrow.png";
 import "../css/accordion.css";
 import { workingRowStyles } from "../jsStyles/Styles";
 
+// CSS
+import "../css/style.css";
 
 //Onsen Ui
 import {  List , ListItem, Col, Row, Card, ListHeader } from 'react-onsenui';
@@ -26,6 +28,7 @@ import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationF
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
+
 
 class ForestalUnitList extends Component {
   constructor(props) {
@@ -70,8 +73,8 @@ class ForestalUnitList extends Component {
         <div className="login-form" >
 
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
-            <div style={styles.searchButton} onClick={()=>{
+            <input className="input fontAwesome" placeholder="Buscar" type="text" style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            <div className={'plus-icon-container'} style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);
                 switch(currentPhase)
@@ -90,7 +93,7 @@ class ForestalUnitList extends Component {
                 }
 
               }}>
-              <span className="fas fa-plus fontAwesome" ></span>
+              <span className="fas fa-plus fontAwesome plus-icon" ></span>
             </div>
           </div>
 

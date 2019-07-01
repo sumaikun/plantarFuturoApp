@@ -260,6 +260,7 @@ class FormProcess extends Component {
             </Col>
           </Row>
 
+          {/*
           <Row>
             <Col>
               <Card style={styles.cardLabel}>
@@ -337,7 +338,7 @@ class FormProcess extends Component {
               </Card>
             </Col>
           </Row>
-
+          */}
           <Row>
             <Col>
               <Card style={styles.cardInput}>
@@ -427,12 +428,12 @@ class FormProcess extends Component {
               </Select>
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" />
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" />
               </Card>
@@ -471,7 +472,7 @@ class FormProcess extends Component {
 
 
           <Row>
-            <Col width="50%">
+            <Col width="100%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} name="products" onChange={this.handleChangeInput} value={this.state.formData.products} required>
                   <option value="" disabled selected>Posible uso</option>

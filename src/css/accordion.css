@@ -31,6 +31,6 @@ div.panel.show {
 .list__accordion__center {
     flex-grow: 1;
     margin-left: 15px;
-    width: 70%;
+    width: 60%;
     white-space: normal;
 }

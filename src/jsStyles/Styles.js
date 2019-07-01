@@ -45,7 +45,7 @@ export const formCardStyles = {
     marginBottom:"5px",
     backgroundColor:"#61af2e",
     boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
-    color:"white",
+    color: "white",
     width:"30%",
     borderRadius:"10%"
   }
@@ -111,7 +111,7 @@ export const workingRowStyles =
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "50px"
+    borderRadius: "50px",
   }
 }
 
