@@ -13,7 +13,45 @@ export const removeFromJsonString = (jsonString,removeKey,returnString = false )
 
 export const getFromJsonString = (jsonString,getKey,returnString = false ) => {
   //console.log(jsonString);
-  let jsonObject =  JSON.parse(jsonString);
-  return returnString ? JSON.stringify(jsonObject[getKey]) : jsonObject[getKey];
+  try{
+    let jsonObject =  JSON.parse(jsonString);
+    return returnString ? JSON.stringify(jsonObject[getKey]) : jsonObject[getKey];
+  }
+  catch(error)
+  {
+    console.log(error);
+    return null;
+  }
 
+}
+
+
+export const editOrAddToArray = (array , object , key) => {
+
+        let foundIndex = array.findIndex(data => data[key] == object[key]);
+
+        if(foundIndex != -1)
+        {
+          array[foundIndex] = object;
+        }
+        else{
+          array.push(object);
+        }
+
+      return array;
+}
+
+export const removeFromArray = (array,object) => {
+
+     let i =  array.indexOf(object);
+
+     if(i>0)
+     {
+       array = array.splice(i, 1);
+     }
+     else{
+       array = [];
+     }
+
+    return array;
 }

@@ -1,6 +1,7 @@
 import { Request } from '../../helpers/request'
-import { fetching , notFetching , setProjects } from "./appActions";
-import { getFunctionalUnits } from "./FunctionalUnitActions";
+import { fetching , notFetching , setProjects , setFunctionalUnits } from "./appActions";
+import { getFunctionalUnits  } from "./FunctionalUnitActions";
+import { getForestalUnits } from "./forestalUnitActions";
 import { GET_PROJECTS_URL , GET_PROJECTS_BY_USER } from "../types"
 
 
@@ -9,14 +10,14 @@ import { GET_PROJECTS_URL , GET_PROJECTS_BY_USER } from "../types"
 export const fetchProjects = () => {
   return async dispatch => {
 
+      dispatch(fetching());
+
       if(!navigator.onLine)
       {
         console.log("Modo offline");
         dispatch(notFetching());
         return;
       }
-
-      dispatch(fetching());
 
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
@@ -40,6 +41,9 @@ export const fetchProjects = () => {
 export const getProjectByUser = (id) => {
   return async dispatch => {
 
+
+      dispatch(fetching());
+
       if(!navigator.onLine)
       {
         console.log("Modo offline");
@@ -47,7 +51,6 @@ export const getProjectByUser = (id) => {
         return;
       }
 
-      dispatch(fetching());
 
       let SuccessCallBack = (response) => {
 
@@ -57,7 +60,20 @@ export const getProjectByUser = (id) => {
 
         response.data.forEach( project => {
           console.log(project);
-          dispatch(getFunctionalUnits(project.id));
+
+          let SuccessCallBack = (response) => {
+
+            dispatch(notFetching());
+            if(response.data.length > 0){
+              response.data.forEach( functionalUnit => {
+                dispatch(getForestalUnits(functionalUnit.id))
+              });
+            }
+
+            dispatch(setFunctionalUnits(response.data));
+          }
+
+          dispatch(getFunctionalUnits(project.id,SuccessCallBack));
         });
 
       }

@@ -14,3 +14,7 @@ export * from "./RiskManagement/RainfallActions"
 export * from "./RiskManagement/RiverCollapseActions"
 export * from "./RiskManagement/RiskManagementActions"
 export * from "./RiskManagement/RiskOverview"
+
+//memoryActions
+
+export * from "./memoryActions";

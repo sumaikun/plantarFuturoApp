@@ -30,7 +30,10 @@ import { goToForestalUnits,
   getProjectByUser,
   resetFunctionalUnits,
   selectProject,
-  goToRiskManagement } from '../../flux/actions';
+  goToRiskManagement,
+  removeFromFunctionalUnitServerUpdate,
+  removeFromOfflineFunctionalUnit,
+  updateOfflineFunctionalUnit } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -73,7 +76,10 @@ class ProjectList extends Component {
 
       }
     }
-    this.props.resetFunctionalUnits();
+    //this.props.resetFunctionalUnits();
+
+    //La propiedad functionalList esta hecha para ocultar o mostrar la lista
+
   }
 
   componenDidMount(){
@@ -97,16 +103,34 @@ class ProjectList extends Component {
           this.Code.value = "";
           let modal = document.querySelector('#my-modal');
           modal.style.display = 'none';
+
           this.props.getFunctionalUnits(reloadProjectId);
+
         }
 
         if(this.state.editMode)
         {
-          validation ?  this.props.updateFunctionalUnit(this.state.idToModify,{
-            code: this.Code.value,
-            type: 1,
-            project_id: this.state.projectIdToModify
-          },componentSuccess) : false;
+
+          console.log(this.state);
+          //return ;
+          if(!this.state.isOfflineFunit)
+          {
+              validation ?  this.props.updateFunctionalUnit(this.state.idToModify,{
+                code: this.Code.value,
+                type: 1,
+                project_id: this.state.projectIdToModify
+              },componentSuccess) : false;
+
+          }else{
+            validation ?  this.props.updateOfflineFunctionalUnit({
+              code: this.Code.value,
+              type: 1,
+              project_id: this.state.projectIdToModify,
+              ToSynchro:true,
+              id:this.state.idToModify
+            }) : false;
+            componentSuccess(this.state.projectIdToModify);
+          }
 
           this.Code.value = "";
           this.setState({
@@ -146,7 +170,8 @@ class ProjectList extends Component {
           self.setState({
             editMode:true,
             idToModify: unit.id,
-            projectIdToModify: unit.project_id
+            projectIdToModify: unit.project_id,
+            isOfflineFunit: unit.ToSynchro
           });
 
         }
@@ -156,10 +181,22 @@ class ProjectList extends Component {
   }
 
   renderFunctionalList(functionalUnits,project){
+
+    functionalUnits = functionalUnits.concat(this.props.memory.offLineFunctionalUnits);
+
+    let serverMemoryFunctionals = this.props.memory.serverFunctionalUnits;
+
+    //console.log(serverMemoryFunctionals);
+
     return(
       functionalUnits.filter(unit => {
             return unit.project_id === project.id
           }).map((funit, i) => {
+
+            let foundIndex = serverMemoryFunctionals.findIndex( memory =>   memory.id == funit.id  );
+            //console.log("foundIndex"+foundIndex);
+            funit = foundIndex != -1 ? serverMemoryFunctionals[foundIndex] : funit ;
+
           return(
             <List>
               <ListItem  tappable style={{
@@ -171,11 +208,40 @@ class ProjectList extends Component {
                   justifyContent: "space-around"
                 }}>
 
-                  <span style={{color:"gray"}} >{i+1}</span>
+                  <div onClick={()=>{
+                    let self = this;
+
+                    if(funit.ToSynchro || funit.ToSynchroEdit)
+                    {
+                      Ons
+                      .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
+                      .then(function(res) {
+                        if(res){
+                          console.log("cancelar sincronización");
+                          if(funit.ToSynchro)
+                          {
+                            self.props.removeFromOfflineFunctionalUnit(funit);
+                            Ons.notification.alert({ title:'',message: 'Datos eliminados de memoria' })
+                          }
+                          if(funit.ToSynchroEdit)
+                          {
+                            self.props.removeFromFunctionalUnitServerUpdate(funit);
+                            Ons.notification.alert({ title:'',message: 'Datos eliminados de memoria' });
+                          }
+                        }
+                      })
+                    }
+                  }} >
+
+                    <span style={{color:"gray"}} >
+                      {i+1}
+                    </span>
+                    { funit.ToSynchro || funit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
+
+                  </div>
 
                   <span onClick={()=>{
                     console.log("nav");
-                    //this.props.goToForestalUnits();
                     this.props.getForestalUnits(funit.id);
                     this.props.setFunctionalUnit(funit);
                     this.props.goToForestalUnits();
@@ -206,6 +272,7 @@ class ProjectList extends Component {
       return parseInt(project.phase) === currentPhase
     });
 
+
     let titlePage = null;
 
     switch(currentPhase)
@@ -227,7 +294,10 @@ class ProjectList extends Component {
       <AppPage  title={[<strong>{titlePage}</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getProjectByUser(this.props.appState.user.id) }}>
         { currentPhaseProjects.length > 0  ?
           currentPhaseProjects.map((project, i) => {
+
+
               return(
+
               <div onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
                     console.log("fase de riesgos");
                     console.log(project); this.props.selectProject(project);
@@ -236,12 +306,15 @@ class ProjectList extends Component {
                       console.log(project); this.props.selectProject(project)
                     })()
                   }}>
+
                 <ListAccordion counter={i+1} projectName={project.name}  phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
                   <Row>
                     <Col width="6%">
                     </Col>
                     <Col width="47%">
                       <div onClick={ ()=>{
+                        console.log("verifica unidades funcionales");
+                        console.log(functionalUnits);
                         this.props.getFunctionalUnits(project.id);
                         this.setState({
                           functionalList:{
@@ -284,6 +357,7 @@ class ProjectList extends Component {
                     <Col width="20%"></Col>
                     <Col width="80%">
                       { this.state.functionalList[project.id] ? this.renderFunctionalList(functionalUnits , project) : null }
+                      { /*this.renderFunctionalList(functionalUnits , project)*/ }
                     </Col>
                   </Row>
                 </ListAccordion>
@@ -312,8 +386,21 @@ class ProjectList extends Component {
 const mapStateToProps = state => {
   return {
     navigation: state.navigation,
-    appState: state.appState
+    appState: state.appState,
+    memory: state.memory
   };
 }
 
-export default  connect(mapStateToProps, { goToForestalUnits , createFunctionalUnit, getFunctionalUnits, updateFunctionalUnit, getForestalUnits, setFunctionalUnit, getProjectByUser, resetFunctionalUnits, selectProject , goToRiskManagement })(ProjectList);
+export default  connect(mapStateToProps, { goToForestalUnits,
+   createFunctionalUnit,
+   getFunctionalUnits,
+   updateFunctionalUnit,
+   getForestalUnits,
+   setFunctionalUnit,
+   getProjectByUser,
+   resetFunctionalUnits,
+   selectProject,
+   goToRiskManagement,
+   removeFromFunctionalUnitServerUpdate,
+   removeFromOfflineFunctionalUnit,
+   updateOfflineFunctionalUnit })(ProjectList);

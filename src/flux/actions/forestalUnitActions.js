@@ -7,9 +7,16 @@ import Ons from 'onsenui';
 export const getForestalUnits = (id) => {
   return async dispatch => {
 
-      console.log(id);
+      //console.log(id);
 
       dispatch(fetching());
+
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+        dispatch(notFetching());
+        return;
+      }
 
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
@@ -33,6 +40,12 @@ export const getForestalUnits = (id) => {
 
 export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
+
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      
+    }
 
     dispatch(fetching());
 

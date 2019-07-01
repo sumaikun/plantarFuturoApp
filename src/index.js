@@ -59,7 +59,16 @@ const appInit = _ =>
 if (window.cordova) document.addEventListener("deviceready", appInit);
 else appInit();
 
-
+String.prototype.hashCode = function() {
+  var hash = 0, i, chr;
+  if (this.length === 0) return hash;
+  for (i = 0; i < this.length; i++) {
+    chr   = this.charCodeAt(i);
+    hash  = ((hash << 5) - hash) + chr;
+    hash |= 0; // Convert to 32bit integer
+  }
+  return hash;
+};
 
 
 // If you want your app to work offline and load faster, you can change
