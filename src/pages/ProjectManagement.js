@@ -34,7 +34,7 @@ class ProjectManagement extends Component {
   }
 
   componentDidMount(){
-    this.props.fetchProjects();
+    this.props.fetchProjects(/*this.props.appState.user.id*/);
   }
 
   render() {

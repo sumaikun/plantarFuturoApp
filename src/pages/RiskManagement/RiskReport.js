@@ -34,6 +34,10 @@ class RiskReport extends Component {
     super(props);
 
     this.contentPage = this.contentPage.bind(this);
+    this.state = {
+      searchName: '',
+      searchDate: ''
+    }
   }
 
 
@@ -101,20 +105,24 @@ class RiskReport extends Component {
           break;
     }
 
+    currentRiskList.sort((a,b) => {
+      if (a.created_at > b.created_at) return -1
+      if (a.created_at < b.created_at) return 1
+      return 0
+    })
 
+    const { searchName, searchDate } = this.state;
 
     return(
     <div>
       <div style={styles.formContainer}>
         <div className="login-form" >
-
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
-            <i class="fas fa-search" style={{top:"5%"}}></i>
+            <input id="search" value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} />
+            <input type="date" value={searchDate}  onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
           </div>
         </div>
-
-        </div>
+      </div>
 
 
         { currentRiskList.length > 0  ?
@@ -122,7 +130,8 @@ class RiskReport extends Component {
           <List
             renderHeader={this.renderHeader}>
 
-           {currentRiskList.map((risk, i) => {
+
+           {currentRiskList.filter(f => f.report_date.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((risk, i) => {
 
               return (
               <div>

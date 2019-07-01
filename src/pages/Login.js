@@ -59,15 +59,11 @@ class Login extends Component {
           name:"Contraseña"
         }
       ]);
-
       validation ?  this.props.fetchLogin({
         email: this.userName.value,
         password: this.userPassword.value
       }) : false;
-
     }
-
-
   }
 
 

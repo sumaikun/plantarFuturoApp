@@ -33,19 +33,19 @@ class CollapseMenu extends Component {
         <div style = {{ backgroundColor:" white", height: '100%' }}>
           <List>
             <ListItem className={'collapse-menu-list'} tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToMain()}}>
-              <Icon icon="fa-home" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Inicio</span>
+              <div style={{ width: '14px' }}><Icon icon="fa-home" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon></div> <span style={{marginLeft:"15px"}}>Inicio</span>
             </ListItem>
             <ListItem tappable onClick={()=>{this.props.setProjectPhase(1); this.props.goToProjects()}}>
-              <Icon icon="fa-check" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Inventario</span>
+              <div style={{ width: '14px' }}><Icon icon="fa-check" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon></div> <span style={{marginLeft:"15px"}}>Inventario</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{this.props.setProjectPhase(2); this.props.goToProjects()}}>
-              <Icon icon="fa-tree" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Aprovechamiento</span>
+              <div style={{ width: '14px' }}><Icon icon="fa-tree" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon></div><span style={{marginLeft:"15px"}}>Aprovechamiento</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{this.props.setProjectPhase(3); this.props.goToProjects()}}>
-              <Icon icon="fa-chart-line" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Compensación</span>
+              <div style={{ width: '14px' }}><Icon icon="fa-chart-line" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon></div> <span style={{marginLeft:"15px"}}>Compensación</span>
             </ListItem>
             <ListItem   tappable onClick={this.props.goToProjects}>
-              <Icon icon="fa-leaf" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Vivero</span>
+              <div style={{ width: '14px' }}><Icon icon="fa-leaf" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon></div> <span style={{marginLeft:"15px"}}>Vivero</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{
               let self = this;
@@ -58,7 +58,7 @@ class CollapseMenu extends Component {
               });
 
             }}>
-              <Icon icon="fa-key" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon> <span style={{marginLeft:"15px"}}>Finalizar sesión</span>
+              <div style={{ width: '14px' }}><Icon icon="fa-key" className="fontAwesome" size={12} style={{color:"#193146"}}></Icon></div> <span style={{marginLeft:"15px"}}>Finalizar sesión</span>
             </ListItem>
           </List>
         </div>

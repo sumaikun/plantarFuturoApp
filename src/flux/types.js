@@ -5,7 +5,7 @@ const LOCAL_MODE = false;
 //ajax
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
-export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000' : 'http://plantarfuturo.com/ws';
+export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://plantarfuturo.com/test' : 'http://plantarfuturo.com/ws';
 //USER
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -39,6 +39,7 @@ export const SELECT_PROJECT = "SELECT_PROJECT";
 
 //aJAX URLS
 export const LOGIN_URL = BASE_URL+"/api/login";
+//export const GET_PROJECTS_URL = BASE_URL+"/api/users/projects";
 export const GET_PROJECTS_URL = BASE_URL+"/api/project";
 export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit' : 'http://plantarfuturo.com/ws/api/functional-unit';
 export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/functional-units/' : 'http://plantarfuturo.com/ws/api/project/functional-units/';

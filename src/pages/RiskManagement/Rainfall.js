@@ -83,6 +83,9 @@ class Rainfall extends Component {
          }
        );
     }
+    if (event.target.value[0] == "="){
+      event.target.value = event.target.value.substr(1)
+    }
   }
 
   submitData(e){
@@ -132,19 +135,19 @@ class Rainfall extends Component {
           <Row>
             <Col width="33%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" disabled={this.state.isDisable} required/>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10} placeholder="Codigo" maxLength="10" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                 <label>Hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="time" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.hour} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="time" name="hour" onChange={this.handleChangeInput} value={this.state.formData.hour} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
           </Row>
@@ -256,7 +259,7 @@ class Rainfall extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
+                <Input onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
 
               </Card>
             </Col>

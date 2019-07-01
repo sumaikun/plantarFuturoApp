@@ -190,6 +190,9 @@ class FormCompensation extends Component {
          }
        );
     }
+    if (event.target.value[0] == "="){
+      event.target.value = event.target.value.substr(1)
+    }
   }
 
   submitData(e){
@@ -470,7 +473,7 @@ class FormCompensation extends Component {
               <br/>
               <Card>
                 <div>
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                <Input onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones" />
                 </div>
               </Card>
             </Col>

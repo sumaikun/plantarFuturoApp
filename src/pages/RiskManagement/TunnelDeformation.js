@@ -44,7 +44,7 @@ class TunnelDeformation extends Component {
           ...this.state.formData,
           ...this.props.appState.currentTunnelDeformation,
           date:this.props.appState.currentTunnelDeformation.report_date.split(" ")[0],
-          hour:this.props.appState.currentTunnelDeformation.report_date.split(" ")[1]
+          hour:this.props.appState.currentTunnelDeformation.report_date.split(" ")[1],
         }
       },()=>{
         console.log(this.state);
@@ -71,6 +71,9 @@ class TunnelDeformation extends Component {
            console.log(this.state);
          }
        );
+    }
+    if (event.target.value[0] == "="){
+      event.target.value = event.target.value.substr(1)
     }
   }
 
@@ -185,9 +188,7 @@ class TunnelDeformation extends Component {
           <Row>
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.description}  placeholder="Descripción"></textarea>
-
+                <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.description}  placeholder="Descripción" />
               </Card>
             </Col>
           </Row>
@@ -229,7 +230,7 @@ class TunnelDeformation extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
+                <Input onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
 
               </Card>
             </Col>

@@ -179,11 +179,13 @@ class FormInventory extends Component {
                ...this.state.formData,
                [event.target.name] : event.target.value
            }
-
          },() => {
            console.log(this.state);
          }
        );
+    }
+    if (event.target.value[0] == "="){
+      event.target.value = event.target.value.substr(1)
     }
   }
 
@@ -381,7 +383,7 @@ class FormInventory extends Component {
               <br/>
               <Card>
                 <div>
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                <Input onChange={this.handleChangeInput} style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones" />
                 </div>
               </Card>
             </Col>

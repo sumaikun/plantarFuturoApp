@@ -12,7 +12,7 @@ import { workingRowStyles } from "../jsStyles/Styles";
 import "../css/style.css";
 
 //Onsen Ui
-import {  List , ListItem, Col, Row, Card, ListHeader } from 'react-onsenui';
+import {  List , ListItem, Col, Row, Card, ListHeader, SearchInput } from 'react-onsenui';
 import Ons from 'onsenui';
 
 //Libraries
@@ -35,17 +35,23 @@ class ForestalUnitList extends Component {
     super(props);
     this.renderHeader = this.renderHeader.bind(this);
     this.contentPage = this.contentPage.bind(this);
+    this.state = {
+      searchName: '',
+      searchDate: ''
+    }
   }
 
   renderHeader(){
     return(
-      <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">
+      <ListHeader style={{position: "fixed", zIndex:1,width:"100%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
         <Row>
           <Col width="50%" style={{
             backgroundColor: "rgba(99, 177, 48, 0.88)",
             textAlign: "center",
             color: "white",
-            fontWeight: "bold"}}>
+            fontWeight: "bold",
+            display: "fixed"
+            }}>
             {/*<Card style={styles.CardHeaders}>*/}
               <span>Individuo Forestal</span>
             {/*</Card>*/}
@@ -67,13 +73,25 @@ class ForestalUnitList extends Component {
   }
 
   contentPage(currentPhase,forestalUnits){
+    /*tableData*/
+    forestalUnits.sort((a,b) => {
+      if (a.created_at > b.created_at) return -1
+      if (a.created_at < b.created_at) return 1
+      return 0
+    })
+
+    const { searchName, searchDate } = this.state;
+    
     return(
     <div>
-      <div style={styles.formContainer}>
+      <div style={{backgroundColor:"orange", position:"fixed", width:"100%", zIndex:"1"}}>
         <div className="login-form" >
 
           <div className="group" style={styles.searchInputContainer}>
-            <input className="input fontAwesome" placeholder="Buscar" type="text" style={{fontFamily:'Arial', marginTop:"8px", width:"80%"}} />
+            <div>  
+              <input id="search" value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} className="input fontAwesome" placeholder="Buscar" type="text" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} />
+              <input type="date" value={searchDate} onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
+            </div>
             <div className={'plus-icon-container'} style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);
@@ -96,21 +114,20 @@ class ForestalUnitList extends Component {
               <span className="fas fa-plus fontAwesome plus-icon" ></span>
             </div>
           </div>
-
         </div>
       </div>
-
+      <br/><br/><br/><br/><br/><br/><br/>
 
         { forestalUnits.length > 0  ?
-
+          
           <List
             renderHeader={this.renderHeader}>
 
-           {forestalUnits.map((unit, i) => {
-
+           {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
+              console.log(searchDate)
               return (
               <div>
-                <ListItem tappable onClick={()=>{
+                <ListItem  tappable onClick={()=>{
                     this.props.setForestalUnit(unit);
                     switch(currentPhase)
                     {
@@ -155,10 +172,18 @@ class ForestalUnitList extends Component {
           </List>:<NotFound/>
 
         }
+        <br/>
       </div>
+      
     );
+    
   }
-
+  onFilter(forestalUnits) {
+    console.log(forestalUnits)
+    let searchData = forestalUnits.filter(function (data) {
+      if(data.code == "A2431") return data;
+    });
+  }
   render() {
 
 
