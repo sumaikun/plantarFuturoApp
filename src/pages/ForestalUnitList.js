@@ -43,26 +43,30 @@ class ForestalUnitList extends Component {
 
   renderHeader(){
     return(
-      <ListHeader style={{position: "fixed", zIndex:1,width:"100%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
+      <ListHeader style={{position: "fixed", zIndex:1,width:"95%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
         <Row>
-          <Col width="50%" style={{
-            backgroundColor: "rgba(99, 177, 48, 0.88)",
+          <Col width="42%" style={{
+            backgroundColor: "rgba(0, 104, 40, 0.8)",
             textAlign: "center",
             color: "white",
-            fontWeight: "bold",
-            display: "fixed"
-            }}>
+            fontWeight: "300",
+            display: "fixed",
+            whiteSpace: 'normal',
+            fontFamily: 'Raleway',
+          }}>
             {/*<Card style={styles.CardHeaders}>*/}
               <span>Individuo Forestal</span>
             {/*</Card>*/}
           </Col>
-          <Col width="50%" style={{
-            backgroundColor: "rgb(97, 175, 46)",
+          <Col width="58%" style={{
+            backgroundColor: "rgba(97, 175, 46, 0.88)",
             display:"flex",
             justifyContent:"center",
             alignItems:"center",
             color: "white",
-            fontWeight: "bold"}}>
+            fontWeight: "300",
+            fontFamily: "Raleway"
+          }}>
             {/*<Card style={styles.CardHeaders}>*/}
               <span>Estado</span>
             {/*</Card>*/}
@@ -119,57 +123,59 @@ class ForestalUnitList extends Component {
       <br/><br/><br/><br/><br/><br/><br/>
 
         { forestalUnits.length > 0  ?
-          
-          <List
-            renderHeader={this.renderHeader}>
+          <div  style={{display:"flex",justifyContent:"center"}} >
+            <div style={{width: '95%'}}>
+            <List
+              renderHeader={this.renderHeader}>
 
-           {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
-              console.log(searchDate)
-              return (
-              <div>
-                <ListItem  tappable onClick={()=>{
-                    this.props.setForestalUnit(unit);
-                    switch(currentPhase)
-                    {
-                      case 1:
-                        this.props.goToInventoryForm();
-                        break;
-                      case 2:
-                        this.props.goToProcessForm();
-                        break;
-                      case 3:
-                        this.props.goToCompensationForm();
-                        break;
-                      default:
+             {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
+                console.log(searchDate)
+                return (
+                <div>
+                  <ListItem tappable onClick={()=>{
+                      this.props.setForestalUnit(unit);
+                      switch(currentPhase)
+                      {
+                        case 1:
+                          this.props.goToInventoryForm();
                           break;
-                    }
-
-                  }}>
-                  <div className="center" style={styles.mainListItem}>
-                    <span style={styles.counter}>{i+1}</span>
-                    <span style={styles.projectName}>{unit.code}</span>
-                    <div>
-                      <span style={styles.projectInfo}>{unit.state}</span>
-                      <br/>
-                      <span style={styles.projectInfo}>{unit.created_at}</span>
-                    </div>
-                    <div style={styles.buttonContainer}>
-                      <div style={styles.ProjectButton}>
-                        <i className="fas fa-arrow-right fontAwesome"></i>
+                        case 2:
+                          this.props.goToProcessForm();
+                          break;
+                        case 3:
+                          this.props.goToCompensationForm();
+                          break;
+                        default:
+                            break;
+                      }
+                    }}>
+                    <div className="center" style={styles.mainListItem}>
+                      <span style={styles.counter}>{i+1}</span>
+                      <span style={styles.projectName}>{unit.code}</span>
+                      <div>
+                        <span style={styles.projectInfo}>{unit.state}</span>
+                        <br/>
+                        <span style={styles.projectInfo}>{unit.created_at}</span>
+                      </div>
+                      <div style={styles.buttonContainer}>
+                        <div style={styles.ProjectButton}>
+                          <i className="fas fa-arrow-right fontAwesome"></i>
+                        </div>
                       </div>
                     </div>
+                  </ListItem>
+                  <div style={{
+                      height: "10px",
+                      backgroundColor: "#e6e7e8",
+                  }}>
                   </div>
-                </ListItem>
-                <div style={{
-                    height: "10px",
-                    backgroundColor: "#e6e7e8",
-                }}>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
 
-          </List>:<NotFound/>
+            </List>
+            </div>
+          </div> :<NotFound/>
 
         }
         <br/>

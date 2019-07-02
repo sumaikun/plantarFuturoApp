@@ -63,7 +63,8 @@ export const workingRowStyles =
   projectName:{
     color: "#352865",
     fontSize: "18px",
-    fontWeight: "bold"
+    fontWeight: "400",
+    fontFamily: "Raleway"
   },
   projectInfo:{
     color: "#e6e7e8",

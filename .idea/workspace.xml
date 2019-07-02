@@ -3,28 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="42776259-f3c5-45ea-80ea-735ed65f5990" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/projectsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/projectsActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jsStyles/Styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/jsStyles/Styles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/ForestalUnitList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ForestalUnitList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FormCompensation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FormCompensation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FormInventory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FormInventory.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FormProcess.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FormProcess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/InventoryManagement/GeoReferencingForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/InventoryManagement/GeoReferencingForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/InventoryManagement/InventoryUnitList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/InventoryManagement/InventoryUnitList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/InventoryManagement/MachineryForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/InventoryManagement/MachineryForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/InventoryManagement/WorkingReportForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/InventoryManagement/WorkingReportForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ProjectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ProjectList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ProjectManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ProjectManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RiskManagement/HillsideCollapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RiskManagement/HillsideCollapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RiskManagement/HillsideMovement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RiskManagement/HillsideMovement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RiskManagement/Rainfall.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RiskManagement/Rainfall.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RiskManagement/RiverCollapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RiskManagement/RiverCollapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/RiskManagement/TunnelDeformation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RiskManagement/TunnelDeformation.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/platforms/" />
@@ -37,12 +17,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/ForestalUnitList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="95" column="42" lean-forward="true" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
+            <state relative-caret-position="287">
+              <caret line="153" column="51" lean-forward="true" selection-start-line="153" selection-start-column="51" selection-end-line="153" selection-end-column="51" />
               <folding>
                 <element signature="e#52#97#0" expanded="true" />
               </folding>
@@ -51,10 +31,62 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js">
+        <entry file="file://$PROJECT_DIR$/src/jsStyles/Styles.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="257">
+              <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="85" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="85" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ListAccordion.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="87" column="16" lean-forward="true" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+              <folding>
+                <element signature="e#52#97#0" expanded="true" />
+                <element signature="e#252#299#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/ProjectList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2">
+              <caret line="236" column="49" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
+              <folding>
+                <element signature="e#52#101#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/css/accordion.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-330">
+              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -70,13 +102,13 @@
       <find>style={{height:&quot;</find>
       <find>aprovechamiento</find>
       <find>font-famil</find>
-      <find>estado</find>
       <find>autoridad</find>
       <find>Raleway</find>
       <find>marginRight</find>
       <find>estad</find>
       <find>input</find>
       <find>filter</find>
+      <find>estado</find>
     </findStrings>
     <replaceStrings>
       <replace>marginLeft</replace>
@@ -101,11 +133,9 @@
         <option value="$PROJECT_DIR$/src/pages/ProjectManagement.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/CardButton.js" />
-        <option value="$PROJECT_DIR$/src/components/ListAccordion.js" />
         <option value="$PROJECT_DIR$/src/pages/ProjectList.js" />
         <option value="$PROJECT_DIR$/src/css/Login.css" />
         <option value="$PROJECT_DIR$/src/pages/Login.js" />
-        <option value="$PROJECT_DIR$/src/jsStyles/Styles.js" />
         <option value="$PROJECT_DIR$/src/css/style.css" />
         <option value="$PROJECT_DIR$/src/pages/FormProcess.js" />
         <option value="$PROJECT_DIR$/src/components/ListOverview.js" />
@@ -115,8 +145,10 @@
         <option value="$PROJECT_DIR$/src/flux/actions/projectsActions.js" />
         <option value="$PROJECT_DIR$/src/flux/types.js" />
         <option value="$PROJECT_DIR$/src/pages/RiskManagement/Rainfall.js" />
-        <option value="$PROJECT_DIR$/src/pages/ForestalUnitList.js" />
         <option value="$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js" />
+        <option value="$PROJECT_DIR$/src/components/ListAccordion.js" />
+        <option value="$PROJECT_DIR$/src/pages/ForestalUnitList.js" />
+        <option value="$PROJECT_DIR$/src/jsStyles/Styles.js" />
       </list>
     </option>
   </component>
@@ -131,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -142,25 +173,36 @@
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="RiskManagement" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,16 +247,16 @@
       <workItem from="1561670115873" duration="3264000" />
       <workItem from="1561853157486" duration="6344000" />
       <workItem from="1561955263930" duration="5909000" />
-      <workItem from="1561961437789" duration="366000" />
+      <workItem from="1561961437789" duration="963000" />
+      <workItem from="1562030096782" duration="1926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60836000" />
+    <option name="totallyTimeSpent" value="63359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18824404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -412,13 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="85" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CardButton.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -489,60 +524,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListAccordion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/accordion.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ListOverview.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
           <caret line="7" column="33" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/ProjectManagement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="57" column="48" lean-forward="true" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
-          <folding>
-            <element signature="e#52#97#0" expanded="true" />
-            <element signature="e#731#757#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/ProjectList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="267" column="55" selection-start-line="267" selection-start-column="50" selection-end-line="267" selection-end-column="55" />
-          <folding>
-            <element signature="e#52#101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#111#145#0" expanded="true" />
-            <element signature="e#598#665#0" expanded="true" />
-            <element signature="e#1152#1222#0" expanded="true" />
-            <element signature="e#1471#1532#0" expanded="true" />
-            <element signature="e#1675#1728#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -563,20 +548,6 @@
             <element signature="e#55#131#0" expanded="true" />
             <element signature="e#179#265#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/jsStyles/Styles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1266">
-          <caret line="97" column="20" lean-forward="true" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -626,20 +597,95 @@
         <state relative-caret-position="-2088" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="158" column="24" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/ProjectManagement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="57" column="48" lean-forward="true" selection-start-line="57" selection-start-column="48" selection-end-line="57" selection-end-column="48" />
+          <folding>
+            <element signature="e#52#97#0" expanded="true" />
+            <element signature="e#731#757#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/accordion.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-330">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#111#145#0" expanded="true" />
+            <element signature="e#598#665#0" expanded="true" />
+            <element signature="e#1152#1222#0" expanded="true" />
+            <element signature="e#1471#1532#0" expanded="true" />
+            <element signature="e#1675#1728#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="98" column="23" lean-forward="true" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="85" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/ProjectList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="236" column="49" selection-start-line="236" selection-start-column="49" selection-end-line="236" selection-end-column="49" />
+          <folding>
+            <element signature="e#52#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListAccordion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="87" column="16" lean-forward="true" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+          <folding>
+            <element signature="e#52#97#0" expanded="true" />
+            <element signature="e#252#299#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/ForestalUnitList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="95" column="42" lean-forward="true" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
+        <state relative-caret-position="287">
+          <caret line="153" column="51" lean-forward="true" selection-start-line="153" selection-start-column="51" selection-end-line="153" selection-end-column="51" />
           <folding>
             <element signature="e#52#97#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js">
+    <entry file="file://$PROJECT_DIR$/src/jsStyles/Styles.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="257">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
         </state>
       </provider>
     </entry>
