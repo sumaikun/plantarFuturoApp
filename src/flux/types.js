@@ -1,5 +1,5 @@
 //PROPERTIES
-
+export const VERSION = "1.0";
 const LOCAL_MODE = true;
 
 //ajax

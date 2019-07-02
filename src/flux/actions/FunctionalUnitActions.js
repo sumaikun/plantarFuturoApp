@@ -26,7 +26,7 @@ export const createFunctionalUnit = (data,componentSuccess) => {
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Se ha creado la unidad funcional"});
-        componentSuccess(data.project_id);
+        componentSuccess(response.data);
       }
 
       let ErrorCallBack = () => {
@@ -115,7 +115,7 @@ export const updateFunctionalUnit = (id,data,componentSuccess) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Se ha modificado la unidad funcional"});
         dispatch(resetFunctionalUnits());
-        componentSuccess();
+        componentSuccess(response.data);
       }
 
       let ErrorCallBack = () => {

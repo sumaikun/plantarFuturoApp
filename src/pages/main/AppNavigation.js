@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+
+import { VERSION  } from  '../../flux/types';
+
 //Onsen ui
 
 import {  Navigator, Splitter, SplitterSide, SplitterContent } from 'react-onsenui';
@@ -26,6 +29,17 @@ class AppNavigation extends Component {
   }
 
   componentDidMount(){
+
+    //reload if new VERSION
+
+    let version = localStorage.getItem('version');
+
+    if( version === null ||  version != VERSION )
+    {
+      localStorage.clear();
+      localStorage.setItem('version',VERSION);
+    }
+
     this.props.insertNavigator(this.navigator);
 
     let storedData = JSON.parse(localStorage.getItem('state'));

@@ -99,7 +99,11 @@ class ProjectList extends Component {
           }
         ]);
 
-        let componentSuccess = (reloadProjectId) => {
+        let componentSuccess = (response) => {
+
+          let reloadProjectId = this.state.projectIdToModify ? this.state.projectIdToModify : this.project_id;
+          // console.log(reloadProjectId);
+          //return;
           this.Code.value = "";
           let modal = document.querySelector('#my-modal');
           modal.style.display = 'none';
@@ -129,7 +133,7 @@ class ProjectList extends Component {
               ToSynchro:true,
               id:this.state.idToModify
             }) : false;
-            componentSuccess(this.state.projectIdToModify);
+            componentSuccess(null);
           }
 
           this.Code.value = "";

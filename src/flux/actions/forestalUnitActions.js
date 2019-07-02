@@ -62,7 +62,9 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+
+
+    let SuccessCallBack =  successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal creada!"});
     }
@@ -84,7 +86,7 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => 
 }
 
 
-export const updateForestUnitPhase1 = (id,data) => {
+export const updateForestUnitPhase1 = (id,data,successCallBack) => {
   return async dispatch => {
 
       console.log(data);
@@ -133,7 +135,7 @@ export const updateForestUnitPhase1 = (id,data) => {
 
       dispatch(fetching());
 
-      let SuccessCallBack = (response) => {
+      let SuccessCallBack = successCallBack ? successCallBack : (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Unidad forestal actualizada"});
 
@@ -170,7 +172,7 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal creada!"});
     }
@@ -191,7 +193,7 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
   }
 }
 
-export const updateForestUnitPhase2 = (id,data) => {
+export const updateForestUnitPhase2 = (id,data,successCallBack) => {
   return async dispatch => {
 
       console.log(data);
@@ -238,7 +240,7 @@ export const updateForestUnitPhase2 = (id,data) => {
 
       dispatch(fetching());
 
-      let SuccessCallBack = (response) => {
+      let SuccessCallBack = successCallBack ? successCallBack : (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Unidad forestal actualizada"});
 
@@ -275,7 +277,7 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal creada!"});
     }
@@ -296,7 +298,7 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
   }
 }
 
-export const updateForestUnitPhase3 = (id,data) => {
+export const updateForestUnitPhase3 = (id,data,successCallBack) => {
   return async dispatch => {
 
       console.log(data);
@@ -343,7 +345,7 @@ export const updateForestUnitPhase3 = (id,data) => {
 
       dispatch(fetching());
 
-      let SuccessCallBack = (response) => {
+      let SuccessCallBack = successCallBack ? successCallBack : (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Unidad forestal actualizada"});
 
