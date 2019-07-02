@@ -34,7 +34,7 @@ catch(err){
   console.log("error getting data");
 }
 
-const initialState =  storedData ? storedData.memory :
+const initialState =  storedData.memory ? storedData.memory :
 {
   userLogged:{},
   offLineFunctionalUnits:[],

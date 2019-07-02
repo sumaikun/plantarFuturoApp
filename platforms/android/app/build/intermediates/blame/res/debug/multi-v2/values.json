@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\tutorial\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\tutorial\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "-1,2,-1",
-                        "startColumns": "-1,4,-1",
-                        "startOffsets": "-1,55,-1",
-                        "endColumns": "-1,51,-1",
-                        "endOffsets": "-1,102,-1"
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "166,55,107",
+                        "endColumns": "63,51,58",
+                        "endOffsets": "225,102,161"
                     },
                     "to": {
                         "startLines": "2,3,4",
@@ -18,28 +18,6 @@
                         "startOffsets": "55,119,171",
                         "endColumns": "63,51,58",
                         "endOffsets": "114,166,225"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\tutorial\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
-            "map": [
-                {
-                    "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\tutorial\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "160,55,101",
-                        "endColumns": "63,45,58",
-                        "endOffsets": "219,96,155"
-                    },
-                    "to": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,119,165",
-                        "endColumns": "63,45,58",
-                        "endOffsets": "114,160,219"
                     }
                 }
             ]

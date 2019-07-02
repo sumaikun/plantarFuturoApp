@@ -7,14 +7,17 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.example.tutorial"
-    },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.example.tutorial"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.example.tutorial"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {}
