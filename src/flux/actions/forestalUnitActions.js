@@ -2,14 +2,31 @@ import { Request } from '../../helpers/request'
 import { fetching , notFetching, setForestalUnits } from "./appActions";
 import { GET_FORESTAL_UNITS_URL , BASE_URL } from "../types"
 import Ons from 'onsenui';
-
+import {
+  addOfflineForestUnitP1,
+  updateServerForestUnitP1,
+  updateOfflineForestUnitP1,
+  addOfflineForestUnitP2,
+  updateServerForestUnitP2,
+  updateOfflineForestUnitP2,
+  addOfflineForestUnitP3,
+  updateServerForestUnitP3,
+  updateOfflineForestUnitP3
+} from "./memoryActions";
 
 export const getForestalUnits = (id) => {
   return async dispatch => {
 
-      console.log(id);
+      //console.log(id);
 
       dispatch(fetching());
+
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+        dispatch(notFetching());
+        return;
+      }
 
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
@@ -34,9 +51,20 @@ export const getForestalUnits = (id) => {
 export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+
+      dispatch(addOfflineForestUnitP1(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      return;
+    }
+
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+
+
+    let SuccessCallBack =  successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal creada!"});
     }
@@ -58,7 +86,7 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => 
 }
 
 
-export const updateForestUnitPhase1 = (id,data) => {
+export const updateForestUnitPhase1 = (id,data,successCallBack) => {
   return async dispatch => {
 
       console.log(data);
@@ -84,9 +112,30 @@ export const updateForestUnitPhase1 = (id,data) => {
 
       data.origin = !data.origin ? null : data.origin;
 
+
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerForestUnitP1(data));
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflineForestUnitP1(data));
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
+        return;
+      }
+
+
       dispatch(fetching());
 
-      let SuccessCallBack = (response) => {
+      let SuccessCallBack = successCallBack ? successCallBack : (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Unidad forestal actualizada"});
 
@@ -112,9 +161,18 @@ export const updateForestUnitPhase1 = (id,data) => {
 export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+
+      dispatch(addOfflineForestUnitP2(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      return;
+    }
+
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal creada!"});
     }
@@ -135,7 +193,7 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
   }
 }
 
-export const updateForestUnitPhase2 = (id,data) => {
+export const updateForestUnitPhase2 = (id,data,successCallBack) => {
   return async dispatch => {
 
       console.log(data);
@@ -161,9 +219,28 @@ export const updateForestUnitPhase2 = (id,data) => {
 
       data.origin = !data.origin ? null : data.origin;
 
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerForestUnitP2(data));
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflineForestUnitP2(data));
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
+        return;
+      }
+
       dispatch(fetching());
 
-      let SuccessCallBack = (response) => {
+      let SuccessCallBack = successCallBack ? successCallBack : (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Unidad forestal actualizada"});
 
@@ -189,9 +266,18 @@ export const updateForestUnitPhase2 = (id,data) => {
 export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+
+      dispatch(addOfflineForestUnitP3(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      return;
+    }
+
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal creada!"});
     }
@@ -212,7 +298,7 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
   }
 }
 
-export const updateForestUnitPhase3 = (id,data) => {
+export const updateForestUnitPhase3 = (id,data,successCallBack) => {
   return async dispatch => {
 
       console.log(data);
@@ -238,9 +324,28 @@ export const updateForestUnitPhase3 = (id,data) => {
 
       data.origin = !data.origin ? null : data.origin;
 
+      if(!navigator.onLine)
+      {
+        console.log("Modo offline");
+
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerForestUnitP3(data));
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflineForestUnitP3(data));
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
+        return;
+      }
+
       dispatch(fetching());
 
-      let SuccessCallBack = (response) => {
+      let SuccessCallBack = successCallBack ? successCallBack : (response) => {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Que bien!", message:"Unidad forestal actualizada"});
 

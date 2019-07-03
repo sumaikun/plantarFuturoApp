@@ -1,6 +1,6 @@
 //PROPERTIES
-
-const LOCAL_MODE = false;
+export const VERSION = "1.0";
+const LOCAL_MODE = true;
 
 //ajax
 export const SUCCESS = "SUCCESS";
@@ -44,7 +44,8 @@ export const GET_PROJECTS_URL = BASE_URL+"/api/project";
 export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit' : 'http://plantarfuturo.com/ws/api/functional-unit';
 export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/functional-units/' : 'http://plantarfuturo.com/ws/api/project/functional-units/';
 export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit/forest-units/' : 'http://plantarfuturo.com/ws/api/functional-unit/forest-units/';
-export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://plantarfuturo.com/ws/api/project/risks/' : 'http://plantarfuturo.com/ws/api/project/risks/';
+export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/risks/' : 'http://plantarfuturo.com/ws/api/project/risks/';
+export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/users/projects/' : 'http://plantarfuturo.com/ws/api/users/projects/';
 
 
 //RiskManagement navigation
@@ -91,3 +92,31 @@ export const GO_TO_MACHINERY_FORM = "GO_TO_MACHINERY_FORM";
 export const APP_ERROR = "APP_ERROR";
 
 export const SET_RISK_OVERVIEW = "SET_RISK_OVERVIEW";
+
+
+//MemoryActions
+export const ADD_LOGGED_USER = "ADD_LOGGED_USER";
+export const ADD_FUNCTIONAL_UNIT_OFFLINE = "ADD_FUNCTIONAL_UNIT_OFFLINE";
+
+export const UPDATE_SERVER_FUNCTIONAL_UNIT = "UPDATE_SERVER_FUNCTIONAL_UNIT";
+export const UPDATE_OFFLINE_FUNCTIONAL_UNIT = "UPDATE_OFFLINE_FUNCTIONAL_UNIT";
+export const REMOVE_FROM_UPDATE_SERVER_FUNIT = "REMOVE_FROM_UPDATE_SERVER_FUNIT";
+export const REMOVE_FROM_OFFLINE_FUNIT = "REMOVE_FROM_OFFLINE_FUNIT";
+
+export const ADD_FOREST_UNIT_OFFLINE_PHASE1 = "ADD_FOREST_UNIT_OFFLINE_PHASE1";
+export const UPDATE_SERVER_FOREST_UNIT_PHASE1 = "UPDATE_SERVER_FOREST_UNIT_PHASE1";
+export const UPDATE_OFFLINE_FOREST_UNIT_PHASE1 = "UPDATE_OFFLINE_FOREST_UNIT_PHASE1";
+export const REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE1 = "REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE1";
+export const REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE1 = "REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE1";
+
+export const ADD_FOREST_UNIT_OFFLINE_PHASE2 = "ADD_FOREST_UNIT_OFFLINE_PHASE2";
+export const UPDATE_SERVER_FOREST_UNIT_PHASE2 = "UPDATE_SERVER_FOREST_UNIT_PHASE2";
+export const UPDATE_OFFLINE_FOREST_UNIT_PHASE2 = "UPDATE_OFFLINE_FOREST_UNIT_PHASE2";
+export const REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE2 = "REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE2";
+export const REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE2 = "REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE2";
+
+export const ADD_FOREST_UNIT_OFFLINE_PHASE3 = "ADD_FOREST_UNIT_OFFLINE_PHASE3";
+export const UPDATE_SERVER_FOREST_UNIT_PHASE3 = "UPDATE_SERVER_FOREST_UNIT_PHASE3";
+export const UPDATE_OFFLINE_FOREST_UNIT_PHASE3 = "UPDATE_OFFLINE_FOREST_UNIT_PHASE3";
+export const REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE3 = "REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE3";
+export const REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3 = "REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3";

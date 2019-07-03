@@ -13,12 +13,13 @@ export const loadState = () => {
 }
 export const saveState = (state) => {
   try {
-
+    //console.log(state);
     if(state.navigation.currentPagekey)
     {
       let storeState = {
         appState: state.appState,
-        navigationIndex: state.navigation.currentPagekey
+        navigationIndex: state.navigation.currentPagekey,
+        memory: state.memory,
       }
 
       let serializedData = JSON.stringify(fromJS(storeState).toJS())

@@ -1,8 +1,29 @@
-import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS, SET_PROJECT_PHASE,
-SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS, SET_FORESTAL_UNIT, SET_FUNCTIONAL_UNIT,
-SELECT_PROJECT, SET_TUNNEL_DEFORMATION_LIST , HILL_SIDE_MOVEMENT_LIST, RAIN_FALL_LIST, HILL_SIDE_COLLAPSE_LIST, RIVER_COLLAPSE_LIST,
-SET_TUNNEL_DEFORMATION, SET_HILL_SIDE_MOVEMENT, SET_RAIN_FALL, SET_HILL_SIDE_COLLAPSE, SET_RIVER_COLLAPSE,
-SET_CURRENT_RISK_PHASE, SET_RISK_INDICATORS, SET_RISK_OVERVIEW } from "../types";
+import { FETCH,
+   CANCEL_FETCH,
+   MENU_OPEN,
+   MENU_CLOSE,
+   SETUSER,
+   SET_PROJECTS,
+   SET_PROJECT_PHASE,
+   SET_FUNCTIONAL_UNITS,
+   RESET_FUNCTIONAL_UNITS,
+   SET_FORESTAL_UNITS,
+   SET_FORESTAL_UNIT,
+   SET_FUNCTIONAL_UNIT,
+   SELECT_PROJECT,
+   SET_TUNNEL_DEFORMATION_LIST,
+   HILL_SIDE_MOVEMENT_LIST,
+   RAIN_FALL_LIST,
+   HILL_SIDE_COLLAPSE_LIST,
+   RIVER_COLLAPSE_LIST,
+   SET_TUNNEL_DEFORMATION,
+   SET_HILL_SIDE_MOVEMENT,
+   SET_RAIN_FALL,
+   SET_HILL_SIDE_COLLAPSE,
+   SET_RIVER_COLLAPSE,
+   SET_CURRENT_RISK_PHASE,
+   SET_RISK_INDICATORS,
+   SET_RISK_OVERVIEW } from "../types";
 
 
 let initialUser = null;
@@ -34,17 +55,7 @@ let initialRiverCollapse = null;
 
 let storedData;
 
-try
-{
- storedData = JSON.parse(localStorage.getItem('state'));
-}
-catch(err){
-  console.log("error getting data");
-}
-
-console.log(storedData);
-
-const initialState =  storedData ? storedData.appState :   {
+let defaultValues = {
   isFetching:false,
   isOpen:false,
   user:initialUser,
@@ -80,7 +91,23 @@ const initialState =  storedData ? storedData.appState :   {
 
   currentMachineForm: null,
 
-};
+}
+
+try
+{
+ storedData = JSON.parse(localStorage.getItem('state'));
+ if(!storedData.appState)
+ {
+   storedData = defaultValues;
+ }
+}
+catch(err){
+  console.log("error getting data");
+}
+
+console.log(storedData);
+
+const initialState =  storedData ? storedData.appState : defaultValues;
 
 const appReducer = (state = initialState, action) => {
   switch(action.type) {

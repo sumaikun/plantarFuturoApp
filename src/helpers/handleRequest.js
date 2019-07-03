@@ -3,10 +3,15 @@ import { Validation_400, Validation_401, Validation_405, DefaultError } from "./
 
 export const handleCodeError = (error, message = null) => {
 
-  if(!error.response)
+  if(!error.response && navigator.onLine)
   {
     console.log(error);
-    DefaultError(" Parece que tenemos un problema con el internet o la conexión al servidor ");
+    //DefaultError(" Parece que tenemos un problema con el internet o la conexión al servidor ");
+    DefaultError(" ¡Sucedio un error inesperado! ");
+    return;
+  }
+  else{
+    console.log(error);
     return;
   }
 
