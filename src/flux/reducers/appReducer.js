@@ -55,17 +55,7 @@ let initialRiverCollapse = null;
 
 let storedData;
 
-try
-{
- storedData = JSON.parse(localStorage.getItem('state'));
-}
-catch(err){
-  console.log("error getting data");
-}
-
-console.log(storedData);
-
-const initialState =  storedData ? storedData.appState :   {
+let defaultValues = {
   isFetching:false,
   isOpen:false,
   user:initialUser,
@@ -101,7 +91,23 @@ const initialState =  storedData ? storedData.appState :   {
 
   currentMachineForm: null,
 
-};
+}
+
+try
+{
+ storedData = JSON.parse(localStorage.getItem('state'));
+ if(!storedData.appState)
+ {
+   storedData = defaultValues;
+ }
+}
+catch(err){
+  console.log("error getting data");
+}
+
+console.log(storedData);
+
+const initialState =  storedData ? storedData.appState : defaultValues;
 
 const appReducer = (state = initialState, action) => {
   switch(action.type) {

@@ -26,16 +26,7 @@ let storedData;
 
 //localStorage.clear();
 
-try
-{
- storedData = JSON.parse(localStorage.getItem('state'));
-}
-catch(err){
-  console.log("error getting data");
-}
-
-const initialState =  storedData.memory ? storedData.memory :
-{
+let defaultValues = {
   userLogged:{},
   offLineFunctionalUnits:[],
   serverFunctionalUnits:[],
@@ -46,7 +37,23 @@ const initialState =  storedData.memory ? storedData.memory :
   serverForestUnitsPhase2:[],
   offLineForestUnitsPhase3:[],
   serverForestUnitsPhase3:[]
-};
+}
+
+try
+{
+ storedData = JSON.parse(localStorage.getItem('state'));
+ if(!storedData.memory){
+   storedData.memory = defaultValues;
+ }
+}
+catch(err){
+  console.log("error getting data");
+}
+
+
+
+const initialState =  storedData ? storedData.memory  : defaultValues;
+;
 
 const generateRandomId = () => {
   let dateobj = new Date();
