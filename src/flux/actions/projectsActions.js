@@ -3,7 +3,7 @@ import { fetching , notFetching , setProjects , setFunctionalUnits } from "./app
 import { getFunctionalUnits  } from "./FunctionalUnitActions";
 import { getForestalUnits } from "./forestalUnitActions";
 import { GET_PROJECTS_URL , GET_PROJECTS_BY_USER } from "../types"
-
+import Ons from 'onsenui';
 
 
 
@@ -55,6 +55,12 @@ export const getProjectByUser = (id) => {
       let SuccessCallBack = (response) => {
 
         dispatch(notFetching());
+
+        if(response.status == "204")
+        {
+          Ons.notification.alert({title:"",message:"El usuario actual no tiene proyectos asociados"});
+          return;
+        }
 
         dispatch(setProjects(response.data));
 

@@ -7,12 +7,12 @@ export const handleCodeError = (error, message = null) => {
   {
     console.log(error);
     //DefaultError(" Parece que tenemos un problema con el internet o la conexión al servidor ");
-    DefaultError(" ¡Sucedio un error inesperado! ");
+    DefaultError(" ¡Sucedio un error inesperado, puede ser un error de conexión al servidor! ");
     return;
   }
   else{
     console.log(error);
-    return;
+    //return;
   }
 
 
