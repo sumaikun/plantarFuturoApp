@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\lords\\Desktop\\Proyectos\\Plantar\\plantarFuturoAppM\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "C:\\Users\\lords\\Desktop\\Proyectos\\Plantar\\plantarFuturoAppM\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",
