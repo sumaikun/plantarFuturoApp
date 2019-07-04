@@ -40,7 +40,7 @@ class InventoryUnitList extends Component {
 
   renderHeader(){
     return(
-      <ListHeader style={{position: "fixed", zIndex:1,width:"100%",fontSize: 15, padding:"0px"}} className="testClass">
+      <ListHeader style={{position: "fixed", zIndex:1,width:"140%",fontSize: 15, padding:"0px"}} className="testClass">
         <Row>
           <Col width="50%" style={{
             backgroundColor: "rgba(99, 177, 48, 0.88)",
@@ -51,7 +51,7 @@ class InventoryUnitList extends Component {
               <span>Individuo Forestal</span>
             {/*</Card>*/}
           </Col>
-          <Col width="50%" style={{
+          <Col width="30%" style={{
             backgroundColor: "rgb(97, 175, 46)",
             display:"flex",
             justifyContent:"center",
