@@ -52,7 +52,7 @@ class ForestalUnitList extends Component {
 
   renderHeader(){
     return(
-      <ListHeader style={{position: "fixed", zIndex:1,width:"95%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
+      <ListHeader style={{position: "fixed", zIndex:1,width:"140%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
         <Row>
           <Col width="42%" style={{
             backgroundColor: "rgba(0, 104, 40, 0.8)",
@@ -67,7 +67,7 @@ class ForestalUnitList extends Component {
               <span>Individuo Forestal</span>
             {/*</Card>*/}
           </Col>
-          <Col width="58%" style={{
+          <Col width="30%" style={{
             backgroundColor: "rgba(97, 175, 46, 0.88)",
             display:"flex",
             justifyContent:"center",
