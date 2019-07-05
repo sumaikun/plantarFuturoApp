@@ -55,6 +55,12 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => 
     {
       console.log("Modo offline");
 
+      data.created_at = new Date().toISOString().split('T')[0];
+
+      console.log(data);
+
+      //return;
+
       dispatch(addOfflineForestUnitP1(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
       return;
