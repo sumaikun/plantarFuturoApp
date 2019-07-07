@@ -259,12 +259,12 @@ class FormCompensation extends Component {
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="ID" maxLength="10" required/>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="code" maxLength="10" required/>
               </Card>
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input type="date" style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
+                <Input type="date" style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} required/>
               </Card>
             </Col>
           </Row>
