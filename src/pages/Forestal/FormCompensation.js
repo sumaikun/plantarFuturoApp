@@ -40,7 +40,7 @@ const styles = {
     justifyContent:"space-around"
   },
   cardLabel:{
-    height: "30px",
+    height: "40px",
     fontSize: "12px",
     display: "flex",
     alignItems: "center",
@@ -254,93 +254,29 @@ class FormCompensation extends Component {
         <br/>
         <form className="simpleForm"  onSubmit={this.submitData}>
 
-        {/*<Row>
-          <Col>
-            <Card style={styles.cardLabel}>
-              <span>
-                INFORMACIÓN GENERAL
-              </span>
-            </Card>
-          </Col>
-        </Row>
-
-
-        <Row>
-          <Col width="25%">
-            <Card style={styles.cardLabel}>
-              <span>
-                Autoridad
-              </span>
-            </Card>
-          </Col>
-          <Col width="25%">
-            <Card style={{...styles.textInCard, 'fontSize':"8px"}}>
-              {this.state.projectInfo.enviromental_control}
-            </Card>
-          </Col>
-          <Col width="50%">
-            <Card style={{...styles.cardLabel, "text-align":"center" }}>
-              <span>
-                INFORMACIÓN GENERAL
-              </span>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <Card style={styles.textInCard}>
-              {this.state.projectInfo.name}
-            </Card>
-          </Col>
-          <Col width="50%">
-            <Card style={styles.textInCard}>
-              {this.state.projectInfo.administrative_act}
-            </Card>
-          </Col>
-        </Row>
-
-
-        <Row>
-          <Col>
-            <Card style={styles.textInCard}>
-              Este: {this.state.projectInfo.east_coord}
-            </Card>
-          </Col>
-          <Col>
-            <Card style={styles.textInCard}>
-              Norte: {this.state.projectInfo.north_coord}
-            </Card>
-          </Col>
-          <Col>
-            <Card style={styles.textInCard}>
-              Plantar Futuro
-            </Card>
-          </Col>
-          <Col>
-            <Card style={styles.textInCard}>
-              {this.state.projectInfo.inspector}
-            </Card>
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <Card style={styles.textInCard}>
-              {this.state.projectInfo.responsible}
-            </Card>
-          </Col>
-        </Row>*/}
+        {}
 
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="ID" maxLength="10" required/>
+              </Card>
+            </Col>
+            <Col>
+              <Card style={styles.cardInput}>
+                <Input type="date" style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
               </Card>
             </Col>
           </Row>
-
-
+          <Row>
+            <Col>
+              <Card style={styles.cardLabel}>
+                <span>
+                  INFORMACIÓN GENERAL
+                </span>
+              </Card>
+            </Col>
+          </Row>
           <Row>
             <Col>
               <Card style={styles.cardInput}>
@@ -348,11 +284,17 @@ class FormCompensation extends Component {
               </Card>
             </Col>
           </Row>
-
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Nombre" required />
+                <Input style={styles.textInput} name="compensation_site" value={this.state.formData.compensation_site} onChange={this.handleChangeInput} maxLength={10}  placeholder="Responsable"  required/>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Nombre común" required />
               </Card>
             </Col>
             <Col width="50%">
@@ -375,17 +317,12 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="CAP" min="0" type="number" />
+                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="DAP" min="0" type="number" />
               </Card>
             </Col>
             <Col>
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="number" />
-              </Card>
-            </Col>
-            <Col>
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="commercial_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.commercial_heigth_m} placeholder="HC" min="0" type="number" />
               </Card>
             </Col>
           </Row>
@@ -403,21 +340,19 @@ class FormCompensation extends Component {
               </Select>
             </Card>
           </Col>
-          <Col>
-            <Card style={styles.cardRadio}>
-                <span style={{fontSize:"10px",color:"gray"}} >
-                  Epifitas
-                </span>
-                <span style={{fontSize:"10px",color:"gray"}} >
-                  Si
-                </span>
-                <Radio onChange={this.handleChangeInput}name="epiphytes" value="1" checked={this.state.formData.epiphytes === "1" || this.state.formData.epiphytes === 'Si'} modifier='material' />
-                <span style={{fontSize:"10px",color:"gray"}} >
-                  No
-                </span>
-                <Radio onChange={this.handleChangeInput}name="epiphytes" value="2" checked={this.state.formData.epiphytes === "2" || this.state.formData.epiphytes === 'No'}  modifier='material' />
-            </Card>
-          </Col>
+          <Col width="50%">
+              <Card style={styles.cardInput}>
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='epiphytes' 
+                value={
+                  this.state.formData.epiphytes === "1" || this.state.formData.epiphytes === 'Si'  ?  1 :
+                  this.state.formData.epiphytes === "2" || this.state.formData.epiphytes === 'No'  ? 2 : ''
+              } >
+                  <option value="" disabled selected>Epifitas</option>
+                  <option value="1">Si</option>
+                  <option value="2">No</option>
+                </Select>
+              </Card>
+            </Col>
           </Row>
           <Row>
             <Col>
@@ -436,7 +371,7 @@ class FormCompensation extends Component {
             </Col>
           </Row>
           <Row>
-            <Col width="30%">
+            <Col width="23%">
               <Card style={styles.cardInput} >
                 <Select onChange={this.handleChangeInput} style={{width:"100%"}} name='condition' value = {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
@@ -450,7 +385,7 @@ class FormCompensation extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="30%">
+            <Col width="27%">
               <Card style={styles.cardInput}>
               <Select onChange={this.handleChangeInput} style={{width:"100%"}} value = {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
@@ -464,19 +399,19 @@ class FormCompensation extends Component {
               </Select>
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" />
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" />
               </Card>
             </Col>
           </Row>
           <Row>
-            <Col width="50%">
+            <Col width="50">
               <Card style={styles.cardLabel}>
                   <span>
                     Coordenadas
@@ -495,7 +430,7 @@ class FormCompensation extends Component {
               <br/>
               <Card>
                 <div>
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
+                  <Input onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones" />
                 </div>
               </Card>
             </Col>
@@ -554,7 +489,7 @@ class FormCompensation extends Component {
     const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
-      <AppPage  title={["Formulario de ", <strong>COMPENSACIÓN</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getForestalUnits(currentFunctionalUnit.id) }}>
+      <AppPage title={["Formulario de ", <strong>GEOREFERENCIACIÓN</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getForestalUnits(currentFunctionalUnit.id) }}>
 
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>

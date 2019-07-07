@@ -14,14 +14,14 @@ export const formCardStyles = {
     justifyContent:"space-around"
   },
   cardLabel:{
-    height: "30px",
+    height: "40px",
     fontSize: "12px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#61af2e",
     padding:"3px",
-    color:"white"
+    color:"black"
   },
   textInput:{
     fontSize:"14px"

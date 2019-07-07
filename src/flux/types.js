@@ -1,11 +1,11 @@
 //PROPERTIES
 export const VERSION = "1.0";
-const LOCAL_MODE = false;
+const LOCAL_MODE = true;
 
 //ajax
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
-export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000' : 'https://plantarfuturo.com/ws';
+export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test' : 'https://plantarfuturo.com/ws';
 //USER
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -41,11 +41,11 @@ export const SELECT_PROJECT = "SELECT_PROJECT";
 export const LOGIN_URL = BASE_URL+"/api/login";
 //export const GET_PROJECTS_URL = BASE_URL+"/api/users/projects";
 export const GET_PROJECTS_URL = BASE_URL+"/api/project";
-export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit' : 'https://plantarfuturo.com/ws/api/functional-unit';
-export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/functional-units/' : 'https://plantarfuturo.com/ws/api/project/functional-units/';
-export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/functional-unit/forest-units/' : 'https://plantarfuturo.com/ws/api/functional-unit/forest-units/';
-export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/project/risks/' : 'https://plantarfuturo.com/ws/api/project/risks/';
-export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://localhost:8000/api/users/projects/' : 'https://plantarfuturo.com/ws/api/users/projects/';
+export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit' : 'https://plantarfuturo.com/ws/api/functional-unit';
+export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/functional-units/' : 'https://plantarfuturo.com/ws/api/project/functional-units/';
+export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit/forest-units/' : 'https://plantarfuturo.com/ws/api/functional-unit/forest-units/';
+export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/risks/' : 'https://plantarfuturo.com/ws/api/project/risks/';
+export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/users/projects/' : 'https://plantarfuturo.com/ws/api/users/projects/';
 
 
 //RiskManagement navigation
