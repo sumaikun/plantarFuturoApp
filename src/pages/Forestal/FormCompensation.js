@@ -259,7 +259,7 @@ class FormCompensation extends Component {
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="code" maxLength="10" required/>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="ID" maxLength="10" required/>
               </Card>
             </Col>
             <Col>
@@ -420,7 +420,7 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="number" required />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="number" required />
               </Card>
             </Col>
           </Row>
@@ -489,7 +489,7 @@ class FormCompensation extends Component {
     const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
-      <AppPage title={["Formulario de ", <strong>GEOREFERENCIACIÓN</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getForestalUnits(currentFunctionalUnit.id) }}>
+      <AppPage title={["", <strong>GEOREFERENCIACIÓN</strong>]} backButton={true} backButtonCallBack={()=>{ this.props.getForestalUnits(currentFunctionalUnit.id) }}>
 
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>
