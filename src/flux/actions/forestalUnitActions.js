@@ -14,6 +14,8 @@ import {
   updateOfflineForestUnitP3
 } from "./memoryActions";
 
+import { goBack } from "./navigationActions";
+
 export const getForestalUnits = (id) => {
   return async dispatch => {
 
@@ -57,12 +59,9 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => 
 
       data.created_at = new Date().toISOString().split('T')[0];
 
-      console.log(data);
-
-      //return;
-
       dispatch(addOfflineForestUnitP1(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      dispatch(goBack());
       return;
     }
 
@@ -127,11 +126,13 @@ export const updateForestUnitPhase1 = (id,data,successCallBack) => {
         {
           console.log("editar del servidor");
           dispatch(updateServerForestUnitP1(data));
+          dispatch(goBack());
         }
         else
         {
           console.log("editar offline");
           dispatch(updateOfflineForestUnitP1(data));
+          dispatch(goBack());
         }
 
         Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
@@ -170,9 +171,10 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-
+      data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineForestUnitP2(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      dispatch(goBack());
       return;
     }
 
@@ -233,11 +235,13 @@ export const updateForestUnitPhase2 = (id,data,successCallBack) => {
         {
           console.log("editar del servidor");
           dispatch(updateServerForestUnitP2(data));
+          dispatch(goBack());
         }
         else
         {
           console.log("editar offline");
           dispatch(updateOfflineForestUnitP2(data));
+          dispatch(goBack());
         }
 
         Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});
@@ -275,9 +279,10 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-
+      data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineForestUnitP3(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
+      dispatch(goBack());
       return;
     }
 
@@ -338,11 +343,13 @@ export const updateForestUnitPhase3 = (id,data,successCallBack) => {
         {
           console.log("editar del servidor");
           dispatch(updateServerForestUnitP3(data));
+          dispatch(goBack());
         }
         else
         {
           console.log("editar offline");
           dispatch(updateOfflineForestUnitP3(data));
+          dispatch(goBack());
         }
 
         Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal editada en memoria!"});

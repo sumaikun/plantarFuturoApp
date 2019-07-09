@@ -29,7 +29,10 @@ import { goToProjects, LogOut, setProjectPhase, goToMain,
   removeFromForestUnitP2ServerUpdate,
   removeFromOfflineForestUnitP2,
   removeFromForestUnitP3ServerUpdate,
-  removeFromOfflineForestUnitP3
+  removeFromOfflineForestUnitP3,
+  updateOfflineForestUnitP1,
+  updateOfflineForestUnitP2,
+  updateOfflineForestUnitP3
  } from '../flux/actions';
 import { connect } from 'react-redux';
 
@@ -104,115 +107,119 @@ class CollapseMenu extends Component {
 
                   //functional units.
 
-                  console.log("Empezando a sincronizar unidades funcionales");
+                  let synchroForestalUnits = () => {
 
-                  offLineFunctionalUnits.forEach(data => {
+                    console.log("Empezando a sincronizar unidades forestales");
 
-                    console.log("off line functional unit");
-                    console.log(data);
+                    serverForestUnitsPhase1.forEach( unit => {
+                      self.props.updateForestUnitPhase1(unit.id,unit);
+                    });
 
-                    let p1 = offLineForestUnitsPhase1.filter( memory => memory.functional_unit_id == data.id );
-                    let p2 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
-                    let p3 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
+                    serverForestUnitsPhase2.forEach( unit => {
+                      self.props.updateForestUnitPhase2(unit.id,unit);
+                    });
 
-                    successMethod = (response) => {
+                    serverForestUnitsPhase3.forEach( unit => {
+                      self.props.updateForestUnitPhase3(unit.id,unit);
+                    });
 
-                      //console.log(response);
 
-                      let fid = response.id;
-                      let method;
-                      Ons.notification.alert({title:"",message:"Unidad funcional sincronizada"});
+                    serverForestUnitsPhase1.forEach( unit => {
+                      self.props.updateForestUnitPhase1(unit.id,unit);
+                    });
 
-                      if(p1.length>0)
-                      {
-                        p1.forEach( unit => {
-                          unit.functional_unit_id = fid;
-                          method = (res) => {
-                            self.props.removeFromOfflineForestUnitP1(unit);
-                          }
-                          self.props.createForestUnitPhase1(unit,method);
-                        })
+                    serverForestUnitsPhase2.forEach( unit => {
+                      self.props.updateForestUnitPhase2(unit.id,unit);
+                    });
+
+                    serverForestUnitsPhase3.forEach( unit => {
+                      self.props.updateForestUnitPhase3(unit.id,unit);
+                    });
+
+
+                    offLineForestUnitsPhase1.forEach( unit => {
+                      method = (res) => {
+                        self.props.removeFromOfflineForestUnitP1(unit);
+                      }
+                      self.props.createForestUnitPhase1(unit);
+                    });
+
+                    offLineForestUnitsPhase2.forEach( unit => {
+                      method = (res) => {
+                        self.props.removeFromOfflineForestUnitP2(unit);
+                      }
+                      self.props.createForestUnitPhase2(unit);
+                    });
+
+                    offLineForestUnitsPhase3.forEach( unit => {
+                      method = (res) => {
+                        self.props.removeFromOfflineForestUnitP3(unit);
+                      }
+                      self.props.createForestUnitPhase3(unit);
+                    });
+
+                  }
+
+                  if(offLineFunctionalUnits.length == 0)
+                  {
+                    synchroForestalUnits();
+                  }
+                  else
+                  {
+                    console.log("Empezando a sincronizar unidades funcionales");
+
+                    offLineFunctionalUnits.forEach(data => {
+
+                      console.log("off line functional unit");
+                      console.log(data);
+
+                      let p1 = offLineForestUnitsPhase1.filter( memory => memory.functional_unit_id == data.id );
+                      let p2 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
+                      let p3 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
+
+                      successMethod = (response) => {
+
+                        //console.log(response);
+
+                        let fid = response.id;
+                        let method;
+                        Ons.notification.alert({title:"",message:"Unidad funcional sincronizada"});
+
+                        if(p1.length>0)
+                        {
+                          p1.forEach( unit => {
+                            unit.functional_unit_id = fid;
+                            console.log(unit);
+                            self.props.updateOfflineForestUnitP1(unit);
+                          })
+                        }
+
+                        if(p2.length>0)
+                        {
+                          p2.forEach( unit => {
+                            console.log("unidad a sincronizar");
+                            unit.functional_unit_id = fid;
+                            console.log(unit);
+                            self.props.updateOfflineForestUnitP2(unit);
+                          })
+                        }
+
+                        if(p3.length>0)
+                        {
+                          p3.forEach( unit => {
+                            unit.functional_unit_id = fid;
+                            console.log(unit);
+                            self.props.updateOfflineForestUnitP3(unit);
+                          })
+                        }
+                        self.props.removeFromOfflineFunctionalUnit(data);
+                        synchroForestalUnits();
                       }
 
-                      if(p2.length>0)
-                      {
-                        p2.forEach( unit => {
-                          console.log("unidad a sincronizar");
-                          unit.functional_unit_id = fid;
-                          //console.log(unit);
-                          method = (res) => {
-                            self.props.removeFromOfflineForestUnitP2(unit);
-                          }
-                          self.props.createForestUnitPhase2(unit,method);
-                        })
-                      }
+                      self.props.createFunctionalUnit(data,successMethod);
 
-                      if(p3.length>0)
-                      {
-                        p3.forEach( unit => {
-                          unit.functional_unit_id = fid;
-                          method = (res) => {
-                            self.props.removeFromOfflineForestUnitP3(unit);
-                          }
-                          self.props.createForestUnitPhase3(unit,method);
-                        })
-                      }
-
-                      self.props.removeFromOfflineFunctionalUnit(data);
-                    }
-
-                    self.props.createFunctionalUnit(data,successMethod);
-
-                  });
-
-                  console.log("Empezando a sincronizar unidades forestales");
-
-                  serverForestUnitsPhase1.forEach( unit => {
-                    self.props.updateForestUnitPhase1(unit.id,unit);
-                  });
-
-                  serverForestUnitsPhase2.forEach( unit => {
-                    self.props.updateForestUnitPhase2(unit.id,unit);
-                  });
-
-                  serverForestUnitsPhase3.forEach( unit => {
-                    self.props.updateForestUnitPhase3(unit.id,unit);
-                  });
-
-
-                  serverForestUnitsPhase1.forEach( unit => {
-                    self.props.updateForestUnitPhase1(unit.id,unit);
-                  });
-
-                  serverForestUnitsPhase2.forEach( unit => {
-                    self.props.updateForestUnitPhase2(unit.id,unit);
-                  });
-
-                  serverForestUnitsPhase3.forEach( unit => {
-                    self.props.updateForestUnitPhase3(unit.id,unit);
-                  });
-
-
-                  offLineForestUnitsPhase1.forEach( unit => {
-                    method = (res) => {
-                      self.props.removeFromOfflineForestUnitP1(unit);
-                    }
-                    self.props.createForestUnitPhase1(unit);
-                  });
-
-                  offLineForestUnitsPhase2.forEach( unit => {
-                    method = (res) => {
-                      self.props.removeFromOfflineForestUnitP2(unit);
-                    }
-                    self.props.createForestUnitPhase2(unit);
-                  });
-
-                  offLineForestUnitsPhase3.forEach( unit => {
-                    method = (res) => {
-                      self.props.removeFromOfflineForestUnitP3(unit);
-                    }
-                    self.props.createForestUnitPhase3(unit);
-                  });
+                    });
+                  }
 
                 })() : false;
 
@@ -271,5 +278,8 @@ export default  connect(mapStateToProps, { goToProjects, LogOut, setProjectPhase
    removeFromForestUnitP2ServerUpdate,
    removeFromOfflineForestUnitP2,
    removeFromForestUnitP3ServerUpdate,
-   removeFromOfflineForestUnitP3
+   removeFromOfflineForestUnitP3,
+   updateOfflineForestUnitP1,
+   updateOfflineForestUnitP2,
+   updateOfflineForestUnitP3
  })(CollapseMenu);

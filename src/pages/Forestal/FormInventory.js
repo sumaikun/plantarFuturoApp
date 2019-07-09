@@ -21,7 +21,8 @@ import {
    updateForestUnitPhase1,
    getForestalUnits,
    addOfflineForestUnitP1,
-   updateOfflineForestUnitP1
+   updateOfflineForestUnitP1,
+   goBack
 } from '../../flux/actions';
 //helper
 
@@ -195,7 +196,7 @@ class FormInventory extends Component {
     if (event.target.value[0] == "="){
       event.target.value = event.target.value.substr(1)
     }
-    
+
   }
 
   submitData(e){
@@ -217,10 +218,13 @@ class FormInventory extends Component {
         {
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.updateOfflineForestUnitP1(data);
+          this.props.goBack();
           return;
         }
 
         this.props.updateForestUnitPhase1(this.state.formData.id,data);
+        //this.props.goBack();
+
       }else{
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
@@ -228,13 +232,18 @@ class FormInventory extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
+          data.created_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.addOfflineForestUnitP1(data);
+          this.props.goBack();
           return;
         }
 
         this.props.createForestUnitPhase1(data);
+
+        //this.props.goBack();
         console.log("createMode");
+
       }
     }
     else{
@@ -398,7 +407,7 @@ class FormInventory extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="number" required />
+                <Input onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="text" required />
               </Card>
             </Col>
           </Row>
@@ -562,5 +571,6 @@ export default  connect(mapStateToProps, { createForestUnitPhase1,
     updateForestUnitPhase1,
     getForestalUnits,
     addOfflineForestUnitP1,
-    updateOfflineForestUnitP1
+    updateOfflineForestUnitP1,
+    goBack
 })(FormInventory);

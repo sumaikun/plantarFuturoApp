@@ -21,7 +21,8 @@ import { createForestUnitPhase2,
   getForestalUnits,
   updateForestUnitPhase2,
   addOfflineForestUnitP2,
-  updateOfflineForestUnitP2
+  updateOfflineForestUnitP2,
+  goBack
 } from '../../flux/actions';
 //helper
 
@@ -241,6 +242,7 @@ class FormProcess extends Component {
         {
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.updateOfflineForestUnitP2(data);
+          this.props.goBack();
           return;
         }
 
@@ -253,8 +255,10 @@ class FormProcess extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
+          data.created_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.addOfflineForestUnitP2(data);
+          this.props.goBack();
           return;
         }
 
@@ -663,4 +667,4 @@ export default  connect(mapStateToProps, { createForestUnitPhase2,
     updateForestUnitPhase2,
     getForestalUnits,
     addOfflineForestUnitP2,
-    updateOfflineForestUnitP2 })(FormProcess);
+    updateOfflineForestUnitP2,goBack })(FormProcess);

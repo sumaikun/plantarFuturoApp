@@ -20,7 +20,9 @@ import { createForestUnitPhase3,
    updateForestUnitPhase3,
    getForestalUnits,
    addOfflineForestUnitP3,
-   updateOfflineForestUnitP3  } from '../../flux/actions';
+   updateOfflineForestUnitP3,
+   goBack
+   } from '../../flux/actions';
 //helper
 
 import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
@@ -219,6 +221,7 @@ class FormCompensation extends Component {
         {
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.updateOfflineForestUnitP3(data);
+          this.props.goBack();
           return;
         }
 
@@ -231,8 +234,10 @@ class FormCompensation extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
+          data.created_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.addOfflineForestUnitP3(data);
+          this.props.goBack();
           return;
         }
 
@@ -485,7 +490,7 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="number" required />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="text" required />
               </Card>
             </Col>
           </Row>
@@ -581,4 +586,4 @@ export default  connect(mapStateToProps, { createForestUnitPhase3,
     updateForestUnitPhase3,
     getForestalUnits,
     addOfflineForestUnitP3,
-    updateOfflineForestUnitP3 })(FormCompensation);
+    updateOfflineForestUnitP3,goBack })(FormCompensation);
