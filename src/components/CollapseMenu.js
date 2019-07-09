@@ -32,7 +32,8 @@ import { goToProjects, LogOut, setProjectPhase, goToMain,
   removeFromOfflineForestUnitP3,
   updateOfflineForestUnitP1,
   updateOfflineForestUnitP2,
-  updateOfflineForestUnitP3
+  updateOfflineForestUnitP3,
+  notFetching
  } from '../flux/actions';
 import { connect } from 'react-redux';
 
@@ -112,50 +113,51 @@ class CollapseMenu extends Component {
                     console.log("Empezando a sincronizar unidades forestales");
 
                     serverForestUnitsPhase1.forEach( unit => {
-                      self.props.updateForestUnitPhase1(unit.id,unit);
+                      method = (res) => {
+                        self.props.notFetching();
+                        self.props.removeFromOfflineForestUnitP1(unit);
+                      }
+                      self.props.updateForestUnitPhase1(unit.id,unit,method);
                     });
 
                     serverForestUnitsPhase2.forEach( unit => {
-                      self.props.updateForestUnitPhase2(unit.id,unit);
+                      method = (res) => {
+                        self.props.notFetching();
+                        self.props.removeFromOfflineForestUnitP1(unit);
+                      }
+                      self.props.updateForestUnitPhase2(unit.id,unit,method);
                     });
 
                     serverForestUnitsPhase3.forEach( unit => {
-                      self.props.updateForestUnitPhase3(unit.id,unit);
+                      method = (res) => {
+                        self.props.notFetching();
+                        self.props.removeFromOfflineForestUnitP1(unit);
+                      }
+                      self.props.updateForestUnitPhase3(unit.id,unit,method);
                     });
-
-
-                    serverForestUnitsPhase1.forEach( unit => {
-                      self.props.updateForestUnitPhase1(unit.id,unit);
-                    });
-
-                    serverForestUnitsPhase2.forEach( unit => {
-                      self.props.updateForestUnitPhase2(unit.id,unit);
-                    });
-
-                    serverForestUnitsPhase3.forEach( unit => {
-                      self.props.updateForestUnitPhase3(unit.id,unit);
-                    });
-
 
                     offLineForestUnitsPhase1.forEach( unit => {
                       method = (res) => {
+                        self.props.notFetching();
                         self.props.removeFromOfflineForestUnitP1(unit);
                       }
-                      self.props.createForestUnitPhase1(unit);
+                      self.props.createForestUnitPhase1(unit,method);
                     });
 
                     offLineForestUnitsPhase2.forEach( unit => {
                       method = (res) => {
+                        self.props.notFetching();
                         self.props.removeFromOfflineForestUnitP2(unit);
                       }
-                      self.props.createForestUnitPhase2(unit);
+                      self.props.createForestUnitPhase2(unit,method);
                     });
 
                     offLineForestUnitsPhase3.forEach( unit => {
                       method = (res) => {
+                        self.props.notFetching();
                         self.props.removeFromOfflineForestUnitP3(unit);
                       }
-                      self.props.createForestUnitPhase3(unit);
+                      self.props.createForestUnitPhase3(unit,method);
                     });
 
                   }
@@ -281,5 +283,6 @@ export default  connect(mapStateToProps, { goToProjects, LogOut, setProjectPhase
    removeFromOfflineForestUnitP3,
    updateOfflineForestUnitP1,
    updateOfflineForestUnitP2,
-   updateOfflineForestUnitP3
+   updateOfflineForestUnitP3,
+   notFetching
  })(CollapseMenu);

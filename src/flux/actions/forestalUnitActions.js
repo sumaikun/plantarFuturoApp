@@ -50,7 +50,7 @@ export const getForestalUnits = (id) => {
 }
 
 
-export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack) => {
+export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack ) => {
   return async dispatch => {
 
     if(!navigator.onLine)
