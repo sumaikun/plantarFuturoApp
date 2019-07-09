@@ -282,9 +282,13 @@ class ForestalUnitList extends Component {
 
       let {  isFetching ,currentPhase , forestalUnits } = this.props.appState;
 
+      console.log(forestalUnits);
 
       if(this.props.appState.currentFunctionalUnit.ToSynchro){
         forestalUnits = [];
+      }
+      else{
+        forestalUnits = forestalUnits.filter( f => f.functional_unit_id ==  this.props.appState.currentFunctionalUnit.id );
       }
 
       switch(currentPhase)

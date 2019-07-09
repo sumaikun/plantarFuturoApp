@@ -1,5 +1,5 @@
 //PROPERTIES
-export const VERSION = "1.3.2";
+export const VERSION = "1.3.3";
 const LOCAL_MODE = false;
 
 //ajax

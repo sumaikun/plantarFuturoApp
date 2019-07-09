@@ -84,12 +84,16 @@ class AppPage extends Component {
           </ToolbarButton>
         </div>
         <div className='center' style={styles.toolBarTitle}>{this.props.title}</div>
-        { this.props.backButton ?
+        { this.props.backButton  ?
           <div className='left' >
              <BackButton onClick={()=>{
                console.log(this.props);
-               this.props.backButtonCallBack ? this.props.backButtonCallBack() : null
-               this.props.goBack();
+               if(!this.props.appState.isFetching)
+               {
+                 this.props.backButtonCallBack ? this.props.backButtonCallBack() : null
+                 this.props.goBack();
+               }
+
              }} style={styles.customToolBarIcon}></BackButton>
            </div> : null }
       </Toolbar>
