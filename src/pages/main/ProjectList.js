@@ -245,6 +245,10 @@ class ProjectList extends Component {
                   </div>
 
                   <span onClick={()=>{
+                    if(this.props.appState.isFetching)
+                    {
+                      return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
+                    }
                     console.log("nav");
                     this.props.getForestalUnits(funit.id);
                     this.props.setFunctionalUnit(funit);

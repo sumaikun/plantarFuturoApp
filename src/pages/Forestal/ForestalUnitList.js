@@ -288,7 +288,8 @@ class ForestalUnitList extends Component {
         forestalUnits = [];
       }
       else{
-        forestalUnits = forestalUnits.filter( f => f.functional_unit_id ==  this.props.appState.currentFunctionalUnit.id );
+        //forestalUnits = forestalUnits.filter( f => f.functional_unit_id ==  this.props.appState.currentFunctionalUnit.id );
+        forestalUnits = forestalUnits[this.props.appState.currentFunctionalUnit.id] ? forestalUnits[this.props.appState.currentFunctionalUnit.id] : [];
       }
 
       switch(currentPhase)

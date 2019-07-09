@@ -164,11 +164,23 @@ const appReducer = (state = initialState, action) => {
       }
     return state;
     case SET_FORESTAL_UNITS:
-      state={
-        ...state,
-        forestalUnits:action.payload
+
+      if(action.payload.length > 0)
+      {
+        console.log(action.payload);
+        let fid =  action.payload[0].functional_unit_id;
+
+        state={
+          ...state,
+          forestalUnits:{
+            ...state.forestalUnits,
+            [fid]:action.payload
+          }
+        }
+        console.log(state);
       }
-      console.log(state);
+
+
     return state;
     case SET_FORESTAL_UNIT:
       state={
