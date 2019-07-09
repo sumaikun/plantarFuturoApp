@@ -16,6 +16,7 @@ import Ons from 'onsenui';
 
 //components
 import CardButton from "../../components/CardButton";
+import Loading from "../../components/Loading";
 
 //container
 import AppPage from '../../containers/AppPage';
@@ -36,10 +37,130 @@ import "../../css/style.css";
 class ProjectManagement extends Component {
   constructor(props) {
     super(props);
+    this.contentPage = this.contentPage.bind(this);
   }
 
   componentDidMount(){
     //this.props.fetchProjects();
+  }
+
+  contentPage(phase1Projects,phase2Projects,phase3Projects,phase4Projects){
+
+    return (
+      <div style={{height:"100%",backgroundColor:"white"}}>
+        <br/>
+
+        {
+          phase1Projects.length > 0   ?
+
+          <div>
+
+            <div onClick={()=>{this.props.setProjectPhase(1);
+               this.props.goToProjects()}}>
+              <CardButton
+                imgIcon = {checkList}
+                title="Inventario"
+                subtitle = {"Total proyectos "+phase1Projects.length }
+                infoContainer = { "Ultima actualizacion "+phase1Projects[phase1Projects.length -1 ].created_at }
+               />
+             </div>
+
+             <div style={{height:"10px"}} ></div>
+
+          </div>
+
+           : null
+         }
+
+         {
+           phase2Projects.length > 0   ?
+           <div>
+            <div onClick={()=>{this.props.setProjectPhase(2);
+               this.props.goToProjects()}}>
+              <CardButton
+                imgIcon = {tree}
+                title="Aprovechamiento"
+                subtitle = {"Total proyectos "+phase2Projects.length }
+                infoContainer = { "Ultima actualizacion "+phase2Projects[phase2Projects.length -1 ].created_at }
+                />
+             </div>
+              <div style={{height:"10px"}} ></div>
+            </div> : null
+
+         }
+
+         {
+           phase3Projects.length > 0   ?
+           <div>
+            <div onClick={()=>{this.props.setProjectPhase(3);
+               this.props.goToProjects()}}>
+              <CardButton
+                imgIcon = {plant}
+                title="Georeferenciación"
+                subtitle = {"Total proyectos "+phase3Projects.length }
+                infoContainer = { "Ultima actualizacion "+phase3Projects[phase3Projects.length -1 ].created_at }
+                />
+              </div>
+              <div style={{height:"10px"}} ></div>
+            </div> : null
+
+           }
+
+
+
+
+          <div onClick={()=>{Ons.notification.alert({title:"",message:"¡Proximamente!"})}}>
+            <CardButton
+              imgIcon = {chart}
+              title="Vivero"
+              subtitle="Total reportes"
+              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+              />
+          </div>
+          <div style={{height:"10px"}} ></div>
+
+        { this.props.appState.user.risk  && phase4Projects.length > 0 ?
+          <div>
+            <div onClick={()=>{this.props.setProjectPhase(4),
+              this.props.goToProjects()
+              }}>
+              <CardButton
+                imgIcon = {checkList}
+                title="Riesgo"
+                subtitle = {"Total proyectos "+phase4Projects.length }
+                infoContainer = { "Ultima actualizacion "+phase4Projects[phase4Projects.length -1 ].created_at }
+               />
+             </div>
+            <div style={{height:"10px"}} ></div>
+           </div> : null
+        }
+
+        <div onClick={()=>{
+          this.props.goToInventoryManagement();
+        }}>
+          {/*<CardButton
+            imgIcon = {chart}
+            title="Gestión de inventarios"
+            subtitle="Total reportes"
+            infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+            />*/}
+        </div>
+        <div style={{height:"10px"}} ></div>
+
+        <div onClick={()=>{
+          this.props.goToInventoryManagement();
+        }}>
+          {/*<CardButton
+            imgIcon = {chart}
+            title="Combustible"
+            subtitle="Total reportes"
+            infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
+            />*/}
+        </div>
+        <div style={{height:"10px"}} ></div>
+
+      </div>
+    );
   }
 
   render() {
@@ -65,121 +186,20 @@ class ProjectManagement extends Component {
 
     });
 
+    const { isFetching } = this.props.appState;
+
     return (
       <AppPage  title={["GESTION DE ", <strong>PROYECTOS</strong>]}>
-        <div style={{height:"100%",backgroundColor:"white"}}>
-          <br/>
 
-          {
-            phase1Projects.length > 0   ?
+          {  isFetching ?
+            <div style={{backgroundColor:"white",height:"100%"}}>
+              <Loading/>
+            </div> :
 
-            <div>
+             this.contentPage(phase1Projects,phase2Projects,phase3Projects,phase4Projects)
 
-              <div onClick={()=>{this.props.setProjectPhase(1);
-                 this.props.goToProjects()}}>
-                <CardButton
-                  imgIcon = {checkList}
-                  title="Inventario"
-                  subtitle = {"Total proyectos "+phase1Projects.length }
-                  infoContainer = { "Ultima actualizacion "+phase1Projects[phase1Projects.length -1 ].created_at }
-                 />
-               </div>
-
-               <div style={{height:"10px"}} ></div>
-
-            </div>
-
-             : null
-           }
-
-           {
-             phase2Projects.length > 0   ?
-             <div>
-              <div onClick={()=>{this.props.setProjectPhase(2);
-                 this.props.goToProjects()}}>
-                <CardButton
-                  imgIcon = {tree}
-                  title="Aprovechamiento"
-                  subtitle = {"Total proyectos "+phase2Projects.length }
-                  infoContainer = { "Ultima actualizacion "+phase2Projects[phase2Projects.length -1 ].created_at }
-                  />
-               </div>
-                <div style={{height:"10px"}} ></div>
-              </div> : null
-
-           }
-
-           {
-             phase3Projects.length > 0   ?
-             <div>
-              <div onClick={()=>{this.props.setProjectPhase(3);
-                 this.props.goToProjects()}}>
-                <CardButton
-                  imgIcon = {plant}
-                  title="Georeferenciación"
-                  subtitle = {"Total proyectos "+phase3Projects.length }
-                  infoContainer = { "Ultima actualizacion "+phase3Projects[phase3Projects.length -1 ].created_at }
-                  />
-                </div>
-                <div style={{height:"10px"}} ></div>
-              </div> : null
-
-             }
-
-
-
-
-            <div onClick={()=>{Ons.notification.alert({title:"",message:"¡Proximamente!"})}}>
-              <CardButton
-                imgIcon = {chart}
-                title="Vivero"
-                subtitle="Total reportes"
-                infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-                />
-            </div>
-            <div style={{height:"10px"}} ></div>
-
-          { this.props.appState.user.risk  && phase4Projects.length > 0 ?
-            <div>
-              <div onClick={()=>{this.props.setProjectPhase(4),
-                this.props.goToProjects()
-                }}>
-                <CardButton
-                  imgIcon = {checkList}
-                  title="Riesgo"
-                  subtitle = {"Total proyectos "+phase4Projects.length }
-                  infoContainer = { "Ultima actualizacion "+phase4Projects[phase4Projects.length -1 ].created_at }
-                 />
-               </div>
-              <div style={{height:"10px"}} ></div>
-             </div> : null
           }
 
-          <div onClick={()=>{
-            this.props.goToInventoryManagement();
-          }}>
-            {/*<CardButton
-              imgIcon = {chart}
-              title="Gestión de inventarios"
-              subtitle="Total reportes"
-              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-              />*/}
-          </div>
-          <div style={{height:"10px"}} ></div>
-
-          <div onClick={()=>{
-            this.props.goToInventoryManagement();
-          }}>
-            {/*<CardButton
-              imgIcon = {chart}
-              title="Combustible"
-              subtitle="Total reportes"
-              infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-              />*/}
-          </div>
-          <div style={{height:"10px"}} ></div>
-
-        </div>
       </AppPage>
     );
   }
