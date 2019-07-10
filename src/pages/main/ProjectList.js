@@ -280,7 +280,6 @@ class ProjectList extends Component {
       return parseInt(project.phase) === currentPhase
     });
 
-
     let titlePage = null;
 
     switch(currentPhase)
@@ -356,6 +355,7 @@ class ProjectList extends Component {
                             <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
                                 button.textContent = "Registrar";
                                 this.project_id = project.id; }}>
+                            { this.props.appState.currentPhase != "3" ? 
                             <CardOptionButton
                               className="modal-btn"
                               accordionIconsStyles={styles.accordionIcons}
@@ -365,7 +365,8 @@ class ProjectList extends Component {
                               imgStyles={{height:"5vmin"}}
                               image={yellowArrow}
                               title="Nueva unidad funcional"
-                              />
+                              />: <div></div>
+                            }
                             </div>
                           </Col>
                         </Row>

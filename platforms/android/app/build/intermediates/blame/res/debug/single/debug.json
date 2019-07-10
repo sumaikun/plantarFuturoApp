@@ -1,62 +1,62 @@
 [
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxxhdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-port-xxxhdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xxxhdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-land-xxxhdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/xml/config.xml"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-mdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-land-mdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xhdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-land-xhdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxhdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-land-xxhdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxhdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-port-xxhdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-hdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-port-hdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xhdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-port-xhdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xxxhdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-land-xxxhdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_config.xml.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\xml\\config.xml"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-ldpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-land-ldpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_camera_provider_paths.xml.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\xml\\camera_provider_paths.xml"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-hdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-land-hdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-ldpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-land-ldpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-mdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-port-mdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-ldpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-port-ldpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-ldpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-port-ldpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-hdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-port-hdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-land-xhdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-land-xhdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-xxhdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-land-xxhdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxxhdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-port-xxxhdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-hdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-land-hdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xxhdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-port-xxhdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-port-mdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/drawable-port-xhdpi_screen.png.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/drawable-port-xhdpi/screen.png"
     },
     {
-        "merged": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-land-mdpi_screen.png.flat",
-        "source": "C:\\Users\\JVega.PR-TEC-PRIT\\Desktop\\App-Dev\\cordova\\Version 2\\V3\\version offline\\PlantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\drawable-land-mdpi\\screen.png"
+        "merged": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/xml_camera_provider_paths.xml.flat",
+        "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/xml/camera_provider_paths.xml"
     }
 ]
