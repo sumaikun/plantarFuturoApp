@@ -262,11 +262,6 @@ class FormCompensation extends Component {
                 <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="ID" maxLength="10" required/>
               </Card>
             </Col>
-            <Col>
-              <Card style={styles.cardInput}>
-                <Input type="date" style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} required/>
-              </Card>
-            </Col>
           </Row>
           <Row>
             <Col>
@@ -281,13 +276,6 @@ class FormCompensation extends Component {
             <Col>
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="compensation_site" value={this.state.formData.compensation_site} onChange={this.handleChangeInput} maxLength={10}  placeholder="Sitio de compensacion"  required/>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="compensation_site" value={this.state.formData.compensation_site} onChange={this.handleChangeInput} maxLength={10}  placeholder="Responsable"  required/>
               </Card>
             </Col>
           </Row>
@@ -317,12 +305,12 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="DAP" min="0" type="number" />
+                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="CAP" min="0" type="decimal" />
               </Card>
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="number" />
+                <Input style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="decimal" />
               </Card>
             </Col>
           </Row>
@@ -401,12 +389,12 @@ class FormCompensation extends Component {
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="decimal" />
               </Card>
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="decimal" />
               </Card>
             </Col>
           </Row>
@@ -420,7 +408,7 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="number" required />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="decimal" required />
               </Card>
             </Col>
           </Row>
