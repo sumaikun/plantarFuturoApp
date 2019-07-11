@@ -159,7 +159,7 @@ class WorkingReportForm extends Component {
 
             <Col width="49%">
               <Card style={{...styles.cardInput }}>
-                <Input  type="decimal" name="cc" onChange={this.handleChangeInput.cc} value={this.state.formData.cc} placeholder="CC" disabled={this.state.isDisable} required/>
+                <Input  type="number" step="any" name="cc" onChange={this.handleChangeInput.cc} value={this.state.formData.cc} placeholder="CC" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
 

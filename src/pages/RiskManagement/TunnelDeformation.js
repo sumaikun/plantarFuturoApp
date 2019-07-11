@@ -231,12 +231,12 @@ class TunnelDeformation extends Component {
           <Row>
             <Col width="26.5%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="longitude" value={this.state.formData.longitude} onInput={this.setRiskLevel} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
+                <Input type="number" step="any" style={styles.textInput} name="longitude" value={this.state.formData.longitude} onInput={this.setRiskLevel} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
               </Card>
             </Col>
             <Col width="26.5%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="width" value={this.state.formData.width} onChange={this.handleChangeInput} placeholder="Ancho" disabled={this.state.isDisable} required />
+                <Input type="number" step="any" style={styles.textInput} name="width" value={this.state.formData.width} onChange={this.handleChangeInput} placeholder="Ancho" disabled={this.state.isDisable} required />
               </Card>
             </Col>
             <Col width="46%">
