@@ -229,7 +229,7 @@ class Rainfall extends Component {
           </Row>
 
           <Row>
-            <Col width="97.75%">
+            <Col width="99%">
               <Card style={styles.cardLabel}>
                 <span>
                   Intensidad
@@ -240,7 +240,7 @@ class Rainfall extends Component {
 
 
           <Row>
-            <Col width="48%">
+            <Col width="49.5%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} value={ this.state.formData.type === "Llovizna" || this.state.formData.type === "1" ? 1:
                   this.state.formData.type === "Lluvia" || this.state.formData.type === "2" ? 2:
@@ -255,23 +255,23 @@ class Rainfall extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="48%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
-                  <label>Milimetros/hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="mm_hours" onInput={this.setRiskLevel} onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
+                <label>Milimetros/hora:</label>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="decimal" name="mm_hours" onInput={this.setRiskLevel} onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             {/*<Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                 <label>Horas:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} decimal name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} disabled={this.state.isDisable} required/>
               </Card>
             </Col>*/}
           </Row>
 
 
           <Row>
-            <Col width="97.75%">
+            <Col width="99%">
               <Card style={styles.cardLabel}>
                 <span>
                   Duración
@@ -281,13 +281,13 @@ class Rainfall extends Component {
           </Row>
 
           <Row>
-            <Col width="48%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
               <label>Inicio:</label>
             <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local"  onChange={this.handleChangeInput} value={this.state.formData.start} name="start" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-            <Col width="48%">
+            <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Final:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local"  onChange={this.handleChangeInput} value={this.state.formData.finish} name="finish" disabled={this.state.isDisable} required/>
@@ -299,7 +299,7 @@ class Rainfall extends Component {
 
 
           <Row>
-            <Col width="96%">
+            <Col width="99%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={true} value={this.state.formData.level} >
                   <option value="level" disabled selected>Estado de emergencia</option>
@@ -317,13 +317,13 @@ class Rainfall extends Component {
 
           <Row>
 
-            <Col width="48%">
+            <Col width="49.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_name" value={this.state.formData.responsible_name} disabled={this.state.isDisable} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
-            <Col width="48%">
+            <Col width="49.5%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
