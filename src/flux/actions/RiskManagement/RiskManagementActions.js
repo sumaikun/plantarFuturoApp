@@ -1,9 +1,25 @@
 import { Request } from '../../../helpers/request'
 import { fetching , notFetching  } from "../appActions";
-import {  BASE_URL, RAIN_FALL_URL, TUNNEL_DEFORMATION_URL, HILL_SIDE_COLLAPSE_URL, HALL_SIDE_MOVEMENT_URL, RIVER_COLLAPSE_URL
-, SET_TUNNEL_DEFORMATION_LIST , HILL_SIDE_MOVEMENT_LIST, RAIN_FALL_LIST, HILL_SIDE_COLLAPSE_LIST, RIVER_COLLAPSE_LIST,
-SET_TUNNEL_DEFORMATION, SET_HILL_SIDE_MOVEMENT, SET_RAIN_FALL, SET_HILL_SIDE_COLLAPSE, SET_RIVER_COLLAPSE, GO_TO_RISK_REPORT
-, SET_CURRENT_RISK_PHASE, SET_RISK_INDICATORS, RISK_INDICATORS_URL  } from "../../types"
+import {  BASE_URL,
+   RAIN_FALL_URL,
+   TUNNEL_DEFORMATION_URL,
+   HILL_SIDE_COLLAPSE_URL,
+   HALL_SIDE_MOVEMENT_URL,
+   RIVER_COLLAPSE_URL,
+   SET_TUNNEL_DEFORMATION_LIST,
+   HILL_SIDE_MOVEMENT_LIST,
+   RAIN_FALL_LIST,
+   HILL_SIDE_COLLAPSE_LIST,
+   RIVER_COLLAPSE_LIST,
+   SET_TUNNEL_DEFORMATION,
+   SET_HILL_SIDE_MOVEMENT,
+   SET_RAIN_FALL,
+   SET_HILL_SIDE_COLLAPSE,
+   SET_RIVER_COLLAPSE,
+   GO_TO_RISK_REPORT,
+   SET_CURRENT_RISK_PHASE,
+   SET_RISK_INDICATORS,
+   RISK_INDICATORS_URL  } from "../../types"
 import Ons from 'onsenui';
 
 export const goToRiskReport = () => ({
@@ -51,6 +67,13 @@ export const getTunnelsDeformation = (data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(notFetching());
+      return;
+    }
+
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
       dispatch(setTunnelDeformationList(response.data));
@@ -80,6 +103,13 @@ export const getHillsidesMovement = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
 
     dispatch(fetching());
+
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(notFetching());
+      return;
+    }
 
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
@@ -112,6 +142,13 @@ export const getRainfalls = (data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(notFetching());
+      return;
+    }
+
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
       dispatch(setRainfallList(response.data));
@@ -143,6 +180,13 @@ export const getHillsidesCollapse = (data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(notFetching());
+      return;
+    }
+
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
       dispatch(setHillSlideCollapseList(response.data));
@@ -173,6 +217,13 @@ export const getRiversCollapse = (data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(notFetching());
+      return;
+    }
+
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
       dispatch(setRiverCollapseList(response.data));
@@ -202,6 +253,13 @@ export const getRiskIndicators = (data,successCallBack  ,errorCallBack) => {
   return async dispatch => {
 
     dispatch(fetching());
+
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(notFetching());
+      return;
+    }
 
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
