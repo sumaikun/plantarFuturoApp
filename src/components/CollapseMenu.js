@@ -228,7 +228,7 @@ class CollapseMenu extends Component {
               });
 
             }}>
-              <span style={{marginRight:"15px"}}>Sincronizar al servidor</span> <i class="fas fa-upload"></i>
+              <div style={{ width: '14px' }}><i className="fas fa-upload"></i></div> <span style={{marginLeft:"15px"}}>Sincronizar al servidor</span>
             </ListItem>
             <ListItem   tappable onClick={()=>{
               let self = this;

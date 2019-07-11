@@ -209,7 +209,7 @@ class ProjectList extends Component {
                 fontWeight: "bold"}}
               >
                 <div className="center" style={{display: "flex",
-                  justifyContent: "space-around"
+                  justifyContent: "space-between"
                 }}>
 
                   <div onClick={()=>{

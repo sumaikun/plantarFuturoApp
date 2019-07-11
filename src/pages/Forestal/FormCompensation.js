@@ -29,7 +29,7 @@ import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/image
 
 const styles = {
   cardInput:{
-    height: "40px",
+    height: "30px",
     display: "flex",
     alignItems: "center",
     padding:"3px"
@@ -61,8 +61,15 @@ const styles = {
   },
   buttonCard:{
     backgroundColor:"rgb(97, 175, 46)",
-    width:"100%",
-    textAlign:"center"
+    //width:"100%",
+    textAlign:"center",
+    width: "85%",
+    height: "35px",
+    margin: "0 auto",
+    padding: "0",
+    display: "table-cell",
+    lineHeight: "35px",
+    verticalAlign: "middle",
   },
   textInCard:{
     fontSize:"14px",
@@ -70,6 +77,21 @@ const styles = {
     color:"grey",
     fontWeight:"bold",
     borderStyle: "dotted"
+  },
+  uploadFile:{
+    backgroundColor:"rgb(97, 175, 46)",
+    //width:"100%",
+    textAlign:"center",
+    width: "85%",
+    height: "35px",
+    margin: "3px auto",
+    padding: "0",
+    display: "table-cell",
+    lineHeight: "35px",
+    verticalAlign: "middle",
+    borderRadius: "5px",
+    fontSize: "17px",
+    color: "white"
   }
 }
 
@@ -441,7 +463,7 @@ class FormCompensation extends Component {
             </Col>
           </Row>
           <Row>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput} >
                 <Select onChange={this.handleChangeInput} style={{width:"100%"}} name='condition' value = {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
@@ -455,7 +477,7 @@ class FormCompensation extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
               <Select onChange={this.handleChangeInput} style={{width:"100%"}} value = {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
@@ -469,12 +491,12 @@ class FormCompensation extends Component {
               </Select>
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" />
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" />
               </Card>
@@ -490,7 +512,7 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" type="text" required />
+                <Input onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="text" required />
               </Card>
             </Col>
           </Row>
@@ -528,9 +550,7 @@ class FormCompensation extends Component {
                 <Button style={styles.buttonCard}
                   onClick={this.saveImage}
                 >Tomar foto</Button>
-                <label className="fileContainer" style={{ "font-size": "17px",
-                  color: "white"
-                }}>
+                <label className="fileContainer" style={ styles.uploadFile }>
                   Subir archivo
                   <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
                      />

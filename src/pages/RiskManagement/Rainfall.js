@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //sources
 import "../../css/simpleForm.css";
-
+import "../../css/style.css";
 import { formCardStyles } from "../../jsStyles/Styles";
 
 //Onsen Ui
@@ -34,6 +34,8 @@ class Rainfall extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
+    this.checkRiskParamenter = this.checkRiskParamenter.bind(this);
+    this.setRiskLevel = this.setRiskLevel.bind(this);
     console.log(this.props);
   }
 
@@ -119,6 +121,80 @@ class Rainfall extends Component {
 
   }
 
+  checkRiskParamenter(value) {
+    if (value < 40) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "1"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 40 && value < 70) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "2"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 70 && value < 100) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "3"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 100 && value < 200) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "4"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 200) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "5"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+  }
+
+  setRiskLevel(event) {
+    if (event.target.value.length > 0) {
+      this.checkRiskParamenter(event.target.value);
+    }
+  }
+
   contentPage(){
 
     return(
@@ -127,7 +203,7 @@ class Rainfall extends Component {
         <br/>
         {
           this.props.appState.currentRainfall ?
-             <Row>
+            <Row>
               <button onClick={this.enableForm} style={styles.disableButton}>Habilitar edición</button>
             </Row>:null
         }
@@ -135,25 +211,25 @@ class Rainfall extends Component {
           <Row>
             <Col width="33%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10} placeholder="Codigo" maxLength="10" disabled={this.state.isDisable} required/>
+                <Input style={{...styles.textInput, position:"absolute", width:"33%"}} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10} placeholder="Codigo" maxLength="10" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"33%"}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             <Col width="33%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                 <label>Hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="time" name="hour" onChange={this.handleChangeInput} value={this.state.formData.hour} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"33%"}} type="time" name="hour" onChange={this.handleChangeInput} value={this.state.formData.hour} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
           </Row>
 
           <Row>
-            <Col width="100%">
+            <Col width="97.75%">
               <Card style={styles.cardLabel}>
                 <span>
                   Intensidad
@@ -164,7 +240,7 @@ class Rainfall extends Component {
 
 
           <Row>
-            <Col width="33%">
+            <Col width="48%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} value={ this.state.formData.type === "Llovizna" || this.state.formData.type === "1" ? 1:
                   this.state.formData.type === "Lluvia" || this.state.formData.type === "2" ? 2:
@@ -179,10 +255,10 @@ class Rainfall extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="50%">
+            <Col width="48%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Milimetros/hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="mm_hours" onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" name="mm_hours" onInput={this.setRiskLevel} onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             {/*<Col width="33%">
@@ -195,7 +271,7 @@ class Rainfall extends Component {
 
 
           <Row>
-            <Col width="100%">
+            <Col width="97.75%">
               <Card style={styles.cardLabel}>
                 <span>
                   Duración
@@ -205,13 +281,13 @@ class Rainfall extends Component {
           </Row>
 
           <Row>
-            <Col width="49.5%">
+            <Col width="48%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
               <label>Inicio:</label>
             <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local"  onChange={this.handleChangeInput} value={this.state.formData.start} name="start" disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-            <Col width="49.5%">
+            <Col width="48%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Final:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="datetime-local"  onChange={this.handleChangeInput} value={this.state.formData.finish} name="finish" disabled={this.state.isDisable} required/>
@@ -223,9 +299,9 @@ class Rainfall extends Component {
 
 
           <Row>
-            <Col width="99%">
+            <Col width="96%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={true} value={this.state.formData.level} >
                   <option value="level" disabled selected>Estado de emergencia</option>
                   <option value="1">
                     Estado de emergencia: 1
@@ -241,13 +317,13 @@ class Rainfall extends Component {
 
           <Row>
 
-            <Col width="60%">
+            <Col width="48%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_name" value={this.state.formData.responsible_name} disabled={this.state.isDisable} onChange={this.handleChangeInput}placeholder="Responsable" required />
               </Card>
             </Col>
 
-            <Col width="39.5%">
+            <Col width="48%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} name="responsible_id" value={this.state.formData.responsible_id} onChange={this.handleChangeInput} disabled={this.state.isDisable} placeholder="Identificación" required />
               </Card>
@@ -256,10 +332,10 @@ class Rainfall extends Component {
           </Row>
 
           <Row>
-            <Col width="99%">
+            <Col width="96%">
               <Card style={{...styles.cardInput, height:"auto"}}>
 
-                <Input onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
+                <Input onChange={this.handleChangeInput}style={{width:"96%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
 
               </Card>
             </Col>

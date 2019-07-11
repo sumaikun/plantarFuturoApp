@@ -33,6 +33,8 @@ class HillsideMovement extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
+    this.checkRiskParamenter = this.checkRiskParamenter.bind(this);
+    this.setRiskLevel = this.setRiskLevel.bind(this);
     console.log(this.props);
   }
 
@@ -118,6 +120,80 @@ class HillsideMovement extends Component {
 
   }
 
+  checkRiskParamenter(value) {
+    if (value < 5) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "1"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 5 && value < 15) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "2"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 15 && value < 20) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "3"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 20 && value < 30) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "4"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 30) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "5"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+  }
+
+  setRiskLevel(event) {
+    if (event.target.value.length > 0) {
+      this.checkRiskParamenter(event.target.value);
+    }
+  }
+
   contentPage(){
 
     return(
@@ -154,7 +230,7 @@ class HillsideMovement extends Component {
           <Row>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="longitude" value={this.state.formData.longitude} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
+                <Input style={styles.textInput} name="longitude" value={this.state.formData.longitude} onInput={this.setRiskLevel} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
               </Card>
             </Col>
             <Col width="25%">
@@ -197,11 +273,9 @@ class HillsideMovement extends Component {
           <Row>
             <Col width="99%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={true} value={this.state.formData.level} >
                   <option value="level" disabled selected>Estado de emergencia</option>
-                  <option value="1">
-                    Estado de emergencia: 1
-                  </option>
+                  <option value="1">Estado de emergencia: 1</option>
                   <option value="2">Estado de emergencia: 2</option>
                   <option value="3">Estado de emergencia: 3</option>
                   <option value="4">Estado de emergencia: 4</option>

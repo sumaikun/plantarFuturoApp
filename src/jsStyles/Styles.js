@@ -55,7 +55,7 @@ export const workingRowStyles =
 {
   mainListItem:{
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   counter:{
     color: "#e6e7e8"
@@ -64,7 +64,8 @@ export const workingRowStyles =
     color: "#352865",
     fontSize: "18px",
     fontWeight: "400",
-    fontFamily: "Raleway"
+    fontFamily: "Raleway",
+    whiteSpace: "normal",
   },
   projectInfo:{
     color: "#e6e7e8",
