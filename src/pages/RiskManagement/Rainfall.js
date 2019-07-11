@@ -182,7 +182,7 @@ class Rainfall extends Component {
             <Col width="50%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Milimetros/hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="decimal" name="mm_hours" onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" step="any" name="mm_hours" onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             {/*<Col width="33%">

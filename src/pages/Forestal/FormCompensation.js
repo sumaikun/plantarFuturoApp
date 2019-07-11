@@ -305,12 +305,12 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="CAP" min="0" type="decimal" />
+                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="CAP" min="0" type="number" step="any" />
               </Card>
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="decimal" />
+                <Input style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="number" step="any" />
               </Card>
             </Col>
           </Row>
@@ -330,7 +330,7 @@ class FormCompensation extends Component {
           </Col>
           <Col width="50%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='epiphytes' 
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='epiphytes'
                 value={
                   this.state.formData.epiphytes === "1" || this.state.formData.epiphytes === 'Si'  ?  1 :
                   this.state.formData.epiphytes === "2" || this.state.formData.epiphytes === 'No'  ? 2 : ''
@@ -389,12 +389,12 @@ class FormCompensation extends Component {
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="decimal" />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" step="any" />
               </Card>
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="decimal" />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" step="any" />
               </Card>
             </Col>
           </Row>
@@ -408,7 +408,7 @@ class FormCompensation extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="decimal" required />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="number" step="any" required />
               </Card>
             </Col>
           </Row>
