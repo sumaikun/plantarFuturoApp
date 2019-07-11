@@ -120,7 +120,7 @@ class Login extends Component {
                   </div>
                   <a href="" className="a">Olvidaste tu contraseña?</a>
                 </div>
-                <div style={{display:'flex',justifyContent:'space-evenly', marginTop:'25%'}}>
+                <div style={{display:'flex',justifyContent:'center', marginTop:'25%'}}>
                   <a target={'_blank'} href="https://www.facebook.com/plantarfuturoingenieria/"><img id='logo' className="Social-logo"  src={fbicon} /></a>
                   <a target={'_blank'} href="https://www.instagram.com/plantarfuturo/"><img id='logo' className="Social-logo" src={insicon} /></a>
                   <a target={'_blank'} href="https://www.youtube.com/watch?v=t_55VJA3p-M"><img id='logo' className="Social-logo" src={youicon} /></a>
