@@ -19,7 +19,39 @@ import {
    UPDATE_SERVER_FOREST_UNIT_PHASE3,
    UPDATE_OFFLINE_FOREST_UNIT_PHASE3,
    REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE3,
-   REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3
+   REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3,
+
+
+   ADD_TUNNEL_DEFORMATION_OFFLINE,
+   UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE,
+   UPDATE_TUNNEL_DEFORMATION_OFFLINE,
+   REMOVE_FROM_UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE,
+   REMOVE_FROM_TUNNEL_DEFORMATION_OFFLINE,
+
+   ADD_HILLSIDE_MOVEMENT_OFFLINE,
+   UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE,
+   UPDATE_HILLSIDE_MOVEMENT_OFFLINE,
+   REMOVE_FROM_UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE,
+   REMOVE_FROM_UPDATE_HILLSIDE_MOVEMENT_OFFLINE,
+
+   ADD_RAINFALL_OFFLINE,
+   UPDATE_SERVER_RAINFALL_OFFLINE,
+   UPDATE_RAINFALL_OFFLINE,
+   REMOVE_FROM_UPDATE_SERVER_RAINFALL_OFFLINE,
+   REMOVE_FROM_UPDATE_RAINFALL_OFFLINE,
+
+   ADD_HILLSIDE_COLLAPSE_OFFLINE,
+   UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE,
+   UPDATE_HILLSIDE_COLLAPSE_OFFLINE,
+   REMOVE_FROM_UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE,
+   REMOVE_FROM_UPDATE_HILLSIDE_COLLAPSE_OFFLINE,
+
+   ADD_RIVER_COLLAPSE_OFFLINE,
+   UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
+   UPDATE_RIVER_COLLAPSE_OFFLINE,
+   REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
+   REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE
+
 }  from "../types";
 
 
@@ -132,5 +164,146 @@ export const removeFromForestUnitP3ServerUpdate = (data) => ({
 
 export const removeFromOfflineForestUnitP3 = (data) => ({
   type: REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3,
+  payload: data
+});
+
+//tunnelDeformation
+
+export const addOfflineTunnelDeformation = (data) => ({
+  type: ADD_TUNNEL_DEFORMATION_OFFLINE,
+  payload: data
+});
+
+export const updateServerTunnelDeformation = (data) => ({
+  type: UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE,
+  payload: data
+});
+
+
+export const updateOfflineTunnelDeformation = (data) => ({
+  type: UPDATE_TUNNEL_DEFORMATION_OFFLINE,
+  payload: data
+});
+
+export const removeFromTunnelDeformationServerUpdate = (data) => ({
+  type: REMOVE_FROM_UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE,
+  payload: data
+});
+
+export const removeFromOfflineTunnelDeformation = (data) => ({
+  type: REMOVE_FROM_TUNNEL_DEFORMATION_OFFLINE,
+  payload: data
+});
+
+//HillsideMovement
+
+export const addOfflineHillSideMov = (data) => ({
+  type: ADD_HILLSIDE_MOVEMENT_OFFLINE,
+  payload: data
+});
+
+export const updateServerHillSideMov = (data) => ({
+  type: UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE,
+  payload: data
+});
+
+
+export const updateOfflineHillSideMov = (data) => ({
+  type: UPDATE_HILLSIDE_MOVEMENT_OFFLINE,
+  payload: data
+});
+
+export const removeFromHillSideMovServerUpdate = (data) => ({
+  type: REMOVE_FROM_UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE,
+  payload: data
+});
+
+export const removeFromOfflineHillSideMov = (data) => ({
+  type: REMOVE_FROM_UPDATE_HILLSIDE_MOVEMENT_OFFLINE,
+  payload: data
+});
+
+//RainFall
+
+export const addOfflineRainFall = (data) => ({
+  type: ADD_RAINFALL_OFFLINE,
+  payload: data
+});
+
+export const updateServerRainFall = (data) => ({
+  type: UPDATE_SERVER_RAINFALL_OFFLINE,
+  payload: data
+});
+
+
+export const updateOfflineRainFall = (data) => ({
+  type: UPDATE_RAINFALL_OFFLINE,
+  payload: data
+});
+
+export const removeFromRainFallServerUpdate = (data) => ({
+  type: REMOVE_FROM_UPDATE_SERVER_RAINFALL_OFFLINE,
+  payload: data
+});
+
+export const removeFromOfflineRainFall = (data) => ({
+  type: REMOVE_FROM_UPDATE_RAINFALL_OFFLINE,
+  payload: data
+});
+
+//HillsideCollapse
+
+export const addOfflineHillSideColl = (data) => ({
+  type: ADD_HILLSIDE_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+export const updateServerHillSideColl = (data) => ({
+  type: UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+
+export const updateOfflineHillSideColl = (data) => ({
+  type: UPDATE_HILLSIDE_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+export const removeFromHillSideCollServerUpdate = (data) => ({
+  type: REMOVE_FROM_UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+export const removeFromOfflineHillSideColl = (data) => ({
+  type: REMOVE_FROM_UPDATE_HILLSIDE_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+
+//River Collapse
+
+export const addOfflineRiverColl = (data) => ({
+  type: ADD_RIVER_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+export const updateServerRiverColl = (data) => ({
+  type: UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+
+export const updateOfflineRiverColl = (data) => ({
+  type: UPDATE_RIVER_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+export const removeFromRiverCollServerUpdate = (data) => ({
+  type: REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
+  payload: data
+});
+
+export const removeFromOfflineRiverColl = (data) => ({
+  type: REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE,
   payload: data
 });
