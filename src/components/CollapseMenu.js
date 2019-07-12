@@ -33,7 +33,37 @@ import { goToProjects, LogOut, setProjectPhase, goToMain,
   updateOfflineForestUnitP1,
   updateOfflineForestUnitP2,
   updateOfflineForestUnitP3,
-  notFetching
+  notFetching,
+
+  createTunnelDeformation,
+  updateTunnelDeformation,
+  removeFromTunnelDeformationServerUpdate,
+  removeFromOfflineTunnelDeformation,
+
+  createHallsideMovement,
+  updateHallsideMovement,
+  removeFromHillSideMovServerUpdate,
+  removeFromOfflineHillSideMov,
+
+
+  createRainfall,
+  updateRainfall,
+  removeFromRainFallServerUpdate,
+  removeFromOfflineRainFall,
+
+
+  createHillsideCollapse,
+  updateHillsideCollapse,
+  removeFromHillSideCollServerUpdate,
+  removeFromOfflineHillSideColl,
+
+  createRiverCollapse,
+  updateRiverCollapse,
+  removeFromRiverServerUpdate,
+  removeFromRiverColl
+
+
+
  } from '../flux/actions';
 import { connect } from 'react-redux';
 
@@ -88,7 +118,12 @@ class CollapseMenu extends Component {
                   const {
                     offLineFunctionalUnits, serverFunctionalUnits, offLineForestUnitsPhase1,
                     serverForestUnitsPhase1, offLineForestUnitsPhase2, serverForestUnitsPhase2,
-                    offLineForestUnitsPhase3, serverForestUnitsPhase3
+                    offLineForestUnitsPhase3, serverForestUnitsPhase3,
+                    offLineTunnelDeformations, serverTunnelDeformations,
+                    offLineHillSideMovements, serverHillSideMovements,
+                    offLineRainFall, serverRainFall,
+                    offLineHillSideCollapse, serverHillSideCollapse,
+                    offLineRiverCollapse, serverRiverCollapse
                   } = self.props.memory;
 
                   console.log("Empezando a sincronizar actualizaciones del servidor");
