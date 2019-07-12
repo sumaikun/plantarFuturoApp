@@ -1,5 +1,11 @@
 import { Request } from '../../../helpers/request'
 import { fetching , notFetching  } from "../appActions";
+import { goBack } from "../navigationActions";
+import {
+  addOfflineRiverColl,
+  updateServerRiverColl,
+  updateOfflineRiverColl
+} from "../memoryActions";
 import {  BASE_URL, RIVER_COLLAPSE_URL } from "../../types"
 import Ons from 'onsenui';
 
