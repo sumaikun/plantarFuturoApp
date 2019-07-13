@@ -243,22 +243,25 @@ class ProjectList extends Component {
                     { funit.ToSynchro || funit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
 
                   </div>
-
-                  <span onClick={()=>{
-                    if(this.props.appState.isFetching)
-                    {
-                      return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
-                    }
-                    console.log("nav");
-                    this.props.getForestalUnits(funit.id);
-                    this.props.setFunctionalUnit(funit);
-                    this.props.goToForestalUnits();
-                  }} >{funit.code}</span>
-
+                  
+                    <span onClick={()=>{
+                      if(this.props.appState.isFetching)
+                      {
+                        return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
+                      }
+                      console.log("nav");
+                      this.props.getForestalUnits(funit.id);
+                      this.props.setFunctionalUnit(funit);
+                      this.props.goToForestalUnits();
+                    }} >{ project.phase != "3" ? <div> {funit.code}</div> : <div> Indiviuo forestal {i+1} </div>
+                  }</span>
                   <div>
+                  { project.phase != "3" ?
                     <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"20px",height:"20px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
                       <i className="fas fa-edit fontAwesome"></i>
                     </button>
+                    :<div />
+                  }
                   </div>
 
                 </div>
@@ -340,6 +343,7 @@ class ProjectList extends Component {
                                 console.log(this.state);
                               });
                             }}>
+                            { this.props.appState.currentPhase != "3" ? 
                               <CardOptionButton
                                 accordionIconsStyles={styles.accordionIcons}
                                 iconStyles={{fontSize:"10px", color:"white"}}
@@ -349,6 +353,17 @@ class ProjectList extends Component {
                                 image={yellowArrow}
                                 title="Ver unidades funcionales"
                               />
+                              :
+                              <CardOptionButton
+                                accordionIconsStyles={styles.accordionIcons}
+                                iconStyles={{fontSize:"10px", color:"white"}}
+                                iconReference="fas fa-eye fontAwesome"
+                                textStyles={{fontSize:"11px", marginLeft:"10px"}}
+                                imgStyles={{height:"5vmin"}}
+                                image={yellowArrow}
+                                title="Ver individuos forestales"
+                              />
+                            }
                             </div>
                           </Col>
                           <Col width="47%">
