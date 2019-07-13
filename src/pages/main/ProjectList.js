@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
 import "../../css/Modal.css";
+import "../../css/style.css";
 
 //Onsen Ui
 import {  Col, Row, Card, Button, List, ListItem} from 'react-onsenui';
@@ -44,7 +45,7 @@ const styles = {
   accordionIcons:{
     "background-color": "#006828",
     "width": "25px",
-    "height": "15px",
+    "height": "25px",
     "border-radius": "50%",
     display: "flex",
     "justify-content": "center",
@@ -256,7 +257,7 @@ class ProjectList extends Component {
                   }} >{funit.code}</span>
 
                   <div>
-                    <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"20px",height:"20px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                    <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"25px",height:"25px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
                       <i className="fas fa-edit fontAwesome"></i>
                     </button>
                   </div>
