@@ -235,44 +235,96 @@ const appReducer = (state = initialState, action) => {
       console.log(state);
       return state;
     case SET_TUNNEL_DEFORMATION_LIST:
-      state={
-        ...state,
-        TunnelDeformationList:action.payload
+
+      if(action.payload.length > 0)
+      {
+        console.log(action.payload);
+        let fid =  action.payload[0].project_id;
+
+        state={
+          ...state,
+          TunnelDeformationList:{
+            ...state.TunnelDeformationList,
+            [fid]:action.payload
+          }
+        }
+        console.log(state);
+        return state;
       }
-      console.log(state);
-      return state;
 
     case HILL_SIDE_MOVEMENT_LIST:
-      state={
-        ...state,
-        HillsideMovementList:action.payload
+
+      if(action.payload.length > 0)
+      {
+        console.log(action.payload);
+        let fid =  action.payload[0].project_id;
+
+        state={
+          ...state,
+          HillsideMovementList:{
+            ...state.HillsideMovementList,
+            [fid]:action.payload
+          }
+        }
+        console.log(state);
+        return state;
       }
-      console.log(state);
-      return state;
 
     case RAIN_FALL_LIST:
-      state={
-        ...state,
-        RainfallList:action.payload
+
+
+      if(action.payload.length > 0)
+      {
+        console.log(action.payload);
+        let fid =  action.payload[0].project_id;
+
+        state={
+          ...state,
+          RainfallList:{
+            ...state.RainfallList,
+            [fid]:action.payload
+          }
+        }
+        console.log(state);
+        return state;
       }
-      console.log(state);
-      return state;
 
     case HILL_SIDE_COLLAPSE_LIST:
-      state={
-        ...state,
-        HallsideCollapseList:action.payload
+
+      if(action.payload.length > 0)
+      {
+        console.log(action.payload);
+        let fid =  action.payload[0].project_id;
+
+        state={
+          ...state,
+          HallsideCollapseList:{
+            ...state.HallsideCollapseList,
+            [fid]:action.payload
+          }
+        }
+        console.log(state);
+        return state;
       }
-      console.log(state);
-      return state;
 
     case RIVER_COLLAPSE_LIST:
-      state={
-        ...state,
-        RiverCollapseList:action.payload
+
+      if(action.payload.length > 0)
+      {
+        console.log(action.payload);
+        let fid =  action.payload[0].project_id;
+
+        state={
+          ...state,
+          RiverCollapseList:{
+            ...state.RiverCollapseList,
+            [fid]:action.payload
+          }
+        }
+        console.log(state);
+        return state;
       }
-      console.log(state);
-      return state;
+
 
     case SET_TUNNEL_DEFORMATION:
 

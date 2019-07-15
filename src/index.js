@@ -39,15 +39,19 @@ import reducers from "./flux/reducers/";
 //localStorage
 import {loadState, saveState} from './helpers/appStorage';
 
+const initialData = loadState();
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
+
+//console.log(storage);
 
 store.subscribe( function () {
   //console.log("listener activated");
   //console.log(store.getState());
   saveState(store.getState())
-})
+});
 
 const appInit = _ =>
   ReactDOM.render(

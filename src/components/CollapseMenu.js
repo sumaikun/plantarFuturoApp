@@ -59,8 +59,8 @@ import { goToProjects, LogOut, setProjectPhase, goToMain,
 
   createRiverCollapse,
   updateRiverCollapse,
-  removeFromRiverServerUpdate,
-  removeFromRiverColl
+  removeFromRiverCollServerUpdate,
+  removeFromOfflineRiverColl
 
 
 
@@ -258,6 +258,117 @@ class CollapseMenu extends Component {
                     });
                   }
 
+
+                  console.log("Sincronizar deformación de tunel");
+
+                  serverTunnelDeformations.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromTunnelDeformationServerUpdate(unit);
+                    }
+                    self.props.updateTunnelDeformation(unit.id,unit,method);
+                  });
+
+                  offLineTunnelDeformations.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromOfflineTunnelDeformation(unit);
+                    }
+                    self.props.createTunnelDeformation(unit.id,unit,method);
+                  });
+
+                  console.log("Sincronizar deformación de tunel");
+
+                  serverTunnelDeformations.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromTunnelDeformationServerUpdate(unit);
+                    }
+                    self.props.updateTunnelDeformation(unit.id,unit,method);
+                  });
+
+                  offLineTunnelDeformations.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromOfflineTunnelDeformation(unit);
+                    }
+                    self.props.createTunnelDeformation(unit.id,unit,method);
+                  });
+
+                  console.log("Sincronizar deslizamientos de ladera");
+
+
+                  serverHillSideMovements.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromHillSideMovServerUpdate(unit);
+                    }
+                    self.props.updateTunnelDeformation(unit.id,unit,method);
+                  });
+
+                  offLineHillSideMovements.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromOfflineHillSideMov(unit);
+                    }
+                    self.props.createHallsideMovement(unit.id,unit,method);
+                  });
+
+
+                  console.log("Sincronizar precipitaciones");
+
+
+                  serverRainFall.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromRainFallServerUpdate(unit);
+                    }
+                    self.props.updateRainfall(unit.id,unit,method);
+                  });
+
+                  offLineRainFall.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromOfflineRainFall(unit);
+                    }
+                    self.props.createRainfall(unit.id,unit,method);
+                  });
+
+                  console.log("Sincronizar ");
+
+
+                  serverHillSideCollapse.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromHillSideCollServerUpdate(unit);
+                    }
+                    self.props.updateHillsideCollapse(unit.id,unit,method);
+                  });
+
+                  offLineHillSideCollapse.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromOfflineHillSideColl(unit);
+                    }
+                    self.props.createHillsideCollapse(unit.id,unit,method);
+                  });
+
+                  serverRiverCollapse.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromRiverCollServerUpdate(unit);
+                    }
+                    self.props.updateRiverCollapse(unit.id,unit,method);
+                  });
+
+                  offLineRiverCollapse.forEach( unit => {
+                    method = (res) => {
+                      self.props.notFetching();
+                      self.props.removeFromOfflineRiverColl(unit);
+                    }
+                    self.props.createRiverCollapse(unit.id,unit,method);
+                  });
+
                 })() : false;
 
               });
@@ -319,5 +430,35 @@ export default  connect(mapStateToProps, { goToProjects, LogOut, setProjectPhase
    updateOfflineForestUnitP1,
    updateOfflineForestUnitP2,
    updateOfflineForestUnitP3,
-   notFetching
+   notFetching,
+
+   createTunnelDeformation,
+   updateTunnelDeformation,
+   removeFromTunnelDeformationServerUpdate,
+   removeFromOfflineTunnelDeformation,
+
+   createHallsideMovement,
+   updateHallsideMovement,
+   removeFromHillSideMovServerUpdate,
+   removeFromOfflineHillSideMov,
+
+
+   createRainfall,
+   updateRainfall,
+   removeFromRainFallServerUpdate,
+   removeFromOfflineRainFall,
+
+
+   createHillsideCollapse,
+   updateHillsideCollapse,
+   removeFromHillSideCollServerUpdate,
+   removeFromOfflineHillSideColl,
+
+   createRiverCollapse,
+   updateRiverCollapse,
+   removeFromRiverCollServerUpdate,
+   removeFromOfflineRiverColl
+
+
+
  })(CollapseMenu);
