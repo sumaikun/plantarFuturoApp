@@ -1,6 +1,6 @@
 //PROPERTIES
-export const VERSION = "1.3.4";
-const LOCAL_MODE = false;
+export const VERSION = "1.4.2";
+const LOCAL_MODE = true;
 
 //ajax
 export const SUCCESS = "SUCCESS";

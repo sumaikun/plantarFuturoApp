@@ -64,21 +64,24 @@ class RiskReport extends Component {
   removeFromMemory(e,risk){
     e.stopPropagation();
 
+
+      let self = this;
+
       Ons
       .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
       .then(function(res) {
       if(res){
 
-        switch(this.props.appState.currentRiskPhase)
+        switch(self.props.appState.currentRiskPhase)
         {
           case 1:
 
             if(risk.ToSynchroEdit)
             {
-              this.props.removeFromTunnelDeformationServerUpdate(risk);
+              self.props.removeFromTunnelDeformationServerUpdate(risk);
             }
             else{
-              this.props.removeFromOfflineTunnelDeformation(risk);
+              self.props.removeFromOfflineTunnelDeformation(risk);
             }
 
             break;
@@ -86,10 +89,10 @@ class RiskReport extends Component {
 
             if(risk.ToSynchroEdit)
             {
-              this.props.removeFromHillSideMovServerUpdate(risk);
+              self.props.removeFromHillSideMovServerUpdate(risk);
             }
             else{
-              this.props.removeFromOfflineHillSideMov(risk);
+              self.props.removeFromOfflineHillSideMov(risk);
             }
 
             break;
@@ -97,10 +100,10 @@ class RiskReport extends Component {
 
             if(risk.ToSynchroEdit)
             {
-              this.props.removeFromRainFallServerUpdate(risk);
+              self.props.removeFromRainFallServerUpdate(risk);
             }
             else{
-              this.props.removeFromOfflineRainFall(risk);
+              self.props.removeFromOfflineRainFall(risk);
             }
 
             break;
@@ -108,10 +111,10 @@ class RiskReport extends Component {
 
             if(risk.ToSynchroEdit)
             {
-              this.props.removeFromHillSideCollServerUpdate(risk);
+              self.props.removeFromHillSideCollServerUpdate(risk);
             }
             else{
-              this.props.removeFromOfflineHillSideColl(risk);
+              self.props.removeFromOfflineHillSideColl(risk);
             }
 
             break;
@@ -119,10 +122,10 @@ class RiskReport extends Component {
 
             if(risk.ToSynchroEdit)
             {
-              this.props.removeFromRiverCollServerUpdate(risk);
+              self.props.removeFromRiverCollServerUpdate(risk);
             }
             else{
-              this.props.removeFromOfflineRiverColl(risk);
+              self.props.removeFromOfflineRiverColl(risk);
             }
 
             break;

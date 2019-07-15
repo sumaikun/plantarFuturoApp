@@ -2,6 +2,11 @@ import { Request } from '../../helpers/request'
 import { fetching , notFetching , setProjects , setFunctionalUnits } from "./appActions";
 import { getFunctionalUnits  } from "./FunctionalUnitActions";
 import { getForestalUnits } from "./forestalUnitActions";
+import { getTunnelsDeformation,
+   getHillsidesMovement,
+   getRainfalls,
+   getHillsidesCollapse,
+   getRiversCollapse } from "./RiskManagement/RiskManagementActions";
 import { GET_PROJECTS_URL , GET_PROJECTS_BY_USER } from "../types"
 import Ons from 'onsenui';
 
@@ -78,8 +83,18 @@ export const getProjectByUser = (id) => {
 
             dispatch(setFunctionalUnits(response.data));
           }
+          if(project.phase != 4)
+          {
+              dispatch(getFunctionalUnits(project.id,SuccessCallBack));
+          }
+          else{
+              dispatch(getTunnelsDeformation(project.id));
+              dispatch(getHillsidesMovement(project.id));
+              dispatch(getRainfalls(project.id));
+              dispatch(getHillsidesCollapse(project.id));
+              dispatch(getRiversCollapse(project.id));
+          }
 
-          dispatch(getFunctionalUnits(project.id,SuccessCallBack));
         });
 
       }

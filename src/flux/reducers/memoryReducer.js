@@ -56,7 +56,7 @@ import { editOrAddToArray, removeFromArray } from "../../helpers/objectMethods"
 
 let storedData;
 
-localStorage.clear();
+//localStorage.clear();
 
 let defaultValues = {
   userLogged:{},
