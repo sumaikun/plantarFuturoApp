@@ -25,7 +25,7 @@ export const createHillsideCollapse = (data,successCallBack  ,errorCallBack) => 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Recorrido de ladera registrada!"});
     }
@@ -74,7 +74,7 @@ export const updateHillsideCollapse = (id,data,successCallBack  ,errorCallBack) 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Recorrido de ladera actualizada!"});
     }

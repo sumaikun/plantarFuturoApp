@@ -15,7 +15,7 @@ export const createRiverCollapse = (data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Recorrido de quebrada registrado!"});
     }
@@ -43,7 +43,7 @@ export const updateRiverCollapse = (id,data,successCallBack  ,errorCallBack) => 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Recorrido de quebrada actualizado!"});
     }

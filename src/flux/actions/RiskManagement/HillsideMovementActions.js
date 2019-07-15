@@ -25,7 +25,7 @@ export const createHallsideMovement = (data,successCallBack  ,errorCallBack) => 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Movimiento de ladera registrado!"});
     }
@@ -73,7 +73,7 @@ export const updateHallsideMovement = (id,data,successCallBack  ,errorCallBack) 
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Movimiento de ladera actualizado!"});
     }

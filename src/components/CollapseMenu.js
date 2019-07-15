@@ -263,6 +263,9 @@ class CollapseMenu extends Component {
 
                   serverTunnelDeformations.forEach( unit => {
                     method = (res) => {
+                      console.log(unit);
+                      console.log("should delete data");
+
                       self.props.notFetching();
                       self.props.removeFromTunnelDeformationServerUpdate(unit);
                     }
