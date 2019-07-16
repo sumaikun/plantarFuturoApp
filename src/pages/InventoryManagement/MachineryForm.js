@@ -216,7 +216,7 @@ class MachineryForm extends Component {
 
             <Col width="49%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} type="decimal" name="quantity" value={this.state.formData.quantity} onChange={this.handleChangeInput} placeholder="Cantidad" disabled={this.state.isDisable} required />
+                <Input style={styles.textInput} type="number" step="any" name="quantity" value={this.state.formData.quantity} onChange={this.handleChangeInput} placeholder="Cantidad" disabled={this.state.isDisable} required />
               </Card>
             </Col>
 

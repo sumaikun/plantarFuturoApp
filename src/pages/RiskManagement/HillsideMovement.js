@@ -230,9 +230,7 @@ class HillsideMovement extends Component {
           <Row>
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-
-                <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones"></Input>
-
+                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones"></textarea>
               </Card>
             </Col>
           </Row>
