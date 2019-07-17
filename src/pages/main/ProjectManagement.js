@@ -138,12 +138,12 @@ class ProjectManagement extends Component {
         <div onClick={()=>{
           this.props.goToInventoryManagement();
         }}>
-          {/*<CardButton
+          <CardButton
             imgIcon = {chart}
-            title="Gestión de inventarios"
+            title="Ingeniería civíl"
             subtitle="Total reportes"
             infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-            />*/}
+            />
         </div>
         <div style={{height:"10px"}} ></div>
 
