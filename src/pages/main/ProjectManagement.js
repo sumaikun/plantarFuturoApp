@@ -119,7 +119,8 @@ class ProjectManagement extends Component {
           </div>
           <div style={{height:"10px"}} ></div>
 
-        { this.props.appState.user.risk  && phase4Projects.length > 0 ?
+        { 
+          this.props.appState.user.risk  && phase4Projects.length > 0 ?
           <div>
             <div onClick={()=>{this.props.setProjectPhase(4),
               this.props.goToProjects()
@@ -135,29 +136,13 @@ class ProjectManagement extends Component {
            </div> : null
         }
 
-        <div onClick={()=>{
-          this.props.goToInventoryManagement();
-        }}>
-          {/*<CardButton
-            imgIcon = {chart}
-            title="Gestión de inventarios"
-            subtitle="Total reportes"
-            infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-            />*/}
-        </div>
-        <div style={{height:"10px"}} ></div>
-
-        <div onClick={()=>{
-          this.props.goToInventoryManagement();
-        }}>
-          {/*<CardButton
-            imgIcon = {chart}
-            title="Combustible"
-            subtitle="Total reportes"
-            infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-            />*/}
-        </div>
-        <div style={{height:"10px"}} ></div>
+        <div onClick={()=>{this.props.goToInventoryManagement()
+            }}>
+            <CardButton
+              title="Combustible"
+              />
+            </div>
+          <div style={{height:"10px"}} ></div>
 
       </div>
     );
@@ -212,6 +197,6 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { fetchProjects , goToProjects , setProjectPhase,
+export default  connect(mapStateToProps, { fetchProjects, goToInventoryManagement , goToProjects , setProjectPhase,
    goToRiskManagement, goToInventoryManagement
  })(ProjectManagement);

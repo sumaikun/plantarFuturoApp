@@ -27,7 +27,7 @@ import RiskReport from '../../pages/RiskManagement/RiskReport'
 //Inventory Management
 
 
-import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
+import InventoryManagement from '../../pages/main/ResourceMain'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
 
 import { GO_TO_LOGIN,

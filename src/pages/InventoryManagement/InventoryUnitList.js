@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 //sources
-import checkList from "../img/checkList.png";
-import tree from "../img/tree.png";
-import chart from "../img/chart.png";
-import plant from "../img/plant.png";
-import yellowArrow from "../img/yellowArrow.png";
-import "../css/accordion.css";
-import { workingRowStyles } from "../jsStyles/Styles";
+import checkList from "../../img/checkList.png";
+import tree from "../../img/tree.png";
+import chart from "../../img/chart.png";
+import plant from "../../img/plant.png";
+import yellowArrow from "../../img/yellowArrow.png";
+import "../../css/accordion.css";
+import { workingRowStyles } from "../../jsStyles/Styles";
 
 
 //Onsen Ui
@@ -22,7 +22,7 @@ import Loading from "../../components/Loading";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../flux/actions';
+import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
@@ -73,8 +73,8 @@ class InventoryUnitList extends Component {
       <div style={styles.formContainer}>
         <div className="login-form" >
           <div className="group" style={styles.searchInputContainer}>
-              <input id="search" value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} />
-              <input type="date" value={searchDate}  onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
+              <input id="search" /*value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} */className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} /><br />
+              <input type="date" /*value={searchDate}  onChange={e => this.setState({ searchDate: e.target.value })} */className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
             <div style={styles.searchButton} onClick={()=>{
                 console.log(currentPhase);
                 this.props.setForestalUnit(null);
@@ -106,7 +106,7 @@ class InventoryUnitList extends Component {
           <List
             renderHeader={this.renderHeader}>
 
-           {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
+           {forestalUnits.filter().map((unit, i) => {
 
               return (
               <div>
@@ -165,7 +165,7 @@ class InventoryUnitList extends Component {
       const {  isFetching ,currentPhase , forestalUnits } = this.props.appState
 
     return (
-      <AppPage  title={["Unidad funcional ", <strong>{this.props.appState.currentFunctionalUnit.code}</strong>]} backButton={true} >
+      <AppPage  title={["Unidad funcional ", <strong></strong>]} backButton={true} >
 
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>

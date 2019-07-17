@@ -151,27 +151,7 @@ class InventoryManagement extends Component {
 
               <div  style={{display:"flex",justifyContent:"center"}} >
                 <div style={{width:"95%"}} >
-                  <ListAccordion counter={3}  projectName={["Herramienta",<span>{"   "}</span>]} projectInfo={""} >
-                    { this.collapseOptions() }
-                  </ListAccordion>
-                </div>
-              </div>
-
-              <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-
-              <div  style={{display:"flex",justifyContent:"center"}} >
-                <div style={{width:"95%"}} >
-                  <ListAccordion counter={4} projectName={"Vehículo"} projectInfo={""} >
-                    { this.collapseOptions() }
-                  </ListAccordion>
-                </div>
-              </div>
-
-              <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-
-              <div  style={{display:"flex",justifyContent:"center"}} >
-                <div style={{width:"95%"}} onClick={()=>{  }} >
-                  <ListAccordion counter={6} projectName={"Tecnología"} projectInfo={""} >
+                  <ListAccordion counter={3}  projectName={["Vehiculo",<span>{"   "}</span>]} projectInfo={""} >
                     { this.collapseOptions() }
                   </ListAccordion>
                 </div>

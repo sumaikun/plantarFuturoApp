@@ -142,8 +142,13 @@ class MachineryForm extends Component {
         }
         <form className="simpleForm"  onSubmit={this.submitData}>
           <Row>
-
-            <Col width="99%">
+            <Col width="49%">
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} type="text" name="responsible" value={this.state.formData.responsible} onChange={this.handleChangeInput} placeholder="Responsable" disabled={this.state.isDisable} required />
+              </Card>
+            </Col>
+        
+            <Col width="49%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha de entrega:</label>
                 <Input style={{...styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
@@ -151,23 +156,18 @@ class MachineryForm extends Component {
             </Col>
 
           </Row>
-
           <Row>
-
             <Col width="49%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} type="text" name="responsible" value={this.state.formData.responsible} onChange={this.handleChangeInput} placeholder="Responsable" disabled={this.state.isDisable} required />
+                <Input style={styles.textInput} type="text" name="place" value={this.state.formData.place} onChange={this.handleChangeInput} placeholder="Responsable" disabled={this.state.isDisable} required />
               </Card>
             </Col>
-
-            <Col width="50%">
+            <Col width="49%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} type="text" name="place" value={this.state.formData.place} onChange={this.handleChangeInput} placeholder="Lugar" disabled={this.state.isDisable} required />
               </Card>
             </Col>
-
           </Row>
-
           <Row>
 
             <Col width="49%">
@@ -282,9 +282,7 @@ class MachineryForm extends Component {
           <Row>
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-
-                <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones" />
-
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones"></textarea>
               </Card>
             </Col>
           </Row>
@@ -293,46 +291,13 @@ class MachineryForm extends Component {
 
           <Row>
             <button type="submit" disabled={this.state.isDisable}
-              style={{fontSize:"18px",padding:'5px',marginTop:"10px",marginLeft:"50%",marginRight:"1%",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
+              style={{fontSize:"18px",padding:'5px',marginTop:"10px",marginLeft:"50%",marginRight:"1%",backgroundColor:"red",boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
               color:"white",width:"50%",borderRadius:"10%"}}
               ><b>Registrar</b></button>
           </Row>
 
 
         </form>
-
-        <br/>
-
-        <div style={{overflow: 'hidden', backgroundColor: 'orange' }} id="modal-btn"
-        onClick={
-          ()=>{
-            console.log("Trying to go up");
-            /*window.scrollTo({
-                top: 100,
-                left: 100,
-                behavior: 'smooth'
-              })*/
-
-           throw new Error('I crashed!');
-          }
-        } >
-          <div className="group" style={{...styles.searchInputContainer, "justify-content":"left"}}>
-            <div style={styles.buttonContainer}>
-              <div style={styles.ProjectButton}>
-                <i className="fas fa-arrow-right fontAwesome"></i>
-              </div>
-            </div>
-            <div>
-              <span style={{color:"white",fontWeight:"bold", marginLeft:"5%"}}>Trasladar</span>
-            </div>
-            <div style={{ ...styles.buttonContainer, 'margin-left':'50%' }}>
-              <div style={styles.ProjectButton}>
-                <i className="fas fa-arrow-right fontAwesome"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
 
 
