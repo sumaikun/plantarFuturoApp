@@ -5,6 +5,7 @@ import tree from "../../img/tree.png";
 import chart from "../../img/chart.png";
 import plant from "../../img/plant.png";
 import yellowArrow from "../../img/yellowArrow.png";
+import civil from "../../img/civil.png";
 import "../../css/accordion.css";
 import "../../css/Modal.css";
 
@@ -138,12 +139,12 @@ class ProjectManagement extends Component {
         <div onClick={()=>{
           this.props.goToInventoryManagement();
         }}>
-          {/*<CardButton
-            imgIcon = {chart}
-            title="Gestión de inventarios"
-            subtitle="Total reportes"
+          <CardButton
+            imgIcon = {civil}
+            title="Ingeniería Civíl"
+            subtitle="Total proyectos"
             infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
-            />*/}
+            />
         </div>
         <div style={{height:"10px"}} ></div>
 
