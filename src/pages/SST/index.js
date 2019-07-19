@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import moment from 'moment'
+
+
 //sources
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
@@ -7,9 +10,6 @@ import "../../css/accordion.css";
 //Onsen Ui
 import {  Col, Row, Card, Button, List, ListItem} from 'react-onsenui';
 import Ons from 'onsenui';
-//import Ons from 'onsenui';
-
-//Libraries
 
 //components
 import ListAccordion from "../../components/ListAccordion";
@@ -19,31 +19,12 @@ import CardOptionButton from "../../components/CardOptionButton";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToSSTForm, setSST } from '../../flux/actions';
+import { goToSSTForm, getSST } from '../../flux/actions';
 import { connect } from 'react-redux';
+import Styles from './styles'
 
-//helpers
 
-
-const styles = {
-  accordionIcons:{
-    "background-color": "#006828",
-    "width": "25px",
-    "height": "25px",
-    "border-radius": "50%",
-    display: "flex",
-    "justify-content": "center",
-    "align-items": "center"
-  },
-  centerAll:{
-    display: "flex",
-    "align-items": "center",
-    "justify-content": "center",
-  }
-
-}
-
-class ProjectListCivil extends Component {
+class ListSSTByProject extends Component {
 
   constructor(props) {
     super(props);
@@ -52,22 +33,28 @@ class ProjectListCivil extends Component {
       editMode:false,
       idToModify:null,
     }
-
   }
   componentDidMount(){
+    this.props.getList()
   }
-
   render() {
-    console.log(this.props)
+    let {listSST}= this.props.appState
+    if (!listSST) return null;
     return (
-      <AppPage  title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}><br / >
-              <div  style={{display:"flex",justifyContent:"center"}} >
-                <div style={{width:"95%"}} >
-                  <div  onClick={()=>{this.props.goToSSTForm()}}>
-                    <ListAccordion counter={2} projectName={"INFORME 1"} projectInfo={""} />
+      <AppPage title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}><br / >
+        <div  style={{display:"flex",justifyContent:"center"}} >
+          <div style={{width:"95%"}} >
+          {
+            listSST.map((memo, i) => {
+                return  (
+                  <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.props.goToSSTForm()}}>
+                    <ListAccordion counter={i + 1} projectName={moment(memo.report_date).format("DD/MM/YYYY")} projectInfo={""} />
                   </div>
-                </div>
-              </div>
+                );
+            })
+          }
+          </div>
+        </div>
       </AppPage>
     );
   }
@@ -79,5 +66,12 @@ const mapStateToProps = state => {
     appState: state.appState
   };
 }
+//report_date
+const mapDispatchToProps = () => {
+  return {
+    getList: () => {getSST()},
+    goToSSTForm: ()=> {goToSSTForm()}
+  }
+}
 
-export default  connect(mapStateToProps,{ goToSSTForm, setSST})(ProjectListCivil);
+export default  connect(mapStateToProps,mapDispatchToProps )(ListSSTByProject);

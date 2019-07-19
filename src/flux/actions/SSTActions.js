@@ -18,7 +18,7 @@ export const getSST = (id) => {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL,
+        GET_SST_URL+1,
         SuccessCallBack,
         ErrorCallBack
       );

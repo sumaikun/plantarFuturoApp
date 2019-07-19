@@ -2,9 +2,7 @@ import { Request } from '../../helpers/request'
 import { fetching , notFetching , setProjects , setFunctionalUnits } from "./appActions";
 import { getFunctionalUnits  } from "./FunctionalUnitActions";
 import { getForestalUnits } from "./forestalUnitActions";
-import { getTunnelsDeformation,
-   getHillsidesMovement,
-   getRainfalls,
+import { getTunnelsDeformation, getHillsidesMovement, getRainfalls,
    getHillsidesCollapse,
    getRiversCollapse } from "./RiskManagement/RiskManagementActions";
 import { GET_PROJECTS_URL , GET_PROJECTS_BY_USER } from "../types"
