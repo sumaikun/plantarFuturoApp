@@ -28,6 +28,7 @@ import {
   fetchProjects,
   goToRiskManagement,
   goToInventoryManagement,
+  goToCivilManagement,
   } from '../../flux/actions';
 import { connect } from 'react-redux';
 
@@ -135,15 +136,6 @@ class ProjectManagement extends Component {
             <div style={{height:"10px"}} ></div>
            </div> : null
         }
-
-        <div onClick={()=>{this.props.goToInventoryManagement()
-            }}>
-            <CardButton
-              title="Combustible"
-              />
-            </div>
-          <div style={{height:"10px"}} ></div>
-
       </div>
     );
   }
@@ -197,6 +189,6 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { fetchProjects, goToInventoryManagement , goToProjects , setProjectPhase,
+export default  connect(mapStateToProps, { fetchProjects,goToCivilManagement, goToInventoryManagement , goToProjects , setProjectPhase,
    goToRiskManagement, goToInventoryManagement
  })(ProjectManagement);

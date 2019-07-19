@@ -11,7 +11,7 @@ import Ons from 'onsenui';
 
 //flux
 import {
-  goToInventoryManagement
+  goToNavigationResource
   } from '../flux/actions';
 import { connect } from 'react-redux';
 //Libraries
@@ -76,8 +76,6 @@ class ListAccordion extends Component {
   }
 
   render() {
-
-
     return (
       <List key={1}>
         <ListItem key={1} tappable class="accordion" onclick="fn.toggle(this)">
@@ -88,7 +86,7 @@ class ListAccordion extends Component {
               <span style={styles.projectInfo}>{this.props.projectInfo}</span>
             </div>
             <div style={styles.buttonContainer}>
-              <div style={styles.ProjectButton} /><span onClick={()=>{this.props.goToInventoryManagement()}} >...</span>
+              <div style={styles.ProjectButton} /><span onClick={()=>{this.props.goToNavigationResource()}} >...</span>
             </div>
           </div>
         </ListItem>
@@ -106,6 +104,6 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { goToInventoryManagement
+export default  connect(mapStateToProps, { goToNavigationResource
 })(ListAccordion);
 

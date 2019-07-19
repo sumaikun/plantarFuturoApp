@@ -19,7 +19,7 @@ import CardOptionButton from "../../components/CardOptionButton";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToMachineryList } from '../../flux/actions';
+import { goToMachineryList,goToSSTList } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
@@ -63,13 +63,11 @@ class InventoryManagement extends Component {
 
     return (
       <AppPage  title={[<strong>{"Gestión de Inventarios"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}>
-
               <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-
               <div  style={{display:"flex",justifyContent:"center"}} >
                 <div style={{width:"95%"}} >
                   <div  onClick={()=>{this.props.goToMachineryList()}}>
-                    <ListAccordion counter={1} projectName={"Maquinaría"} projectInfo={""} /> 
+                    <ListAccordion counter={1} projectName={"Informe de obra"} projectInfo={""} /> 
                   </div>
                 </div>
               </div>
@@ -78,20 +76,11 @@ class InventoryManagement extends Component {
 
               <div  style={{display:"flex",justifyContent:"center"}} >
                 <div style={{width:"95%"}} >
-                  <div  onClick={()=>{this.props.goToMachineryList()}}>
-                    <ListAccordion counter={2} projectName={"Equipo"} projectInfo={""} />
+                  <div  onClick={()=>{this.props.goToSSTList()}}>
+                    <ListAccordion counter={2} projectName={"Informe SST"} projectInfo={""} />
                   </div>
                 </div>
               </div>
-              <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-              <div  style={{display:"flex",justifyContent:"center"}} >
-                <div style={{width:"95%"}} >
-                  <div  onClick={()=>{this.props.goToMachineryList()}}>
-                    <ListAccordion counter={3}  projectName={["Vehiculo",<span>{"   "}</span>]} projectInfo={""} />
-                  </div>
-                </div>
-              </div>
-
       </AppPage>
     );
   }
@@ -104,4 +93,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps,{ goToMachineryList })(InventoryManagement);
+export default  connect(mapStateToProps,{ goToMachineryList,goToSSTList })(InventoryManagement);

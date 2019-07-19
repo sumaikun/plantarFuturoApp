@@ -306,7 +306,7 @@ class ProjectList extends Component {
         }
 
        }}>
-        { currentPhaseProjects.length > 0  ?
+        { currentPhaseProjects.length > 0   ?
           currentPhaseProjects.map((project, i) => {
 
 
@@ -355,7 +355,7 @@ class ProjectList extends Component {
                             <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
                                 button.textContent = "Registrar";
                                 this.project_id = project.id; }}>
-                            { this.props.appState.currentPhase != "3" ? 
+                            { this.props.appState.currentPhase != "3" ?
                             <CardOptionButton
                               className="modal-btn"
                               accordionIconsStyles={styles.accordionIcons}

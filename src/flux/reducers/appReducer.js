@@ -23,12 +23,15 @@ import { FETCH,
    SET_RIVER_COLLAPSE,
    SET_CURRENT_RISK_PHASE,
    SET_RISK_INDICATORS,
-   SET_RISK_OVERVIEW } from "../types";
+   SET_RISK_OVERVIEW,
+   SET_SST } from "../types";
 
 
 let initialUser = null;
 
-let initialProjects = []
+let initialProjects = [];
+
+let initialSST = [];
 
 let initialForestalUnits = [];
 
@@ -77,6 +80,7 @@ let defaultValues = {
 
 //
   RiskOverview: {},
+  listSST: initialSST,
   TunnelDeformationList: [],
   HillsideMovementList:[],
   RainfallList:[],
@@ -205,6 +209,12 @@ const appReducer = (state = initialState, action) => {
     state={
       ...state,
       RiskOverview:action.payload
+    }
+    return state;
+    case SET_SST:
+    state={
+      ...state,
+      listSST:action.payload
     }
     return state;
     case MENU_OPEN:

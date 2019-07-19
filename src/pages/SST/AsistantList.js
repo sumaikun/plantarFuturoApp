@@ -38,7 +38,7 @@ styles.modalOverride = {
 }
 
 styles.modalCell = {
-  backgroundColor: "gray",
+  backgroundColor: "#E5E5E5",
   padding: "5%",
   textAlign: "center",
   color: "#25315a",
@@ -123,15 +123,12 @@ class AsistantList extends Component {
               <Col width="50%">
                   <span style={workingRowStyles.listText}  >Usuario</span>
               </Col>
-              <Col width="25%" style={{textAlign:"center"}}>
+              <Col id="modal-btn" width="25%" style={{textAlign:"center"}}>
                 <Radio name="test" style={ workingRowStyles.radioCircle } />
               </Col>
               <Col width="25%" style={{textAlign:"center"}}>
                 <Radio name="test" style={ workingRowStyles.radioCircle } />
               </Col>
-
-
-
               </ListItem>
                 <div style={{
                     height: "10px",
@@ -140,10 +137,21 @@ class AsistantList extends Component {
                 </div>
               </div>
 
-
           </List>:<NotFound/>
-          <button id="modal-btn" > Marcar ausencia </button>
-
+          <div style={{overflow: 'hidden',marginTop:"130%", backgroundColor: 'orange' }}>
+          <div className="group" style={{...styles.searchInputContainer, "justify-content":"left"}}>
+            <div style={styles.buttonContainer}>
+              <div style={styles.ProjectButton} >
+                <i className="fas fa-pencil-alt fontAwesome"></i>
+              </div>
+            </div>
+            <div style={{ ...styles.buttonContainer, 'margin-left':'50%' }}>
+              <div style={styles.ProjectButton}>
+                <i className="far trash-alt fontAwesome"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

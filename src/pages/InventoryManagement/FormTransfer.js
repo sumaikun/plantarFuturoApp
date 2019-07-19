@@ -73,7 +73,7 @@ const styles = {
   }
 }
 
-class FormFuel extends Component {
+class FormCompensation extends Component {
   constructor(props) {
     super(props);
     this.saveImage = this.saveImage.bind(this);
@@ -258,6 +258,9 @@ class FormFuel extends Component {
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
         <br/>
         <form className="simpleForm"  onSubmit={this.submitData}>
+
+        {}
+
           <Row>
             <Col width="49%">
               <Card style={styles.cardInput}>
@@ -390,4 +393,4 @@ export default  connect(mapStateToProps, { createForestUnitPhase3,
     updateForestUnitPhase3,
     getForestalUnits,
     addOfflineForestUnitP3,
-    updateOfflineForestUnitP3,goBack })(FormFuel);
+    updateOfflineForestUnitP3,goBack })(FormCompensation);

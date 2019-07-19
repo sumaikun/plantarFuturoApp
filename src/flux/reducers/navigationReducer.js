@@ -2,8 +2,7 @@
 import Login from "../../pages/main/Login";
 import ProjectManagement from '../../pages/main/ProjectManagement'
 import ProjectList from '../../pages/main/ProjectList'
-
-
+import NavigationResource from '../../pages/main/ResourceMain'
 
 import ForestalUnitList from '../../pages/Forestal/ForestalUnitList'
 import FormInventory from '../../pages/Forestal/FormInventory'
@@ -25,9 +24,12 @@ import RiskReport from '../../pages/RiskManagement/RiskReport'
 
 
 //Inventory Management
-
-
-import InventoryManagement from '../../pages/main/ResourceMain'
+import SSTForm from '../../pages/SST/SSTForm'
+import SSTList from '../../pages/SST/index'
+import AssistanList from '../../pages/SST/AsistantList'
+import CivilMain from '../../pages/main/CivilMain'
+import inventoryList from '../../pages/InventoryManagement/InventoryUnitList'
+import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
 
 import { GO_TO_LOGIN,
@@ -49,8 +51,14 @@ import { GO_TO_LOGIN,
    GO_TO_RISK_REPORT,
    GO_TO_INVENTORY_MANAGEMENT,
    GO_TO_MACHINERY_FORM,
+   GO_TO_CIVIL_MANAGEMENT,
+   GO_TO_NAVIGATION_RESOUCE,
    APP_ERROR,
-   GO_TO_RISK_OVERVIEW } from "../types";
+   GO_TO_RISK_OVERVIEW,
+   GO_TO_MACHINERY_LIST,
+   GO_TO_ASSISTANT_LIST,
+   GO_TO_SST_LIST,
+   GO_TO_SST_FORM} from "../types";
 
 var Pagenavigator = null;
 
@@ -60,7 +68,7 @@ const initialState = {
   initialRoute:{ component: Login , key: "LOGIN_PAGE"  },
 };
 
-const navigationReducer = (state = initialState, action) => {
+const navigationReducer= (state = initialState, action) => {
 
 
   let currentPage = null;
@@ -121,6 +129,24 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: ProjectList , key: GO_TO_PROJECTS  });
       }
       return state;
+    case GO_TO_SST_LIST:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_SST_LIST
+      }
+      if(currentPage.key !=GO_TO_SST_LIST){
+        state.navigator.pushPage({ component: SSTList , key:GO_TO_SST_LIST  });
+      }
+      return state;
+    case GO_TO_ASSISTANT_LIST:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_ASSISTANT_LIST
+      }
+      if(currentPage.key !=GO_TO_ASSISTANT_LIST){
+        state.navigator.pushPage({ component: AssistanList , key:GO_TO_ASSISTANT_LIST  });
+      }
+      return state;
     case GO_TO_FORESTAL_UNITS:
       state = {
         ...state,
@@ -166,6 +192,17 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: RiskManagement , key: GO_TO_RISK_MANAGEMENT  });
       }
       return state;
+    case GO_TO_SST_FORM:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_SST_FORM
+      }
+      if(currentPage.key != GO_TO_SST_FORM){
+        setTimeout(()=>{
+          state.navigator.resetPage({ component: SSTForm , key: GO_TO_SST_FORM  });
+        },1)
+      }
+      return state;
     case GO_TO_HILLSIDE_COLLAPSE:
       state = {
         ...state,
@@ -184,6 +221,24 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: Rainfall , key: GO_TO_RAIN_FALL  });
       }
       return state;
+    case GO_TO_NAVIGATION_RESOUCE:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_NAVIGATION_RESOUCE
+      }
+      if(currentPage.key != GO_TO_NAVIGATION_RESOUCE){
+        state.navigator.pushPage({ component: NavigationResource , key: GO_TO_NAVIGATION_RESOUCE  });
+      }
+      return state;
+    case GO_TO_CIVIL_MANAGEMENT:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_CIVIL_MANAGEMENT
+      }
+      if(currentPage.key != GO_TO_CIVIL_MANAGEMENT){
+        state.navigator.pushPage({ component: CivilMain , key: GO_TO_CIVIL_MANAGEMENT  });
+      }
+      return state;
     case GO_TO_RIVER_COLLAPSE:
       state = {
         ...state,
@@ -191,6 +246,15 @@ const navigationReducer = (state = initialState, action) => {
       }
       if(currentPage.key != GO_TO_RIVER_COLLAPSE){
         state.navigator.pushPage({ component: RiverCollapse , key: GO_TO_RIVER_COLLAPSE  });
+      }
+      return state;
+    case GO_TO_MACHINERY_LIST:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_MACHINERY_LIST
+      }
+      if(currentPage.key != GO_TO_MACHINERY_LIST){
+        state.navigator.pushPage({ component: inventoryList , key: GO_TO_MACHINERY_LIST  });
       }
       return state;
     case GO_TO_TUNNEL_DEFORMATION:
@@ -236,7 +300,7 @@ const navigationReducer = (state = initialState, action) => {
         ...state,
         currentPagekey: GO_TO_INVENTORY_MANAGEMENT
       }
-      if(currentPage.key != GO_TO_RISK_REPORT){
+      if(currentPage.key != GO_TO_INVENTORY_MANAGEMENT){
         state.navigator.pushPage({ component: InventoryManagement , key: GO_TO_INVENTORY_MANAGEMENT  });
       }
       return state;
@@ -245,13 +309,11 @@ const navigationReducer = (state = initialState, action) => {
 
       state = {
         ...state,
-        currentPagekey: GO_TO_MACHINERY_FORM
       }
       if(currentPage.key != GO_TO_MACHINERY_FORM){
         state.navigator.pushPage({ component: MachineryForm , key: GO_TO_MACHINERY_FORM  });
       }
       return state;
-
     case APP_ERROR:
 
       state = {

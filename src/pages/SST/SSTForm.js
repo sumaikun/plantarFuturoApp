@@ -21,7 +21,7 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import {  } from '../../flux/actions';
+import { goToAssistantList, getSST } from '../../flux/actions';
 //helper
 
 //
@@ -33,7 +33,7 @@ const styles =  {
   ...modalStyles
 };
 
-class GeoReferencingForm extends Component {
+class SSTForm extends Component {
   constructor(props) {
     super(props);
     this.handleChangeInput = this.handleChangeInput.bind(this);
@@ -46,21 +46,6 @@ class GeoReferencingForm extends Component {
 
   componentDidMount(){
     console.log(this.props);
-
-    /*if(this.props.appState.currentHillsideMovement)
-    {
-      this.setState({
-        isDisable:true,
-        formData:{
-          ...this.state.formData,
-          ...this.props.appState.currentHillsideMovement,
-          date:this.props.appState.currentHillsideMovement.report_date.split(" ")[0],
-          hour:this.props.appState.currentHillsideMovement.report_date.split(" ")[1]
-        }
-      },()=>{
-        console.log(this.state);
-      });
-    }*/
   }
 
 
@@ -89,105 +74,51 @@ class GeoReferencingForm extends Component {
   }
 
   submitData(e){
-
-
       e.preventDefault();
-
-      /*if(this.props.appState.isFetching)
-      {
-        return Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
-      }
-
-      if(this.props.appState.currentHillsideMovement)
-      {
-        let data = this.state.formData;
-        data.user_id = this.props.appState.user.id;
-        data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("edit hall side movement");
-        this.props.updateHallsideMovement(this.state.formData.id,data);
-      }
-      else
-      {
-        let data = this.state.formData;
-        data.user_id = this.props.appState.user.id;
-        data.project_id = this.props.appState.selectedProject.id;
-        data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("create hall side movement");
-        this.props.createHallsideMovement(data);
-
-      }*/
-
   }
 
   enableForm(){
-
     this.setState({ isDisable: !this.state.isDisable },()=>{
       console.log(this.state);
     });
-
   }
 
-
-
   contentPage(){
-
     return(
-
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
         <br/>
-        {
-          this.props.appState.currentPlantationEstablishment ?
-             <Row>
-              <button onClick={this.enableForm} style={styles.disableButton}>Habilitar edición</button>
-            </Row>:null
-        }
         <form className="simpleForm"  onSubmit={this.submitData}>
-
-
           <Row>
-
             <Col width="99%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
                 <Input style={{...styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-
           </Row>
 
           <Row>
-
             <Col width="45%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Hora reporte:</label>
                 <Input style={{...styles.dateInput, position:"absolute", width:"40%"}} type="time" name="hour" onChange={this.handleChangeInput}value={this.state.formData.hour} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-
             <Col width="54%">
               <Card style={styles.cardInput}>
                   <label>Lugar:</label>
                 <Input type="text" name="place" onChange={this.handleChangeInput} value={this.state.formData.place} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
-
           </Row>
-
           <Row>
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-
                 <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.ls_description}  placeholder="Objetivo" disabled={this.state.isDisable} />
-
               </Card>
             </Col>
           </Row>
-
-
           <Row>
-
             <Col width="99%">
               <Card style={styles.cardInput}>
                 <Input style={styles.textInput} type="text" name="responsible" value={this.state.formData.people} onChange={this.handleChangeInput} placeholder="Responsable" disabled={this.state.isDisable} required />
@@ -197,7 +128,6 @@ class GeoReferencingForm extends Component {
           </Row>
 
           <Row>
-
             <Col>
               <Card style={styles.cardLabel}>
                 <span style={{ textAlign:"center" }}>
@@ -219,7 +149,7 @@ class GeoReferencingForm extends Component {
                 <div className="margin" style={styles.imageIcon}>
                     <i style={{color:"#30bfce"}} className="fas fa-user font Awesome"></i>
                 </div>
-                <div style={{position:"absolute", marginLeft:"30%"}}>
+                <div style={{position:"absolute", marginLeft:"30%"}}  onClick={()=>{this.props.goToAssistantList()}}>
                   <span style={{color:"gray"}}>Listado de asistentes</span>
                 </div>
                 <div>
@@ -355,35 +285,24 @@ class GeoReferencingForm extends Component {
                 }
               </Card>
             </Col>
-
           </Row>
-
           <Row>
             <button type="submit" disabled={this.state.isDisable}
               style={{fontSize:"18px",padding:'5px',marginTop:"10px",marginLeft:"50%",marginRight:"1%",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
               color:"white",width:"50%",borderRadius:"10%"}}
               ><b>Registrar</b></button>
           </Row>
-
-
         </form>
-
-
-
       </div>
-
-
     );
   }
-
-
 
   render() {
 
     const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
-      <AppPage  title={["FORMULARIO ", <strong>GEOREFERENCIACIÓN</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
+      <AppPage  title={["FORMULARIO ", <strong>SST</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
 
         {  isFetching ?
           <div style={{backgroundColor:"white",height:"100%"}}>
@@ -409,4 +328,4 @@ const mapStateToProps = state => {
 
 //export default MachineryForm;
 
-export default  connect(mapStateToProps, { })(GeoReferencingForm);
+export default  connect(mapStateToProps, {goToAssistantList, getSST })(SSTForm);

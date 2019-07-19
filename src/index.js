@@ -11,20 +11,13 @@ import './css/Login.css';
 import AppNavigation from './pages/main/AppNavigation';
 
 //errorHandler
-
 import ErrorBoundary from './containers/ErrorBoundary';
 
 //risks
 
-
-
 //Inventory
 
-
-
 //plantation
-
-
 
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';

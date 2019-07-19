@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 //sources
-import checkList from "../../img/checkList.png";
-import tree from "../../img/tree.png";
-import chart from "../../img/chart.png";
-import plant from "../../img/plant.png";
-import yellowArrow from "../../img/yellowArrow.png";
+import inventory from "../../img/checkList.png";
+import fuel from "../../img/fuel.png";
 import "../../css/accordion.css";
 import "../../css/Modal.css";
 
@@ -28,13 +25,15 @@ import {
   fetchProjects,
   goToRiskManagement,
   goToInventoryManagement,
+  goToCivilManagement,
+  goToSSTList,
   } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //css
 import "../../css/style.css";
 
-class ProjectManagement extends Component {
+class ResourceMain extends Component {
   constructor(props) {
     super(props);
     this.contentPage = this.contentPage.bind(this);
@@ -53,6 +52,7 @@ class ProjectManagement extends Component {
         <div onClick={()=>{this.props.goToInventoryManagement()
             }}>
             <CardButton
+              imgIcon = {inventory}
               title="Inventario"
               />
             </div>
@@ -61,32 +61,35 @@ class ProjectManagement extends Component {
         <div onClick={()=>{this.props.goToInventoryManagement()
             }}>
             <CardButton
+            imgIcon = {fuel}
               title="Combustible"
               />
             </div>
         <div style={{height:"10px"}} ></div>
-
+        <div onClick={()=>{this.props.goToSSTList()
+          }}>
+          <CardButton
+            title="Informe SST"
+            />
+          </div>
+        <div style={{height:"10px"}} ></div>
       </div>
     );
   }
 
   render() {
-
-
     const { isFetching } = this.props.appState;
 
     return (
-      <AppPage  title={["GESTION DE ", <strong>Recursos</strong>]}>
+      <AppPage  title={["CONTROL DE ", <strong>RECURSOS</strong>]}>
 
-          {  isFetching ?
+          {
+            isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>
               <Loading/>
             </div> :
-
              this.contentPage()
-
           }
-
       </AppPage>
     );
   }
@@ -99,6 +102,6 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { fetchProjects, goToInventoryManagement , goToProjects , setProjectPhase,
+export default  connect(mapStateToProps, { fetchProjects,goToSSTList, goToCivilManagement,goToInventoryManagement , goToProjects , setProjectPhase,
    goToRiskManagement, goToInventoryManagement
- })(ProjectManagement);
+ })(ResourceMain);

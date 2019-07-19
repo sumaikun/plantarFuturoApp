@@ -73,7 +73,7 @@ const styles = {
   }
 }
 
-class FormFuel extends Component {
+class AssitanForm extends Component {
   constructor(props) {
     super(props);
     this.saveImage = this.saveImage.bind(this);
@@ -259,91 +259,42 @@ class FormFuel extends Component {
         <br/>
         <form className="simpleForm"  onSubmit={this.submitData}>
           <Row>
-            <Col width="49%">
+            <Col width="98%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="ID" maxLength="10" required/>
-              </Card>
-            </Col>
-            <Col width="49%">
-              <Card style={styles.cardInput}>
-                <Input style={{...styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Card style={styles.cardLabel}>
-                <span>
-                  INFORMACIÓN REPORTE
-                </span>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Nombre" maxLength="10"/>
               </Card>
             </Col>
           </Row>
           <Row>
             <Col width="49%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin' value={this.state.formData.origin === "1" || this.state.formData.origin === 'Si'  ?  1 :
-                 this.state.formData.origin === "2" || this.state.formData.origin === 'No'  ? 2 : ''
-              } >
-                  <option value="" disabled selected>Tipo de combustible</option>
-                  <option value="1">Si</option>
-                  <option value="2">No</option>
-                </Select>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="C.C" maxLength="10"/>
               </Card>
             </Col>
             <Col width="49%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='origin' value={this.state.formData.origin === "1" || this.state.formData.origin === 'Galones'  ?  1 : ''
-              } >
-                  <option value="" disabled selected>Unidad de medida</option>
-                  <option value="1">Galones</option>
-                </Select>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Entidad" maxLength="10"/>
               </Card>
             </Col>
           </Row>
           <Row>
             <Col width="49%">
-                <Card style={styles.cardInput}>
-                    <Input style={{...styles.dateInput}} type="number" name="date" placeholder="Cantidad" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
-                </Card>
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Cargo" maxLength="10"/>
+              </Card>
             </Col>
             <Col width="49%">
-                <Card style={styles.cardInput}>
-                    <Input style={{...styles.dateInput}} type="number" name="date" placeholder="Costo$" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
-                </Card>
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Rol" maxLength="10"/>
+              </Card>
             </Col>
-
           </Row>
           <Row>
-            <Row>
-              <Col>
-                <Card style={styles.cardLabel}>
-                  <span>
-                    Evidencias Fotográficas
-                  </span>
-                </Card>
-              </Col>
-            </Row>
-          <Col>
-            <br/>
-            <Card style={styles.greenCard} >
-              <div>
-                <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
-              </div>
-              <Row>
-                <Button style={styles.buttonCard}
-                  onClick={this.saveImage}
-                >Tomar foto</Button>
-                <label className="fileContainer" style={{ "font-size": "17px",
-                  color: "white"
-                }}>
-                  Subir archivo
-                  <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
-                     />
-                </label>
-              </Row>
-            </Card>
-          </Col>
+            <Col width="49%">
+              <Card style={styles.cardInput}>
+                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Estado" maxLength="10"/>
+              </Card>
+            </Col>
           </Row>
           <Row>
             <button type="submit"
@@ -363,7 +314,7 @@ render() {
     const { isFetching , currentFunctionalUnit } = this.props.appState;
 
     return (
-      <AppPage title={["Formulario de ", <strong>COMBUSTIBLE</strong>]} backButton={true}>
+      <AppPage title={["Formulario de ", <strong>Asistentes</strong>]} backButton={true}>
 
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>
@@ -390,4 +341,4 @@ export default  connect(mapStateToProps, { createForestUnitPhase3,
     updateForestUnitPhase3,
     getForestalUnits,
     addOfflineForestUnitP3,
-    updateOfflineForestUnitP3,goBack })(FormFuel);
+    updateOfflineForestUnitP3,goBack })(AssitanForm);
