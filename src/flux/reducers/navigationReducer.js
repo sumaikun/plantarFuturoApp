@@ -8,7 +8,7 @@ import ForestalUnitList from '../../pages/Forestal/ForestalUnitList'
 import FormInventory from '../../pages/Forestal/FormInventory'
 import FormProcess from '../../pages/Forestal/FormProcess'
 import FormCompensation from '../../pages/Forestal/FormCompensation'
-
+import FormFuel from '../../pages/InventoryManagement/FormFuel'
 //Risk Management
 
 import HillsideCollapse from '../../pages/RiskManagement/HillsideCollapse'
@@ -31,6 +31,7 @@ import CivilMain from '../../pages/main/CivilMain'
 import inventoryList from '../../pages/InventoryManagement/InventoryUnitList'
 import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
+import AssistanForm from '../../pages/SST/AssistantForm'
 
 import { GO_TO_LOGIN,
    GO_TO_MANAGEMENT,
@@ -58,7 +59,9 @@ import { GO_TO_LOGIN,
    GO_TO_MACHINERY_LIST,
    GO_TO_ASSISTANT_LIST,
    GO_TO_SST_LIST,
-   GO_TO_SST_FORM} from "../types";
+   GO_TO_FUEL_FORM,
+   GO_TO_SST_FORM,
+   GO_TO_ASSISTANT_FORM} from "../types";
 
 var Pagenavigator = null;
 
@@ -147,6 +150,15 @@ const navigationReducer= (state = initialState, action) => {
         state.navigator.pushPage({ component: AssistanList , key:GO_TO_ASSISTANT_LIST  });
       }
       return state;
+    case GO_TO_ASSISTANT_FORM:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_ASSISTANT_FORM
+      }
+      if(currentPage.key !=GO_TO_ASSISTANT_FORM){
+        state.navigator.pushPage({ component: AssistanForm , key:GO_TO_ASSISTANT_FORM  });
+      }
+      return state;
     case GO_TO_FORESTAL_UNITS:
       state = {
         ...state,
@@ -163,6 +175,15 @@ const navigationReducer= (state = initialState, action) => {
       }
       if(currentPage.key != GO_TO_FORM_INVENTORY){
         state.navigator.pushPage({ component: FormInventory , key: GO_TO_FORM_INVENTORY  });
+      }
+      return state;
+    case GO_TO_FUEL_FORM:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_FUEL_FORM
+      }
+      if(currentPage.key != GO_TO_FUEL_FORM){
+        state.navigator.pushPage({ component: FormFuel , key: GO_TO_FUEL_FORM  });
       }
       return state;
     case GO_TO_FORM_PROCESS:

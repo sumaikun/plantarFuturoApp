@@ -7,8 +7,6 @@ import Styles from  './styles'
 
 //Onsen Ui
 import {  Col, Row, Card, Button, Input, Select, Radio, Checkbox } from 'react-onsenui';
-import Ons from 'onsenui';
-import moment from 'moment';
 
 //Libraries
 
@@ -76,7 +74,7 @@ class SSTForm extends Component {
             <Col width="99%">
               <Card style={{...Styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
-                <Input style={{...Styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.date} disabled={this.state.isDisable} required/>
+                <Input style={{...Styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.date} disabled={this.state.isDisable}/>
               </Card>
             </Col>
           </Row>
@@ -85,13 +83,13 @@ class SSTForm extends Component {
             <Col width="45%">
               <Card style={{...Styles.cardInput, alignItems:"unset"}}>
                   <label>Hora reporte:</label>
-                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="time" name="hour" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.hour} disabled={this.state.isDisable} required/>
+                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="time" name="hour" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.hour} disabled={this.state.isDisable}/>
               </Card>
             </Col>
             <Col width="54%">
               <Card style={Styles.cardInput}>
                   <label>Lugar:</label>
-                <Input type="text" name="place" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.location} disabled={this.state.isDisable} required/>
+                <Input type="text" name="place" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.location} disabled={this.state.isDisable}/>
               </Card>
             </Col>
           </Row>
@@ -105,7 +103,7 @@ class SSTForm extends Component {
           <Row>
             <Col width="99%">
               <Card style={Styles.cardInput}>
-                <Input style={Styles.textInput} type="text" name="responsible" value={this.state.formData.responsible} onChange={this.handleChangeInput.bind(this)} placeholder="Responsable" disabled={this.state.isDisable} required />
+                <Input style={Styles.textInput} type="text" name="responsible" value={this.state.formData.responsible} onChange={this.handleChangeInput.bind(this)} placeholder="Responsable" disabled={this.state.isDisable} />
               </Card>
             </Col>
 

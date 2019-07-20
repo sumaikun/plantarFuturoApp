@@ -7,6 +7,7 @@ import { formCardStyles , workingRowStyles , modalStyles } from "../../jsStyles/
 //Onsen Ui
 import {  Col, Row, Card, Button, Input, Select} from 'react-onsenui';
 
+import placeholderImage from "../../img/image-placeholder.png";
 //Libraries
 
 //components
@@ -39,11 +40,11 @@ class MachineryForm extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
-    //console.log(this.props);
+    console.log(this.props);
   }
 
   componentDidMount(){
-    //console.log(this.props);
+    console.log(this.props);
 
     /*if(this.props.appState.currentHillsideMovement)
     {
@@ -56,7 +57,7 @@ class MachineryForm extends Component {
           hour:this.props.appState.currentHillsideMovement.report_date.split(" ")[1]
         }
       },()=>{
-        //console.log(this.state);
+        console.log(this.state);
       });
     }*/
   }
@@ -67,8 +68,8 @@ class MachineryForm extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      //console.log(event.target.name);
-      //console.log(event.target.value);
+      console.log(event.target.name);
+      console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -77,7 +78,7 @@ class MachineryForm extends Component {
            }
 
          },() => {
-           //console.log(this.state);
+           console.log(this.state);
          }
        );
     }
@@ -101,8 +102,8 @@ class MachineryForm extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         data.report_date = data.date+" "+data.hour;
-        //console.log(data);
-        //console.log("edit hall side movement");
+        console.log(data);
+        console.log("edit hall side movement");
         this.props.updateHallsideMovement(this.state.formData.id,data);
       }
       else
@@ -111,8 +112,8 @@ class MachineryForm extends Component {
         data.user_id = this.props.appState.user.id;
         data.project_id = this.props.appState.selectedProject.id;
         data.report_date = data.date+" "+data.hour;
-        //console.log(data);
-        //console.log("create hall side movement");
+        console.log(data);
+        console.log("create hall side movement");
         this.props.createHallsideMovement(data);
 
       }*/
@@ -122,7 +123,7 @@ class MachineryForm extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      //console.log(this.state);
+      console.log(this.state);
     });
 
   }
@@ -247,6 +248,40 @@ class MachineryForm extends Component {
                 <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations}  disabled={this.state.isDisable} placeholder="Observaciones"></textarea>
               </Card>
             </Col>
+          </Row>
+          
+          <Row>
+
+            <Row>
+              <Col>
+                <Card style={styles.cardLabel}>
+                  <span>
+                    Evidencias Fotográficas
+                  </span>
+                </Card>
+              </Col>
+            </Row>
+
+          <Col>
+            <br/>
+            <Card style={styles.greenCard} >
+              <div>
+                <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
+              </div>
+              <Row>
+                <Button style={styles.buttonCard}
+                  onClick={this.saveImage}
+                >Tomar foto</Button>
+                <label className="fileContainer" style={{ "font-size": "17px",
+                  color: "white"
+                }}>
+                  Subir archivo
+                  <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                     />
+                </label>
+              </Row>
+            </Card>
+          </Col>
           </Row>
           <Row>
             <button type="submit" disabled={this.state.isDisable}

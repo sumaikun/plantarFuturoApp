@@ -1,8 +1,7 @@
 import { FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS,
 SET_PROJECT_PHASE, SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS,
-SET_FORESTAL_UNIT , SET_FUNCTIONAL_UNIT , SELECT_PROJECT, SET_RISK_OVERVIEW, SET_SST,
-SET_SST_ASSISTANTS,
-SET_SST_VISITORS , SET_SST_DATA} from "../types";
+SET_FORESTAL_UNIT , SET_FUNCTIONAL_UNIT , SELECT_PROJECT, SET_RISK_OVERVIEW, SET_INVENTORY,
+SET_FUEL,SET_SST,SET_SST_ASSISTANTS,SET_SST_VISITORS,SET_SST_DATA } from "../types";
 
 export const openMenu = () => ({
   type: MENU_OPEN
@@ -33,6 +32,17 @@ export const setRiskOverview = (data) => ({
   type: SET_RISK_OVERVIEW,
   payload: data
 })
+
+export const setInventory = (data) => ({
+  type: SET_INVENTORY,
+  payload: data
+})
+
+export const setFuel = (data) => ({
+  type: SET_FUEL,
+  payload: data
+})
+
 export const setProjectPhase = (data) => ({
   type: SET_PROJECT_PHASE,
   payload: data
@@ -65,6 +75,7 @@ export const selectProject = (data) => ({
   type: SELECT_PROJECT,
   payload: data,
 })
+
 
 // list informe SST
 export const setSST = (data) => ({

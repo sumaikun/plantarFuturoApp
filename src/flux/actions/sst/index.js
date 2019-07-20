@@ -1,6 +1,6 @@
 import { Request } from '../../../helpers/request'
 import { fetching , notFetching, setSST, setSSTAssistants, setSSTVisitors, setDataSST} from "../appActions";
-import { GET_SST_URL } from "../../types";
+import { GET_SST_URL, GET_VISITOR_URL } from "../../types";
 import Ons from 'onsenui';
 import moment from 'moment';
 //Cargar repotes SST por proyecto

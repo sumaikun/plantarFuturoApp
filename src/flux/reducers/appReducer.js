@@ -25,9 +25,11 @@ import { FETCH,
    SET_RISK_INDICATORS,
    SET_RISK_OVERVIEW,
    SET_SST,
+   SET_INVENTORY,
    SET_SST_ASSISTANTS,
-   SET_SST_VISITORS , SET_SST_DATA} from "../types";
-
+   SET_SST_VISITORS,
+   SET_SST_DATA,
+   SET_FUEL } from "../types";
 
 let initialUser = null;
 
@@ -232,6 +234,20 @@ const appReducer = (state = initialState, action) => {
         isOpen:false
       }
       return state;
+    case SET_FUEL:
+      state={
+        ...state,
+        forestalUnitE:action.payload
+      }
+      console.log(state);
+    return state;
+    case SET_INVENTORY:
+      state={
+        ...state,
+        forestalUnitE:action.payload
+      }
+      console.log(state);
+    return state;
     case SET_FUNCTIONAL_UNIT:
       state={
         ...state,

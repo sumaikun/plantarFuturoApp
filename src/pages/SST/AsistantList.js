@@ -20,7 +20,7 @@ import Modal from "../../components/Modal";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import {  } from '../../flux/actions';
+import { getSST, getSSTAssistants, goToAssistantForm } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //const styles = workingRowStyles;
@@ -86,7 +86,9 @@ class AsistantList extends Component {
     this.renderHeader = this.renderHeader.bind(this);
     this.contentPage = this.contentPage.bind(this);
   }
-
+  componentDidMount(){
+    this.props.getList(3)
+  }
   renderHeader(){
     return(
       <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">
@@ -100,9 +102,7 @@ class AsistantList extends Component {
           </Col>
           <Col width="25%" style={{...workingRowStyles.tableHeaders,
             ...workingRowStyles.tableHeadersBorders}}>
-
               <span>No</span>
-
           </Col>
         </Row>
       </ListHeader>
@@ -110,35 +110,50 @@ class AsistantList extends Component {
   }
 
   contentPage(currentPhase,forestalUnits){
+    let {listSSTAssistants}= this.props.appState
+    if (!listSSTAssistants) return null;
     return(
-    <div>
-
-      <SearchInput/>
-
-          <List
-            renderHeader={this.renderHeader}>
-            <div>
-              <ListItem>
-
-              <Col width="50%">
-                  <span style={workingRowStyles.listText}  >Usuario</span>
-              </Col>
-              <Col id="modal-btn" width="25%" style={{textAlign:"center"}}>
-                <Radio name="test" style={ workingRowStyles.radioCircle } />
-              </Col>
-              <Col width="25%" style={{textAlign:"center"}}>
-                <Radio name="test" style={ workingRowStyles.radioCircle } />
-              </Col>
-              </ListItem>
-                <div style={{
-                    height: "10px",
-                    backgroundColor: "#e6e7e8",
-                }}>
-                </div>
+      <div>
+        <div style={styles.formContainer}>
+          <div className="login-form" >
+            <div className="group" style={styles.searchInputContainer}>
+                <input id="search" /*value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} */className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"9GO_TO_MACHINERY_LIST0%", height:"10px"}} /><br />
+                <input type="date" /*value={searchDate}  onChange={e => this.setState({ searchDate: e.target.value })} */className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
+              <div style={styles.searchButton} onClick={()=>{this.props.goToAssistantForm();}}>
+                <span className="fas fa-plus fontAwesome" ></span>
               </div>
+            </div>
+        </div>
+      </div>
+          <List renderHeader={this.renderHeader}>
+          {
+            listSSTAssistants.map((memo, i) => {
+                return  (
+                  
+                <div>
+                  <ListItem>
 
-          </List>:<NotFound/>
-          <div style={{overflow: 'hidden',marginTop:"130%", backgroundColor: 'orange' }}>
+                  <Col width="50%">
+                      <span style={workingRowStyles.listText}  >Usuario</span>
+                  </Col>
+                  <Col id="modal-btn" width="25%" style={{textAlign:"center"}}>
+                    <Radio name="test" style={ workingRowStyles.radioCircle } />
+                  </Col>
+                  <Col width="25%" style={{textAlign:"center"}}>
+                    <Radio name="test" style={ workingRowStyles.radioCircle } />
+                  </Col>
+                  </ListItem>
+                    <div style={{
+                        height: "10px",
+                        backgroundColor: "#e6e7e8",
+                    }}>
+                    </div>
+                  </div>
+                );
+            })
+          }
+          </List>
+        <div style={{overflow: 'hidden',marginTop:"130%", backgroundColor: 'orange' }}>
           <div className="group" style={{...styles.searchInputContainer, "justify-content":"left"}}>
             <div style={styles.buttonContainer}>
               <div style={styles.ProjectButton} >
@@ -214,12 +229,19 @@ class AsistantList extends Component {
     );
   }
 }
-
 const mapStateToProps = state => {
+
   return {
     navigation: state.navigation,
     appState: state.appState
   };
 }
+//report_date
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getList: (id) => {dispatch(getSSTAssistants(id))},
+    goToAssistantForm: ()=> {dispatch(goToAssistantForm())}
+  }
+}
 
-export default  connect(mapStateToProps, {  })(AsistantList);
+export default  connect(mapStateToProps,mapDispatchToProps )(AsistantList);

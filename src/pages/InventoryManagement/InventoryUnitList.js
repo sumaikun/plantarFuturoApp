@@ -8,7 +8,7 @@ import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
 import { workingRowStyles } from "../../jsStyles/Styles";
 
-
+import Modal from '../../components/Modal';
 //Onsen Ui
 import {  List , ListItem, Col, Row, Card, ListHeader } from 'react-onsenui';
 import Ons from 'onsenui';
@@ -159,6 +159,40 @@ class InventoryUnitList extends Component {
              this.contentPage(currentPhase,forestalUnits)
 
           }
+        <Modal title="" ModalStyles={{...styles.modalStyles,
+              ...styles.modalOverride
+            }}>
+          <Row style={ styles.modalCell }>
+            <div>Traslado</div>
+          </Row>
+
+          <Row>
+            <Col style={ styles.modalCell }>
+              <span>Proyecto</span>
+            </Col>
+            <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
+                <input type="text" ></input>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col style={ styles.modalCell }>
+              <span>Responsable</span>
+            </Col>
+            <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
+                <input type="text" ></input>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col style={ styles.modalCell }>
+              <span>Observaciones</span>
+            </Col>
+            <Col  width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
+                <input type="text" ></input>
+            </Col>
+          </Row>
+        </Modal>
 
       </AppPage>
     );

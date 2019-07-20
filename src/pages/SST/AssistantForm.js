@@ -3,342 +3,140 @@ import React, { Component } from 'react';
 import "../../css/simpleForm.css";
 import placeholderImage from "../../img/image-placeholder.png";
 
+import Styles from  './styles'
+
 //Onsen Ui
-import {  Col, Row, Card, Button, Input, Select, Radio} from 'react-onsenui';
-import Ons from 'onsenui';
+import {  Col, Row, Card, Button, Input } from 'react-onsenui';
 
 //Libraries
 
 //components
 import Loading from "../../components/Loading";
+
 //container
 import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase3,
-   updateForestUnitPhase3,
-   getForestalUnits,
-   addOfflineForestUnitP3,
-   updateOfflineForestUnitP3,
-   goBack
-   } from '../../flux/actions';
+
+import {createVisitor} from '../../flux/actions';
 //helper
 
-import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/imageHandler';
 
-const styles = {
-  cardInput:{
-    height: "40px",
-    display: "flex",
-    alignItems: "center",
-    padding:"3px"
-  },
-  cardRadio:{
-    height: "40px",
-    display: "flex",
-    alignItems: "center",
-    padding:"3px",
-    justifyContent:"space-around"
-  },
-  cardLabel:{
-    height: "40px",
-    fontSize: "12px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#61af2e",
-    padding:"3px",
-    color:"white"
-  },
-  textInput:{
-    fontSize:"14px"
-  },
-  dateInput:{
-    fontSize:"14px",
-    textAlign:"center",
-    color:"grey"
-  },
-  buttonCard:{
-    backgroundColor:"rgb(97, 175, 46)",
-    width:"100%",
-    textAlign:"center"
-  },
-  textInCard:{
-    fontSize:"14px",
-    textAlign:"center",
-    color:"grey",
-    fontWeight:"bold",
-    borderStyle: "dotted"
-  }
-}
-
-class AssitanForm extends Component {
+class AssistantForm extends Component {
   constructor(props) {
     super(props);
-    this.saveImage = this.saveImage.bind(this);
-    this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} , selectSearch:{} ,
-      projectInfo:this.props.appState.selectedProject };
-    this.submitData = this.submitData.bind(this);
-    this.contentPage = this.contentPage.bind(this);
-    this.fileUpload = this.fileUpload.bind(this);
-    //console.log(this.props);
+    this.state = {
+      isDisable:false ,
+      formData:this.props.sst,
+      selectSearch:{}
+    };
   }
-
   componentDidMount(){
-    //console.log(this.props);
-    if(this.props.appState.forestalUnitE)
-    {
-      this.setState({
-        formData:{
-          ...this.state.formData,
-          ...this.props.appState.forestalUnitE
-        }
-      },()=>{
-        //console.log(this.state);
-      });
-    }
   }
-
-  fileUpload(key,e){
-
-     const file = e.target.files[0];
-     const  fileType = file['type'];
-     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
-     if (validImageTypes.includes(fileType)) {
-        //console.log(key);
-        let self = this;
-        getInputFileBase64(e.target.files[0]).then(
-          base64Image => {
-
-          ////console.log(base64Image);
-
-                  self.setState({
-                    formData:
-                    {
-                      ...self.state.formData,
-                      [key]:base64Image
-                    }
-                  },()=>{
-                      //console.log(self.state);
-                  });
-        });
-    }
-    else{
-      e.preventDefault();
-      Ons.notification.alert({title:"",message:"No se pueden subir otros archivos que no sean imagenes"});
-    }
-  }
-
-  saveImage(){
-
-      let self = this;
-
-      //console.log("react ambit prev cordova");
-
-      //console.log(self);
-
-      if (window.cordova) {
-
-        navigator.camera.getPicture(image => {
-
-          getFileContentAsBase64(image,function(base64Image){
-
-            //console.log("react ambit post cordova");
-
-            //console.log(self);
-
-            //window.open(base64Image);
-            //console.log(base64Image);
-            // Then you'll be able to handle the myimage.png file as base64
-
-            self.setState({
-              formData:
-              {
-                ...self.state.formData,
-                general_image:base64Image
-              }
-            },()=>{
-                //console.log(self.state);
-            });
-
-
-          });
-
-
-        }, null,{
-            quality : 40,
-            correctOrientation : true
-        });
-      } else{
-        //console.log("please run the cordova project");
-      }
-
-
-  }
-
   handleChangeInput(event){
 
-    if(event.target.name && event.target.value.length > 0)
-    {
-      //console.log(event.target.name);
-      //console.log(event.target.value);
-       this.setState(
-         {
-           formData:{
+    if(event.target.name && event.target.value.length > -1) {
+       this.setState({
+           formData: {
                ...this.state.formData,
                [event.target.name] : event.target.value
            }
-
-         },() => {
-           //console.log(this.state);
          }
        );
     }
-
-    if (event.target.value[0] == "="){
-      event.target.value = event.target.value.substr(1)
-    }
+    if (event.target.value[0] == "=") event.target.value = event.target.value.substr(1)
   }
-
   submitData(e){
-
     e.preventDefault();
-
-    if(!this.props.appState.isFetching)
-    {
-      if(this.props.appState.forestalUnitE)
-      {
-        //console.log("editMode");
-        //console.log(this.state.formData);
-        //console.log(this.state.formData.id);
-        //return;
-        let data = this.state.formData;
-        data.user_id = this.props.appState.user.id;
-
-        if(this.props.appState.currentFunctionalUnit.ToSynchro)
-        {
-          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
-          this.props.updateOfflineForestUnitP3(data);
-          this.props.goBack();
-          return;
-        }
-
-
-        this.props.updateForestUnitPhase3(this.state.formData.id,data);
-      }else{
-        let data = this.state.formData;
-        data.functional_unit_id = this.props.appState.currentFunctionalUnit.id;
-        data.user_id = this.props.appState.user.id;
-
-        if(this.props.appState.currentFunctionalUnit.ToSynchro)
-        {
-          data.created_at = new Date().toISOString().split('T')[0];
-          Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
-          this.props.addOfflineForestUnitP3(data);
-          this.props.goBack();
-          return;
-        }
-
-        this.props.createForestUnitPhase3(data);
-        //console.log("createMode");
-      }
-    }
-    else{
-      Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
-    }
-
+    //if (this.props.sst.actions == 'update')  return this.props.handleChangeUpdate(this.state.formData)
+    //return this.props.handleChangeCreate(this.state.formData)
   }
-
-  contentPage(){
-
-    return(
-
+  enableForm(){
+    this.setState({ isDisable: !this.state.isDisable });
+  }
+  render() {
+    const { isFetching } = this.props.appState;
+    if (isFetching) {
+      return <div style={{backgroundColor:"white",height:"100%"}}>
+        <Loading/>
+      </div>
+    }
+    console.log(this.props);
+    return (
+      <AppPage  title={["Formulario de", <strong>Visitantes</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
         <br/>
         <form className="simpleForm"  onSubmit={this.submitData}>
           <Row>
-            <Col width="98%">
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Nombre" maxLength="10"/>
+            <Col width="99%">
+              <Card style={{...Styles.cardInput, alignItems:"unset"}}>
+                  <label>Nombre</label>
+                <Input style={{...Styles.dateInput}} type="text" name="name" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.name} disabled={this.state.isDisable}/>
               </Card>
             </Col>
           </Row>
           <Row>
-            <Col width="49%">
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="C.C" maxLength="10"/>
+            <Col width="45%">
+              <Card style={{...Styles.cardInput, alignItems:"unset"}}>
+                  <label>C.C</label>
+                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="text" name="document" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.document} disabled={this.state.isDisable}/>
               </Card>
             </Col>
-            <Col width="49%">
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Entidad" maxLength="10"/>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col width="49%">
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Cargo" maxLength="10"/>
-              </Card>
-            </Col>
-            <Col width="49%">
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Rol" maxLength="10"/>
+            <Col width="54%">
+              <Card style={Styles.cardInput}>
+                  <label>Entidad</label>
+                <Input type="text" name="entity" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.entity} disabled={this.state.isDisable}/>
               </Card>
             </Col>
           </Row>
           <Row>
-            <Col width="49%">
-              <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Estado" maxLength="10"/>
+            <Col width="45%">
+              <Card style={{...Styles.cardInput, alignItems:"unset"}}>
+                  <label>Cargo</label>
+                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="text" name="position" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.position} disabled={this.state.isDisable}/>
+              </Card>
+            </Col>
+            <Col width="54%">
+              <Card style={Styles.cardInput}>
+                  <label>Rol</label>
+                <Input type="text" name="state" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.state} disabled={this.state.isDisable}/>
               </Card>
             </Col>
           </Row>
           <Row>
-            <button type="submit"
-              style={{fontSize:"18px",padding:'5px',marginTop:"10px",backgroundColor:"#61af2e",boxShadow:"rgba(0, 0, 0, 0.85) 0px 10px 10px -2px",
-              color:"white",width:"100%",borderRadius:"10%"}}
+            <Col width="45%">
+              <Card style={{...Styles.cardInput, alignItems:"unset"}}>
+                  <label>Estado</label>
+                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="text" name="project_id" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.project_id} disabled={this.state.isDisable}/>
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <button type="button" disabled={this.state.isDisable} style={Styles.button}
               ><b>Registrar</b></button>
           </Row>
         </form>
       </div>
-
-
-    );
-  }
-
-render() {
-
-    const { isFetching , currentFunctionalUnit } = this.props.appState;
-
-    return (
-      <AppPage title={["Formulario de ", <strong>Asistentes</strong>]} backButton={true}>
-
-          {  isFetching ?
-            <div style={{backgroundColor:"white",height:"100%"}}>
-              <Loading/>
-            </div> :
-
-             this.contentPage()
-
-          }
-
       </AppPage>
     );
   }
+
+
 }
 
 const mapStateToProps = state => {
   return {
-    project: state.project,
+    sst:  state.appState.sstData,
     appState: state.appState,
   };
 }
 
-export default  connect(mapStateToProps, { createForestUnitPhase3,
-    updateForestUnitPhase3,
-    getForestalUnits,
-    addOfflineForestUnitP3,
-    updateOfflineForestUnitP3,goBack })(AssitanForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleChangeCreate: (data)=>{dispatch(createVisitor(data))},
+    /*handleChangeUpdate: (data)=>{dispatch(updateVisitor(data))}*/
+  }
+}
+
+export default  connect(mapStateToProps,mapDispatchToProps)(AssistantForm);
