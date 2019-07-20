@@ -35,7 +35,7 @@ class Login extends Component {
 
   componentDidMount() {
     const backgContainer = document.getElementById('backgContainer');
-    console.log(backgContainer.clientHeight);
+    //console.log(backgContainer.clientHeight);
     this.setState({ backgHeight:backgContainer.clientHeight });
   }
 
@@ -74,7 +74,7 @@ class Login extends Component {
 
     if(height < this.state.backgHeight)
     {
-      //console.log("prevent that resize");
+      ////console.log("prevent that resize");
       backgContainer.style.height = this.state.backgHeight+"px";
     }
 

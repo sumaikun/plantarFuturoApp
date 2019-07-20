@@ -31,11 +31,11 @@ class hillsideCollapse extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.currentHillsideCollapse)
     {
       this.setState({
@@ -47,7 +47,7 @@ class hillsideCollapse extends Component {
           hour:this.props.appState.currentHillsideCollapse.report_date.split(" ")[1]
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
@@ -55,7 +55,7 @@ class hillsideCollapse extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      console.log(this.state);
+      //console.log(this.state);
     });
 
   }
@@ -64,8 +64,8 @@ class hillsideCollapse extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -74,7 +74,7 @@ class hillsideCollapse extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -97,8 +97,8 @@ class hillsideCollapse extends Component {
       let data = this.state.formData;
       data.user_id = this.props.appState.user.id;
       data.report_date = data.date+" "+data.hour;
-      console.log(data);
-      console.log("edit hall side movement");
+      //console.log(data);
+      //console.log("edit hall side movement");
       this.props.updateHillsideCollapse(this.state.formData.id,data);
     }
     else
@@ -107,8 +107,8 @@ class hillsideCollapse extends Component {
       data.user_id = this.props.appState.user.id;
       data.project_id = this.props.appState.selectedProject.id;
       data.report_date = data.date+" "+data.hour;
-      console.log(data);
-      console.log("create hall side movement");
+      //console.log(data);
+      //console.log("create hall side movement");
       this.props.createHillsideCollapse(data);
 
     }

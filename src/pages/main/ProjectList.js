@@ -102,7 +102,7 @@ class ProjectList extends Component {
         let componentSuccess = (response) => {
 
           let reloadProjectId = this.state.projectIdToModify ? this.state.projectIdToModify : this.project_id;
-          // console.log(reloadProjectId);
+          // //console.log(reloadProjectId);
           //return;
           this.Code.value = "";
           let modal = document.querySelector('#my-modal');
@@ -115,7 +115,7 @@ class ProjectList extends Component {
         if(this.state.editMode)
         {
 
-          console.log(this.state);
+          //console.log(this.state);
           //return ;
           if(!this.state.isOfflineFunit)
           {
@@ -190,7 +190,7 @@ class ProjectList extends Component {
 
     let serverMemoryFunctionals = this.props.memory.serverFunctionalUnits;
 
-    //console.log(serverMemoryFunctionals);
+    ////console.log(serverMemoryFunctionals);
 
     return(
       functionalUnits.filter(unit => {
@@ -198,7 +198,7 @@ class ProjectList extends Component {
           }).map((funit, i) => {
 
             let foundIndex = serverMemoryFunctionals.findIndex( memory =>   memory.id == funit.id  );
-            //console.log("foundIndex"+foundIndex);
+            ////console.log("foundIndex"+foundIndex);
             funit = foundIndex != -1 ? serverMemoryFunctionals[foundIndex] : funit ;
 
           return(
@@ -221,7 +221,7 @@ class ProjectList extends Component {
                       .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
                       .then(function(res) {
                         if(res){
-                          console.log("cancelar sincronización");
+                          //console.log("cancelar sincronización");
                           if(funit.ToSynchro)
                           {
                             self.props.removeFromOfflineFunctionalUnit(funit);
@@ -249,7 +249,7 @@ class ProjectList extends Component {
                     {
                       return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
                     }
-                    console.log("nav");
+                    //console.log("nav");
                     this.props.getForestalUnits(funit.id);
                     this.props.setFunctionalUnit(funit);
                     this.props.goToForestalUnits();
@@ -272,7 +272,7 @@ class ProjectList extends Component {
 
   render() {
 
-    //console.log(this.props.appState);
+    ////console.log(this.props.appState);
 
     const { projects , currentPhase, functionalUnits  } = this.props.appState
 
@@ -313,11 +313,11 @@ class ProjectList extends Component {
               return(
 
               <div onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
-                    console.log("fase de riesgos");
-                    console.log(project); this.props.selectProject(project);
+                    //console.log("fase de riesgos");
+                    //console.log(project); this.props.selectProject(project);
                     this.props.goToRiskManagement();
                   })(): (()=>{
-                      console.log(project); this.props.selectProject(project)
+                      //console.log(project); this.props.selectProject(project)
                     })()
                   }}>
 
@@ -337,7 +337,7 @@ class ProjectList extends Component {
                                   [project.id] : this.state.functionalList[project.id] ? !this.state.functionalList[project.id] : true
                                 }
                               },()=>{
-                                console.log(this.state);
+                                //console.log(this.state);
                               });
                             }}>
                               <CardOptionButton

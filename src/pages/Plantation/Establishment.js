@@ -39,11 +39,11 @@ class Establishment extends Component {
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
     this.itemActivity = this.itemActivity.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
 
     /*if(this.props.appState.currentHillsideMovement)
     {
@@ -56,7 +56,7 @@ class Establishment extends Component {
           hour:this.props.appState.currentHillsideMovement.report_date.split(" ")[1]
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }*/
   }
@@ -75,8 +75,8 @@ class Establishment extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("edit hall side movement");
+        //console.log(data);
+        //console.log("edit hall side movement");
         this.props.updateHallsideMovement(this.state.formData.id,data);
       }
       else
@@ -85,8 +85,8 @@ class Establishment extends Component {
         data.user_id = this.props.appState.user.id;
         data.project_id = this.props.appState.selectedProject.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("create hall side movement");
+        //console.log(data);
+        //console.log("create hall side movement");
         this.props.createHallsideMovement(data);
 
       }*/

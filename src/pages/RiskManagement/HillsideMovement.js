@@ -33,11 +33,11 @@ class HillsideMovement extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.currentHillsideMovement)
     {
       this.setState({
@@ -49,7 +49,7 @@ class HillsideMovement extends Component {
           hour:this.props.appState.currentHillsideMovement.report_date.split(" ")[1]
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
@@ -58,8 +58,8 @@ class HillsideMovement extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -68,7 +68,7 @@ class HillsideMovement extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -92,8 +92,8 @@ class HillsideMovement extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("edit hall side movement");
+        //console.log(data);
+        //console.log("edit hall side movement");
         this.props.updateHallsideMovement(this.state.formData.id,data);
       }
       else
@@ -102,8 +102,8 @@ class HillsideMovement extends Component {
         data.user_id = this.props.appState.user.id;
         data.project_id = this.props.appState.selectedProject.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("create hall side movement");
+        //console.log(data);
+        //console.log("create hall side movement");
         this.props.createHallsideMovement(data);
 
       }
@@ -113,7 +113,7 @@ class HillsideMovement extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      console.log(this.state);
+      //console.log(this.state);
     });
 
   }

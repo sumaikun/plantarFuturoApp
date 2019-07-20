@@ -83,11 +83,11 @@ class FormFuel extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.forestalUnitE)
     {
       this.setState({
@@ -96,7 +96,7 @@ class FormFuel extends Component {
           ...this.props.appState.forestalUnitE
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
@@ -107,12 +107,12 @@ class FormFuel extends Component {
      const  fileType = file['type'];
      const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
      if (validImageTypes.includes(fileType)) {
-        console.log(key);
+        //console.log(key);
         let self = this;
         getInputFileBase64(e.target.files[0]).then(
           base64Image => {
 
-          //console.log(base64Image);
+          ////console.log(base64Image);
 
                   self.setState({
                     formData:
@@ -121,7 +121,7 @@ class FormFuel extends Component {
                       [key]:base64Image
                     }
                   },()=>{
-                      console.log(self.state);
+                      //console.log(self.state);
                   });
         });
     }
@@ -135,9 +135,9 @@ class FormFuel extends Component {
 
       let self = this;
 
-      console.log("react ambit prev cordova");
+      //console.log("react ambit prev cordova");
 
-      console.log(self);
+      //console.log(self);
 
       if (window.cordova) {
 
@@ -145,12 +145,12 @@ class FormFuel extends Component {
 
           getFileContentAsBase64(image,function(base64Image){
 
-            console.log("react ambit post cordova");
+            //console.log("react ambit post cordova");
 
-            console.log(self);
+            //console.log(self);
 
             //window.open(base64Image);
-            console.log(base64Image);
+            //console.log(base64Image);
             // Then you'll be able to handle the myimage.png file as base64
 
             self.setState({
@@ -160,7 +160,7 @@ class FormFuel extends Component {
                 general_image:base64Image
               }
             },()=>{
-                console.log(self.state);
+                //console.log(self.state);
             });
 
 
@@ -172,7 +172,7 @@ class FormFuel extends Component {
             correctOrientation : true
         });
       } else{
-        console.log("please run the cordova project");
+        //console.log("please run the cordova project");
       }
 
 
@@ -182,8 +182,8 @@ class FormFuel extends Component {
 
     if(event.target.name && event.target.value.length > 0)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -192,7 +192,7 @@ class FormFuel extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -210,9 +210,9 @@ class FormFuel extends Component {
     {
       if(this.props.appState.forestalUnitE)
       {
-        console.log("editMode");
-        console.log(this.state.formData);
-        console.log(this.state.formData.id);
+        //console.log("editMode");
+        //console.log(this.state.formData);
+        //console.log(this.state.formData.id);
         //return;
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
@@ -242,7 +242,7 @@ class FormFuel extends Component {
         }
 
         this.props.createForestUnitPhase3(data);
-        console.log("createMode");
+        //console.log("createMode");
       }
     }
     else{

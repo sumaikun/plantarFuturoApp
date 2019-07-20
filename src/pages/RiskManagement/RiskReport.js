@@ -142,7 +142,7 @@ class RiskReport extends Component {
     let currentRiskList;
     let action;
 
-    console.log(this.props.appState.currentRiskPhase);
+    //console.log(this.props.appState.currentRiskPhase);
 
     switch(this.props.appState.currentRiskPhase)
     {
@@ -256,27 +256,27 @@ class RiskReport extends Component {
              {
                case 1:
                  foundIndex = this.props.memory.serverTunnelDeformations.findIndex( memory =>   memory.id == risk.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  risk = foundIndex != -1 ? this.props.memory.serverTunnelDeformations[foundIndex] : risk ;
                  break;
                case 2:
                  foundIndex = this.props.memory.serverHillSideCollapse.findIndex( memory =>   memory.id == risk.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  risk = foundIndex != -1 ? this.props.memory.serverHillSideCollapse[foundIndex] : risk ;
                  break;
                case 3:
                  foundIndex = this.props.memory.serverRainFall.findIndex( memory =>   memory.id == risk.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  risk = foundIndex != -1 ? this.props.memory.serverRainFall[foundIndex] : risk ;
                  break;
                case 4:
                  foundIndex = this.props.memory.serverHillSideCollapse.findIndex( memory =>   memory.id == risk.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  risk = foundIndex != -1 ? this.props.memory.serverHillSideCollapse[foundIndex] : risk ;
                  break;
                case 5:
                  foundIndex = this.props.memory.serverRiverCollapse.findIndex( memory =>   memory.id == risk.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  risk = foundIndex != -1 ? this.props.memory.serverRiverCollapse[foundIndex] : risk ;
                  break;
                default:
@@ -331,7 +331,7 @@ class RiskReport extends Component {
 
   render() {
 
-      console.log("fase de riesgo actual "+this.props.appState.currentRiskPhase);
+      //console.log("fase de riesgo actual "+this.props.appState.currentRiskPhase);
 
       const {  isFetching } = this.props.appState
 

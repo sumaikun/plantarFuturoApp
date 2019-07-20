@@ -87,8 +87,8 @@ class ForestalUnitList extends Component {
 
   contentPage(currentPhase,forestalUnits){
 
-    //console.log("Unidades forestales");
-    //console.log(forestalUnits);
+    ////console.log("Unidades forestales");
+    ////console.log(forestalUnits);
     let foundIndex;
 
     forestalUnits.sort((a,b) => {
@@ -110,7 +110,7 @@ class ForestalUnitList extends Component {
             <input type="date" value={searchDate} onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
           </div>
           <div className={'plus-icon-container'} style={styles.searchButton} onClick={()=>{
-              console.log(currentPhase);
+              //console.log(currentPhase);
               this.props.setForestalUnit(null);
               switch(currentPhase)
               {
@@ -148,21 +148,21 @@ class ForestalUnitList extends Component {
                case 1:
 
                  foundIndex = this.props.memory.serverForestUnitsPhase1.findIndex( memory =>   memory.id == unit.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase1[foundIndex] : unit ;
 
                  break;
                case 2:
 
                  foundIndex = this.props.memory.serverForestUnitsPhase2.findIndex( memory =>   memory.id == unit.id  );
-                 //console.log("foundIndex"+foundIndex);
+                 ////console.log("foundIndex"+foundIndex);
                  unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase2[foundIndex] : unit ;
 
                  break;
                case 3:
 
                 foundIndex = this.props.memory.serverForestUnitsPhase3.findIndex( memory =>   memory.id == unit.id  );
-                //console.log("foundIndex"+foundIndex);
+                ////console.log("foundIndex"+foundIndex);
                 unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase3[foundIndex] : unit ;
 
                  break;
@@ -196,7 +196,7 @@ class ForestalUnitList extends Component {
 
                       e.stopPropagation();
 
-                      console.log(unit);
+                      //console.log(unit);
 
                       let self = this;
 
@@ -206,7 +206,7 @@ class ForestalUnitList extends Component {
                         .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
                         .then(function(res) {
                           if(res){
-                            console.log("cancelar sincronización");
+                            //console.log("cancelar sincronización");
                             if(unit.ToSynchro)
                             {
                               if(currentPhase === 1)
@@ -282,7 +282,7 @@ class ForestalUnitList extends Component {
 
       let {  isFetching ,currentPhase , forestalUnits } = this.props.appState;
 
-      console.log(forestalUnits);
+      //console.log(forestalUnits);
 
       if(this.props.appState.currentFunctionalUnit.ToSynchro){
         forestalUnits = [];
