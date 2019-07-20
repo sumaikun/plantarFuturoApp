@@ -53,8 +53,8 @@ class SSTForm extends Component {
   }
   submitData(e){
     e.preventDefault();
-    if (this.props.sst.actions == 'update')  return this.props.handleChangeUpdate(this.state.formData)
-    return this.props.handleChangeCreate(this.state.formData)
+    //if (this.props.sst.actions == 'update')  return this.props.handleChangeUpdate(this.state.formData)
+    //return this.props.handleChangeCreate(this.state.formData)
   }
   enableForm(){
     this.setState({ isDisable: !this.state.isDisable });
@@ -268,7 +268,7 @@ class SSTForm extends Component {
             </Col>
           </Row>
           <Row>
-            <button type="submit" disabled={this.state.isDisable} style={Styles.button}
+            <button type="button" disabled={this.state.isDisable} style={Styles.button}
               ><b>Registrar</b></button>
           </Row>
         </form>
