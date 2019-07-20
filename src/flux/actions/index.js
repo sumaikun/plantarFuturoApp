@@ -17,4 +17,5 @@ export * from "./RiskManagement/RiskOverview"
 
 //memoryActions
 export * from "./sst/"
+export * from "./visitor/"
 export * from "./memoryActions";
