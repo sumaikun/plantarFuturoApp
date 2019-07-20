@@ -99,9 +99,9 @@ let defaultValues = {
 
   // state list report SST
   listSST: initialSST,
-  listSSTAssistants:[],
-  listSSTVisitors: [],
-  sstData:{}
+  listSSTAssistants:initialSST,
+  listSSTVisitors: initialSST,
+  sstData:{},
 
 }
 
@@ -423,6 +423,7 @@ const appReducer = (state = initialState, action) => {
           ...state,
           sstData:action.payload
         }
+
         return state;
     default:
       return state;

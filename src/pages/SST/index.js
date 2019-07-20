@@ -25,17 +25,8 @@ import Styles from './styles'
 
 
 class ListSSTByProject extends Component {
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      editMode:false,
-      idToModify:null,
-    }
-  }
   componentDidMount(){
-    this.props.getList()
+    this.props.getList(1)
   }
   render() {
     let {listSST}= this.props.appState
@@ -47,7 +38,7 @@ class ListSSTByProject extends Component {
           {
             listSST.map((memo, i) => {
                 return  (
-                  <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.onClickSSTForm()}}>
+                  <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.onClickSSTForm(memo)}}>
                     <ListAccordion counter={i + 1} projectName={moment(memo.report_date).format("DD/MM/YYYY")} projectInfo={""} />
                   </div>
                 );
@@ -58,14 +49,14 @@ class ListSSTByProject extends Component {
       </AppPage>
     );
   }
-  onClickSSTForm() {
-
+  onClickSSTForm(memo) {
+    this.props.getForm(memo, 'update')
     this.props.goToSSTForm()
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state.appState);
+
   return {
     navigation: state.navigation,
     appState: state.appState
@@ -74,8 +65,8 @@ const mapStateToProps = state => {
 //report_date
 const mapDispatchToProps = (dispatch) => {
   return {
-    getList: () => {getSST()},
-    getForm: (sst) => {getSSTForm(sst)},
+    getList: (id) => {dispatch(getSST(id))},
+    getForm: (sst) => {dispatch(getSSTForm(sst))},
     goToSSTForm: ()=> {dispatch(goToSSTForm())}
   }
 }

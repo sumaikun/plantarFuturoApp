@@ -2,23 +2,22 @@ import { Request } from '../../../helpers/request'
 import { fetching , notFetching, setSST, setSSTAssistants, setSSTVisitors, setDataSST} from "../appActions";
 import { GET_SST_URL } from "../../types";
 import Ons from 'onsenui';
+import moment from 'moment';
 //Cargar repotes SST por proyecto
-export const getSST = (id) => {
+export function  getSST (id)  {
   return async dispatch => {
-
       dispatch(fetching());
 
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
         dispatch(setSST(response.data));
-        console.log("hi")
       }
 
       let ErrorCallBack = () => {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL+1,
+        GET_SST_URL+id,
         SuccessCallBack,
         ErrorCallBack
       );
@@ -26,7 +25,7 @@ export const getSST = (id) => {
 }
 
 // Crear reporte SST
-export const createReportSST = (data, successCallBack  ,errorCallBack ) => {
+export function createReportSST(data, successCallBack  ,errorCallBack )  {
   return async dispatch => {
 
     /*if(!navigator.onLine)
@@ -61,7 +60,7 @@ export const createReportSST = (data, successCallBack  ,errorCallBack ) => {
 }
 
 // Actualizar reporte SST
-export const updateReportSST = (id, data, successCallBack  ,errorCallBack ) => {
+export function updateReportSST (id, data, successCallBack  ,errorCallBack ) {
   return async dispatch => {
 
     /*if(!navigator.onLine)
@@ -97,7 +96,7 @@ export const updateReportSST = (id, data, successCallBack  ,errorCallBack ) => {
 
 
 // Cargar los Asistentes de SST
-export const getSSTAssistants = (id, successCallBack  ,errorCallBack) => {
+export function getSSTAssistants  (id, successCallBack  ,errorCallBack)  {
   return async dispatch => {
 
       dispatch(fetching());
@@ -112,7 +111,7 @@ export const getSSTAssistants = (id, successCallBack  ,errorCallBack) => {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL + `/assistants/${id}`,
+        GET_SST_URL + `assistants/${id}`,
         SuccessCallBack,
         ErrorCallBack
       );
@@ -120,7 +119,7 @@ export const getSSTAssistants = (id, successCallBack  ,errorCallBack) => {
 }
 
 /// Cargar los visitantes de SST
-export const getSSTVisitors = (id, successCallBack  ,errorCallBack) => {
+export function getSSTVisitors  (id, successCallBack  ,errorCallBack)  {
   return async dispatch => {
 
       dispatch(fetching());
@@ -135,7 +134,7 @@ export const getSSTVisitors = (id, successCallBack  ,errorCallBack) => {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL + `/assistants/${id}`,
+        GET_SST_URL + `visitors/${id}`,
         SuccessCallBack,
         ErrorCallBack
       );
@@ -143,8 +142,14 @@ export const getSSTVisitors = (id, successCallBack  ,errorCallBack) => {
 }
 
 
-export const getSSTForm = (data) => {
+export function getSSTForm(data, action)  {
+  //console.log(data, setDataSST);
+  let row = { ...data
+    , date: moment(data.report_date).format("dd/mm/aaaa")
+    , hour: moment(data.report_date).format("HH:mm")
+    , action
+  }
   return async dispatch => {
-    dispatch(setDataSST(data));
+    dispatch(setDataSST(row));
   }
 }
