@@ -24,7 +24,9 @@ import { FETCH,
    SET_CURRENT_RISK_PHASE,
    SET_RISK_INDICATORS,
    SET_RISK_OVERVIEW,
-   SET_SST } from "../types";
+   SET_SST,
+   SET_SST_ASSISTANTS,
+   SET_SST_VISITORS , SET_SST_DATA} from "../types";
 
 
 let initialUser = null;
@@ -80,7 +82,7 @@ let defaultValues = {
 
 //
   RiskOverview: {},
-  listSST: initialSST,
+
   TunnelDeformationList: [],
   HillsideMovementList:[],
   RainfallList:[],
@@ -94,6 +96,12 @@ let defaultValues = {
   /*  Inventory process */
 
   currentMachineForm: null,
+
+  // state list report SST
+  listSST: initialSST,
+  listSSTAssistants:[],
+  listSSTVisitors: [],
+  sstData:{}
 
 }
 
@@ -210,13 +218,6 @@ const appReducer = (state = initialState, action) => {
       ...state,
       RiskOverview:action.payload
     }
-    return state;
-    case SET_SST:
-    state={
-      ...state,
-      listSST:action.payload
-    }
-  console.log(state);
     return state;
     case MENU_OPEN:
       state={
@@ -336,7 +337,6 @@ const appReducer = (state = initialState, action) => {
         return state;
       }
 
-
     case SET_TUNNEL_DEFORMATION:
 
       state={
@@ -399,7 +399,31 @@ const appReducer = (state = initialState, action) => {
       }
       //console.log(state);
       return state;
-
+    // State SST
+    case SET_SST:
+      state={
+        ...state,
+        listSST:action.payload
+      }
+      return state;
+    case SET_SST_ASSISTANTS:
+      state={
+        ...state,
+        listSSTAssistants:action.payload
+      }
+      return state;
+    case SET_SST_VISITORS:
+      state={
+        ...state,
+        listSSTVisitors:action.payload
+      }
+      return state;
+      case SET_SST_DATA:
+        state={
+          ...state,
+          sstData:action.payload
+        }
+        return state;
     default:
       return state;
   }

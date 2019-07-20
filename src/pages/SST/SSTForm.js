@@ -44,18 +44,12 @@ class SSTForm extends Component {
     console.log(this.props);
   }
 
-  componentDidMount(){
-    console.log(this.props);
-  }
-
-
-
   handleChangeInput(event){
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -68,9 +62,7 @@ class SSTForm extends Component {
          }
        );
     }
-    if (event.target.value[0] == "="){
-      event.target.value = event.target.value.substr(1)
-    }
+    if (event.target.value[0] == "=") event.target.value = event.target.value.substr(1)
   }
 
   submitData(e){
@@ -92,7 +84,7 @@ class SSTForm extends Component {
             <Col width="99%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
                   <label>Fecha:</label>
-                <Input style={{...styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput}value={this.state.formData.date} disabled={this.state.isDisable} required/>
+                <Input style={{...styles.dateInput}} type="date" name="date" onChange={this.handleChangeInput} value={this.state.formData.date} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
           </Row>
@@ -126,7 +118,6 @@ class SSTForm extends Component {
             </Col>
 
           </Row>
-
           <Row>
             <Col>
               <Card style={styles.cardLabel}>
@@ -137,8 +128,6 @@ class SSTForm extends Component {
             </Col>
 
           </Row>
-
-
           <Row>
 
             <Card width="99%" style={{width:"99%",
@@ -299,7 +288,7 @@ class SSTForm extends Component {
 
   render() {
 
-    const { isFetching , currentFunctionalUnit } = this.props.appState;
+    const { isFetching } = this.props.appState;
 
     return (
       <AppPage  title={["FORMULARIO ", <strong>SST</strong>]} backButton={true} backButtonCallBack={()=>{ }}>

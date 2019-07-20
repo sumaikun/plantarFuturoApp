@@ -19,7 +19,7 @@ import CardOptionButton from "../../components/CardOptionButton";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToSSTForm, getSST } from '../../flux/actions';
+import { goToSSTForm, getSST, getSSTForm} from '../../flux/actions';
 import { connect } from 'react-redux';
 import Styles from './styles'
 
@@ -47,7 +47,7 @@ class ListSSTByProject extends Component {
           {
             listSST.map((memo, i) => {
                 return  (
-                  <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.props.goToSSTForm()}}>
+                  <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.onClickSSTForm()}}>
                     <ListAccordion counter={i + 1} projectName={moment(memo.report_date).format("DD/MM/YYYY")} projectInfo={""} />
                   </div>
                 );
@@ -58,19 +58,25 @@ class ListSSTByProject extends Component {
       </AppPage>
     );
   }
+  onClickSSTForm() {
+
+    this.props.goToSSTForm()
+  }
 }
 
 const mapStateToProps = state => {
+  console.log(state.appState);
   return {
     navigation: state.navigation,
     appState: state.appState
   };
 }
 //report_date
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getList: () => {getSST()},
-    goToSSTForm: ()=> {goToSSTForm()}
+    getForm: (sst) => {getSSTForm(sst)},
+    goToSSTForm: ()=> {dispatch(goToSSTForm())}
   }
 }
 
