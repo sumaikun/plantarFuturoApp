@@ -3,8 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="42776259-f3c5-45ea-80ea-735ed65f5990" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/res/merged/debug/xml_config.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CardOptionButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CardOptionButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/AppPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/AppPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/actions/FunctionalUnitActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/FunctionalUnitActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/appActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/actions/navigationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/navigationActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/reducers/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/reducers/appReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/reducers/navigationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/reducers/navigationReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Plantation/Establishment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Plantation/PlantationReport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/AppNavigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/AppNavigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/ProjectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/ProjectList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/ProjectManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/ProjectManagement.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/asset-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/service-worker.js" afterDir="false" />
@@ -19,59 +41,130 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="plantarFuturoApp" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/main/ProjectManagement.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/Plantation/data.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2448" />
+            <state relative-caret-position="280">
+              <caret line="117" column="11" lean-forward="true" selection-start-line="117" selection-start-column="11" selection-end-line="120" selection-end-column="36" />
+              <folding>
+                <element signature="e#1887#1950#0" />
+                <element signature="e#1954#2014#0" />
+                <element signature="e#2018#2079#0" />
+                <element signature="e#2083#2118#0" />
+                <element signature="e#2122#2155#0" />
+                <element signature="e#2159#2226#0" />
+                <element signature="e#3988#5573#0" />
+                <element signature="e#5577#7162#0" />
+                <element signature="e#7166#8751#0" />
+                <element signature="e#8755#10340#0" />
+                <element signature="e#10344#11929#0" />
+                <element signature="e#11933#13518#0" />
+                <element signature="e#13522#15107#0" />
+                <element signature="e#15111#16696#0" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/main/ProjectList.js">
+        <entry file="file://$PROJECT_DIR$/src/pages/Plantation/PlantationReport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-768">
-              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+            <state relative-caret-position="440">
+              <caret line="99" column="73" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="73" />
+              <folding>
+                <element signature="e#62#96#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/style.css">
+        <entry file="file://$PROJECT_DIR$/src/pages/Plantation/ReportList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="108" column="27" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
+            <state relative-caret-position="272">
+              <caret line="123" column="73" lean-forward="true" selection-start-line="123" selection-start-column="73" selection-end-line="123" selection-end-column="73" />
+              <folding>
+                <element signature="e#52#100#0" expanded="true" />
+                <element signature="e#5316#19620#0" />
+                <element signature="e#8498#10083#0" />
+                <element signature="e#10087#11672#0" />
+                <element signature="e#11676#13261#0" />
+                <element signature="e#13265#14850#0" />
+                <element signature="e#14854#16439#0" />
+                <element signature="e#16443#18028#0" />
+                <element signature="e#18032#19617#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ListAccordion.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="81" column="36" lean-forward="true" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+              <folding>
+                <element signature="e#52#97#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>parece que tenemos</find>
-      <find>ight</find>
-      <find>center</find>
-      <find>style={{height:&quot;10px&quot;</find>
-      <find>style={{height:&quot;</find>
-      <find>aprovechamiento</find>
-      <find>font-famil</find>
-      <find>autoridad</find>
-      <find>Raleway</find>
-      <find>marginRight</find>
-      <find>estad</find>
-      <find>input</find>
+      <find>selectPro</find>
+      <find>project</find>
+      <find>list</find>
+      <find>set</find>
+      <find>set_project</find>
+      <find>goToProjects</find>
+      <find>MachineryForm</find>
+      <find>go_to_ma</find>
+      <find>go_to_management</find>
+      <find>project-list-</find>
+      <find>set_pro</find>
+      <find>go_to_pro</find>
+      <find>set_projects</find>
+      <find>setProjects</find>
+      <find>setProject</find>
+      <find>GO_TO_RISK_MANAGEMENT</find>
+      <find>goToForestalUnits</find>
+      <find>selectProject</find>
+      <find>fetchProjects</find>
+      <find>handleChangeInput</find>
+      <find>projects</find>
+      <find>tunnelDeformation</find>
+      <find>TunnelDeformationList</find>
+      <find>SET_FUN</find>
+      <find>SET_FUNCTIONAL_UNIT</find>
+      <find>SET_FORESTAL_UNIT</find>
+      <find>set_proje</find>
+      <find>aux</find>
       <find>filter</find>
-      <find>estado</find>
-      <find>panel</find>
-      <find>nueva</find>
+      <find>currentPhase</find>
     </findStrings>
     <replaceStrings>
       <replace>marginLeft</replace>
+      <replace>assistant</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\Julian Bermudez\Desktop\plantarFuturoApp\src</dir>
+      <dir>C:\Users\JulianBermudez\Desktop\App\plantarFuturoApp\src\flux</dir>
+      <dir>C:\Users\JulianBermudez\Desktop\App\plantarFuturoApp\src\pages</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -80,10 +173,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/flux/actions/LoginActions.js" />
-        <option value="$PROJECT_DIR$/plugins/cordova-plugin-file/.jshintrc" />
         <option value="$PROJECT_DIR$/src/flux/actions/RiskManagement/RiskOverview.js" />
-        <option value="$PROJECT_DIR$/src/containers/AppPage.js" />
         <option value="$PROJECT_DIR$/src/pages/RiskManagement/RiskManagement.js" />
         <option value="$PROJECT_DIR$/src/pages/RiskManagement/RiskOverview.js" />
         <option value="$PROJECT_DIR$/src/pages/FormCompensation.js" />
@@ -98,29 +188,59 @@
         <option value="$PROJECT_DIR$/src/css/accordion.css" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/CollapseMenu.js" />
-        <option value="$PROJECT_DIR$/src/flux/actions/projectsActions.js" />
-        <option value="$PROJECT_DIR$/src/flux/types.js" />
         <option value="$PROJECT_DIR$/src/pages/RiskManagement/Rainfall.js" />
-        <option value="$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js" />
-        <option value="$PROJECT_DIR$/src/components/ListAccordion.js" />
         <option value="$PROJECT_DIR$/src/pages/ForestalUnitList.js" />
         <option value="$PROJECT_DIR$/src/jsStyles/Styles.js" />
+        <option value="$PROJECT_DIR$/src/pages/main/Login.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/index.js" />
+        <option value="$PROJECT_DIR$/src/containers/AppPage.js" />
+        <option value="$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/Plantation/EstablishmentActions.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/Plantation/MaintenanceActions.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/LoginActions.js" />
         <option value="$PROJECT_DIR$/src/css/style.css" />
+        <option value="$PROJECT_DIR$/src/components/ListAccordion.js" />
+        <option value="$PROJECT_DIR$/src/pages/main/ProjectManagement.js" />
+        <option value="$PROJECT_DIR$/src/components/CardOptionButton.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/Establishment.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/PlantationRegister.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/SelectReportType.js" />
+        <option value="$PROJECT_DIR$/src/pages/main/AppNavigation.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/SelectPlantationReportType.js" />
+        <option value="$PROJECT_DIR$/src/flux/reducers/memoryReducer.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/FunctionalUnitActions.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/Reports.js" />
+        <option value="$PROJECT_DIR$/src/pages/Forestal/FormCompensation.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/Plantation/PlantationActions.js" />
         <option value="$PROJECT_DIR$/src/pages/main/ProjectList.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/projectsActions.js" />
+        <option value="$PROJECT_DIR$/src/flux/reducers/navigationReducer.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/navigationActions.js" />
+        <option value="$PROJECT_DIR$/src/flux/types.js" />
+        <option value="$PROJECT_DIR$/src/flux/actions/appActions.js" />
+        <option value="$PROJECT_DIR$/src/flux/reducers/appReducer.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/data.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/Plantation.js" />
+        <option value="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" />
+        <option value="$PROJECT_DIR$/src/pages/Plantation/PlantationReport.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="294" />
-    <option name="y" value="-17" />
+    <option name="x" value="-7" />
     <option name="width" value="697" />
-    <option name="height" value="735" />
+    <option name="height" value="745" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -131,12 +251,33 @@
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
               <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="flux" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="flux" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="flux" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
@@ -150,6 +291,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="Forestal" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plantarFuturoApp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="InventoryManagement" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="plantarFuturoApp" type="b2602c69:ProjectViewProjectNode" />
@@ -176,13 +324,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/Plantation" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -190,6 +337,11 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JulianBermudez\Desktop\App\plantarFuturoApp\src\pages\Plantation" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -224,31 +376,47 @@
       <workItem from="1561961437789" duration="963000" />
       <workItem from="1562030096782" duration="1926000" />
       <workItem from="1563050897914" duration="20000" />
+      <workItem from="1563072703313" duration="1835000" />
+      <workItem from="1563131945625" duration="18334000" />
+      <workItem from="1563196039346" duration="4960000" />
+      <workItem from="1563202920203" duration="32932000" />
+      <workItem from="1563307783293" duration="6256000" />
+      <workItem from="1563498468172" duration="958000" />
+      <workItem from="1563571933659" duration="23936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66956000" />
+    <option name="totallyTimeSpent" value="156811000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18824404" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915966" weight="0.20758928" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.50084037" side_tool="true" weight="0.17038691" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32935154" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.24033614" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32941177" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32941177" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Python Console" order="13" />
@@ -258,290 +426,83 @@
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915966" visible="true" weight="0.20758928" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" sideWeight="0.50084037" side_tool="true" weight="0.17038691" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32935154" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.24033614" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32941177" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_WIDTH">
+                <map>
+                  <entry key="2" value="125" />
+                  <entry key="3" value="124" />
+                </map>
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/redux/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="301" column="16" selection-start-line="301" selection-start-column="16" selection-end-line="301" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/redux-thunk/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/actions/LoginActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/reducers/navigationReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#1049#1134#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/AppNavigation.js" />
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/HillsideCollapse.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="381" column="16" selection-start-line="381" selection-start-column="16" selection-end-line="381" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/onsenui/js/onsenui.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="1049" column="21" lean-forward="true" selection-start-line="1049" selection-start-column="21" selection-end-line="1049" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-402" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/actions/RiskManagement/RiskManagementActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/onsenui/css/onsenui.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/block.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="248" column="16" selection-start-line="248" selection-start-column="16" selection-end-line="248" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="888">
-          <caret line="10654" column="4" selection-start-line="10654" selection-start-column="4" selection-end-line="10654" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/Plantation/Establishment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-768">
-          <caret line="104" column="14" selection-start-line="104" selection-start-column="14" selection-end-line="104" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/FormInventory.js" />
-    <entry file="file://$PROJECT_DIR$/src/pages/FormCompensation.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/CardButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/Css Fase 2/dISEÑO APP Version 2.css" />
-    <entry file="file://$PROJECT_DIR$/src/css/Login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="222" selection-start-line="222" selection-end-line="222" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/Login.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/CardOptionButton.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/FormProcess.js" />
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskOverview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
-          <folding>
-            <element signature="e#52#100#0" expanded="true" />
-            <element signature="e#519#576#0" expanded="true" />
-            <element signature="e#711#800#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListOverview.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Loading.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CollapseMenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding>
-            <element signature="e#55#131#0" expanded="true" />
-            <element signature="e#179#265#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/actions/projectsActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/types.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/Rainfall.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="144" column="21" lean-forward="true" selection-start-line="144" selection-start-column="21" selection-end-line="144" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flux/actions/appActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#255#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskManagement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="112" column="53" selection-start-line="112" selection-start-column="53" selection-end-line="112" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/TunnelDeformation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2088" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="158" column="24" selection-start-line="158" selection-start-column="24" selection-end-line="158" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/ProjectManagement.js" />
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="76" lean-forward="true" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#111#145#0" expanded="true" />
-            <element signature="e#598#665#0" expanded="true" />
-            <element signature="e#1152#1222#0" expanded="true" />
-            <element signature="e#1471#1532#0" expanded="true" />
-            <element signature="e#1675#1728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/ProjectList.js" />
-    <entry file="file://$PROJECT_DIR$/src/pages/ForestalUnitList.js" />
-    <entry file="file://$PROJECT_DIR$/src/jsStyles/Styles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="85" selection-start-line="5" selection-start-column="82" selection-end-line="5" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ListAccordion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="87" column="16" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
-          <folding>
-            <element signature="e#52#97#0" expanded="true" />
-            <element signature="e#252#299#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/accordion.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ErrorBoundary.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -550,52 +511,448 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/redux/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="62" column="2" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/AppPage.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1343">
-          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+        <state relative-caret-position="1037">
+          <caret line="127" column="16" selection-start-line="127" selection-start-column="16" selection-end-line="127" selection-end-column="16" />
           <folding>
             <element signature="e#158#222#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/objectMethods.js">
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/RiskManagement/HillsideMovementActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-978" />
+        <state relative-caret-position="6">
+          <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/helpers/formValidation.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskIndicators.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1088" />
+        <state relative-caret-position="-235" />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/RiskManagement/RiverCollapseActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/Plantation/MaintenanceActions.js" />
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/RiskManagement/HillsideCollapseActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListOverview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="4" selection-start-line="4" selection-end-line="38" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/InventoryManagement/MachineryForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="378" column="16" selection-start-line="378" selection-start-column="16" selection-end-line="378" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/memoryActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2514">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11051" column="4" selection-start-line="11051" selection-start-column="4" selection-end-line="11051" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/main/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="144" column="48" selection-start-line="144" selection-start-column="48" selection-end-line="144" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/accordion.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="672">
+          <caret line="28" column="1" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/img/yellowArrow.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/LoginActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Forestal/FormProcess.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/main/ProjectManagement.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2448" />
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+          <folding>
+            <element signature="e#52#100#0" expanded="true" />
+            <element signature="e#351#406#0" expanded="true" />
+            <element signature="e#461#514#0" expanded="true" />
+            <element signature="e#632#790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskManagement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1013">
+          <caret line="319" column="16" selection-start-line="319" selection-start-column="16" selection-end-line="319" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskOverview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="62" column="25" lean-forward="true" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+          <folding>
+            <element signature="e#52#100#0" expanded="true" />
+            <element signature="e#519#576#0" expanded="true" />
+            <element signature="e#711#800#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/RiskManagement/RiskReport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="139" column="38" lean-forward="true" selection-start-line="139" selection-start-column="38" selection-end-line="139" selection-end-column="38" />
+          <folding>
+            <element signature="e#52#100#0" expanded="true" />
+            <element signature="e#422#499#0" expanded="true" />
+            <element signature="e#554#603#0" expanded="true" />
+            <element signature="e#720#996#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/main/AppNavigation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="85" column="14" lean-forward="true" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
+          <folding>
+            <element signature="e#240#297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/reducers/memoryReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="38" column="28" lean-forward="true" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/RiskManagement/RiskOverview.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/RiskManagement/RiskManagementActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-600">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/Plantation/PlantationActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="45" column="2" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Forestal/FormInventory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="106" column="36" selection-start-line="106" selection-start-column="36" selection-end-line="106" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/web-forms.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="597" column="16" selection-start-line="597" selection-start-column="16" selection-end-line="597" selection-end-column="16" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-onsenui/dist/react-onsenui.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="2687" column="26" selection-start-line="2687" selection-start-column="26" selection-end-line="2687" selection-end-column="26" />
+        <state relative-caret-position="-391">
+          <caret line="1630" column="4" selection-start-line="1630" selection-start-column="4" selection-end-line="1630" selection-end-column="4" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/style.css">
+    <entry file="file://$PROJECT_DIR$/src/components/CardOptionButton.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-247">
+          <caret line="36" column="6" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Forestal/FormCompensation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2501">
+          <caret line="252" column="33" selection-start-line="252" selection-start-column="33" selection-end-line="252" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/FunctionalUnitActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/forestalUnitActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/projectsActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="66" column="38" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+            <element signature="e#393#920#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Plantation/SelectPlantationReportType.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="389">
+          <caret line="92" column="55" lean-forward="true" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="66" />
+          <folding>
+            <element signature="e#99#170#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/reducers/appReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
-          <caret line="108" column="27" selection-start-line="108" selection-start-column="27" selection-end-line="108" selection-end-column="27" />
+          <caret line="393" column="25" selection-start-line="393" selection-start-column="8" selection-end-line="393" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#740#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/navigationActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1966">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/reducers/navigationReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5361">
+          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding>
+            <element signature="e#7#50#0" expanded="true" />
+            <element signature="e#456#530#0" expanded="true" />
+            <element signature="e#1111#1196#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/actions/appActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1770">
+          <caret line="4" column="95" selection-start-line="4" selection-start-column="95" selection-end-line="4" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flux/types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="139" column="38" selection-start-line="139" selection-start-column="13" selection-end-line="139" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Plantation/Plantation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="81" column="73" lean-forward="true" selection-start-line="81" selection-start-column="73" selection-end-line="81" selection-end-column="73" />
+          <folding>
+            <element signature="e#55#84#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/main/ProjectList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-768">
-          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+        <state relative-caret-position="-4950">
+          <caret line="197" column="49" lean-forward="true" selection-start-line="197" selection-start-column="49" selection-end-line="197" selection-end-column="49" />
+          <folding>
+            <element signature="e#52#104#0" expanded="true" />
+            <element signature="e#211#282#0" expanded="true" />
+            <element signature="e#366#425#0" expanded="true" />
+            <element signature="e#655#1010#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="147" column="1" lean-forward="true" selection-start-line="147" selection-start-column="1" selection-end-line="147" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jsStyles/Styles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="73" column="2" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Plantation/data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="117" column="11" lean-forward="true" selection-start-line="117" selection-start-column="11" selection-end-line="120" selection-end-column="36" />
+          <folding>
+            <element signature="e#1887#1950#0" />
+            <element signature="e#1954#2014#0" />
+            <element signature="e#2018#2079#0" />
+            <element signature="e#2083#2118#0" />
+            <element signature="e#2122#2155#0" />
+            <element signature="e#2159#2226#0" />
+            <element signature="e#3988#5573#0" />
+            <element signature="e#5577#7162#0" />
+            <element signature="e#7166#8751#0" />
+            <element signature="e#8755#10340#0" />
+            <element signature="e#10344#11929#0" />
+            <element signature="e#11933#13518#0" />
+            <element signature="e#13522#15107#0" />
+            <element signature="e#15111#16696#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ListAccordion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="81" column="36" lean-forward="true" selection-start-line="81" selection-start-column="36" selection-end-line="81" selection-end-column="36" />
+          <folding>
+            <element signature="e#52#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Plantation/ReportList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="123" column="73" lean-forward="true" selection-start-line="123" selection-start-column="73" selection-end-line="123" selection-end-column="73" />
+          <folding>
+            <element signature="e#52#100#0" expanded="true" />
+            <element signature="e#5316#19620#0" />
+            <element signature="e#8498#10083#0" />
+            <element signature="e#10087#11672#0" />
+            <element signature="e#11676#13261#0" />
+            <element signature="e#13265#14850#0" />
+            <element signature="e#14854#16439#0" />
+            <element signature="e#16443#18028#0" />
+            <element signature="e#18032#19617#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/Plantation/PlantationReport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="99" column="73" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="73" />
+          <folding>
+            <element signature="e#62#96#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

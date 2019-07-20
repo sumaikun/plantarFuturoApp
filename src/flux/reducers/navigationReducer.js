@@ -30,27 +30,43 @@ import RiskReport from '../../pages/RiskManagement/RiskReport'
 import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
 
-import { GO_TO_LOGIN,
-   GO_TO_MANAGEMENT,
-   GO_TO_PROJECTS,
-   GO_TO_FORESTAL_UNITS,
-   GO_BACK,
-   INSERT_NAVIGATOR,
-   GO_TO_FORM_INVENTORY,
-   GO_TO_FORM_PROCESS,
-   GO_TO_FORM_COMPENSATION,
-   GO_TO_RISK_MANAGEMENT,
-   GO_TO_HILLSIDE_COLLAPSE,
-   GO_TO_RAIN_FALL,
-   GO_TO_RIVER_COLLAPSE,
-   GO_TO_TUNNEL_DEFORMATION,
-   GO_TO_RISK_INDICATORS,
-   GO_TO_HILLSIDE_MOVEMENT,
-   GO_TO_RISK_REPORT,
-   GO_TO_INVENTORY_MANAGEMENT,
-   GO_TO_MACHINERY_FORM,
-   APP_ERROR,
-   GO_TO_RISK_OVERVIEW } from "../types";
+//  Plantation
+import Plantation from '../../pages/Plantation/Plantation';
+import SelectPlantationReportType from "../../pages/Plantation/SelectPlantationReportType";
+import PlantationReport from '../../pages/Plantation/PlantationReport';
+import ReportList from "../../pages/Plantation/ReportList";
+
+import {
+  GO_TO_LOGIN,
+  GO_TO_MANAGEMENT,
+  GO_TO_PROJECTS,
+  GO_TO_FORESTAL_UNITS,
+  GO_BACK,
+  INSERT_NAVIGATOR,
+  GO_TO_FORM_INVENTORY,
+  GO_TO_FORM_PROCESS,
+  GO_TO_FORM_COMPENSATION,
+  GO_TO_RISK_MANAGEMENT,
+  GO_TO_HILLSIDE_COLLAPSE,
+  GO_TO_RAIN_FALL,
+  GO_TO_RIVER_COLLAPSE,
+  GO_TO_TUNNEL_DEFORMATION,
+  GO_TO_RISK_INDICATORS,
+  GO_TO_HILLSIDE_MOVEMENT,
+  GO_TO_RISK_REPORT,
+  GO_TO_INVENTORY_MANAGEMENT,
+  GO_TO_MACHINERY_FORM,
+  APP_ERROR,
+  GO_TO_RISK_OVERVIEW,
+  GO_TO_ESTABLISHMENT_REPORTS,
+  GO_TO_MAINTENANCE_REPORTS,
+  GO_TO_PLANTATION,
+  GO_TO_SELECT_PLANTATION_REPORT_TYPE,
+  GO_TO_PLANTATION_REPORT,
+  GO_TO_REPORT_LIST,
+} from "../types";
+
+
 
 var Pagenavigator = null;
 
@@ -252,8 +268,68 @@ const navigationReducer = (state = initialState, action) => {
       }
       return state;
 
-    case APP_ERROR:
+    //  Plantation
+    case GO_TO_PLANTATION:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_PLANTATION
+      };
+      if (currentPage.key != GO_TO_PLANTATION) {
+        state.navigator.pushPage( { component: Plantation, key: GO_TO_PLANTATION } );
+      }
+      return state;
 
+    case GO_TO_SELECT_PLANTATION_REPORT_TYPE:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_SELECT_PLANTATION_REPORT_TYPE
+      };
+      if (currentPage.key != GO_TO_SELECT_PLANTATION_REPORT_TYPE) {
+        state.navigator.pushPage( { component: SelectPlantationReportType, key: GO_TO_SELECT_PLANTATION_REPORT_TYPE } );
+      }
+      return state;
+
+    case GO_TO_PLANTATION_REPORT:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_PLANTATION_REPORT
+      };
+      if (currentPage.key != GO_TO_PLANTATION_REPORT) {
+        state.navigator.pushPage( { component: PlantationReport, key: GO_TO_PLANTATION_REPORT } );
+      }
+      return state;
+
+    case GO_TO_REPORT_LIST:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_REPORT_LIST
+      };
+      if (currentPage.key != GO_TO_REPORT_LIST) {
+        state.navigator.pushPage( { component: ReportList, key: GO_TO_PLANTATION_REPORT } );
+      }
+      return state;
+
+    case GO_TO_ESTABLISHMENT_REPORTS:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_ESTABLISHMENT_REPORTS
+      }
+      if (currentPage.key != GO_TO_ESTABLISHMENT_REPORTS) {
+        state.navigator.pushPage( {} );
+      }
+      return state;
+
+    case GO_TO_MAINTENANCE_REPORTS:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_MAINTENANCE_REPORTS
+      }
+      if (currentPage.key != GO_TO_MAINTENANCE_REPORTS) {
+        state.navigator.pushPage( {} );
+      }
+      return state;
+
+    case APP_ERROR:
       state = {
         ...state,
         currentPagekey: GO_TO_LOGIN

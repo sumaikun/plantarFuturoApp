@@ -1,29 +1,39 @@
-import { FETCH,
-   CANCEL_FETCH,
-   MENU_OPEN,
-   MENU_CLOSE,
-   SETUSER,
-   SET_PROJECTS,
-   SET_PROJECT_PHASE,
-   SET_FUNCTIONAL_UNITS,
-   RESET_FUNCTIONAL_UNITS,
-   SET_FORESTAL_UNITS,
-   SET_FORESTAL_UNIT,
-   SET_FUNCTIONAL_UNIT,
-   SELECT_PROJECT,
-   SET_TUNNEL_DEFORMATION_LIST,
-   HILL_SIDE_MOVEMENT_LIST,
-   RAIN_FALL_LIST,
-   HILL_SIDE_COLLAPSE_LIST,
-   RIVER_COLLAPSE_LIST,
-   SET_TUNNEL_DEFORMATION,
-   SET_HILL_SIDE_MOVEMENT,
-   SET_RAIN_FALL,
-   SET_HILL_SIDE_COLLAPSE,
-   SET_RIVER_COLLAPSE,
-   SET_CURRENT_RISK_PHASE,
-   SET_RISK_INDICATORS,
-   SET_RISK_OVERVIEW } from "../types";
+import {
+  FETCH,
+  CANCEL_FETCH,
+  MENU_OPEN,
+  MENU_CLOSE,
+  SETUSER,
+  SET_PROJECTS,
+  SET_PROJECT_PHASE,
+  SET_FUNCTIONAL_UNITS,
+  RESET_FUNCTIONAL_UNITS,
+  SET_FORESTAL_UNITS,
+  SET_FORESTAL_UNIT,
+  SET_FUNCTIONAL_UNIT,
+  SELECT_PROJECT,
+  SET_TUNNEL_DEFORMATION_LIST,
+  HILL_SIDE_MOVEMENT_LIST,
+  RAIN_FALL_LIST,
+  HILL_SIDE_COLLAPSE_LIST,
+  RIVER_COLLAPSE_LIST,
+  SET_TUNNEL_DEFORMATION,
+  SET_HILL_SIDE_MOVEMENT,
+  SET_RAIN_FALL,
+  SET_HILL_SIDE_COLLAPSE,
+  SET_RIVER_COLLAPSE,
+  SET_CURRENT_RISK_PHASE,
+  SET_RISK_INDICATORS,
+  SET_RISK_OVERVIEW,
+  SET_LIST_ESTABLISHMENT_REPORT,
+  SET_LIST_MAINTENANCE_REPORT,
+  SET_ESTABLISHMENT_REPORT,
+  SET_MAINTENANCE_REPORT,
+  SET_PLANTATION_REPORT_TYPE,
+  SET_ACTIVITIES,
+  SET_PLANTATION_REPORT,
+  SELECT_PLANTATION_PROJECT,
+} from "../types";
 
 
 let initialUser = null;
@@ -52,6 +62,12 @@ let initialHillsideCollapse = null;
 let initialCurrentRainfall = null;
 
 let initialRiverCollapse = null;
+
+//  Plantation
+let initialEstablishmentReport = null;
+let initialMaintenanceReport = null;
+let initialListEstablishmentReport = [];
+let initialListMaintenanceReport = [];
 
 let storedData;
 
@@ -91,6 +107,14 @@ let defaultValues = {
 
   currentMachineForm: null,
 
+  //  Plantation
+  plantationReportType: null,
+  activities: [],
+
+  listEstablishmentReport: initialListEstablishmentReport,
+  listMaintenanceReport: initialListMaintenanceReport,
+  establishmentReport: initialEstablishmentReport,
+  maintenanceReport: initialMaintenanceReport,
 }
 
 try
@@ -333,6 +357,73 @@ const appReducer = (state = initialState, action) => {
       state={
         ...state,
         riskIndicators:action.payload
+      }
+      console.log(state);
+      return state;
+
+    //  Plantation
+
+    case SET_PLANTATION_REPORT_TYPE:
+      state = {
+        ...state,
+        plantationReportType: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_ACTIVITIES:
+      state = {
+        ...state,
+        activities: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_PLANTATION_REPORT:
+      state = {
+        ...state,
+        plantationReportToEdit: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SELECT_PLANTATION_PROJECT:
+      state = {
+        ...state,
+        ...state,
+        plantationProject: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_LIST_ESTABLISHMENT_REPORT:
+      state = {
+        ...state,
+        lisEstablishmentReport: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_ESTABLISHMENT_REPORT:
+      state = {
+        ...state,
+        establishmentReport: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_LIST_MAINTENANCE_REPORT:
+      state = {
+        ...state,
+        listMaintenanceReport: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_MAINTENANCE_REPORT:
+      state = {
+        ...state,
+        maintenanceReport: action.payload
       }
       console.log(state);
       return state;

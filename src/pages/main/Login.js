@@ -93,7 +93,9 @@ class Login extends Component {
               <div className="login-html" onScroll="no">
               <ReactResizeDetector handleWidth handleHeight onResize={this.onResize} />
                <div className="App">
-                <i class="fas fa-phone fa-lg fa-2x phone"></i>
+                 <a href="tel:460-6552">
+                   <i class="fas fa-phone fa-lg fa-2x phone"></i>
+                 </a>
                 <br/>
                 <img id='logo' className="App-logo" src={logo} />
                   <div id='logoTitle'>

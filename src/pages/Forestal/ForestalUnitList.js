@@ -6,6 +6,7 @@ import chart from "../../img/chart.png";
 import plant from "../../img/plant.png";
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
+import "../../css/style.css";
 import { workingRowStyles } from "../../jsStyles/Styles";
 
 

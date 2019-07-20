@@ -13,7 +13,7 @@ import Ons from 'onsenui';
 
 //components
 import CollapseMenu from "../../components/CollapseMenu";
-
+import Establishment from '../Plantation/PlantationReport';
 
 // REDUX
 import { connect } from 'react-redux';

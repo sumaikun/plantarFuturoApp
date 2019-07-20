@@ -93,8 +93,8 @@ class AppPage extends Component {
                  this.props.backButtonCallBack ? this.props.backButtonCallBack() : null
                  this.props.goBack();
                }
-
-             }} style={styles.customToolBarIcon}></BackButton>
+             }} style={styles.customToolBarIcon}>
+             </BackButton>
            </div> : null }
       </Toolbar>
     );

@@ -313,7 +313,7 @@ class ProjectList extends Component {
 
               return(
 
-              <div onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
+              <div className={'select-project'} onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
                     console.log("fase de riesgos");
                     console.log(project); this.props.selectProject(project);
                     this.props.goToRiskManagement();

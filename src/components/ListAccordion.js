@@ -5,6 +5,8 @@ import tree from "../img/tree.png";
 import chart from "../img/chart.png";
 import plant from "../img/plant.png";
 import "../css/accordion.css";
+import '../css/style.css';
+
 //Onsen Ui
 import { List, ListItem } from 'react-onsenui';
 import Ons from 'onsenui';
@@ -71,19 +73,19 @@ class ListAccordion extends Component {
   }
 
   render() {
-
-
     return (
       <List key={1}>
         <ListItem key={1} tappable class="accordion" onclick="fn.toggle(this)">
-          <div className="center" style={styles.mainListItem}>
-            <span style={styles.counter}>{this.props.counter}</span>
-            <div className={'list__accordion__center'}>
-              <span className={'project-list-title-font'} style={styles.projectName}>{this.props.projectName}</span>
-              <span style={styles.projectInfo}>{this.props.projectInfo}</span>
-            </div>
-            <div style={styles.buttonContainer}>
-              <div style={styles.ProjectButton}><span>...</span></div>
+          <div className={'left'}>
+            <span className={'list-counter'}>{this.props.counter}</span>
+          </div>
+          <div className={'center'}>
+            <span className={'project-list-title-font project-list-project-name margin-between-right'}>{this.props.projectName}</span>
+            <span className={'project-list-project-info margin-between-left'}>{this.props.projectInfo}</span>
+          </div>
+          <div className={'right'}>
+            <div className={'button-container'}>
+              <div className={'tree-dots-button'}><span>...</span></div>
             </div>
           </div>
         </ListItem>

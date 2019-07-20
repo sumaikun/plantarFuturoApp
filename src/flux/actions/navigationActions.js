@@ -1,7 +1,29 @@
-import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, GO_TO_FORM_INVENTORY,
-   INSERT_NAVIGATOR, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION, GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
-   GO_TO_HILLSIDE_MOVEMENT,  GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS,
-   GO_TO_INVENTORY_MANAGEMENT, GO_TO_MACHINERY_FORM, APP_ERROR, GO_TO_RISK_OVERVIEW } from "../types";
+import {
+  GO_TO_LOGIN,
+  GO_TO_MANAGEMENT,
+  GO_TO_PROJECTS,
+  GO_TO_FORESTAL_UNITS,
+  GO_BACK,
+  GO_TO_FORM_INVENTORY,
+  INSERT_NAVIGATOR,
+  GO_TO_FORM_PROCESS,
+  GO_TO_FORM_COMPENSATION,
+  GO_TO_RISK_MANAGEMENT,
+  GO_TO_HILLSIDE_COLLAPSE,
+  GO_TO_HILLSIDE_MOVEMENT,
+  GO_TO_RAIN_FALL,
+  GO_TO_RIVER_COLLAPSE,
+  GO_TO_TUNNEL_DEFORMATION,
+  GO_TO_RISK_INDICATORS,
+  GO_TO_INVENTORY_MANAGEMENT,
+  GO_TO_MACHINERY_FORM,
+  APP_ERROR,
+  GO_TO_RISK_OVERVIEW,
+  GO_TO_PLANTATION,
+  GO_TO_SELECT_PLANTATION_REPORT_TYPE,
+  GO_TO_PLANTATION_REPORT,
+  GO_TO_REPORT_LIST,
+} from "../types";
 
 import { closeMenu , notFetching } from "./appActions";
 
@@ -83,6 +105,23 @@ export const goToInventoryManagement = () =>({
 
 export const goToMachineryForm = () =>({
   type: GO_TO_MACHINERY_FORM
+});
+
+//  Plantation
+export const goToPlantation = () => ({
+  type: GO_TO_PLANTATION
+});
+
+export const goToReportList = () => ({
+  type: GO_TO_REPORT_LIST
+});
+
+export const goToSelectPlantationReportType = () => ({
+  type: GO_TO_SELECT_PLANTATION_REPORT_TYPE
+});
+
+export const goToPlantationReport = () => ({
+  type: GO_TO_PLANTATION_REPORT
 });
 
 export const runfromStorage = (data) => {
