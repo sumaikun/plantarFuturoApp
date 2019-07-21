@@ -29,13 +29,16 @@ import { FETCH,
    SET_SST_ASSISTANTS,
    SET_SST_VISITORS,
    SET_SST_DATA,
-   SET_FUEL } from "../types";
+   SET_FUEL,
+   SET_LIST_USER } from "../types";
 
 let initialUser = null;
 
 let initialProjects = [];
 
 let initialSST = [];
+
+let initialUsers = [];
 
 let initialForestalUnits = [];
 
@@ -105,6 +108,8 @@ let defaultValues = {
   listSSTVisitors: initialSST,
   sstData:{},
 
+  //state list users
+  listUser: initialUsers,
 }
 
 try
@@ -221,6 +226,12 @@ const appReducer = (state = initialState, action) => {
       RiskOverview:action.payload
     }
     return state;
+    case SET_LIST_USER:
+      state={
+        ...state,
+        listUser:action.payload
+      }
+      return state;
     case MENU_OPEN:
       state={
         ...state,

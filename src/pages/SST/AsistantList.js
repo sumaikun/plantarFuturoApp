@@ -5,7 +5,7 @@ import { workingRowStyles, modalStyles } from "../../jsStyles/Styles";
 
 
 //Onsen Ui
-import {  List , ListItem, Col, Row, Card, ListHeader, Radio } from 'react-onsenui';
+import {  List , ListItem, Col, Row, Checkbox, ListHeader, Radio } from 'react-onsenui';
 import Ons from 'onsenui';
 
 //Libraries
@@ -20,7 +20,7 @@ import Modal from "../../components/Modal";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { getSST, getSSTAssistants, goToAssistantForm } from '../../flux/actions';
+import { getListUsers, getSSTAssistants, getSSTVisitors, goToAssistantForm } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //const styles = workingRowStyles;
@@ -85,10 +85,16 @@ class AsistantList extends Component {
     super(props);
     this.renderHeader = this.renderHeader.bind(this);
     this.contentPage = this.contentPage.bind(this);
-  }
+    this.state={
+      table:[]
+    }}
   componentDidMount(){
-    this.props.getList(3)
-  }
+    this.props.getListUsers(this.props.project_id),
+    this.props.getListVisitors(this.props.project_id)
+
+    , {listSSTVisitors,listUsers } =  this.props.appState
+    listSSTVisitors, listUsers
+    this.setState({table:list })}
   renderHeader(){
     return(
       <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">
@@ -109,16 +115,16 @@ class AsistantList extends Component {
     );
   }
 
-  contentPage(currentPhase,forestalUnits){
-    let {listSSTAssistants}= this.props.appState
-    if (!listSSTAssistants) return null;
+  contentPage(){
+  //  l//et {table}= this.state.
+    //if (!table) return null;
+    let table =[]
     return(
       <div>
         <div style={styles.formContainer}>
           <div className="login-form" >
             <div className="group" style={styles.searchInputContainer}>
                 <input id="search" /*value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} */className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"9GO_TO_MACHINERY_LIST0%", height:"10px"}} /><br />
-                <input type="date" /*value={searchDate}  onChange={e => this.setState({ searchDate: e.target.value })} */className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
               <div style={styles.searchButton} onClick={()=>{this.props.goToAssistantForm();}}>
                 <span className="fas fa-plus fontAwesome" ></span>
               </div>
@@ -127,20 +133,31 @@ class AsistantList extends Component {
       </div>
           <List renderHeader={this.renderHeader}>
           {
-            listSSTAssistants.map((memo, i) => {
+            table.map((memo, i) => {
                 return  (
-                  
+
                 <div>
                   <ListItem>
 
                   <Col width="50%">
-                      <span style={workingRowStyles.listText}  >Usuario</span>
-                  </Col>
-                  <Col id="modal-btn" width="25%" style={{textAlign:"center"}}>
-                    <Radio name="test" style={ workingRowStyles.radioCircle } />
+                    <div onClick={()=>{this.props.onClickVisitorForm();}} className="center" style={styles.mainListItem}>
+                      <span style={styles.counter}>{i+1}</span>
+                      <span style={styles.projectName}>{memo.name}</span>
+                      <div>
+                        <span style={styles.projectInfo}>{memo.state}</span>
+                      </div>
+                      <div style={styles.buttonContainer}>
+                        <div style={styles.ProjectButton}>
+                          <i className="fas fa-arrow-right fontAwesome"></i>
+                        </div>
+                      </div>
+                    </div>
                   </Col>
                   <Col width="25%" style={{textAlign:"center"}}>
-                    <Radio name="test" style={ workingRowStyles.radioCircle } />
+                    <Checkbox id="modal-btn" name="test" style={ workingRowStyles.radioCircle } />
+                  </Col>
+                  <Col width="25%" style={{textAlign:"center"}}>
+                    <Checkbox name="test" style={ workingRowStyles.radioCircle } />
                   </Col>
                   </ListItem>
                     <div style={{
@@ -153,7 +170,7 @@ class AsistantList extends Component {
             })
           }
           </List>
-        <div style={{overflow: 'hidden',marginTop:"130%", backgroundColor: 'orange' }}>
+        <div style={{overflow:'hidden',marginTop:"130%", backgroundColor: 'orange' }}>
           <div className="group" style={{...styles.searchInputContainer, "justify-content":"left"}}>
             <div style={styles.buttonContainer}>
               <div style={styles.ProjectButton} >
@@ -170,11 +187,14 @@ class AsistantList extends Component {
       </div>
     );
   }
-
+  onClickVisitorForm(memo) {
+    this.props.getForm(memo, 'update')
+    this.props.goToAssistantForm()
+  }
   render() {
 
 
-    const {  isFetching ,currentPhase , forestalUnits } = this.props.appState
+    const {  isFetching } = this.props.appState
 
     return (
       <AppPage  title={["Lista de ", <strong>Asistentes</strong>]} backButton={true} >
@@ -183,10 +203,7 @@ class AsistantList extends Component {
             <div style={{backgroundColor:"white",height:"100%"}}>
               <Loading/>
             </div> :
-
-             this.contentPage(currentPhase,forestalUnits)
-
-
+             this.contentPage()
           }
 
 
@@ -233,14 +250,19 @@ const mapStateToProps = state => {
 
   return {
     navigation: state.navigation,
-    appState: state.appState
+    appState: state.appState,
+    project_id: state.appState.sstData.project_id
   };
 }
 //report_date
 const mapDispatchToProps = (dispatch) => {
   return {
-    getList: (id) => {dispatch(getSSTAssistants(id))},
+    //getList: (id) => {dispatch(getSSTAssistants(id))},
+    //getList: (id) => {dispatch(getSSTVisitors(id))},
+    getList: (id) => {dispatch(getListUsers(id))},
+    getForm: (visitor) => {dispatch(getSSTVisitors(visitor))},
     goToAssistantForm: ()=> {dispatch(goToAssistantForm())}
+
   }
 }
 

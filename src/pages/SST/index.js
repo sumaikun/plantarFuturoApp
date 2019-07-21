@@ -33,6 +33,9 @@ class ListSSTByProject extends Component {
     if (!listSST) return null;
     return (
       <AppPage title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}><br / >
+        <div  style={{marginBottom: "1em"}} onClick={()=>{this.props.goToSSTForm()}}>
+            <ListAccordion projectName="Crear reporte SST" projectInfo={""} />
+        </div><br/>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
           {

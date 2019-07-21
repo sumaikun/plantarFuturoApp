@@ -1,5 +1,5 @@
 import { Request } from '../../../helpers/request'
-import { fetching , notFetching, setSST, setSSTAssistants, setSSTVisitors, setDataSST} from "../appActions";
+import { fetching , notFetching, setSST, setSSTAssistants, setDataSST} from "../appActions";
 import { GET_SST_URL, GET_VISITOR_URL } from "../../types";
 import Ons from 'onsenui';
 import moment from 'moment';
@@ -17,7 +17,7 @@ export function  getSST (id)  {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL+id,
+        GET_SST_URL+'/'+id,
         SuccessCallBack,
         ErrorCallBack
       );
@@ -86,7 +86,7 @@ export function updateReportSST (id, data, successCallBack  ,errorCallBack ) {
       Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido crear el informe SST"});
     }
     Request.postRequest(
-      GET_SST_URL+id,
+      GET_SST_URL+'/'+id,
       data,
       SuccessCallBack,
       ErrorCallBack
@@ -111,35 +111,13 @@ export function getSSTAssistants  (id, successCallBack  ,errorCallBack)  {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL + `assistants/${id}`,
+        GET_SST_URL + `/assistants/${id}`,
         SuccessCallBack,
         ErrorCallBack
       );
   }
 }
 
-/// Cargar los visitantes de SST
-export function getSSTVisitors  (id, successCallBack  ,errorCallBack)  {
-  return async dispatch => {
-
-      dispatch(fetching());
-
-      let SuccessCallBack = (response) => {
-        dispatch(notFetching());
-        dispatch(setSSTAssistants(response.data));
-        console.log("hi sst visitor")
-      }
-
-      let ErrorCallBack = () => {
-        dispatch(notFetching());
-      }
-      Request.getRequest(
-        GET_SST_URL + `visitors/${id}`,
-        SuccessCallBack,
-        ErrorCallBack
-      );
-  }
-}
 
 
 export function getSSTForm(data, action)  {

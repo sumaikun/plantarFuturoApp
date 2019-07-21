@@ -114,7 +114,6 @@ class TunnelDeformation extends Component {
       this.props.createTunnelDeformation(data);
 
     }
-
   }
 
   contentPage(){

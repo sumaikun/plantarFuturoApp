@@ -51,8 +51,10 @@ class SSTForm extends Component {
   }
   submitData(e){
     e.preventDefault();
-    //if (this.props.sst.actions == 'update')  return this.props.handleChangeUpdate(this.state.formData)
-    //return this.props.handleChangeCreate(this.state.formData)
+    let {formData} = this.state //
+    ,  {project_id }  = this.props
+    , data = {...formData, project_id}
+    this.props.handleChangeCreate(data);
   }
   enableForm(){
     this.setState({ isDisable: !this.state.isDisable });
@@ -64,12 +66,11 @@ class SSTForm extends Component {
         <Loading/>
       </div>
     }
-    console.log(this.props);
     return (
       <AppPage  title={["FORMULARIO ", <strong>SST</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
         <br/>
-        <form className="simpleForm"  onSubmit={this.submitData}>
+        <form className="simpleForm"   onSubmit={this.submitData.bind(this)}>
           <Row>
             <Col width="99%">
               <Card style={{...Styles.cardInput, alignItems:"unset"}}>
@@ -266,7 +267,7 @@ class SSTForm extends Component {
             </Col>
           </Row>
           <Row>
-            <button type="button" disabled={this.state.isDisable} style={Styles.button}
+            <button type="submit" disabled={this.state.isDisable} style={Styles.button}
               ><b>Registrar</b></button>
           </Row>
         </form>
@@ -282,6 +283,7 @@ const mapStateToProps = state => {
   return {
     sst:  state.appState.sstData,
     appState: state.appState,
+    project_id: state.appState.sstData.project_id
   };
 }
 

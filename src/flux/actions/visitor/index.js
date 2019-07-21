@@ -1,11 +1,36 @@
 import { Request } from '../../../helpers/request'
-import { fetching , notFetching} from "../appActions";
+import { fetching , notFetching, setSSTVisitors} from "../appActions";
 import { GET_VISITOR_URL } from "../../types";
 import Ons from 'onsenui';
 import moment from 'moment';
 
+
+/// Cargar los visitantes de SST
+export function getSSTVisitors  (id, successCallBack  ,errorCallBack)  {
+  return async dispatch => {
+
+      dispatch(fetching());
+
+      let SuccessCallBack = (response) => {
+        dispatch(notFetching());
+        dispatch(setSSTVisitors(response.data));
+        console.log("hi sst visitor")
+      }
+
+      let ErrorCallBack = () => {
+        dispatch(notFetching());
+      }
+      Request.getRequest(
+        GET_VISITOR_URL+'/'+id,
+        SuccessCallBack,
+        ErrorCallBack
+      );
+  }
+}
+
 //crear
 export function createVisitor(data, successCallBack  ,errorCallBack )  {
+    console.log(data);
     return async dispatch => {
   
       let SuccessCallBack =  successCallBack ? successCallBack :  (response) => {
@@ -39,8 +64,8 @@ export function createVisitor(data, successCallBack  ,errorCallBack )  {
         dispatch(notFetching());
         Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido actualizar el visitante"});
       }
-      Request.postRequest(
-        GET_VISITOR_URL+id,
+      Request.putRequest(
+        GET_VISITOR_URL+'/'+id,
         data,
         SuccessCallBack,
         ErrorCallBack

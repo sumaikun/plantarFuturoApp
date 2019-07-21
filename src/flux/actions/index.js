@@ -15,7 +15,10 @@ export * from "./RiskManagement/RiverCollapseActions"
 export * from "./RiskManagement/RiskManagementActions"
 export * from "./RiskManagement/RiskOverview"
 
-//memoryActions
+//SST
 export * from "./sst/"
 export * from "./visitor/"
+export * from "./user/"
+
+//memoryActions
 export * from "./memoryActions";
