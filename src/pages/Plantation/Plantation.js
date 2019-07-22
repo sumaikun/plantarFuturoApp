@@ -88,6 +88,7 @@ class Plantation extends Component {
                   className={ 'select-project' }
                   onClick={ ( ) => {
                     this.props.selectPlantationProject( pProject );
+                    this.props.getPlantationReportsByProject( pProject.id );
                     //this.props.getPlantationReports( );
                   } }
                 >
@@ -104,7 +105,7 @@ class Plantation extends Component {
                           </Col>
                           <Col width="47%">
                             <div onClick={ () => {
-                              this.props.getPlantationReports( );
+                              this.props.getPlantationReportsByProject( pProject.id );
                               this.props.goToReportList();
                             } }
                             >

@@ -215,8 +215,8 @@ class ProjectManagement extends Component {
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>
               <Loading/>
-            </div> :
-
+            </div>
+            :
              this.contentPage(phase1Projects, phase2Projects, phase3Projects, phase4Projects, plantationProjects)
 
           }

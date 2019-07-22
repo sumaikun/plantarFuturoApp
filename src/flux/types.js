@@ -5,7 +5,7 @@ const LOCAL_MODE = true;
 //ajax
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
-export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test' : 'https://plantarfuturo.com/ws';
+export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test' : 'https://plantarfuturo.com/test';
 //USER
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
@@ -145,14 +145,12 @@ export const GO_TO_SELECT_PLANTATION_REPORT_TYPE = "GO_TO_SELECT_PLANTATION_REPO
 export const GO_TO_PLANTATION_REPORT = "GO_TO_PLANTATION_REPORT";
 export const GO_TO_REPORT_LIST = "GO_TO_REPORT_LIST";
 
-export const GO_TO_ESTABLISHMENT_REPORTS = "GO_TO_ESTABLISHMENT_REPORTS";
-export const GO_TO_MAINTENANCE_REPORTS = "GO_TO_MAINTENANCE_REPORTS";
-
   //  API
 export const GET_DEFAULT_ACTIVITIES_BY_TYPE = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/default-activity/' : 'https://plantarfuturo.com/test/api/default-activity/';
 export const CREATE_PLANTATION_REPORT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report' : 'https://plantarfuturo.com/test/api/daily-report';
 export const GET_PLANTATION_REPORTS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report' : 'https://plantarfuturo.com/test/api/daily-report';
 export const GET_PLANTATION_REPORTS_BY_PROJECT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report/project/' : 'https://plantarfuturo.com/test/api/daily-report/project/';
+export const UPDATE_PLANTATION_REPORT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report/' : 'https://plantarfuturo.com/test/api/daily-report/';
 
   //  Setters
 export const SET_PLANTATION_REPORT_TYPE = "SET_PLANTATION_REPORT_TYPE";
@@ -160,7 +158,6 @@ export const SET_ESTABLISHMENT_DEFAULT_ACTIVITIES = "SET_ESTABLISHMENT_DEFAULT_A
 export const SET_MAINTENANCE_DEFAULT_ACTIVITIES = "SET_MAINTENANCE_DEFAULT_ACTIVITIES";
 export const SET_PLANTATION_REPORTS = "SET_PLANTATION_REPORTS";
 export const SET_PLANTATION_REPORT = "SET_PLANTATION_REPORT";
-
 export const SELECT_PLANTATION_PROJECT = "SELECT_PLANTATION_PROJECT";
 
 export const SET_LIST_ESTABLISHMENT_REPORT = "SET_LIST_ESTABLISHMENT_REPORT";

@@ -31,10 +31,6 @@ import { FETCH,
    SET_SST_DATA,
    SET_FUEL,
    SET_LIST_USER,
-   SET_LIST_ESTABLISHMENT_REPORT,
-   SET_LIST_MAINTENANCE_REPORT,
-   SET_ESTABLISHMENT_REPORT,
-   SET_MAINTENANCE_REPORT,
    SET_PLANTATION_REPORT_TYPE,
    SET_PLANTATION_REPORTS,
    SET_PLANTATION_REPORT,
@@ -479,7 +475,6 @@ const appReducer = (state = initialState, action) => {
           sstData:action.payload
         }
 
-<<<<<<< HEAD
     //  Plantation
 
     case SET_PLANTATION_REPORT_TYPE:
@@ -561,10 +556,6 @@ const appReducer = (state = initialState, action) => {
       }
       console.log(state);
       return state;
-
-=======
-        return state;
->>>>>>> staging
     default:
       return state;
   }

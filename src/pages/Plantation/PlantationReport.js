@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 //sources
+import "../../css/style.css";
 import "../../css/simpleForm.css";
 import { formCardStyles , workingRowStyles , modalStyles } from "../../jsStyles/Styles";
 import "./data";
@@ -24,6 +25,7 @@ import { connect } from 'react-redux';
 import {
   //  API
   createReport,
+  updateReport,
 } from '../../flux/actions';
 
 import {exampleActivities} from "./data";
@@ -55,11 +57,18 @@ class PlantationReport extends Component {
     console.log( this.state.formData );
 
     if( this.props.appState.plantationReportToEdit ) {
+      let activitiesFromPlantationReportToEdit = this.props.appState.plantationReportToEdit.report_activities;
       this.setState({
         isDisable:true,
         formData:{
           ...this.state.formData,
-          ...this.props.appState.plantationReportToEdit,
+          //...this.props.appState.plantationReportToEdit,
+          responsible: this.props.appState.plantationReportToEdit.responsible,
+          field_assistant: this.props.appState.plantationReportToEdit.field_assistant,
+          report_date: this.props.appState.plantationReportToEdit.report_date,
+          people_number: this.props.appState.plantationReportToEdit.people_number,
+          location: this.props.appState.plantationReportToEdit.location,
+          activities: activitiesFromPlantationReportToEdit,
         }
       },()=> {
         console.log(this.state);
@@ -164,20 +173,31 @@ class PlantationReport extends Component {
       }
     });
 
-    if( this.props.appState.isFetching ) {
+    if ( this.props.appState.isFetching ) {
       return Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
     }
 
-    let data = this.state.formData;
-    data.activities = act;
-    //data.report_date = data.report_date.date + " " + data.report_date.hour;
-    data.project_id = this.props.appState.plantationProject.id;
-    data.type = this.props.appState.plantationReportType;
+    if ( this.props.appState.plantationReportToEdit ) {
+      console.log( "Entro a edicion" );
+      let data = this.state.formData;
+      data.activities = act;
+      //data.report_date = data.report_date.date + " " + data.report_date.hour;
+      data.project_id = this.props.appState.plantationReportToEdit.project.id;
+      data.type = this.props.appState.plantationReportToEdit.type;
+      let plantation_report_id = this.props.appState.plantationReportToEdit.id;
+      console.log( data );
+      this.props.updateReport( plantation_report_id, data );
+    }
+    else {
+      let data = this.state.formData;
+      data.activities = act;
+      //data.report_date = data.report_date.date + " " + data.report_date.hour;
+      data.project_id = this.props.appState.plantationProject.id;
+      data.type = this.props.appState.plantationReportType;
 
-    console.log( data );
-    this.props.createReport( data );
-
-
+      console.log( data );
+      this.props.createReport( data );
+    }
 
       /*if(this.props.appState.isFetching)
       {
@@ -219,10 +239,11 @@ class PlantationReport extends Component {
           <Card style={styles.cardInput}>
             <Checkbox
               name="default_activity_id"
-              checked={ this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].default_activity_id === activity.id.toString() ? true : false ) : false }
+              checked={ this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ? true : false ) : false }
               onChange={ (event) => {
                 this.handleCheck(event, activityIndex, activity);
               } }
+              disabled={ this.state.isDisable }
             />
           </Card>
         </Col>
@@ -284,7 +305,11 @@ class PlantationReport extends Component {
         {
           this.props.appState.plantationReportToEdit ?
             <Row>
-              <button onClick={this.enableForm} style={styles.disableButton}>Habilitar edición</button>
+              <button
+                onClick={this.enableForm}
+                style={styles.disableButton}>
+                Habilitar edición
+              </button>
             </Row>
             :
             null
@@ -323,7 +348,7 @@ class PlantationReport extends Component {
                   style={styles.textInput}
                   type="text"
                   name="field_assistant"
-                  value={this.state.formData.assistant}
+                  value={this.state.formData.field_assistant}
                   onChange={this.handleChangeInput}
                   placeholder="Auxiliar de campo"
                   disabled={this.state.isDisable}
@@ -488,4 +513,5 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {
   //  API
   createReport,
+  updateReport,
 })(PlantationReport);

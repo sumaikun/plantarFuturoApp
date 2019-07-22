@@ -33,6 +33,13 @@ import InventoryManagement from '../../pages/InventoryManagement/InventoryManage
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
 import AssistanForm from '../../pages/SST/AssistantForm'
 
+//  Plantation
+import Plantation from '../../pages/Plantation/Plantation';
+import SelectPlantationReportType from "../../pages/Plantation/SelectPlantationReportType";
+import PlantationReport from '../../pages/Plantation/PlantationReport';
+import ReportList from "../../pages/Plantation/ReportList";
+
+
 import { GO_TO_LOGIN,
    GO_TO_MANAGEMENT,
    GO_TO_PROJECTS,
@@ -68,6 +75,11 @@ import { GO_TO_LOGIN,
    GO_TO_SELECT_PLANTATION_REPORT_TYPE,
    GO_TO_PLANTATION_REPORT,
    GO_TO_REPORT_LIST} from "../types";
+
+
+
+
+
 
 var Pagenavigator = null;
 
@@ -380,27 +392,7 @@ const navigationReducer= (state = initialState, action) => {
         currentPagekey: GO_TO_REPORT_LIST
       };
       if (currentPage.key != GO_TO_REPORT_LIST) {
-        state.navigator.pushPage( { component: ReportList, key: GO_TO_PLANTATION_REPORT } );
-      }
-      return state;
-
-    case GO_TO_ESTABLISHMENT_REPORTS:
-      state = {
-        ...state,
-        currentPagekey: GO_TO_ESTABLISHMENT_REPORTS
-      }
-      if (currentPage.key != GO_TO_ESTABLISHMENT_REPORTS) {
-        state.navigator.pushPage( {} );
-      }
-      return state;
-
-    case GO_TO_MAINTENANCE_REPORTS:
-      state = {
-        ...state,
-        currentPagekey: GO_TO_MAINTENANCE_REPORTS
-      }
-      if (currentPage.key != GO_TO_MAINTENANCE_REPORTS) {
-        state.navigator.pushPage( {} );
+        state.navigator.pushPage( { component: ReportList, key: GO_TO_REPORT_LIST } );
       }
       return state;
 
