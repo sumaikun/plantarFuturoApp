@@ -1,8 +1,26 @@
 import {
-  FETCH, CANCEL_FETCH, MENU_OPEN, MENU_CLOSE, SETUSER, SET_PROJECTS,
-  SET_PROJECT_PHASE, SET_FUNCTIONAL_UNITS, RESET_FUNCTIONAL_UNITS, SET_FORESTAL_UNITS,
-  SET_FORESTAL_UNIT, SET_FUNCTIONAL_UNIT, SELECT_PROJECT, SET_RISK_OVERVIEW,
-  SET_PLANTATION_REPORT_TYPE, SET_ACTIVITIES, SET_PLANTATION_REPORTS, SELECT_PLANTATION_PROJECT
+  FETCH,
+  CANCEL_FETCH,
+  MENU_OPEN,
+  MENU_CLOSE,
+  SETUSER,
+  SET_PROJECTS,
+  SET_PROJECT_PHASE,
+  SET_FUNCTIONAL_UNITS,
+  RESET_FUNCTIONAL_UNITS,
+  SET_FORESTAL_UNITS,
+  SET_FORESTAL_UNIT,
+  SET_FUNCTIONAL_UNIT,
+  SELECT_PROJECT,
+  SET_RISK_OVERVIEW,
+  SET_PLANTATION_REPORT_TYPE,
+  SET_ACTIVITIES,
+  SET_PLANTATION_REPORTS,
+  SET_PLANTATION_REPORT,
+  SELECT_PLANTATION_PROJECT,
+  SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
+  SET_MAINTENANCE_DEFAULT_ACTIVITIES,
+
 } from "../types";
 
 export const openMenu = () => ({
@@ -74,8 +92,13 @@ export const setPlantationReportType = (data) => ({
   payload: data,
 });
 
-export const setActivities = (data) => ({
-  type: SET_ACTIVITIES,
+export const setEstablishmentDefaultActivities = (data) => ({
+  type: SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
+  payload: data,
+});
+
+export const setMaintenanceDefaultActivities = (data) => ({
+  type: SET_MAINTENANCE_DEFAULT_ACTIVITIES,
   payload: data,
 });
 
@@ -90,6 +113,6 @@ export const selectPlantationProject = (data) => ({
 });
 
 export const setPlantationReport = (data) => ({
-  type: SET_PLANTATION_REPORTS,
+  type: SET_PLANTATION_REPORT,
   payload: data,
 });

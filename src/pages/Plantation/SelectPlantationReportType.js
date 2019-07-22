@@ -14,8 +14,20 @@ import NotFound from "../../components/NotFound";
 import AppPage from '../../containers/AppPage';
 
 //  Flux
-import { setPlantationReportType, goToPlantationReport } from '../../flux/actions';
+import {
+  //  Navigation
+  goToPlantationReport,
+
+  //  AppActions
+  setPlantationReportType,
+  setPlantationReport,
+
+  // API
+  getDefaultActivitiesByType,
+} from '../../flux/actions';
 import { connect } from 'react-redux';
+
+
 
 class SelectPlantationReportType extends Component {
 
@@ -27,7 +39,9 @@ class SelectPlantationReportType extends Component {
   }
 
   render() {
-    const { projects , currentPhase, functionalUnits  } = this.props.appState;
+    const { plantationProject  } = this.props.appState;
+
+    console.log( plantationProject );
 
     return (
       <AppPage title={ [ <strong> { "REPORTE PLANTACION" } </strong> ] } backButton={true}>
@@ -37,7 +51,12 @@ class SelectPlantationReportType extends Component {
             <List>
               <ListItem
                 tappable={true}
-                onClick={ () => { this.props.setPlantationReportType(1); this.props.goToPlantationReport() } }
+                onClick={ () => {
+                  this.props.getDefaultActivitiesByType(1);
+                  this.props.setPlantationReportType(1);
+                  this.props.setPlantationReport(null);
+                  this.props.goToPlantationReport();
+                }}
               >
                 <div className={'left'}>
                   <span className={'list-counter'}> 1 </span>
@@ -60,7 +79,12 @@ class SelectPlantationReportType extends Component {
             <List>
               <ListItem
                 tappable={true}
-                onClick={ () => { this.props.setPlantationReportType(2); this.props.goToPlantationReport() } }
+                onClick={ () => {
+                  this.props.getDefaultActivitiesByType(2);
+                  this.props.setPlantationReportType(2);
+                  this.props.setPlantationReport(null);
+                  this.props.goToPlantationReport();
+                }}
               >
                 <div className={'left'}>
                   <span className={'list-counter'}> 2 </span>
@@ -88,6 +112,16 @@ const mapStateToProps = state => {
     appState: state.appState,
     memory: state.memory
   };
-}
+};
 
-export default  connect(mapStateToProps, { setPlantationReportType, goToPlantationReport })(SelectPlantationReportType);
+export default  connect(mapStateToProps, {
+  //  Navigation
+  goToPlantationReport,
+
+  //  AppActions
+  setPlantationReportType,
+  setPlantationReport,
+
+  //  API
+  getDefaultActivitiesByType,
+})(SelectPlantationReportType);

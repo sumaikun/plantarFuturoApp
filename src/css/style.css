@@ -147,6 +147,16 @@ div.panel.show {
     align-items: flex-start;
 }
 
+.arrow-button-container {
+    background-color: #f1f2f2;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tree-dots-button {
     color: orange;
     font-weight: bold;
@@ -167,4 +177,24 @@ div.panel.show {
 
 .margin-between-right {
     margin-right: 5px;
+}
+
+.filter-container {
+    backgroun-color: orange;
+    position: fixed;
+    top: 56px;
+    z-index: 1;
+    width: 100%;
+}
+
+.list-container-and-header {
+    margin: 0 auto;
+    position: relative;
+    margin-top: 140px;
+}
+
+.not-found {
+    margin: 0 auto;
+    position: relative;
+    margin-top: 90px;
 }

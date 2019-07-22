@@ -45,8 +45,7 @@ class ProjectManagement extends Component {
     //this.props.fetchProjects();
   }
 
-  contentPage(phase1Projects,phase2Projects,phase3Projects,phase4Projects){
-
+  contentPage(phase1Projects, phase2Projects, phase3Projects, phase4Projects, phase5Projects){
     return (
       <div style={{height:"100%",backgroundColor:"white"}}>
         <br/>
@@ -130,19 +129,27 @@ class ProjectManagement extends Component {
            </div> : null
         }
 
-        <div>
-          <div
-            onClick={ () => { this.props.setProjectPhase(5), this.props.goToPlantation() } }
-          >
-            <CardButton
-              imgIcon = {checkList}
-              title="Plantación"
-              subtitle = {"Total reportes " }
-              infoContainer = { "Ultima actualizacion "  }
-            />
-          </div>
-          <div style={{height:"10px"}} ></div>
-        </div>
+        {
+          ( phase5Projects.length > 0 ) ?
+            <div>
+              <div
+                onClick={() => {
+                  this.props.setProjectPhase(5);
+                  this.props.goToPlantation()
+                }}
+              >
+                <CardButton
+                  imgIcon={checkList}
+                  title="Plantación"
+                  subtitle={"Total proyectos: " + phase5Projects.length}
+                  infoContainer={"Ultima actualizacion: " + phase5Projects[ phase5Projects.length - 1 ].created_at }
+                />
+              </div>
+              <div style={{height: "10px"}}></div>
+            </div>
+            :
+            null
+        }
 
         <div onClick={()=>{
           this.props.goToInventoryManagement();
@@ -174,7 +181,6 @@ class ProjectManagement extends Component {
   }
 
   render() {
-
     let phase1Projects = this.props.appState.projects.filter( project => {
 
       return project.phase == 1
@@ -195,6 +201,9 @@ class ProjectManagement extends Component {
       return project.phase == 4
 
     });
+    let plantationProjects = this.props.appState.projects.filter( project => {
+      return project.phase == 5;
+    });
 
     const { isFetching } = this.props.appState;
 
@@ -206,7 +215,7 @@ class ProjectManagement extends Component {
               <Loading/>
             </div> :
 
-             this.contentPage(phase1Projects,phase2Projects,phase3Projects,phase4Projects)
+             this.contentPage(phase1Projects, phase2Projects, phase3Projects, phase4Projects, plantationProjects)
 
           }
 

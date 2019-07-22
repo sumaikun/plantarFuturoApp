@@ -113,7 +113,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -185,7 +185,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -257,7 +257,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -329,7 +329,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -401,7 +401,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -473,7 +473,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -545,7 +545,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -617,7 +617,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",
@@ -689,7 +689,7 @@ export let exampleReports = [
     "place": "Guayabetal",
     "date": "16-07-2019 09:33",
     "people": "5",
-    "activities_report": [
+    "activities": [
       {
         "activity": "Riego",
         "activity_id": "1",

@@ -15,6 +15,10 @@ export * from "./RiskManagement/RiverCollapseActions"
 export * from "./RiskManagement/RiskManagementActions"
 export * from "./RiskManagement/RiskOverview"
 
+//  Plantation
+export * from "./Plantation/PlantationActions";
+export * from "./Activity/ActivityActions";
+
 //memoryActions
 
 export * from "./memoryActions";

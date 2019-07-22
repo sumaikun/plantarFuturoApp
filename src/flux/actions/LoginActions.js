@@ -4,7 +4,7 @@ import { addLoggedUser } from "./memoryActions";
 import {  goToMain } from "./navigationActions";
 
 import {  getProjectByUser } from "./projectsActions";
-
+import { getPlantationReports } from "./Plantation/PlantationActions";
 
 
 import { LOGIN_URL } from "../types";
@@ -23,6 +23,7 @@ const fetchLoginOnline = (dispatch ,data) => {
     dispatch(notFetching());
     dispatch(setUser(response.data));
     dispatch(getProjectByUser(response.data.id));
+    dispatch( getPlantationReports() );
     dispatch(goToMain());
   }
 

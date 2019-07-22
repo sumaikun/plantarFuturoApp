@@ -30,9 +30,11 @@ import {
   SET_ESTABLISHMENT_REPORT,
   SET_MAINTENANCE_REPORT,
   SET_PLANTATION_REPORT_TYPE,
-  SET_ACTIVITIES,
+  SET_PLANTATION_REPORTS,
   SET_PLANTATION_REPORT,
   SELECT_PLANTATION_PROJECT,
+  SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
+  SET_MAINTENANCE_DEFAULT_ACTIVITIES,
 } from "../types";
 
 
@@ -108,8 +110,12 @@ let defaultValues = {
   currentMachineForm: null,
 
   //  Plantation
+  plantationProject: null,
+  plantationReportToEdit: null,
   plantationReportType: null,
-  activities: [],
+  plantationReports: [],
+  establishmentDefaultActivities: [],
+  maintenanceDefaultActivities: [],
 
   listEstablishmentReport: initialListEstablishmentReport,
   listMaintenanceReport: initialListMaintenanceReport,
@@ -371,10 +377,26 @@ const appReducer = (state = initialState, action) => {
       console.log(state);
       return state;
 
-    case SET_ACTIVITIES:
+    case SET_ESTABLISHMENT_DEFAULT_ACTIVITIES:
       state = {
         ...state,
-        activities: action.payload
+        establishmentDefaultActivities: action.payload
+      };
+      console.log(state);
+      return state;
+
+    case SET_MAINTENANCE_DEFAULT_ACTIVITIES:
+      state = {
+        ...state,
+        maintenanceDefaultActivities: action.payload
+      };
+      console.log(state);
+      return state;
+
+    case SET_PLANTATION_REPORTS:
+      state = {
+        ...state,
+        plantationReports: action.payload
       }
       console.log(state);
       return state;
@@ -390,9 +412,8 @@ const appReducer = (state = initialState, action) => {
     case SELECT_PLANTATION_PROJECT:
       state = {
         ...state,
-        ...state,
         plantationProject: action.payload
-      }
+      };
       console.log(state);
       return state;
 
