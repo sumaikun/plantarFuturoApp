@@ -89,12 +89,16 @@ class AsistantList extends Component {
       table:[]
     }}
   componentDidMount(){
+    /*
     this.props.getListUsers(this.props.project_id),
     this.props.getListVisitors(this.props.project_id)
 
     , {listSSTVisitors,listUsers } =  this.props.appState
     listSSTVisitors, listUsers
-    this.setState({table:list })}
+    this.setState({table:list })
+    */
+  }
+
   renderHeader(){
     return(
       <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">

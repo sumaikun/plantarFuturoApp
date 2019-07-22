@@ -17,13 +17,16 @@ import ErrorBoundary from './containers/ErrorBoundary';
 
 //Inventory
 
-import AsistantList from './pages/InventoryManagement/AsistantList';
+/*
+import AsistantList from './pages/SST/AsistantList';
 import GeoReferencingForm from './pages/InventoryManagement/GeoReferencingForm';
 import InventoryUnitList from './pages/InventoryManagement/InventoryUnitList';
 import MachineryForm from './pages/InventoryManagement/MachineryForm';
 
-//plantation
-import Establishment from './pages/Plantation/Establishment';
+ */
+
+//  Plantation
+//import Establishment from './pages/Plantation/Plantation';
 
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';
@@ -52,11 +55,11 @@ store.subscribe( function () {
   saveState(store.getState())
 });
 
-const appInit = _ =>
+const appInit = () =>
   ReactDOM.render(
       <Provider store={store}>
         <ErrorBoundary>
-          <Establishment/>
+          <AppNavigation/>
         </ErrorBoundary>
       </Provider>
       , document.getElementById('root'));

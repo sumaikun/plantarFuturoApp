@@ -525,37 +525,6 @@ const appReducer = (state = initialState, action) => {
       console.log(state);
       return state;
 
-    case SET_LIST_ESTABLISHMENT_REPORT:
-      state = {
-        ...state,
-        lisEstablishmentReport: action.payload
-      }
-      console.log(state);
-      return state;
-
-    case SET_ESTABLISHMENT_REPORT:
-      state = {
-        ...state,
-        establishmentReport: action.payload
-      }
-      console.log(state);
-      return state;
-
-    case SET_LIST_MAINTENANCE_REPORT:
-      state = {
-        ...state,
-        listMaintenanceReport: action.payload
-      }
-      console.log(state);
-      return state;
-
-    case SET_MAINTENANCE_REPORT:
-      state = {
-        ...state,
-        maintenanceReport: action.payload
-      }
-      console.log(state);
-      return state;
     default:
       return state;
   }

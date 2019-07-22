@@ -22,7 +22,7 @@ import Loading from "../../components/Loading";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../../flux/actions';
+import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm, goToMachineryForm } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
