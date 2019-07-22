@@ -22,7 +22,7 @@ import Loading from "../../components/Loading";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToMachineryForm , goToProcessForm, goToCompensationForm } from '../../flux/actions';
+import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
@@ -68,6 +68,9 @@ class InventoryUnitList extends Component {
   }
 
   contentPage(currentPhase,forestalUnits){
+
+    let { searchName,  searchDate } = this.state;
+
     return(
     <div>
       <div style={styles.formContainer}>

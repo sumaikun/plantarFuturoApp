@@ -17,7 +17,13 @@ import ErrorBoundary from './containers/ErrorBoundary';
 
 //Inventory
 
+import AsistantList from './pages/InventoryManagement/AsistantList';
+import GeoReferencingForm from './pages/InventoryManagement/GeoReferencingForm';
+import InventoryUnitList from './pages/InventoryManagement/InventoryUnitList';
+import MachineryForm from './pages/InventoryManagement/MachineryForm';
+
 //plantation
+import Establishment from './pages/Plantation/Establishment';
 
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';
@@ -50,7 +56,7 @@ const appInit = _ =>
   ReactDOM.render(
       <Provider store={store}>
         <ErrorBoundary>
-          <AppNavigation />
+          <Establishment/>
         </ErrorBoundary>
       </Provider>
       , document.getElementById('root'));

@@ -27,7 +27,7 @@ export const createTunnelDeformation = (data,successCallBack  ,errorCallBack) =>
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Deformación de tunel registrada!"});
     }
@@ -76,7 +76,7 @@ export const updateTunnelDeformation = (id,data,successCallBack  ,errorCallBack)
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack : (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Deformación de tunel actualizada!"});
     }

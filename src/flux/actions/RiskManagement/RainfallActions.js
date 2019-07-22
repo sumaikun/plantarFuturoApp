@@ -25,7 +25,7 @@ export const createRainfall = (data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Informe de precipitación registrado!"});
     }
@@ -74,7 +74,7 @@ export const updateRainfall = (id,data,successCallBack  ,errorCallBack) => {
 
     dispatch(fetching());
 
-    let SuccessCallBack = (response) => {
+    let SuccessCallBack = successCallBack ? successCallBack :  (response) => {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Bien!",message:"¡Informe de precipitación actualizada!"});
     }

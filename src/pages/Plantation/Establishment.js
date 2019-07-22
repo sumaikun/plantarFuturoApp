@@ -180,7 +180,7 @@ class Establishment extends Component {
 
             <Col width="59%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} type="decimal" name="people" value={this.state.formData.people} onChange={this.handleChangeInput} placeholder="No. personas en campo" disabled={this.state.isDisable} required />
+                <Input style={styles.textInput} type="number" step="any" name="people" value={this.state.formData.people} onChange={this.handleChangeInput} placeholder="No. personas en campo" disabled={this.state.isDisable} required />
               </Card>
             </Col>
 
