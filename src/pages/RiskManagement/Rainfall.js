@@ -54,7 +54,7 @@ class Rainfall extends Component {
           finish:moment(new Date(this.props.appState.currentRainfall.finish)).utc().format().slice(0, -4)
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
@@ -62,7 +62,7 @@ class Rainfall extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      console.log(this.state);
+      //console.log(this.state);
     });
 
   }
@@ -71,8 +71,8 @@ class Rainfall extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -81,7 +81,7 @@ class Rainfall extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -104,7 +104,7 @@ class Rainfall extends Component {
       let data = this.state.formData;
       data.user_id = this.props.appState.user.id;
       data.report_date = data.date+" "+data.hour;
-      console.log(data);
+      //console.log(data);
       this.props.updateRainfall(this.state.formData.id,data);
     }
     else
@@ -113,7 +113,7 @@ class Rainfall extends Component {
       data.user_id = this.props.appState.user.id;
       data.project_id = this.props.appState.selectedProject.id;
       data.report_date = data.date+" "+data.hour;
-      console.log(data);
+      //console.log(data);
       this.props.createRainfall(data);
 
     }
@@ -257,8 +257,8 @@ class Rainfall extends Component {
             </Col>
             <Col width="49.5%">
               <Card style={{...styles.cardInput, alignItems:"unset"}}>
-                <label>Milimetros/hora:</label>
-                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" step="any" name="mm_hours" onInput={this.setRiskLevel} onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
+                  <label>Milimetros/hora:</label>
+                <Input style={{...styles.dateInput, position:"absolute", width:"30%"}} type="number" step="any" name="mm_hours" onChange={this.handleChangeInput} value={this.state.formData.mm_hours} disabled={this.state.isDisable} required/>
               </Card>
             </Col>
             {/*<Col width="33%">
@@ -334,9 +334,7 @@ class Rainfall extends Component {
           <Row>
             <Col width="96%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-
-                <Input onChange={this.handleChangeInput}style={{width:"96%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
-
+              <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" ></textarea>
               </Card>
             </Col>
           </Row>

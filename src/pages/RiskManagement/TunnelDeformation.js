@@ -49,7 +49,7 @@ class TunnelDeformation extends Component {
           hour:this.props.appState.currentTunnelDeformation.report_date.split(" ")[1],
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
@@ -60,8 +60,8 @@ class TunnelDeformation extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -70,7 +70,7 @@ class TunnelDeformation extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -82,7 +82,7 @@ class TunnelDeformation extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      console.log(this.state);
+      //console.log(this.state);
     });
 
   }
@@ -101,8 +101,8 @@ class TunnelDeformation extends Component {
       let data = this.state.formData;
       data.user_id = this.props.appState.user.id;
       data.report_date = data.date+" "+data.hour;
-      console.log(data);
-      console.log("edit hall side movement");
+      //console.log(data);
+      //console.log("edit hall side movement");
       this.props.updateTunnelDeformation(this.state.formData.id,data);
     }
     else
@@ -111,12 +111,11 @@ class TunnelDeformation extends Component {
       data.user_id = this.props.appState.user.id;
       data.project_id = this.props.appState.selectedProject.id;
       data.report_date = data.date+" "+data.hour;
-      console.log(data);
-      console.log("create hall side movement");
+      //console.log(data);
+      //console.log("create hall side movement");
       this.props.createTunnelDeformation(data);
 
     }
-
   }
 
   checkRiskParamenter(value) {
@@ -264,7 +263,7 @@ class TunnelDeformation extends Component {
           <Row>
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-                <Input onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.description}  placeholder="Descripción" />
+                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="description" disabled={this.state.isDisable} value={this.state.formData.description}  placeholder="Descripción"></textarea>
               </Card>
             </Col>
           </Row>
@@ -303,9 +302,7 @@ class TunnelDeformation extends Component {
           <Row>
             <Col width="99%">
               <Card style={{...styles.cardInput, height:"auto"}}>
-
-                <Input onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"250px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones" />
-
+                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="observations" value={this.state.formData.observations} disabled={this.state.isDisable}  placeholder="Observaciones"></textarea>
               </Card>
             </Col>
           </Row>

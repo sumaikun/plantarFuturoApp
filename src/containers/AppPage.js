@@ -52,8 +52,8 @@ class AppPage extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log(error);
-    console.log(errorInfo);
+    //console.log(error);
+    //console.log(errorInfo);
     // Catch errors in any components below and re-render with error message
     this.setState({
       error: error,
@@ -64,7 +64,7 @@ class AppPage extends Component {
 
   componentDidMount(){
 
-    console.log(this.props.children);
+    //console.log(this.props.children);
 
   }
 

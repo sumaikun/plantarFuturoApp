@@ -103,7 +103,7 @@ class ProjectList extends Component {
         let componentSuccess = (response) => {
 
           let reloadProjectId = this.state.projectIdToModify ? this.state.projectIdToModify : this.project_id;
-          // console.log(reloadProjectId);
+          // //console.log(reloadProjectId);
           //return;
           this.Code.value = "";
           let modal = document.querySelector('#my-modal');
@@ -116,7 +116,7 @@ class ProjectList extends Component {
         if(this.state.editMode)
         {
 
-          console.log(this.state);
+          //console.log(this.state);
           //return ;
           if(!this.state.isOfflineFunit)
           {
@@ -191,7 +191,7 @@ class ProjectList extends Component {
 
     let serverMemoryFunctionals = this.props.memory.serverFunctionalUnits;
 
-    //console.log(serverMemoryFunctionals);
+    ////console.log(serverMemoryFunctionals);
 
     return(
       functionalUnits.filter(unit => {
@@ -199,7 +199,7 @@ class ProjectList extends Component {
           }).map((funit, i) => {
 
             let foundIndex = serverMemoryFunctionals.findIndex( memory =>   memory.id == funit.id  );
-            //console.log("foundIndex"+foundIndex);
+            ////console.log("foundIndex"+foundIndex);
             funit = foundIndex != -1 ? serverMemoryFunctionals[foundIndex] : funit ;
 
           return(
@@ -222,7 +222,7 @@ class ProjectList extends Component {
                       .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
                       .then(function(res) {
                         if(res){
-                          console.log("cancelar sincronización");
+                          //console.log("cancelar sincronización");
                           if(funit.ToSynchro)
                           {
                             self.props.removeFromOfflineFunctionalUnit(funit);
@@ -244,22 +244,25 @@ class ProjectList extends Component {
                     { funit.ToSynchro || funit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
 
                   </div>
-
-                  <span onClick={()=>{
-                    if(this.props.appState.isFetching)
-                    {
-                      return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
-                    }
-                    console.log("nav");
-                    this.props.getForestalUnits(funit.id);
-                    this.props.setFunctionalUnit(funit);
-                    this.props.goToForestalUnits();
-                  }} >{funit.code}</span>
-
+                  
+                    <span onClick={()=>{
+                      if(this.props.appState.isFetching)
+                      {
+                        return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
+                      }
+                      console.log("nav");
+                      this.props.getForestalUnits(funit.id);
+                      this.props.setFunctionalUnit(funit);
+                      this.props.goToForestalUnits();
+                    }} >{ project.phase != "3" ? <div> {funit.code}</div> : <div> Indiviuo forestal {i+1} </div>
+                  }</span>
                   <div>
-                    <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"25px",height:"25px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
+                  { project.phase != "3" ?
+                    <button onClick={()=>{this.editFunctionalUnit(funit)}} style={{backgroundColor:"green",width:"20px",height:"20px",borderRadius:"50%",color:"white",display:"flex",justifyContent:"center",alignItems:"center"}}>
                       <i className="fas fa-edit fontAwesome"></i>
                     </button>
+                    :<div />
+                  }
                   </div>
 
                 </div>
@@ -273,7 +276,7 @@ class ProjectList extends Component {
 
   render() {
 
-    //console.log(this.props.appState);
+    ////console.log(this.props.appState);
 
     const { projects , currentPhase, functionalUnits  } = this.props.appState
 
@@ -307,7 +310,7 @@ class ProjectList extends Component {
         }
 
        }}>
-        { currentPhaseProjects.length > 0  ?
+        { currentPhaseProjects.length > 0   ?
           currentPhaseProjects.map((project, i) => {
 
 
@@ -318,7 +321,7 @@ class ProjectList extends Component {
                     console.log(project); this.props.selectProject(project);
                     this.props.goToRiskManagement();
                   })(): (()=>{
-                      console.log(project); this.props.selectProject(project)
+                      //console.log(project); this.props.selectProject(project)
                     })()
                   }}>
 
@@ -338,9 +341,10 @@ class ProjectList extends Component {
                                   [project.id] : this.state.functionalList[project.id] ? !this.state.functionalList[project.id] : true
                                 }
                               },()=>{
-                                console.log(this.state);
+                                //console.log(this.state);
                               });
                             }}>
+                            { this.props.appState.currentPhase != "3" ? 
                               <CardOptionButton
                                 accordionIconsStyles={styles.accordionIcons}
                                 iconStyles={{fontSize:"10px", color:"white"}}
@@ -350,13 +354,24 @@ class ProjectList extends Component {
                                 image={yellowArrow}
                                 title="Ver unidades funcionales"
                               />
+                              :
+                              <CardOptionButton
+                                accordionIconsStyles={styles.accordionIcons}
+                                iconStyles={{fontSize:"10px", color:"white"}}
+                                iconReference="fas fa-eye fontAwesome"
+                                textStyles={{fontSize:"11px", marginLeft:"10px"}}
+                                imgStyles={{height:"5vmin"}}
+                                image={yellowArrow}
+                                title="Ver individuos forestales"
+                              />
+                            }
                             </div>
                           </Col>
                           <Col width="47%">
                             <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
                                 button.textContent = "Registrar";
                                 this.project_id = project.id; }}>
-                            { this.props.appState.currentPhase != "3" ? 
+                            { this.props.appState.currentPhase != "3" ?
                             <CardOptionButton
                               className="modal-btn"
                               accordionIconsStyles={styles.accordionIcons}

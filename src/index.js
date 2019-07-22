@@ -11,20 +11,19 @@ import './css/Login.css';
 import AppNavigation from './pages/main/AppNavigation';
 
 //errorHandler
-
 import ErrorBoundary from './containers/ErrorBoundary';
 
 //risks
 
-
-
 //Inventory
 
-
+import AsistantList from './pages/InventoryManagement/AsistantList';
+import GeoReferencingForm from './pages/InventoryManagement/GeoReferencingForm';
+import InventoryUnitList from './pages/InventoryManagement/InventoryUnitList';
+import MachineryForm from './pages/InventoryManagement/MachineryForm';
 
 //plantation
-
-
+import Establishment from './pages/Plantation/Establishment';
 
 import * as serviceWorker from './serviceWorker';
 import 'onsenui/css/onsenui.css';
@@ -39,21 +38,25 @@ import reducers from "./flux/reducers/";
 //localStorage
 import {loadState, saveState} from './helpers/appStorage';
 
+const initialData = loadState();
+
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
+
+//console.log(storage);
 
 store.subscribe( function () {
   //console.log("listener activated");
   //console.log(store.getState());
   saveState(store.getState())
-})
+});
 
 const appInit = _ =>
   ReactDOM.render(
       <Provider store={store}>
         <ErrorBoundary>
-          <AppNavigation />
+          <Establishment/>
         </ErrorBoundary>
       </Provider>
       , document.getElementById('root'));

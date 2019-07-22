@@ -18,7 +18,39 @@ ADD_FOREST_UNIT_OFFLINE_PHASE3,
 UPDATE_SERVER_FOREST_UNIT_PHASE3,
 UPDATE_OFFLINE_FOREST_UNIT_PHASE3,
 REMOVE_FROM_UPDATE_SERVER_FOREST_UNIT_PHASE3,
-REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3  }  from "../types";
+REMOVE_FROM_OFFLINE_FOREST_UNIT_PHASE3 ,
+
+ADD_TUNNEL_DEFORMATION_OFFLINE,
+UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE,
+UPDATE_TUNNEL_DEFORMATION_OFFLINE,
+REMOVE_FROM_UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE,
+REMOVE_FROM_TUNNEL_DEFORMATION_OFFLINE,
+
+ADD_HILLSIDE_MOVEMENT_OFFLINE,
+UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE,
+UPDATE_HILLSIDE_MOVEMENT_OFFLINE,
+REMOVE_FROM_UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE,
+REMOVE_FROM_UPDATE_HILLSIDE_MOVEMENT_OFFLINE,
+
+ADD_RAINFALL_OFFLINE,
+UPDATE_SERVER_RAINFALL_OFFLINE,
+UPDATE_RAINFALL_OFFLINE,
+REMOVE_FROM_UPDATE_SERVER_RAINFALL_OFFLINE,
+REMOVE_FROM_UPDATE_RAINFALL_OFFLINE,
+
+ADD_HILLSIDE_COLLAPSE_OFFLINE,
+UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE,
+UPDATE_HILLSIDE_COLLAPSE_OFFLINE,
+REMOVE_FROM_UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE,
+REMOVE_FROM_UPDATE_HILLSIDE_COLLAPSE_OFFLINE,
+
+ADD_RIVER_COLLAPSE_OFFLINE,
+UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
+UPDATE_RIVER_COLLAPSE_OFFLINE,
+REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
+REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE
+
+ }  from "../types";
 
 import { editOrAddToArray, removeFromArray } from "../../helpers/objectMethods"
 
@@ -36,7 +68,23 @@ let defaultValues = {
   offLineForestUnitsPhase2:[],
   serverForestUnitsPhase2:[],
   offLineForestUnitsPhase3:[],
-  serverForestUnitsPhase3:[]
+  serverForestUnitsPhase3:[],
+
+  offLineTunnelDeformations:[],
+  serverTunnelDeformations:[],
+
+  offLineHillSideMovements:[],
+  serverHillSideMovements:[],
+
+  offLineRainFall:[],
+  serverRainFall:[],
+
+  offLineHillSideCollapse:[],
+  serverHillSideCollapse:[],
+
+  offLineRiverCollapse:[],
+  serverRiverCollapse:[],
+
 }
 
 try
@@ -132,50 +180,19 @@ const memoryReducer = (state = initialState, action) => {
 
     case ADD_FUNCTIONAL_UNIT_OFFLINE:
 
-      /*action.payload.id = generateRandomId();
 
-      console.log(action.payload);
-
-      state = {
-        ...state,
-        offLineFunctionalUnits:[
-          ...state.offLineFunctionalUnits,
-          action.payload
-        ]
-      }
-
-      console.log(state);*/
       state = createOnState(state,'offLineFunctionalUnits',action);
 
       return state;
     case UPDATE_SERVER_FUNCTIONAL_UNIT:
 
-      /*serverFunctionalUnits = state.serverFunctionalUnits;
-
-      serverFunctionalUnits = editOrAddToArray(serverFunctionalUnits,action.payload,"id");
-
-        state = {
-          ...state,
-          serverFunctionalUnits
-        }
-
-        console.log(state);*/
 
       updateFromState(state,'serverFunctionalUnits',action);
 
       return state;
     case UPDATE_OFFLINE_FUNCTIONAL_UNIT:
 
-      /*offLineFunctionalUnits = state.offLineFunctionalUnits;
 
-      offLineFunctionalUnits = editOrAddToArray(offLineFunctionalUnits,action.payload,"id");
-
-        state = {
-          ...state,
-          offLineFunctionalUnits
-        }
-
-        console.log(state);*/
 
       updateFromState(state,'offLineFunctionalUnits',action);
 
@@ -183,33 +200,11 @@ const memoryReducer = (state = initialState, action) => {
 
     case REMOVE_FROM_UPDATE_SERVER_FUNIT:
 
-      /*serverFunctionalUnits = state.serverFunctionalUnits;
-
-      serverFunctionalUnits = removeFromArray(serverFunctionalUnits,action.payload);
-
-      state = {
-        ...state,
-        serverFunctionalUnits
-      }
-
-      console.log(state);*/
-
       state = removeFromState(state,'serverFunctionalUnits',action);
 
       return state;
+
     case REMOVE_FROM_OFFLINE_FUNIT:
-
-      /*offLineFunctionalUnits = state.offLineFunctionalUnits;
-
-      offLineFunctionalUnits = removeFromArray(offLineFunctionalUnits,action.payload);
-
-      state = {
-        ...state,
-        offLineFunctionalUnits
-      }
-
-      console.log(state);
-      */
 
       state = removeFromState(state,'offLineFunctionalUnits',action);
 
@@ -304,6 +299,162 @@ const memoryReducer = (state = initialState, action) => {
       state = removeFromState(state,'offLineForestUnitsPhase3',action);
 
       return state;
+
+
+    case ADD_TUNNEL_DEFORMATION_OFFLINE:
+
+      state = createOnState(state,'offLineTunnelDeformations',action);
+
+      return state;
+
+    case UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE:
+
+      state = updateFromState(state,'serverTunnelDeformations',action);
+
+      return state;
+
+    case UPDATE_TUNNEL_DEFORMATION_OFFLINE:
+
+      state = updateFromState(state,'offLineTunnelDeformations',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE:
+
+      state = removeFromState(state,'serverTunnelDeformations',action);
+
+      return state;
+
+    case REMOVE_FROM_TUNNEL_DEFORMATION_OFFLINE:
+
+      state = removeFromState(state,'offLineTunnelDeformations',action);
+
+      return state;
+
+
+    case ADD_HILLSIDE_MOVEMENT_OFFLINE:
+
+      state = createOnState(state,'offLineHillSideMovements',action);
+
+      return state;
+
+    case UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE:
+
+      state = updateFromState(state,'serverHillSideMovements',action);
+
+      return state;
+
+    case UPDATE_HILLSIDE_MOVEMENT_OFFLINE:
+
+      state = updateFromState(state,'offLineHillSideMovements',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE:
+
+      state = removeFromState(state,'serverHillSideMovements',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_HILLSIDE_MOVEMENT_OFFLINE:
+
+      state = removeFromState(state,'offLineHillSideMovements',action);
+
+      return state;
+
+    case ADD_RAINFALL_OFFLINE:
+
+      state = createOnState(state,'offLineRainFall',action);
+
+      return state;
+
+    case UPDATE_SERVER_RAINFALL_OFFLINE:
+
+      state = updateFromState(state,'serverRainFall',action);
+
+      return state;
+
+    case UPDATE_RAINFALL_OFFLINE:
+
+      state = updateFromState(state,'offLineRainFall',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_RAINFALL_OFFLINE:
+
+      state = removeFromState(state,'serverRainFall',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_RAINFALL_OFFLINE:
+
+      state = removeFromState(state,'offLineRainFall',action);
+
+      return state;
+
+    case ADD_HILLSIDE_COLLAPSE_OFFLINE:
+
+      state = createOnState(state,'offLineHillSideCollapse',action);
+
+      return state;
+
+    case UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE:
+
+      state = updateFromState(state,'serverHillSideCollapse',action);
+
+      return state;
+
+    case UPDATE_HILLSIDE_COLLAPSE_OFFLINE:
+
+      state = updateFromState(state,'offLineHillSideCollapse',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE:
+
+      state = removeFromState(state,'serverHillSideCollapse',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_HILLSIDE_COLLAPSE_OFFLINE:
+
+      state = removeFromState(state,'offLineHillSideCollapse',action);
+
+      return state;
+
+
+    case ADD_RIVER_COLLAPSE_OFFLINE:
+
+      state = createOnState(state,'offLineRiverCollapse',action);
+
+      return state;
+
+    case UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE:
+
+      state = updateFromState(state,'serverRiverCollapse',action);
+
+      return state;
+
+    case UPDATE_RIVER_COLLAPSE_OFFLINE:
+
+      state = updateFromState(state,'offLineRiverCollapse',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE:
+
+      state = removeFromState(state,'serverRiverCollapse',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE:
+
+      state = removeFromState(state,'offLineRiverCollapse',action);
+
+      return state;
+
+
+
 
     default:
       return state;

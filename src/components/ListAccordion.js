@@ -11,6 +11,11 @@ import '../css/style.css';
 import { List, ListItem } from 'react-onsenui';
 import Ons from 'onsenui';
 
+//flux
+import {
+  goToNavigationResource
+  } from '../flux/actions';
+import { connect } from 'react-redux';
 //Libraries
 
 //components
@@ -97,12 +102,12 @@ class ListAccordion extends Component {
   }
 }
 
-/*const mapStateToProps = state => {
+const mapStateToProps = state => {
   return {
     project: state.project,
   };
 }
 
-export default  connect(mapStateToProps, { getProjects , getFunctionalUnits })(ListProjects);*/
+export default  connect(mapStateToProps, { goToNavigationResource
+})(ListAccordion);
 
-export default ListAccordion;

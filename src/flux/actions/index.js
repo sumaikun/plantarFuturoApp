@@ -20,5 +20,10 @@ export * from "./Plantation/PlantationActions";
 export * from "./Activity/ActivityActions";
 
 //memoryActions
+//SST
+export * from "./sst/"
+export * from "./visitor/"
+export * from "./user/"
 
+//memoryActions
 export * from "./memoryActions";

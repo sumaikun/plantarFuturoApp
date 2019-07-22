@@ -111,23 +111,23 @@ class FormProcess extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.forestalUnitE)
     {
 
 
       if(this.props.appState.forestalUnitE.products)
       {
-        console.log("try to change");
+        //console.log("try to change");
           this.props.appState.forestalUnitE.products = this.props.appState.forestalUnitE.products == "Leña" ? 1 :
           this.props.appState.forestalUnitE.products == "Madera" ? 2 : null;
 
-        console.log(this.props.appState.forestalUnitE.products);
+        //console.log(this.props.appState.forestalUnitE.products);
       }
 
       if(this.props.appState.forestalUnitE.treatment)
       {
-          console.log("try to change");
+          //console.log("try to change");
           this.props.appState.forestalUnitE.treatment = this.props.appState.forestalUnitE.treatment == "Tala" ? 1 :
           this.props.appState.forestalUnitE.treatment == "Perman. Y/poda" ? 2 :
           this.props.appState.forestalUnitE.treatment == "Bloque y T." ? 3 :
@@ -140,7 +140,7 @@ class FormProcess extends Component {
           ...this.props.appState.forestalUnitE
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
 
@@ -151,12 +151,12 @@ class FormProcess extends Component {
     const  fileType = file['type'];
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     if (validImageTypes.includes(fileType)) {
-       console.log(key);
+       //console.log(key);
        let self = this;
        getInputFileBase64(e.target.files[0]).then(
          base64Image => {
 
-         //console.log(base64Image);
+         ////console.log(base64Image);
 
                  self.setState({
                    formData:
@@ -165,7 +165,7 @@ class FormProcess extends Component {
                      [key]:base64Image
                    }
                  },()=>{
-                     console.log(self.state);
+                     //console.log(self.state);
                  });
        });
    }
@@ -179,9 +179,9 @@ class FormProcess extends Component {
 
       let self = this;
 
-      console.log("react ambit prev cordova");
+      //console.log("react ambit prev cordova");
 
-      console.log(self);
+      //console.log(self);
 
       if (window.cordova) {
 
@@ -189,12 +189,12 @@ class FormProcess extends Component {
 
           getFileContentAsBase64(image,function(base64Image){
 
-            console.log("react ambit post cordova");
+            //console.log("react ambit post cordova");
 
-            //console.log(self);
+            ////console.log(self);
 
             //window.open(base64Image);
-            console.log(base64Image);
+            //console.log(base64Image);
             // Then you'll be able to handle the myimage.png file as base64
 
             self.setState({
@@ -204,7 +204,7 @@ class FormProcess extends Component {
                 [key]:base64Image
               }
             },()=>{
-                console.log(self.state);
+                //console.log(self.state);
             });
 
 
@@ -216,7 +216,7 @@ class FormProcess extends Component {
             correctOrientation : true
         });
       } else{
-        console.log("please run the cordova project");
+        //console.log("please run the cordova project");
       }
 
 
@@ -226,8 +226,8 @@ class FormProcess extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -236,7 +236,7 @@ class FormProcess extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -254,9 +254,9 @@ class FormProcess extends Component {
     {
       if(this.props.appState.forestalUnitE)
       {
-        console.log("editMode");
-        console.log(this.state.formData);
-        console.log(this.state.formData.id);
+        //console.log("editMode");
+        //console.log(this.state.formData);
+        //console.log(this.state.formData.id);
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
 
@@ -286,7 +286,7 @@ class FormProcess extends Component {
 
 
         this.props.createForestUnitPhase2(data);
-        console.log("createMode");
+        //console.log("createMode");
       }
     }
     else{
@@ -538,9 +538,7 @@ class FormProcess extends Component {
             <Col width="100%">
               <br/>
               <Card>
-                <div>
-                <textarea onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
-                </div>
+                <textarea onChange={this.handleChangeInput} style={{width:"100%",borderRadius:"10%",height:"80px", borderColor:"white"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
               </Card>
             </Col>
           </Row>

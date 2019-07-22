@@ -43,12 +43,12 @@ class AppNavigation extends Component {
     this.props.insertNavigator(this.navigator);
 
     let storedData = JSON.parse(localStorage.getItem('state'));
-    console.log(storedData);
+    //console.log(storedData);
     if(storedData)
     {
       if(storedData.navigationIndex && storedData.navigationIndex != "GO_TO_LOGIN" )
       {
-        //console.log(storedData.navigationIndex);
+        ////console.log(storedData.navigationIndex);
         //this.props.runfromStorage(storedData.navigationIndex);
         this.props.runfromStorage("GO_TO_MANAGEMENT");
       }
@@ -61,7 +61,7 @@ class AppNavigation extends Component {
     route.props.navigator = navigator;
     route.props.key = route.key;
 
-    //console.log(React.createElement(route.component, route.props));
+    ////console.log(React.createElement(route.component, route.props));
     return React.createElement(route.component, route.props);
   }
 

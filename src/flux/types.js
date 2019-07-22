@@ -1,5 +1,5 @@
 //PROPERTIES
-export const VERSION = "1.3.5";
+export const VERSION = "1.4.3";
 const LOCAL_MODE = true;
 
 //ajax
@@ -20,6 +20,11 @@ export const GO_TO_FORM_INVENTORY = "GO_TO_FORM_INVENTORY";
 export const GO_TO_FORM_PROCESS = "GO_TO_FORM_PROCESS";
 export const GO_BACK = "GO_BACK";
 export const GO_TO_FORM_COMPENSATION = "GO_TO_FORM_COMPENSATION";
+export const GO_TO_NAVIGATION_RESOUCE = "GO_TO_NAVIGATION_RESOUCE";
+export const GO_TO_CIVIL_MANAGEMENT = "GO_TO_CIVIL_MANAGEMENT";
+export const GO_TO_SST_LIST = 'GO_TO_SST_LIST';
+export const GO_TO_SST_FORM = "GO_TO_SST_FORM";
+export const GO_TO_ASSISTANT_LIST = "GO_TO_ASSISTANT_LIST";
 
 //general app states
 export const FETCH = "FETCH";
@@ -35,7 +40,7 @@ export const SET_FORESTAL_UNITS = "SET_FORESTAL_UNITS";
 export const SET_FORESTAL_UNIT = "SET_FORESTAL_UNIT";
 export const SET_FUNCTIONAL_UNIT = "SET_FUNCTIONAL_UNIT";
 export const SELECT_PROJECT = "SELECT_PROJECT";
-
+export const GO_TO_MACHINERY_LIST = "GO_TO_MACHINERY_LIST"; 
 
 //aJAX URLS
 export const LOGIN_URL = BASE_URL+"/api/login";
@@ -44,10 +49,20 @@ export const GET_PROJECTS_URL = BASE_URL+"/api/project";
 export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit' : 'https://plantarfuturo.com/ws/api/functional-unit';
 export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/functional-units/' : 'https://plantarfuturo.com/ws/api/project/functional-units/';
 export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit/forest-units/' : 'https://plantarfuturo.com/ws/api/functional-unit/forest-units/';
+export const GET_SST_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/sst' : 'https://plantarfuturo.com/ws/api/sst';
 export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/risks/' : 'https://plantarfuturo.com/ws/api/project/risks/';
 export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/users/projects/' : 'https://plantarfuturo.com/ws/api/users/projects/';
+export const GET_USERS_BY_PROJECT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/users/' : 'https://plantarfuturo.com/ws/api/project/users/';
+export const GET_VISITOR_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/visitor' : 'https://plantarfuturo.com/ws/api/visitor';
+export const GET_INVENTORY_URL = "GET_INVENTORY_URL";
 
 
+export const SET_SST = "SET_SST";
+export const SET_SST_ASSISTANTS = "SET_SST_ASSISTANTS";
+export const SET_SST_VISITORS = "SET_SST_VISITORS";
+export const SET_SST_DATA = "SET_SST_DATA";
+export const GO_TO_ASSISTANT_FORM ="GO_TO_ASSISTANT_FORM";
+export const SET_LIST_USER ="SET_USER";
 //RiskManagement navigation
 export const GO_TO_RISK_MANAGEMENT = "GO_TO_RISK_MANAGEMENT";
 export const GO_TO_HILLSIDE_MOVEMENT = "GO_TO_HILLSIDE_MOVEMENT";
@@ -81,18 +96,20 @@ export const SET_HILL_SIDE_COLLAPSE = "SET_HILL_SIDE_COLLAPSE";
 export const SET_RIVER_COLLAPSE = "SET_RIVER_COLLAPSE";
 export const SET_CURRENT_RISK_PHASE = "SET_CURRENT_RISK_PHASE";
 
+export const SET_INVENTORY = "SET_INVENTORY";
 //Risk indicators
 export const SET_RISK_INDICATORS = "SET_RISK_INDICATORS";
 
 //Inventory Management
 export const GO_TO_INVENTORY_MANAGEMENT = "GO_TO_INVENTORY_MANAGEMENT";
 export const GO_TO_MACHINERY_FORM = "GO_TO_MACHINERY_FORM";
+export const GO_TO_FUEL_FORM = "GO_TO_FUEL_FORM";
+export const SET_FUEL = "SET_FUEL";
 
 //Errors
 export const APP_ERROR = "APP_ERROR";
 
 export const SET_RISK_OVERVIEW = "SET_RISK_OVERVIEW";
-
 
 //MemoryActions
 export const ADD_LOGGED_USER = "ADD_LOGGED_USER";
@@ -151,3 +168,35 @@ export const SET_LIST_MAINTENANCE_REPORT = "SET_LIST_MAINTENANCE_REPORT";
 
 export const SET_ESTABLISHMENT_REPORT = "SET_ESTABLISHMENT_REPORT";
 export const SET_MAINTENANCE_REPORT = "SET_MAINTENANCE_REPORT";
+
+//Offline in RISKS
+
+export const ADD_TUNNEL_DEFORMATION_OFFLINE = "ADD_TUNNEL_DEFORMATION_OFFLINE";
+export const UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE = "UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE";
+export const UPDATE_TUNNEL_DEFORMATION_OFFLINE = "UPDATE_TUNNEL_DEFORMATION_OFFLINE";
+export const REMOVE_FROM_UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE = "REMOVE_FROM_UPDATE_SERVER_TUNNEL_DEFORMATION_OFFLINE";
+export const REMOVE_FROM_TUNNEL_DEFORMATION_OFFLINE = "REMOVE_FROM_TUNNEL_DEFORMATION_OFFLINE";
+
+export const ADD_HILLSIDE_MOVEMENT_OFFLINE = "ADD_HILLSIDE_MOVEMENT_OFFLINE";
+export const UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE = "UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE";
+export const UPDATE_HILLSIDE_MOVEMENT_OFFLINE = "UPDATE_HILLSIDE_MOVEMENT_OFFLINE";
+export const REMOVE_FROM_UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE = "REMOVE_FROM_UPDATE_SERVER_HILLSIDE_MOVEMENT_OFFLINE";
+export const REMOVE_FROM_UPDATE_HILLSIDE_MOVEMENT_OFFLINE = "REMOVE_FROM_UPDATE_HILLSIDE_MOVEMENT_OFFLINE";
+
+export const ADD_RAINFALL_OFFLINE = "ADD_RAINFALL_OFFLINE";
+export const UPDATE_SERVER_RAINFALL_OFFLINE = "UPDATE_SERVER_RAINFALL_OFFLINE";
+export const UPDATE_RAINFALL_OFFLINE = "UPDATE_RAINFALL_OFFLINE";
+export const REMOVE_FROM_UPDATE_SERVER_RAINFALL_OFFLINE = "REMOVE_FROM_UPDATE_SERVER_RAINFALL_OFFLINE";
+export const REMOVE_FROM_UPDATE_RAINFALL_OFFLINE = "REMOVE_FROM_UPDATE_RAINFALL_OFFLINE";
+
+export const ADD_HILLSIDE_COLLAPSE_OFFLINE = "ADD_HILLSIDE_COLLAPSE_OFFLINE";
+export const UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE = "UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE";
+export const UPDATE_HILLSIDE_COLLAPSE_OFFLINE = "UPDATE_HILLSIDE_COLLAPSE_OFFLINE";
+export const REMOVE_FROM_UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE = "REMOVE_FROM_UPDATE_SERVER_HILLSIDE_COLLAPSE_OFFLINE";
+export const REMOVE_FROM_UPDATE_HILLSIDE_COLLAPSE_OFFLINE = "REMOVE_FROM_UPDATE_HILLSIDE_COLLAPSE_OFFLINE";
+
+export const ADD_RIVER_COLLAPSE_OFFLINE = "ADD_RIVER_COLLAPSE_OFFLINE";
+export const UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE = "UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE";
+export const UPDATE_RIVER_COLLAPSE_OFFLINE = "UPDATE_RIVER_COLLAPSE_OFFLINE";
+export const REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE = "REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE";
+export const REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE = "REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE";
