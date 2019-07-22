@@ -58,8 +58,6 @@ import {
   GO_TO_MACHINERY_FORM,
   APP_ERROR,
   GO_TO_RISK_OVERVIEW,
-  GO_TO_ESTABLISHMENT_REPORTS,
-  GO_TO_MAINTENANCE_REPORTS,
   GO_TO_PLANTATION,
   GO_TO_SELECT_PLANTATION_REPORT_TYPE,
   GO_TO_PLANTATION_REPORT,
@@ -306,27 +304,7 @@ const navigationReducer = (state = initialState, action) => {
         currentPagekey: GO_TO_REPORT_LIST
       };
       if (currentPage.key != GO_TO_REPORT_LIST) {
-        state.navigator.pushPage( { component: ReportList, key: GO_TO_PLANTATION_REPORT } );
-      }
-      return state;
-
-    case GO_TO_ESTABLISHMENT_REPORTS:
-      state = {
-        ...state,
-        currentPagekey: GO_TO_ESTABLISHMENT_REPORTS
-      }
-      if (currentPage.key != GO_TO_ESTABLISHMENT_REPORTS) {
-        state.navigator.pushPage( {} );
-      }
-      return state;
-
-    case GO_TO_MAINTENANCE_REPORTS:
-      state = {
-        ...state,
-        currentPagekey: GO_TO_MAINTENANCE_REPORTS
-      }
-      if (currentPage.key != GO_TO_MAINTENANCE_REPORTS) {
-        state.navigator.pushPage( {} );
+        state.navigator.pushPage( { component: ReportList, key: GO_TO_REPORT_LIST } );
       }
       return state;
 

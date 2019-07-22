@@ -25,10 +25,6 @@ import {
   SET_CURRENT_RISK_PHASE,
   SET_RISK_INDICATORS,
   SET_RISK_OVERVIEW,
-  SET_LIST_ESTABLISHMENT_REPORT,
-  SET_LIST_MAINTENANCE_REPORT,
-  SET_ESTABLISHMENT_REPORT,
-  SET_MAINTENANCE_REPORT,
   SET_PLANTATION_REPORT_TYPE,
   SET_PLANTATION_REPORTS,
   SET_PLANTATION_REPORT,
@@ -414,38 +410,6 @@ const appReducer = (state = initialState, action) => {
         ...state,
         plantationProject: action.payload
       };
-      console.log(state);
-      return state;
-
-    case SET_LIST_ESTABLISHMENT_REPORT:
-      state = {
-        ...state,
-        lisEstablishmentReport: action.payload
-      }
-      console.log(state);
-      return state;
-
-    case SET_ESTABLISHMENT_REPORT:
-      state = {
-        ...state,
-        establishmentReport: action.payload
-      }
-      console.log(state);
-      return state;
-
-    case SET_LIST_MAINTENANCE_REPORT:
-      state = {
-        ...state,
-        listMaintenanceReport: action.payload
-      }
-      console.log(state);
-      return state;
-
-    case SET_MAINTENANCE_REPORT:
-      state = {
-        ...state,
-        maintenanceReport: action.payload
-      }
       console.log(state);
       return state;
 

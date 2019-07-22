@@ -114,9 +114,9 @@ class ReportList extends Component {
                         <div
                           className={'select-report'}
                           onClick={()=>{
+                            this.props.getDefaultActivitiesByType( parseInt( report.type ) );
+                            this.props.setPlantationReportType( parseInt( report.type ) );
                             this.props.setPlantationReport( report );
-                            this.props.getDefaultActivitiesByType( parseInt( this.props.appState.plantationReportToEdit.type ) );
-                            this.props.setPlantationReportType( parseInt( this.props.appState.plantationReportToEdit.type ) );
                             this.props.goToPlantationReport();
                           }}
                         >
