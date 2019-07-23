@@ -135,7 +135,7 @@ class AsistantList extends Component {
                   <ListItem>
 
                   <Col width="50%">
-                    <div onClick={()=>{this.onClickVisitorForm(memo.id)}} className="center" style={styles.mainListItem}>
+                    <div onClick={()=>{this.onClickVisitorForm(memo)}} className="center" style={styles.mainListItem}>
                       <span style={styles.counter}>{i+1}</span>
                       <span style={styles.projectName}>{memo.name}</span>
                       <div>

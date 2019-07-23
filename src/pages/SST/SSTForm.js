@@ -82,7 +82,6 @@ class SSTForm extends Component {
         <Loading/>
       </div>
     }
-    console.log(this.props)
     return (
       <AppPage  title={["FORMULARIO ", <strong>SST</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>

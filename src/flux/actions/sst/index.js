@@ -133,9 +133,9 @@ export function getSSTForm(data)  {
 }
 
 export function getSSTVisitor(data)  {
+  console.log(data);
   let row = { ...data }
   return async dispatch => {
-    if (row.id) return dispatch(setSSTVisitor(row))
-    return dispatch(setSSTVisitor({}));
+    dispatch(setSSTVisitor(row))
   }
 }

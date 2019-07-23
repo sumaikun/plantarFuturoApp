@@ -74,7 +74,8 @@ class AssistantForm extends Component {
             <Col width="99%">
               <Card style={{...Styles.cardInput, alignItems:"unset"}}>
                   <label>Nombre</label>
-                <Input style={{...Styles.dateInput}} type="text" name="name" onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable}/>
+                <Input style={{...Styles.dateInput}} type="text" name="name" onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable}
+                value={this.props.visitor.name}/>
               </Card>
             </Col>
           </Row>
@@ -82,13 +83,17 @@ class AssistantForm extends Component {
             <Col width="45%">
               <Card style={{...Styles.cardInput, alignItems:"unset"}}>
                   <label>C.C</label>
-                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="text" name="document" onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable}/>
+                <Input style={{...Styles.dateInput, position:"absolute", width:"40%"}} type="text" name="document" onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable}
+                value={this.props.visitor.document}
+                />
               </Card>
             </Col>
             <Col width="54%">
               <Card style={Styles.cardInput}>
                   <label>Entidad</label>
-                <Input type="text" name="entity" onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable}/>
+                <Input type="text" name="entity" onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable}
+                value={this.props.visitor.entity}
+                />
               </Card>
             </Col>
           </Row>
@@ -129,7 +134,7 @@ class AssistantForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    visitor:  state.appState.visitorData,
+    visitor:  state.appState.sstVisitor,
     appState: state.appState,
     project_id: state.appState.sstData.project_id
   };
