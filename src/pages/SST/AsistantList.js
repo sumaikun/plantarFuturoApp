@@ -85,20 +85,10 @@ class AsistantList extends Component {
     super(props);
     this.renderHeader = this.renderHeader.bind(this);
     this.contentPage = this.contentPage.bind(this);
-    this.state={
-      table:[]
-    }}
-  componentDidMount(){
-    /*
-    this.props.getListUsers(this.props.project_id),
-    this.props.getListVisitors(this.props.project_id)
-
-    , {listSSTVisitors,listUsers } =  this.props.appState
-    listSSTVisitors, listUsers
-    this.setState({table:list })
-    */
   }
-
+  componentDidMount(){
+    this.props.getList(1);
+  }
   renderHeader(){
     return(
       <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">
@@ -120,9 +110,8 @@ class AsistantList extends Component {
   }
 
   contentPage(){
-  //  l//et {table}= this.state.
-    //if (!table) return null;
-    let table =[]
+    let {listSSTVisitors}= this.props.appState
+    if (!listSSTVisitors) return null;
     return(
       <div>
         <div style={styles.formContainer}>
@@ -137,14 +126,13 @@ class AsistantList extends Component {
       </div>
           <List renderHeader={this.renderHeader}>
           {
-            table.map((memo, i) => {
+            listSSTVisitors.map((memo, i) => {
                 return  (
-
                 <div>
                   <ListItem>
 
                   <Col width="50%">
-                    <div onClick={()=>{this.props.onClickVisitorForm();}} className="center" style={styles.mainListItem}>
+                    <div onClick={()=>{this.props.goToAssistantForm(memo.id);}} className="center" style={styles.mainListItem}>
                       <span style={styles.counter}>{i+1}</span>
                       <span style={styles.projectName}>{memo.name}</span>
                       <div>
@@ -262,8 +250,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     //getList: (id) => {dispatch(getSSTAssistants(id))},
-    //getList: (id) => {dispatch(getSSTVisitors(id))},
-    getList: (id) => {dispatch(getListUsers(id))},
+    getList: (id) => {dispatch(getSSTVisitors(id))},
+    //getList: (id) => {dispatch(getListUsers(id))},
     getForm: (visitor) => {dispatch(getSSTVisitors(visitor))},
     goToAssistantForm: ()=> {dispatch(goToAssistantForm())}
 
