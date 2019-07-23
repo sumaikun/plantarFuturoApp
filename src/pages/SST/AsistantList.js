@@ -88,6 +88,7 @@ class AsistantList extends Component {
   }
   componentDidMount(){
     this.props.getList(1);
+    this.props.getListUsers(1)
   }
   renderHeader(){
     return(
@@ -110,8 +111,10 @@ class AsistantList extends Component {
   }
 
   contentPage(){
-    let {listSSTVisitors}= this.props.appState
-    if (!listSSTVisitors) return null;
+    let {listSSTVisitors, listSSTAssistants, listUser}= this.props.appState, listData = []
+    if (listSSTVisitors) listData.push(...listSSTVisitors);
+    if (listSSTAssistants)  listData.push(...listSSTAssistants);
+    if(listUser) listData.push(...listUser);
     return(
       <div>
         <div style={styles.formContainer}>
@@ -119,14 +122,14 @@ class AsistantList extends Component {
             <div className="group" style={styles.searchInputContainer}>
                 <input id="search" /*value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} */className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"9GO_TO_MACHINERY_LIST0%", height:"10px"}} /><br />
               <div style={styles.searchButton} onClick={()=>{this.props.goToAssistantForm();}}>
-                <span className="fas fa-plus fontAwesome" ></span>
+                  <span className="fas fa-plus fontAwesome" ></span>
               </div>
             </div>
         </div>
       </div>
           <List renderHeader={this.renderHeader}>
           {
-            listSSTVisitors.map((memo, i) => {
+            listData.map((memo, i) => {
                 return  (
                 <div>
                   <ListItem>
@@ -253,6 +256,7 @@ const mapDispatchToProps = (dispatch) => {
     //getList: (id) => {dispatch(getListUsers(id))},
     //getForm: (visitor) => {dispatch(getSSTVisitors(visitor))},
     goToAssistantForm: ()=> {dispatch(goToAssistantForm())},
+    getListUsers: (id)=> {dispatch(getListUsers(id))},
     getSSTVisitor: (visitor)=> {dispatch(getSSTVisitor(visitor))}
 
   }
