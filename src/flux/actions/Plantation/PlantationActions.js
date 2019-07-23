@@ -79,9 +79,6 @@ export const createReport = (data, componentSuccess = null) => {
 
 export const updateReport = (plantation_report_id, data) => {
   return async dispatch => {
-
-    console.log(data);
-
     dispatch(fetching());
 
     let SuccessCallBack = (response) => {

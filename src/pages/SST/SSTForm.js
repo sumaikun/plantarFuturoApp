@@ -49,11 +49,27 @@ class SSTForm extends Component {
     }
     if (event.target.value[0] == "=") event.target.value = event.target.value.substr(1)
   }
+
   submitData(e){
     e.preventDefault();
     let {formData} = this.state //
-    ,  {project_id }  = this.props
-    , data = {...formData, project_id}
+    ,  {project_id, sst}  = this.props
+    , data = {
+      goal: formData.goal,
+      location: formData.location,
+      notes: formData.notes,
+      progress_img1: null,
+      progress_img2: null,
+      progress_img3: null,
+      progress_img4: null,
+      project_id: project_id,
+      report_date:`${formData.date} ${formData.hour}` ,
+      responsible: formData.responsible,
+      assistants: [],
+      visitors:[]
+    }
+    //console.log(data);
+    if (sst.id) return  this.props.handleChangeUpdate(sst.id, data) //console.log('update');
     this.props.handleChangeCreate(data);
   }
   enableForm(){
@@ -66,6 +82,7 @@ class SSTForm extends Component {
         <Loading/>
       </div>
     }
+    console.log(this.props)
     return (
       <AppPage  title={["FORMULARIO ", <strong>SST</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
@@ -146,7 +163,7 @@ class SSTForm extends Component {
             <Col width="99%">
               <Card style={{...Styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.notes}  placeholder="Comentarios" disabled={this.state.isDisable} ></textarea>
+                <textarea onChange={this.handleChangeInput.bind(this)} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.notes}  placeholder="Comentarios" disabled={this.state.isDisable} ></textarea>
 
               </Card>
             </Col>
@@ -291,7 +308,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     goToAssistantList: ()=> {dispatch(goToAssistantList())},
     handleChangeCreate: (data)=>{dispatch(createReportSST(data))},
-    handleChangeUpdate: (data)=>{dispatch(updateReportSST(data))},
+    handleChangeUpdate: (id, data)=>{dispatch(updateReportSST(id, data))},
     loadListAssistants: (idSST)=> {dispatch(getSSTAssistants(idSST))},
     loadListVisitors: (idSST)=> {dispatch(getSSTVisitors(idSST))},
   }

@@ -53,7 +53,7 @@ class ListSSTByProject extends Component {
     );
   }
   onClickSSTForm(memo) {
-    this.props.getForm(memo, 'update')
+    this.props.getForm(memo)
     this.props.goToSSTForm()
   }
 }

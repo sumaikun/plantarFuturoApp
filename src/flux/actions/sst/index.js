@@ -61,6 +61,7 @@ export function createReportSST(data, successCallBack  ,errorCallBack )  {
 
 // Actualizar reporte SST
 export function updateReportSST (id, data, successCallBack  ,errorCallBack ) {
+  console.log(id, data);
   return async dispatch => {
 
     /*if(!navigator.onLine)
@@ -85,7 +86,7 @@ export function updateReportSST (id, data, successCallBack  ,errorCallBack ) {
       dispatch(notFetching());
       Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido crear el informe SST"});
     }
-    Request.postRequest(
+    Request.putRequest(
       GET_SST_URL+'/'+id,
       data,
       SuccessCallBack,
@@ -120,12 +121,10 @@ export function getSSTAssistants  (id, successCallBack  ,errorCallBack)  {
 
 
 
-export function getSSTForm(data, action)  {
-  //console.log(data, setDataSST);
+export function getSSTForm(data)  {
   let row = { ...data
     , date: moment(data.report_date).format("dd/mm/aaaa")
     , hour: moment(data.report_date).format("HH:mm")
-    , action
   }
   return async dispatch => {
     dispatch(setDataSST(row));
