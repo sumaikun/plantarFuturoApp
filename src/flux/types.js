@@ -46,14 +46,14 @@ export const GO_TO_MACHINERY_LIST = "GO_TO_MACHINERY_LIST";
 export const LOGIN_URL = BASE_URL+"/api/login";
 //export const GET_PROJECTS_URL = BASE_URL+"/api/users/projects";
 export const GET_PROJECTS_URL = BASE_URL+"/api/project";
-export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit' : 'https://plantarfuturo.com/ws/api/functional-unit';
-export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/functional-units/' : 'https://plantarfuturo.com/ws/api/project/functional-units/';
-export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit/forest-units/' : 'https://plantarfuturo.com/ws/api/functional-unit/forest-units/';
-export const GET_SST_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/sst' : 'https://plantarfuturo.com/ws/api/sst';
-export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/risks/' : 'https://plantarfuturo.com/ws/api/project/risks/';
-export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/users/projects/' : 'https://plantarfuturo.com/ws/api/users/projects/';
-export const GET_USERS_BY_PROJECT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/users/' : 'https://plantarfuturo.com/ws/api/project/users/';
-export const GET_VISITOR_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/visitor' : 'https://plantarfuturo.com/ws/api/visitor';
+export const FUNCTIONAL_UNIT_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit' : 'https://plantarfuturo.com/test/api/functional-unit';
+export const GET_FUNCTIONAL_UNITS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/functional-units/' : 'https://plantarfuturo.com/test/api/project/functional-units/';
+export const GET_FORESTAL_UNITS_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/functional-unit/forest-units/' : 'https://plantarfuturo.com/test/api/functional-unit/forest-units/';
+export const GET_SST_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/sst' : 'https://plantarfuturo.com/test/api/sst';
+export const GET_RISK_OVERVIEW_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/risks/' : 'https://plantarfuturo.com/test/api/project/risks/';
+export const GET_PROJECTS_BY_USER = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/users/projects/' : 'https://plantarfuturo.com/test/api/users/projects/';
+export const GET_USERS_BY_PROJECT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/project/users/' : 'https://plantarfuturo.com/test/api/project/users/';
+export const GET_VISITOR_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/visitor' : 'https://plantarfuturo.com/test/api/visitor';
 export const GET_INVENTORY_URL = "GET_INVENTORY_URL";
 
 
@@ -150,6 +150,7 @@ export const GET_DEFAULT_ACTIVITIES_BY_TYPE = window.location.href.indexOf('loca
 export const CREATE_PLANTATION_REPORT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report' : 'https://plantarfuturo.com/test/api/daily-report';
 export const GET_PLANTATION_REPORTS = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report' : 'https://plantarfuturo.com/test/api/daily-report';
 export const GET_PLANTATION_REPORTS_BY_PROJECT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report/project/' : 'https://plantarfuturo.com/test/api/daily-report/project/';
+export const GET_PLANTATION_REPORT_BY_ID = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report/' : 'https://plantarfuturo.com/test/api/daily-report/';
 export const UPDATE_PLANTATION_REPORT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test/api/daily-report/' : 'https://plantarfuturo.com/test/api/daily-report/';
 
   //  Setters

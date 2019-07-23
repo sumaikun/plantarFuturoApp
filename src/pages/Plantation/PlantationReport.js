@@ -286,7 +286,7 @@ class PlantationReport extends Component {
                   style={styles.textInput}
                   type="number"
                   name={ 'hours' }
-                  value={ this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null }
+                  value={ this.state.formData.activities ? ( this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null ) : null }
                   placeholder="Horas" disabled={this.state.isDisable || !this.state.formData.activities[activityIndex] }
                   onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
                   required={ this.state.formData.activities[activityIndex] }

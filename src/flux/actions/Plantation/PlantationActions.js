@@ -1,6 +1,6 @@
 import { Request } from '../../../helpers/request';
-import { fetching , notFetching, setPlantationReports } from "../appActions";
-import { GET_PLANTATION_REPORTS, GET_PLANTATION_REPORTS_BY_PROJECT, CREATE_PLANTATION_REPORT, UPDATE_PLANTATION_REPORT, BASE_URL } from "../../types";
+import { fetching , notFetching, setPlantationReports, setPlantationReport } from "../appActions";
+import { GET_PLANTATION_REPORTS, GET_PLANTATION_REPORTS_BY_PROJECT, GET_PLANTATION_REPORT_BY_ID, CREATE_PLANTATION_REPORT, UPDATE_PLANTATION_REPORT, BASE_URL } from "../../types";
 import Ons from 'onsenui';
 import {updateOfflineForestUnitP1, updateServerForestUnitP1} from "../memoryActions";
 import {goBack} from "../navigationActions";
@@ -45,6 +45,29 @@ export const getPlantationReportsByProject = (project_id) => {
 
     Request.getRequest(
       GET_PLANTATION_REPORTS_BY_PROJECT + project_id,
+      SuccessCallBack,
+      ErrorCallBack
+    );
+  };
+};
+
+export const getPlantationReportById = (report_id) => {
+  return async dispatch => {
+    dispatch( fetching() );
+
+    let SuccessCallBack = (response) => {
+      dispatch(notFetching());
+      dispatch(setPlantationReport(response.data));
+    };
+
+    let ErrorCallBack = () => {
+      dispatch(notFetching());
+    };
+
+    //console.log(String( "HERE GOES THE TYPE" + project_id));
+
+    Request.getRequest(
+      GET_PLANTATION_REPORT_BY_ID + report_id,
       SuccessCallBack,
       ErrorCallBack
     );

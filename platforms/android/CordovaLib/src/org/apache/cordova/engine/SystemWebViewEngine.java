@@ -198,11 +198,11 @@ public class SystemWebViewEngine implements CordovaWebViewEngine {
         // Fix for CB-3360
         String overrideUserAgent = preferences.getString("OverrideUserAgent", null);
         if (overrideUserAgent != null) {
-            settings.SET_USERAgentString(overrideUserAgent);
+            settings.setUserAgentString(overrideUserAgent);
         } else {
             String appendUserAgent = preferences.getString("AppendUserAgent", null);
             if (appendUserAgent != null) {
-                settings.SET_USERAgentString(defaultUserAgent + " " + appendUserAgent);
+                settings.setUserAgentString(defaultUserAgent + " " + appendUserAgent);
             }
         }
         // End CB-3360

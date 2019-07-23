@@ -23,13 +23,18 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import {
+  //  Navigation
   goToPlantationReport,
   goToSelectPlantationReportType,
 
+  //  AppActions
   setPlantationReport,
   setPlantationReportType,
 
+  //  API
   getDefaultActivitiesByType,
+  getPlantationReportById,
+  getPlantationReportsByProject,
 } from '../../flux/actions';
 
 import { connect } from 'react-redux';
@@ -116,6 +121,7 @@ class ReportList extends Component {
                           onClick={()=>{
                             this.props.getDefaultActivitiesByType( parseInt( report.type ) );
                             this.props.setPlantationReportType( parseInt( report.type ) );
+                            this.props.getPlantationReportsByProject( report.project.id );
                             this.props.setPlantationReport( report );
                             this.props.goToPlantationReport();
                           }}
@@ -205,12 +211,16 @@ const mapStateToProps = state => {
 }
 
 export default  connect(mapStateToProps, {
-
+//  Navigation
   goToPlantationReport,
   goToSelectPlantationReportType,
 
+  //  AppActions
   setPlantationReport,
   setPlantationReportType,
 
+  //  API
   getDefaultActivitiesByType,
+  getPlantationReportById,
+  getPlantationReportsByProject,
 })(ReportList);
