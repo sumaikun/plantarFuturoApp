@@ -20,7 +20,7 @@ import Modal from "../../components/Modal";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { getListUsers, getSSTAssistants, getSSTVisitors, goToAssistantForm } from '../../flux/actions';
+import { getListUsers, getSSTAssistants, getSSTVisitors, goToAssistantForm, getSSTVisitor } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //const styles = workingRowStyles;
@@ -132,7 +132,7 @@ class AsistantList extends Component {
                   <ListItem>
 
                   <Col width="50%">
-                    <div onClick={()=>{this.props.goToAssistantForm(memo.id);}} className="center" style={styles.mainListItem}>
+                    <div onClick={()=>{this.onClickVisitorForm(memo.id)}} className="center" style={styles.mainListItem}>
                       <span style={styles.counter}>{i+1}</span>
                       <span style={styles.projectName}>{memo.name}</span>
                       <div>
@@ -180,7 +180,8 @@ class AsistantList extends Component {
     );
   }
   onClickVisitorForm(memo) {
-    this.props.getForm(memo, 'update')
+    console.log(memo);
+    this.props.getSSTVisitor(memo, 'update')
     this.props.goToAssistantForm()
   }
   render() {
@@ -199,9 +200,7 @@ class AsistantList extends Component {
           }
 
 
-          <Modal title="" ModalStyles={{...styles.modalStyles,
-            ...styles.modalOverride
-          }}>
+          <Modal title="" ModalStyles={{...styles.modalStyles, ...styles.modalOverride  }}>
               <Row style={ styles.modalCell }>
                 <div>MOTIVO AUSENCIA</div>
               </Row>
@@ -252,8 +251,9 @@ const mapDispatchToProps = (dispatch) => {
     //getList: (id) => {dispatch(getSSTAssistants(id))},
     getList: (id) => {dispatch(getSSTVisitors(id))},
     //getList: (id) => {dispatch(getListUsers(id))},
-    getForm: (visitor) => {dispatch(getSSTVisitors(visitor))},
-    goToAssistantForm: ()=> {dispatch(goToAssistantForm())}
+    //getForm: (visitor) => {dispatch(getSSTVisitors(visitor))},
+    goToAssistantForm: ()=> {dispatch(goToAssistantForm())},
+    getSSTVisitor: (visitor)=> {dispatch(getSSTVisitor(visitor))}
 
   }
 }

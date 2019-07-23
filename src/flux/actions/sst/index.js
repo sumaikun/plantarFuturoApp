@@ -1,5 +1,5 @@
 import { Request } from '../../../helpers/request'
-import { fetching , notFetching, setSST, setSSTAssistants, setDataSST} from "../appActions";
+import { fetching , notFetching, setSST, setSSTAssistants, setDataSST, setSSTVisitor} from "../appActions";
 import { GET_SST_URL, GET_VISITOR_URL } from "../../types";
 import Ons from 'onsenui';
 import moment from 'moment';
@@ -129,5 +129,13 @@ export function getSSTForm(data)  {
   return async dispatch => {
     if (row.id) return dispatch(setDataSST(row))
     return dispatch(setDataSST({}));
+  }
+}
+
+export function getSSTVisitor(data)  {
+  let row = { ...data }
+  return async dispatch => {
+    if (row.id) return dispatch(setSSTVisitor(row))
+    return dispatch(setSSTVisitor({}));
   }
 }

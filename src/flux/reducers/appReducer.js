@@ -29,6 +29,7 @@ import { FETCH,
    SET_SST_ASSISTANTS,
    SET_SST_VISITORS,
    SET_SST_DATA,
+   SET_VISITOR_DATA,
    SET_FUEL,
    SET_LIST_USER,
    SET_PLANTATION_REPORT_TYPE,
@@ -119,6 +120,7 @@ let defaultValues = {
   listSSTAssistants:initialSST,
   listSSTVisitors: initialSST,
   sstData:{},
+  visitorData:initialSST,
 
   //state list users
   listUser: initialUsers,
@@ -469,11 +471,18 @@ const appReducer = (state = initialState, action) => {
         listSSTVisitors:action.payload
       }
       return state;
-      case SET_SST_DATA:
+     case SET_SST_DATA:
         state={
           ...state,
           sstData:action.payload
         }
+      return state;
+      case SET_VISITOR_DATA:
+         state={
+           ...state,
+           sstVisitor:action.payload
+         }
+       return state;
 
     //  Plantation
 

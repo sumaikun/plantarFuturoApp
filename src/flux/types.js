@@ -40,7 +40,7 @@ export const SET_FORESTAL_UNITS = "SET_FORESTAL_UNITS";
 export const SET_FORESTAL_UNIT = "SET_FORESTAL_UNIT";
 export const SET_FUNCTIONAL_UNIT = "SET_FUNCTIONAL_UNIT";
 export const SELECT_PROJECT = "SELECT_PROJECT";
-export const GO_TO_MACHINERY_LIST = "GO_TO_MACHINERY_LIST"; 
+export const GO_TO_MACHINERY_LIST = "GO_TO_MACHINERY_LIST";
 
 //aJAX URLS
 export const LOGIN_URL = BASE_URL+"/api/login";
@@ -61,6 +61,9 @@ export const SET_SST = "SET_SST";
 export const SET_SST_ASSISTANTS = "SET_SST_ASSISTANTS";
 export const SET_SST_VISITORS = "SET_SST_VISITORS";
 export const SET_SST_DATA = "SET_SST_DATA";
+export const SET_VISITOR_DATA = "SET_VISITOR_DATA"
+
+
 export const GO_TO_ASSISTANT_FORM ="GO_TO_ASSISTANT_FORM";
 export const SET_LIST_USER ="SET_USER";
 //RiskManagement navigation
