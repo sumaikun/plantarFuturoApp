@@ -33,9 +33,16 @@ class ListSSTByProject extends Component {
     if (!listSST) return null;
     return (
       <AppPage title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}><br / >
-        <div  style={{marginBottom: "1em"}} onClick={()=>{this.props.goToSSTForm()}}>
-            <ListAccordion projectName="Crear reporte SST" projectInfo={""} />
-        </div><br/>
+        <div style={Styles.formContainer}>
+          <div className="login-form" >
+              <div className="group" style={Styles.searchInputContainer}>
+                  <input id="search" /*value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} */className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"9GO_TO_MACHINERY_LIST0%", height:"10px"}} /><br />
+                <div style={Styles.searchButton} onClick={()=>{this.onClickSSTCreate();}}>
+                  <span className="fas fa-plus fontAwesome" ></span>
+                </div>
+              </div>
+          </div>
+        </div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
           {
@@ -54,6 +61,10 @@ class ListSSTByProject extends Component {
   }
   onClickSSTForm(memo) {
     this.props.getForm(memo)
+    this.props.goToSSTForm()
+  }
+  onClickSSTCreate() {
+    this.props.getForm({})
     this.props.goToSSTForm()
   }
 }

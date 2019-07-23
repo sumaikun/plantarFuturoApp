@@ -112,7 +112,7 @@ export function getSSTAssistants  (id, successCallBack  ,errorCallBack)  {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL + `/assistants/${id}`,
+        GET_SST_URL + `/assistants/${1}`,
         SuccessCallBack,
         ErrorCallBack
       );
@@ -127,6 +127,7 @@ export function getSSTForm(data)  {
     , hour: moment(data.report_date).format("HH:mm")
   }
   return async dispatch => {
-    dispatch(setDataSST(row));
+    if (row.id) return dispatch(setDataSST(row))
+    return dispatch(setDataSST({}));
   }
 }
