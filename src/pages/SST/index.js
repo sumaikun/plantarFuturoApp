@@ -8,9 +8,10 @@ import "../../css/accordion.css";
 
 
 //Onsen Ui
-import {  Col, Row, Card, Button, List, ListItem} from 'react-onsenui';
+import {  Col, Row, Card, Button, ListHeader, ListItem} from 'react-onsenui';
 import Ons from 'onsenui';
 
+import { workingRowStyles} from "../../jsStyles/Styles";
 //components
 import ListAccordion from "../../components/ListAccordion";
 import CardOptionButton from "../../components/CardOptionButton";
@@ -32,7 +33,7 @@ class ListSSTByProject extends Component {
     let {listSST}= this.props.appState
     if (!listSST) return null;
     return (
-      <AppPage title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}><br / >
+      <AppPage title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}>
         <div style={Styles.formContainer}>
           <div className="login-form" >
               <div className="group" style={Styles.searchInputContainer}>
@@ -45,11 +46,34 @@ class ListSSTByProject extends Component {
         </div>
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width:"95%"}} >
+          <ListHeader style={{fontSize: 15, padding:"0px"}} className="testClass">
+            <Row>
+              <Col width="100%" style={workingRowStyles.tableHeaders}>
+                  <span>Fecha</span>
+              </Col>
+            </Row>
+          </ListHeader>
           {
             listSST.map((memo, i) => {
                 return  (
                   <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.onClickSSTForm(memo)}}>
-                    <ListAccordion counter={i + 1} projectName={moment(memo.report_date).format("DD/MM/YYYY")} projectInfo={""} />
+                    <ListItem counter={i + 1} projectInfo={""}>
+                    
+                    <Col width="100%">
+                      <div className="center" style={Styles.mainListItem}>
+                        <span style={Styles.counter}>{i+1}</span>
+                        <span style={Styles.projectName}>{moment(memo.report_date).format("DD/MM/YYYY")}</span>
+                        <div>
+                          <span style={Styles.projectInfo}>{memo.state}</span>
+                        </div>
+                        <div style={Styles.buttonContainer}>
+                          <div style={Styles.ProjectButton}>
+                            <i className="fas fa-arrow-right fontAwesome"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </Col>  
+                    </ListItem>
                   </div>
                 );
             })

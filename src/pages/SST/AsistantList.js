@@ -121,7 +121,7 @@ class AsistantList extends Component {
           <div className="login-form" >
             <div className="group" style={styles.searchInputContainer}>
                 <input id="search" /*value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} */className="input fontAwesome" placeholder="Buscar" type="text"   style={{fontFamily:'Arial', marginTop:"8px", width:"9GO_TO_MACHINERY_LIST0%", height:"10px"}} /><br />
-              <div style={styles.searchButton} onClick={()=>{this.props.goToAssistantForm();}}>
+              <div style={styles.searchButton} onClick={()=>{this.onClickSSTCreate()}}>
                   <span className="fas fa-plus fontAwesome" ></span>
               </div>
             </div>
@@ -185,6 +185,11 @@ class AsistantList extends Component {
   onClickVisitorForm(memo) {
     console.log(memo);
     this.props.getSSTVisitor(memo, 'update')
+    this.props.goToAssistantForm()
+  }
+  
+  onClickSSTCreate() {
+    this.props.getSSTVisitor({})
     this.props.goToAssistantForm()
   }
   render() {

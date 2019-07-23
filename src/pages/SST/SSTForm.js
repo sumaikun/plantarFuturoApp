@@ -106,14 +106,14 @@ class SSTForm extends Component {
             <Col width="54%">
               <Card style={Styles.cardInput}>
                   <label>Lugar:</label>
-                <Input type="text" name="place" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.location} disabled={this.state.isDisable}/>
+                  <Input style={Styles.textInput} type="text" name="location" value={this.state.formData.location} onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable} />
               </Card>
             </Col>
           </Row>
           <Row>
             <Col width="99%">
               <Card style={{...Styles.cardInput, height:"auto"}}>
-                <Input onChange={this.handleChangeInput.bind(this)} name="goal" style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.goal}  placeholder="Objetivo" disabled={this.state.isDisable} />
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="goal" value={this.state.formData.goal} onChange={this.handleChangeInput.bind(this)} placeholder="objetivo" ></textarea>
               </Card>
             </Col>
           </Row>
@@ -162,7 +162,7 @@ class SSTForm extends Component {
             <Col width="99%">
               <Card style={{...Styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput.bind(this)} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.notes}  placeholder="Comentarios" disabled={this.state.isDisable} ></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="notes" value={this.state.formData.notes} onChange={this.handleChangeInput.bind(this)} placeholder="Comentarios" ></textarea>
 
               </Card>
             </Col>
