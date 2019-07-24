@@ -5,16 +5,15 @@ import { workingRowStyles, modalStyles } from "../../jsStyles/Styles";
 
 
 //Onsen Ui
-import {  List , ListItem, Col, Row, Checkbox, ListHeader, Radio } from 'react-onsenui';
+import {  List , ListItem, Col, Row, Checkbox, ListHeader, Radio, Input } from 'react-onsenui';
 import Ons from 'onsenui';
 
 //Libraries
 
 //components
-import NotFound from "../../components/NotFound";
 import Loading from "../../components/Loading";
-import SearchInput from "../../components/SearchInput";
 import Modal from "../../components/Modal";
+import ModalAssitant from "../../components/modalAssitant";
 
 //container
 import AppPage from '../../containers/AppPage';
@@ -87,8 +86,8 @@ class AsistantList extends Component {
     this.contentPage = this.contentPage.bind(this);
   }
   componentDidMount(){
-    /*this.props.getList(1);
-    this.props.getListUsers(1)*/
+    this.props.getList(1);
+    this.props.getListUsers(1)
   }
   renderHeader(){
     return(
@@ -149,10 +148,10 @@ class AsistantList extends Component {
                     </div>
                   </Col>
                   <Col width="25%" style={{textAlign:"center"}}>
-                    <Checkbox id="modal-btn" name="test" style={ workingRowStyles.radioCircle } />
+                    <Radio id="modal-btn-Assistant" name="test" style={ workingRowStyles.radioCircle } />
                   </Col>
                   <Col width="25%" style={{textAlign:"center"}}>
-                    <Checkbox name="test" style={ workingRowStyles.radioCircle } />
+                    <Radio id="modal-btn" name="test" style={ workingRowStyles.radioCircle } />
                   </Col>
                   </ListItem>
                     <div style={{
@@ -193,8 +192,6 @@ class AsistantList extends Component {
     this.props.goToAssistantForm()
   }
   render() {
-
-
     const {  isFetching } = this.props.appState
 
     return (
@@ -240,6 +237,30 @@ class AsistantList extends Component {
                 </Col>
               </Row>
           </Modal>
+          
+          <ModalAssitant title="" ModalStyles={{...styles.modalStyles, ...styles.modalOverride  }}>
+              <Row style={ styles.modalCell }>
+                <div>REGISTRO DE HORAS DE TRABAJO</div>
+              </Row>
+
+              <Row>
+                <Col style={ styles.modalCell }>
+                  <span>Entrada: </span>
+                </Col>
+                <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
+                  <Input name="excuse"  />
+                </Col>
+              </Row>
+
+              <Row>
+                <Col style={ styles.modalCell }>
+                  <span>Salida</span>
+                </Col>
+                <Col  width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
+                  <Input name="excuse"  />
+                </Col>
+              </Row>
+          </ModalAssitant>
 
       </AppPage>
     );
