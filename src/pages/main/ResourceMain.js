@@ -66,8 +66,7 @@ class ResourceMain extends Component {
               />
             </div>
         <div style={{height:"10px"}} ></div>
-        <div onClick={()=>{this.props.goToSSTList()
-          }}>
+        <div onClick={()=>{this.props.goToSSTList()}}>
           <CardButton
             title="Informe SST"
             />
@@ -78,8 +77,8 @@ class ResourceMain extends Component {
   }
 
   render() {
-    const { isFetching } = this.props.appState;
-
+    const { isFetching } = this.props;
+    console.log(this.props);
     return (
       <AppPage  title={["CONTROL DE ", <strong>RECURSOS</strong>]}>
 
@@ -98,7 +97,7 @@ class ResourceMain extends Component {
 const mapStateToProps = state => {
   return {
     navigation: state.navigation,
-    appState: state.appState
+    isFetching: state.appState.isFetching
   };
 }
 

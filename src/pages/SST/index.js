@@ -27,10 +27,10 @@ import Styles from './styles'
 
 class ListSSTByProject extends Component {
   componentDidMount(){
-    this.props.getList(1)
+    this.props.getList(this.props.project_id)
   }
   render() {
-    let {listSST}= this.props.appState
+    let {listSST}= this.props
     if (!listSST) return null;
     return (
       <AppPage title={[<strong>{"Lista de informes SST"}</strong>]} backButton={true} backButtonCallBack={()=>{  }}>
@@ -58,7 +58,7 @@ class ListSSTByProject extends Component {
                 return  (
                   <div  style={{marginBottom: "1em"}} key={i} onClick={()=>{this.onClickSSTForm(memo)}}>
                     <ListItem counter={i + 1} projectInfo={""}>
-                    
+
                     <Col width="100%">
                       <div className="center" style={Styles.mainListItem}>
                         <span style={Styles.counter}>{i+1}</span>
@@ -72,7 +72,7 @@ class ListSSTByProject extends Component {
                           </div>
                         </div>
                       </div>
-                    </Col>  
+                    </Col>
                     </ListItem>
                   </div>
                 );
@@ -97,7 +97,8 @@ const mapStateToProps = state => {
 
   return {
     navigation: state.navigation,
-    appState: state.appState
+    listSST: state.appState.listSST,
+    project_id: state.appState.project_data.id
   };
 }
 //report_date

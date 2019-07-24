@@ -8,7 +8,7 @@ SET_PLANTATION_REPORT_TYPE,
   SET_PLANTATION_REPORT,
   SELECT_PLANTATION_PROJECT,
   SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
-  SET_MAINTENANCE_DEFAULT_ACTIVITIES, } from "../types";
+  SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA} from "../types";
 
 export const openMenu = () => ({
   type: MENU_OPEN
@@ -143,5 +143,10 @@ export const setSSTVisitor = (data) => ({
 
 export const setDataSST = (data) => ({
   type: SET_SST_DATA,
+  payload: data
+})
+
+export const setGoToResourceMain = (data) => ({
+  type: PROJECT_DATA,
   payload: data
 })

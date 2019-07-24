@@ -37,7 +37,7 @@ import { FETCH,
    SET_PLANTATION_REPORT,
    SELECT_PLANTATION_PROJECT,
    SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
-   SET_MAINTENANCE_DEFAULT_ACTIVITIES } from "../types";
+   SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA } from "../types";
 
 let initialUser = null;
 
@@ -121,7 +121,7 @@ let defaultValues = {
   listSSTVisitors: initialSST,
   sstData:{},
   visitorData:initialSST,
-
+  project_data:{},
   //state list users
   listUser: initialUsers,
   //  Plantation
@@ -483,7 +483,12 @@ const appReducer = (state = initialState, action) => {
            sstVisitor:action.payload
          }
        return state;
-
+      case PROJECT_DATA:
+        state={
+          ...state,
+          project_data:action.payload
+        }
+      return state;
     //  Plantation
 
     case SET_PLANTATION_REPORT_TYPE:
