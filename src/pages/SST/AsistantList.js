@@ -87,8 +87,8 @@ class AsistantList extends Component {
     this.contentPage = this.contentPage.bind(this);
   }
   componentDidMount(){
-    this.props.getList(1);
-    this.props.getListUsers(1)
+    /*this.props.getList(1);
+    this.props.getListUsers(1)*/
   }
   renderHeader(){
     return(
