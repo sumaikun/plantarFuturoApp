@@ -1,5 +1,5 @@
 import { Request } from '../../../helpers/request'
-import { fetching , notFetching, setSST, setSSTAssistants, setDataSST, setSSTVisitor} from "../appActions";
+import { fetching , notFetching, setSST, setSSTAssistants, setDataSST, setSSTVisitor, setSSTVisitorAssistants} from "../appActions";
 import { GET_SST_URL, GET_VISITOR_URL } from "../../types";
 import Ons from 'onsenui';
 import moment from 'moment';
@@ -97,7 +97,7 @@ export function updateReportSST (id, data, successCallBack  ,errorCallBack ) {
 
 
 // Cargar los Asistentes de SST
-export function getSSTAssistants  (id, successCallBack  ,errorCallBack)  {
+export function getSSTAssistants (id, successCallBack  ,errorCallBack)  {
   return async dispatch => {
 
       dispatch(fetching());
@@ -112,7 +112,7 @@ export function getSSTAssistants  (id, successCallBack  ,errorCallBack)  {
         dispatch(notFetching());
       }
       Request.getRequest(
-        GET_SST_URL + `/assistants/${1}`,
+        GET_SST_URL + `/assistants/${id}`,
         SuccessCallBack,
         ErrorCallBack
       );
@@ -129,6 +129,13 @@ export function getSSTForm(data)  {
   return async dispatch => {
     if (row.id) return dispatch(setDataSST(row))
     return dispatch(setDataSST({}));
+  }
+}
+export function getSSTVisitorAssistants(assistants, visitor)  {
+  let row = { ...assistants, ...visitor  }
+  console.log(row);
+  return async dispatch => {
+    dispatch(setSSTVisitorAssistants(row))
   }
 }
 

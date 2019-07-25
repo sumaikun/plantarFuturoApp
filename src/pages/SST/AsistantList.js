@@ -20,7 +20,7 @@ import Loading from "../../components/Loading";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { getListUsers, getSSTAssistants, getSSTVisitors, goToAssistantForm, getSSTVisitor } from '../../flux/actions';
+import { getListUsers, getSSTAssistants, getSSTVisitors, goToAssistantForm, getSSTVisitor, getSSTVisitorAssistants } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //const styles = workingRowStyles;
@@ -85,7 +85,8 @@ class AsistantList extends Component {
     super(props);
     this.state={
       modalAssitant:false,
-      modalAbsence: false
+      modalAbsence:false,
+      formData:[]
     }
     this.renderHeader = this.renderHeader.bind(this);
   }
@@ -93,18 +94,41 @@ class AsistantList extends Component {
     this.props.getList(this.props.project_id);
     this.props.getListUsers(this.props.project_id)
   }
+  handleChangeInput(event){
+
+    if(event.target.name && event.target.value.length > -1) {
+       this.setState({
+           formData: {
+               ...this.state.b,
+               [event.target.name] : event.target.value
+           }
+         }
+       );
+    }
+    if (event.target.value[0] == "=") event.target.value = event.target.value.substr(1)
+  }
   onOpenAssiten(){
     this.setState({modalAssitant: true})
   }
   opOpenAbsence(){
     this.setState({modalAbsence: true})
   }
+
   onCloseAssiten(){
     this.setState({modalAssitant: false})
   }
   opCloseAbsence(){
     this.setState({modalAbsence: false})
   }
+
+  onCreateAssiten(){
+    console.log(this.state.formData);
+    this.setState({modalAssitant: true})
+  }
+  opCreateAbsence(){
+    this.setState({modalAbsence: true})
+  }
+
   onClickVisitorForm(memo) {
     console.log(memo);
     this.props.getSSTVisitor(memo, 'update')
@@ -112,8 +136,8 @@ class AsistantList extends Component {
   }
 
   onClickSSTCreate() {
-    this.props.getSSTVisitor({})
-    this.props.goToAssistantForm()
+    //this.props.getSSTVisitor({})
+    //this.props.goToAssistantForm()
   }
   renderHeader(){
     return(
@@ -134,10 +158,11 @@ class AsistantList extends Component {
       </ListHeader>
     );
   }
+
   render() {
     let  {  isFetching, listSSTVisitors, listSSTAssistants, listUser } = this.props.appState,  listData = []
     if (listSSTVisitors) listData.push(...listSSTVisitors);
-    if (listSSTAssistants)  listData.push(...listSSTAssistants);
+    //if (listSSTAssistants)  listData.push(...listSSTAssistants);
     if(listUser) listData.push(...listUser);
     return (
       <AppPage  title={["Lista de ", <strong>Asistentes</strong>]} backButton={true} >
@@ -217,7 +242,7 @@ class AsistantList extends Component {
 
   modalAssitant(){
     return(
-      <Modal isOpen={this.state.modalAssitant} animation="fade">
+      <Modal style={{padding:'0 30px 0px 30px'}} isOpen={this.state.modalAssitant} animation="fade">
         <Row style={ styles.modalCell }>
           <div>REGISTRO DE HORAS DE TRABAJO</div>
         </Row>
@@ -227,7 +252,7 @@ class AsistantList extends Component {
             <span>Entrada: </span>
           </Col>
           <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Input name="excuse"  />
+            <Input name="checkIn"  onChange={this.handleChangeInput.bind(this)} />
           </Col>
         </Row>
 
@@ -236,12 +261,12 @@ class AsistantList extends Component {
             <span>Salida</span>
           </Col>
           <Col  width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Input name="excuse"  />
+            <Input name="checkout" onChange={this.handleChangeInput.bind(this)}  />
           </Col>
         </Row>
         <Row>
           <Col  width="50%" style={ styles.modalCell }>
-            <Button modifier="large--cta">
+            <Button onClick={()=>{this.onCreateAssiten()}} modifier="large--cta">
                 REGISTRAR
             </Button>
           </Col>
@@ -255,7 +280,7 @@ class AsistantList extends Component {
 
   modalAbsence(){
     return(
-      <Modal style={{marginLeft:"1em", marginRight:"1em"}} isOpen={this.state.modalAbsence}>
+      <Modal  style={{padding:'0 30px 0px 30px'}} isOpen={this.state.modalAbsence}>
         <Row style={ styles.modalCell }>
           <div>MOTIVO AUSENCIA</div>
         </Row>
@@ -315,6 +340,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     //getList: (id) => {dispatch(getSSTAssistants(id))},
     getList: (id) => {dispatch(getSSTVisitors(id))},
+    getSSTVisitorAssistants:(assistant, visitor)=>{dispatch(getSSTVisitorAssistants(assistant,visitor))},
     //getList: (id) => {dispatch(getListUsers(id))},
     //getForm: (visitor) => {dispatch(getSSTVisitors(visitor))},
     goToAssistantForm: ()=> {dispatch(goToAssistantForm())},

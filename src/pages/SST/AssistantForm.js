@@ -48,6 +48,7 @@ class AssistantForm extends Component {
   }
   submitData(e){
     e.preventDefault();
+    console.log(this.props.appState);
     let {formData} = this.state
     ,  {project_id, visitor }  = this.props
     , data = {
@@ -71,7 +72,6 @@ class AssistantForm extends Component {
         <Loading/>
       </div>
     }
-    console.log(this.props);
     return (
       <AppPage  title={["Formulario de", <strong>Visitantes</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
       <div style={{backgroundColor:"#e6e7e8",height:"100%"}}>
@@ -102,7 +102,7 @@ class AssistantForm extends Component {
           <Row>
             <Col width="45%">
               <Card style={Styles.cardInput}>
-              <Select style={{width:"100%"}} onChange={this.handleChangeInput.bind(this)} name='position' 
+              <Select style={{width:"100%"}} onChange={this.handleChangeInput.bind(this)} name='position'
                 value={this.state.formData.position === "Trabajador" || this.state.formData.position === 'Trabajador'  ?  'Trabajador' :
                 this.state.formData.position === "Visitante" || this.state.formData.position === 'Visitante'  ? 'Visitante' : ''
               } >
@@ -116,8 +116,8 @@ class AssistantForm extends Component {
           <Row>
             <Col width="45%">
               <Card style={Styles.cardInput}>
-                
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput.bind(this)} name='state' 
+
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput.bind(this)} name='state'
                   value={this.state.formData.state === "1" || this.state.formData.state === 'Activo'  ?  1 :
                   this.state.formData.state === "2" || this.state.formData.state === 'Inactivo'  ? 2 : ''
                 } >

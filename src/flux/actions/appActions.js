@@ -8,7 +8,7 @@ SET_PLANTATION_REPORT_TYPE,
   SET_PLANTATION_REPORT,
   SELECT_PLANTATION_PROJECT,
   SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
-  SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA} from "../types";
+  SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA, SET_VISITOR_ASSISTANTS_DATA} from "../types";
 
 export const openMenu = () => ({
   type: MENU_OPEN
@@ -138,6 +138,11 @@ export const setSSTVisitors = (data) => ({
 
 export const setSSTVisitor = (data) => ({
   type: SET_VISITOR_DATA,
+  payload: data
+})
+
+export const setSSTVisitorAssistants = (data) => ({
+  type: SET_VISITOR_ASSISTANTS_DATA,
   payload: data
 })
 

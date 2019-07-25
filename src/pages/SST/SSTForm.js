@@ -29,6 +29,8 @@ class SSTForm extends Component {
     this.state = {
       isDisable:false ,
       formData:this.props.sst,
+      assistants:this.props.listSSTAssistants,
+      visitors:this.props.listSSTVisitors,
       selectSearch:{}
     };
   }
@@ -77,6 +79,7 @@ class SSTForm extends Component {
   }
   render() {
     const { isFetching } = this.props.appState;
+
     if (isFetching) {
       return <div style={{backgroundColor:"white",height:"100%"}}>
         <Loading/>
@@ -298,6 +301,8 @@ class SSTForm extends Component {
 const mapStateToProps = state => {
   return {
     sst:  state.appState.sstData,
+    listSSTVisitors: state.appState.listSSTVisitors,
+    listSSTAssistants: state.appState.listSSTAssistants,
     appState: state.appState,
     project_id: state.appState.sstData.project_id
   };

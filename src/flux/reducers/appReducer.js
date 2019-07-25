@@ -37,7 +37,7 @@ import { FETCH,
    SET_PLANTATION_REPORT,
    SELECT_PLANTATION_PROJECT,
    SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
-   SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA } from "../types";
+   SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA , SET_VISITOR_ASSISTANTS_DATA } from "../types";
 
 let initialUser = null;
 
@@ -122,8 +122,10 @@ let defaultValues = {
   sstData:{},
   visitorData:initialSST,
   project_data:{},
+  arrayVisitorsAssistens: [],
   //state list users
   listUser: initialUsers,
+
   //  Plantation
   plantationProject: null,
   plantationReportToEdit: null,
@@ -316,7 +318,6 @@ const appReducer = (state = initialState, action) => {
         ////console.log(state);
         return state;
       }
-
     case HILL_SIDE_MOVEMENT_LIST:
 
       if(action.payload.length > 0)
@@ -471,19 +472,26 @@ const appReducer = (state = initialState, action) => {
         listSSTVisitors:action.payload
       }
       return state;
-     case SET_SST_DATA:
+    case SET_SST_DATA:
         state={
           ...state,
           sstData:action.payload
         }
       return state;
-      case SET_VISITOR_DATA:
+    case SET_VISITOR_DATA:
          state={
            ...state,
            sstVisitor:action.payload
          }
        return state;
-      case PROJECT_DATA:
+    case SET_VISITOR_ASSISTANTS_DATA:
+      state={
+        ...state,
+        arrayVisitorsAssistens:action.payload
+      }
+    return state;
+   //SET_VISITOR_ASSISTANTS_DATA
+    case PROJECT_DATA:
         state={
           ...state,
           project_data:action.payload
