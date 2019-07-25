@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 //sources
 import "../../css/accordion.css";
@@ -86,8 +87,8 @@ class AsistantList extends Component {
     this.contentPage = this.contentPage.bind(this);
   }
   componentDidMount(){
-    this.props.getList(1);
-    this.props.getListUsers(1)
+    this.props.getList(this.props.project_id);
+    this.props.getListUsers(this.props.project_id)
   }
   renderHeader(){
     return(
@@ -271,7 +272,7 @@ const mapStateToProps = state => {
   return {
     navigation: state.navigation,
     appState: state.appState,
-    project_id: state.appState.sstData.project_id
+    project_id: state.appState.project_data.id
   };
 }
 //report_date
