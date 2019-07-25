@@ -262,27 +262,7 @@ class CollapseMenu extends Component {
                   console.log("Sincronizar deformación de tunel");
 
                   serverTunnelDeformations.forEach( unit => {
-                    method = (res) => {
-                      console.log(unit);
-                      console.log("should delete data");
-
-                      self.props.notFetching();
-                      self.props.removeFromTunnelDeformationServerUpdate(unit);
-                    }
-                    self.props.updateTunnelDeformation(unit.id,unit,method);
-                  });
-
-                  offLineTunnelDeformations.forEach( unit => {
-                    method = (res) => {
-                      self.props.notFetching();
-                      self.props.removeFromOfflineTunnelDeformation(unit);
-                    }
-                    self.props.createTunnelDeformation(unit.id,unit,method);
-                  });
-
-                  console.log("Sincronizar deformación de tunel");
-
-                  serverTunnelDeformations.forEach( unit => {
+                    console.log(unit);
                     method = (res) => {
                       self.props.notFetching();
                       self.props.removeFromTunnelDeformationServerUpdate(unit);
@@ -295,7 +275,7 @@ class CollapseMenu extends Component {
                       self.props.notFetching();
                       self.props.removeFromOfflineTunnelDeformation(unit);
                     }
-                    self.props.createTunnelDeformation(unit.id,unit,method);
+                    self.props.createTunnelDeformation(unit,method);
                   });
 
                   console.log("Sincronizar deslizamientos de ladera");
@@ -314,7 +294,7 @@ class CollapseMenu extends Component {
                       self.props.notFetching();
                       self.props.removeFromOfflineHillSideMov(unit);
                     }
-                    self.props.createHallsideMovement(unit.id,unit,method);
+                    self.props.createHallsideMovement(unit,method);
                   });
 
 
@@ -334,11 +314,10 @@ class CollapseMenu extends Component {
                       self.props.notFetching();
                       self.props.removeFromOfflineRainFall(unit);
                     }
-                    self.props.createRainfall(unit.id,unit,method);
+                    self.props.createRainfall(unit,method);
                   });
 
-                  console.log("Sincronizar ");
-
+                  console.log("Sincronizar recorrido  de ladera");
 
                   serverHillSideCollapse.forEach( unit => {
                     method = (res) => {
@@ -353,8 +332,10 @@ class CollapseMenu extends Component {
                       self.props.notFetching();
                       self.props.removeFromOfflineHillSideColl(unit);
                     }
-                    self.props.createHillsideCollapse(unit.id,unit,method);
+                    self.props.createHillsideCollapse(unit,method);
                   });
+
+                  console.log("Sincronizar recorrido  de quebrada");
 
                   serverRiverCollapse.forEach( unit => {
                     method = (res) => {
@@ -369,7 +350,7 @@ class CollapseMenu extends Component {
                       self.props.notFetching();
                       self.props.removeFromOfflineRiverColl(unit);
                     }
-                    self.props.createRiverCollapse(unit.id,unit,method);
+                    self.props.createRiverCollapse(unit,method);
                   });
 
                 })() : false;

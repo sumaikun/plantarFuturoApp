@@ -260,9 +260,9 @@ class RiskReport extends Component {
                  risk = foundIndex != -1 ? this.props.memory.serverTunnelDeformations[foundIndex] : risk ;
                  break;
                case 2:
-                 foundIndex = this.props.memory.serverHillSideCollapse.findIndex( memory =>   memory.id == risk.id  );
+                 foundIndex = this.props.memory.serverHillSideMovements.findIndex( memory =>   memory.id == risk.id  );
                  //console.log("foundIndex"+foundIndex);
-                 risk = foundIndex != -1 ? this.props.memory.serverHillSideCollapse[foundIndex] : risk ;
+                 risk = foundIndex != -1 ? this.props.memory.serverHillSideMovements[foundIndex] : risk ;
                  break;
                case 3:
                  foundIndex = this.props.memory.serverRainFall.findIndex( memory =>   memory.id == risk.id  );

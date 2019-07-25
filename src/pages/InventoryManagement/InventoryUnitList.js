@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 //sources
-import checkList from "../img/checkList.png";
-import tree from "../img/tree.png";
-import chart from "../img/chart.png";
-import plant from "../img/plant.png";
-import yellowArrow from "../img/yellowArrow.png";
-import "../css/accordion.css";
-import { workingRowStyles } from "../jsStyles/Styles";
+import checkList from "../../img/checkList.png";
+import tree from "../../img/tree.png";
+import chart from "../../img/chart.png";
+import plant from "../../img/plant.png";
+import yellowArrow from "../../img/yellowArrow.png";
+import "../../css/accordion.css";
+import { workingRowStyles } from "../../jsStyles/Styles";
 
 
 //Onsen Ui
@@ -22,7 +22,7 @@ import Loading from "../../components/Loading";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../flux/actions';
+import { goToInventoryForm , setForestalUnit, goToProcessForm, goToCompensationForm } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 const styles = workingRowStyles;
@@ -68,6 +68,9 @@ class InventoryUnitList extends Component {
   }
 
   contentPage(currentPhase,forestalUnits){
+
+    let { searchName,  searchDate } = this.state;
+
     return(
     <div>
       <div style={styles.formContainer}>
