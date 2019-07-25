@@ -108,8 +108,23 @@ class PlantationReport extends Component {
       console.log(event.target.name);
       console.log(event.target.value);
 
-      let obj = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
+      console.log(this.state);
+
+      let self = this;
+
+      this.helperActivitiesArray =   this.state.formData.activities;
+
+      this.helperActivitiesArray[index] = { ...this.state.formData.activities[index],
+         [event.target.name]: event.target.value };
+
+      /*let obj = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
       this.helperActivitiesArray[index] = obj;
+
+      this.helperActivitiesArray = obj;*/
+
+      console.log(this.helperActivitiesArray);
+
+      //return;
 
       this.setState(
         {
@@ -472,12 +487,12 @@ class PlantationReport extends Component {
     switch ( plantationReportType ) {
       case 1:
         headerTitle = 'ESTABLECIMIENTO';
-        activities = establishmentDefaultActivities;
+        activities = establishmentDefaultActivities ? establishmentDefaultActivities : activities ;
         break;
 
       case 2:
         headerTitle = 'MANTENIMIENTO';
-        activities = maintenanceDefaultActivities;
+        activities = maintenanceDefaultActivities ? maintenanceDefaultActivities : activities ;
         break;
 
       default:
