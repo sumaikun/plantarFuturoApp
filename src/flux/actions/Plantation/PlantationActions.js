@@ -61,6 +61,7 @@ export const createReport = (data, componentSuccess = null) => {
       dispatch(notFetching());
       Ons.notification.alert({ title:"¡Que bien!", message:"Se ha creado el reporte de plantacion" });
       // componentSuccess( response.data );
+      dispatch(goBack());
     };
 
     let ErrorCallBack = () => {
@@ -84,6 +85,7 @@ export const updateReport = (plantation_report_id, data) => {
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
       Ons.notification.alert({ title:"¡Que bien!", message:"Se ha actualizado el reporte de plantacion" });
+      dispatch(goBack());
     }
 
     let ErrorCallBack = (error) => {

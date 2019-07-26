@@ -118,7 +118,7 @@ export const updateForestUnitPhase1 = (id,data,successCallBack) => {
       data.origin = !data.origin ? null : data.origin;
 
 
-      if(!navigator.onLine)
+      if(!navigator.onLine || data.ToSynchro)
       {
         console.log("Modo offline");
 
@@ -227,7 +227,7 @@ export const updateForestUnitPhase2 = (id,data,successCallBack) => {
 
       data.origin = !data.origin ? null : data.origin;
 
-      if(!navigator.onLine)
+      if(!navigator.onLine || data.ToSynchro)
       {
         console.log("Modo offline");
 
@@ -335,7 +335,7 @@ export const updateForestUnitPhase3 = (id,data,successCallBack) => {
 
       data.origin = !data.origin ? null : data.origin;
 
-      if(!navigator.onLine)
+      if(!navigator.onLine || data.ToSynchro)
       {
         console.log("Modo offline");
 

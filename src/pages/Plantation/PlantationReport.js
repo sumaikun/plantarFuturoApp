@@ -188,6 +188,8 @@ class PlantationReport extends Component {
       }
     });
 
+
+
     if ( this.props.appState.isFetching ) {
       return Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
     }

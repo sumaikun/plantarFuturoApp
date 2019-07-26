@@ -306,7 +306,7 @@ class ProjectList extends Component {
 
         if(!this.props.appState.isFetching)
         {
-            this.props.getProjectByUser(this.props.appState.user.id);
+            this.props.getProjectByUser(this.props.appState.user);
         }
 
        }}>

@@ -16,8 +16,9 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { createForestUnitPhase2,
-   updateForestUnitPhase1,
+import {
+  createForestUnitPhase2,
+  updateForestUnitPhase1,
   getForestalUnits,
   updateForestUnitPhase2,
   addOfflineForestUnitP2,
@@ -119,20 +120,34 @@ class FormProcess extends Component {
       if(this.props.appState.forestalUnitE.products)
       {
         //console.log("try to change");
-          this.props.appState.forestalUnitE.products = this.props.appState.forestalUnitE.products == "Leña" ? 1 :
-          this.props.appState.forestalUnitE.products == "Madera" ? 2 : null;
+          console.log("check if number");
 
+          console.log(parseInt(this.props.appState.forestalUnitE.products));
+
+
+          if(!parseInt(this.props.appState.forestalUnitE.products))
+          {
+            this.props.appState.forestalUnitE.products = this.props.appState.forestalUnitE.products == "Leña" ? 1 :
+            this.props.appState.forestalUnitE.products == "Madera" ? 2 : null;
+          }
         //console.log(this.props.appState.forestalUnitE.products);
       }
 
       if(this.props.appState.forestalUnitE.treatment)
       {
           //console.log("try to change");
-          this.props.appState.forestalUnitE.treatment = this.props.appState.forestalUnitE.treatment == "Tala" ? 1 :
-          this.props.appState.forestalUnitE.treatment == "Perman. Y/poda" ? 2 :
-          this.props.appState.forestalUnitE.treatment == "Bloque y T." ? 3 :
-          this.props.appState.forestalUnitE.treatment == "Plantar" ? 4 :  null;
+          if(!parseInt(this.props.appState.forestalUnitE.treatment))
+          {
+            this.props.appState.forestalUnitE.treatment = this.props.appState.forestalUnitE.treatment == "Tala" ? 1 :
+            this.props.appState.forestalUnitE.treatment == "Perman. Y/poda" ? 2 :
+            this.props.appState.forestalUnitE.treatment == "Bloque y T." ? 3 :
+            this.props.appState.forestalUnitE.treatment == "Plantar" ? 4 :  null;
+          }
       }
+
+      console.log("current forestal unit e");
+
+      console.log(this.props.appState.forestalUnitE);
 
       this.setState({
         formData:{
@@ -492,17 +507,17 @@ class FormProcess extends Component {
 
           <Row>
 
-          <Col>
-            <Card style={styles.cardInput}>
-              <Select style={{width:"100%"}} name="treatment" onChange={this.handleChangeInput} value={this.state.formData.treatment} required>
-                <option value="" disabled selected>Tipo de manejo</option>
-                <option value="1">Tala</option>
-                <option value="2">Perman. Y/poda</option>
-                <option value="3">Bloque y T.</option>
-                <option value="4">Plantar</option>
-              </Select>
-            </Card>
-          </Col>
+            <Col>
+              <Card style={styles.cardInput}>
+                <Select style={{width:"100%"}} name="treatment" onChange={this.handleChangeInput} value={this.state.formData.treatment} required>
+                  <option value="" disabled selected>Tipo de manejo</option>
+                  <option value="1">Tala</option>
+                  <option value="2">Perman. Y/poda</option>
+                  <option value="3">Bloque y T.</option>
+                  <option value="4">Plantar</option>
+                </Select>
+              </Card>
+            </Col>
 
             <Col>
               <Card style={styles.cardInput}>
@@ -562,7 +577,6 @@ class FormProcess extends Component {
                 <div>
                   <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.general_image ?  null :
                   <Row>
                     <Button style={{...styles.buttonCard, 'font-size':"13px"}}
                       onClick={()=>{this.saveImage('general_image')}}
@@ -573,8 +587,6 @@ class FormProcess extends Component {
                          />
                     </label>
                   </Row>
-                }
-
               </Card>
             </Col>
 
@@ -584,8 +596,6 @@ class FormProcess extends Component {
                 <div>
                   <img src={this.state.formData.id_image ? this.state.formData.id_image : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.id_image ?
-                  null:
                   <Row>
                     <Button style={{...styles.buttonCard, 'font-size':"13px"}}
                       onClick={()=>{this.saveImage('id_image')}}
@@ -596,7 +606,6 @@ class FormProcess extends Component {
                          />
                     </label>
                   </Row>
-                }
               </Card>
             </Col>
 

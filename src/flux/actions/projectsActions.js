@@ -42,9 +42,10 @@ export const fetchProjects = (id) => {
 
 
 
-export const getProjectByUser = (id) => {
+export const getProjectByUser = (user) => {
   return async dispatch => {
 
+      let id = user.id;
 
       dispatch(fetching());
       dispatch( getPlantationReports() );
@@ -87,11 +88,14 @@ export const getProjectByUser = (id) => {
               dispatch(getFunctionalUnits(project.id,SuccessCallBack));
           }
           else{
-              dispatch(getTunnelsDeformation(project.id));
-              dispatch(getHillsidesMovement(project.id));
-              dispatch(getRainfalls(project.id));
-              dispatch(getHillsidesCollapse(project.id));
-              dispatch(getRiversCollapse(project.id));
+              if(user.risk)
+              {
+                dispatch(getTunnelsDeformation(project.id));
+                dispatch(getHillsidesMovement(project.id));
+                dispatch(getRainfalls(project.id));
+                dispatch(getHillsidesCollapse(project.id));
+                dispatch(getRiversCollapse(project.id));
+              }              
           }
 
         });

@@ -366,6 +366,7 @@ class CollapseMenu extends Component {
                 res ? (()=>{
                   //localStorage.clear();
                   localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
+                  localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'appState',true));
                   console.log(localStorage);
                   self.props.LogOut();
                 })() : false;
