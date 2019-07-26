@@ -19,11 +19,10 @@ import CardOptionButton from "../../components/CardOptionButton";
 import AppPage from '../../containers/AppPage';
 
 //flux
-import { goToMachineryForm } from '../../flux/actions';
+import { goToMachineryList } from '../../flux/actions';
 import { connect } from 'react-redux';
 
 //helpers
-import { formValidation } from '../../helpers/formValidation';
 
 
 const styles = {
@@ -53,70 +52,12 @@ class InventoryManagement extends Component {
       editMode:false,
       idToModify:null,
       functionalList:{
-
       }
     }
 
-    this.collapseOptions = this.collapseOptions.bind(this);
-
   }
-
-  collapseOptions(newRegisterFunction){
-
-    console.log(newRegisterFunction);
-
-
-    return(
-
-        <Row>
-          <Col width="6%">
-          </Col>
-          <Col width="47%">
-            <div onClick={()=>{ newRegisterFunction ? newRegisterFunction() : false }}>
-
-            <CardOptionButton
-              className="modal-btn"
-              accordionIconsStyles={styles.accordionIcons}
-              iconStyles={{fontSize:"8px", color:"white"}}
-              iconReference="fas fa-plus fontAwesome"
-              textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
-              imgStyles={{height:"5vmin", marginTop:"3px"}}
-              image={yellowArrow}
-              title="Nuevo registro"
-              />
-
-            </div>
-          </Col>
-          <Col width="47%">
-            <div style={styles.centerAll} onClick={()=>{
-            }}>
-
-            <CardOptionButton accordionIconsStyles={styles.accordionIcons}
-              iconStyles={{fontSize:"10px", color:"white"}}
-              iconReference="fas fa-eye fontAwesome"
-              textStyles={{fontSize:"11px", marginLeft:"8px", marginRight:"5px"}}
-              imgStyles={{height:"5vmin", marginTop:"3.5px"}}
-              image={yellowArrow}
-              title="Inventario actual"
-              />
-
-            </div>
-
-          </Col>
-      </Row>
-
-    )
-  }
-
-
   componenDidMount(){
-
   }
-
-
-
-
-
 
   render() {
 
@@ -127,13 +68,9 @@ class InventoryManagement extends Component {
 
               <div  style={{display:"flex",justifyContent:"center"}} >
                 <div style={{width:"95%"}} >
-                  <ListAccordion counter={1} projectName={"Maquinaría"} projectInfo={""} >
-                      {
-                        this.collapseOptions(()=>{
-                          this.props.goToMachineryForm();
-                        })
-                      }
-                  </ListAccordion>
+                  <div  onClick={()=>{this.props.goToMachineryList()}}>
+                    <ListAccordion counter={1} projectName={"Maquinaría"} projectInfo={""} /> 
+                  </div>
                 </div>
               </div>
 
@@ -141,39 +78,17 @@ class InventoryManagement extends Component {
 
               <div  style={{display:"flex",justifyContent:"center"}} >
                 <div style={{width:"95%"}} >
-                  <ListAccordion counter={2} projectName={"Equipo"} projectInfo={""} >
-                      { this.collapseOptions() }
-                    </ListAccordion>
+                  <div  onClick={()=>{this.props.goToMachineryList()}}>
+                    <ListAccordion counter={2} projectName={"Equipo"} projectInfo={""} />
+                  </div>
                 </div>
               </div>
-
               <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-
               <div  style={{display:"flex",justifyContent:"center"}} >
                 <div style={{width:"95%"}} >
-                  <ListAccordion counter={3}  projectName={["Herramienta",<span>{"   "}</span>]} projectInfo={""} >
-                    { this.collapseOptions() }
-                  </ListAccordion>
-                </div>
-              </div>
-
-              <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-
-              <div  style={{display:"flex",justifyContent:"center"}} >
-                <div style={{width:"95%"}} >
-                  <ListAccordion counter={4} projectName={"Vehículo"} projectInfo={""} >
-                    { this.collapseOptions() }
-                  </ListAccordion>
-                </div>
-              </div>
-
-              <div style={{height:"25px", backgroundColor:"#efeff4"}}></div>
-
-              <div  style={{display:"flex",justifyContent:"center"}} >
-                <div style={{width:"95%"}} onClick={()=>{  }} >
-                  <ListAccordion counter={6} projectName={"Tecnología"} projectInfo={""} >
-                    { this.collapseOptions() }
-                  </ListAccordion>
+                  <div  onClick={()=>{this.props.goToMachineryList()}}>
+                    <ListAccordion counter={3}  projectName={["Vehiculo",<span>{"   "}</span>]} projectInfo={""} />
+                  </div>
                 </div>
               </div>
 
@@ -189,4 +104,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps,{ goToMachineryForm })(InventoryManagement);
+export default  connect(mapStateToProps,{ goToMachineryList })(InventoryManagement);

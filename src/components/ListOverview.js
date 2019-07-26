@@ -5,7 +5,7 @@ import { List , ListItem } from 'react-onsenui';
 const styles = {
   mainListItem:{
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   counter:{
     color: "#e6e7e8"

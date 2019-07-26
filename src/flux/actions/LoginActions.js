@@ -4,7 +4,7 @@ import { addLoggedUser } from "./memoryActions";
 import {  goToMain } from "./navigationActions";
 
 import {  getProjectByUser } from "./projectsActions";
-
+import { getPlantationReports } from "./Plantation/PlantationActions";
 
 
 import { LOGIN_URL } from "../types";
@@ -23,6 +23,7 @@ const fetchLoginOnline = (dispatch ,data) => {
     dispatch(notFetching());
     dispatch(setUser(response.data));
     dispatch(getProjectByUser(response.data.id));
+    dispatch( getPlantationReports() );             //  Esta funcion trae los reportes de plantacion de todos los pryectos de plantacion
     dispatch(goToMain());
   }
 
@@ -56,12 +57,13 @@ const fetchLoginOffline = (dispatch ,data) => {
 
     console.log("Soy una operacion offline");
 
-}
+};
 
 export const fetchLogin = (data) => {
   return async dispatch => {
     navigator.onLine ?
-      fetchLoginOnline(dispatch,data):
+      fetchLoginOnline(dispatch,data)
+      :
       fetchLoginOffline(dispatch,data)
-  }
-}
+  };
+};

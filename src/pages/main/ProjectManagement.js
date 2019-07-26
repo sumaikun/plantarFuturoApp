@@ -29,6 +29,8 @@ import {
   fetchProjects,
   goToRiskManagement,
   goToInventoryManagement,
+  goToPlantation,
+  goToCivilManagement,
   } from '../../flux/actions';
 import { connect } from 'react-redux';
 
@@ -45,8 +47,7 @@ class ProjectManagement extends Component {
     //this.props.fetchProjects();
   }
 
-  contentPage(phase1Projects,phase2Projects,phase3Projects,phase4Projects){
-
+  contentPage(phase1Projects, phase2Projects, phase3Projects, phase4Projects, phase5Projects){
     return (
       <div style={{height:"100%",backgroundColor:"white"}}>
         <br/>
@@ -55,7 +56,6 @@ class ProjectManagement extends Component {
           phase1Projects.length > 0   ?
 
           <div>
-
             <div onClick={()=>{this.props.setProjectPhase(1);
                this.props.goToProjects()}}>
               <CardButton
@@ -65,9 +65,7 @@ class ProjectManagement extends Component {
                 infoContainer = { "Ultima actualizacion "+phase1Projects[phase1Projects.length -1 ].created_at }
                />
              </div>
-
              <div style={{height:"10px"}} ></div>
-
           </div>
 
            : null
@@ -107,9 +105,6 @@ class ProjectManagement extends Component {
 
            }
 
-
-
-
           <div onClick={()=>{Ons.notification.alert({title:"",message:"¡Proximamente!"})}}>
             <CardButton
               imgIcon = {chart}
@@ -120,7 +115,7 @@ class ProjectManagement extends Component {
           </div>
           <div style={{height:"10px"}} ></div>
 
-        { this.props.appState.user.risk  && phase4Projects.length > 0 ?
+        { this.props.appState.user.risk && phase4Projects.length > 0 ?
           <div>
             <div onClick={()=>{this.props.setProjectPhase(4),
               this.props.goToProjects()
@@ -134,6 +129,28 @@ class ProjectManagement extends Component {
              </div>
             <div style={{height:"10px"}} ></div>
            </div> : null
+        }
+
+        {
+          ( phase5Projects.length > 0 ) ?
+            <div>
+              <div
+                onClick={() => {
+                  this.props.setProjectPhase(5);
+                  this.props.goToPlantation()
+                }}
+              >
+                <CardButton
+                  imgIcon={checkList}
+                  title="Plantación"
+                  subtitle={"Total proyectos: " + phase5Projects.length}
+                  infoContainer={"Ultima actualizacion: " + phase5Projects[ phase5Projects.length - 1 ].created_at }
+                />
+              </div>
+              <div style={{height: "10px"}}></div>
+            </div>
+            :
+            null
         }
 
         <div onClick={()=>{
@@ -160,12 +177,12 @@ class ProjectManagement extends Component {
         </div>
         <div style={{height:"10px"}} ></div>
 
+
       </div>
     );
   }
 
   render() {
-
     let phase1Projects = this.props.appState.projects.filter( project => {
 
       return project.phase == 1
@@ -186,6 +203,9 @@ class ProjectManagement extends Component {
       return project.phase == 4
 
     });
+    let plantationProjects = this.props.appState.projects.filter( project => {
+      return project.phase == 5;
+    });
 
     const { isFetching } = this.props.appState;
 
@@ -195,9 +215,9 @@ class ProjectManagement extends Component {
           {  isFetching ?
             <div style={{backgroundColor:"white",height:"100%"}}>
               <Loading/>
-            </div> :
-
-             this.contentPage(phase1Projects,phase2Projects,phase3Projects,phase4Projects)
+            </div>
+            :
+             this.contentPage(phase1Projects, phase2Projects, phase3Projects, phase4Projects, plantationProjects)
 
           }
 
@@ -213,6 +233,5 @@ const mapStateToProps = state => {
   };
 }
 
-export default  connect(mapStateToProps, { fetchProjects , goToProjects , setProjectPhase,
-   goToRiskManagement, goToInventoryManagement
- })(ProjectManagement);
+export default  connect(mapStateToProps,
+  { fetchProjects , goToProjects , setProjectPhase, goToRiskManagement, goToInventoryManagement, goToPlantation })(ProjectManagement);

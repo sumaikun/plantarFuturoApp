@@ -40,7 +40,7 @@ public class AuthenticationToken {
      * @param userName
      *            the new user name
      */
-    public void setUserName(String userName) {
+    public void SET_USERName(String userName) {
         this.userName = userName;
     }
 

@@ -2,14 +2,13 @@
 import Login from "../../pages/main/Login";
 import ProjectManagement from '../../pages/main/ProjectManagement'
 import ProjectList from '../../pages/main/ProjectList'
-
-
+import NavigationResource from '../../pages/main/ResourceMain'
 
 import ForestalUnitList from '../../pages/Forestal/ForestalUnitList'
 import FormInventory from '../../pages/Forestal/FormInventory'
 import FormProcess from '../../pages/Forestal/FormProcess'
 import FormCompensation from '../../pages/Forestal/FormCompensation'
-
+import FormFuel from '../../pages/InventoryManagement/FormFuel'
 //Risk Management
 
 import HillsideCollapse from '../../pages/RiskManagement/HillsideCollapse'
@@ -25,10 +24,21 @@ import RiskReport from '../../pages/RiskManagement/RiskReport'
 
 
 //Inventory Management
-
-
+import SSTForm from '../../pages/SST/SSTForm'
+import SSTList from '../../pages/SST/index'
+import AssistanList from '../../pages/SST/AsistantList'
+import CivilMain from '../../pages/main/CivilMain'
+import inventoryList from '../../pages/InventoryManagement/InventoryUnitList'
 import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
+import AssistanForm from '../../pages/SST/AssistantForm'
+
+//  Plantation
+import Plantation from '../../pages/Plantation/Plantation';
+import SelectPlantationReportType from "../../pages/Plantation/SelectPlantationReportType";
+import PlantationReport from '../../pages/Plantation/PlantationReport';
+import ReportList from "../../pages/Plantation/ReportList";
+
 
 import { GO_TO_LOGIN,
    GO_TO_MANAGEMENT,
@@ -49,8 +59,27 @@ import { GO_TO_LOGIN,
    GO_TO_RISK_REPORT,
    GO_TO_INVENTORY_MANAGEMENT,
    GO_TO_MACHINERY_FORM,
+   GO_TO_CIVIL_MANAGEMENT,
+   GO_TO_NAVIGATION_RESOUCE,
    APP_ERROR,
-   GO_TO_RISK_OVERVIEW } from "../types";
+   GO_TO_RISK_OVERVIEW,
+   GO_TO_MACHINERY_LIST,
+   GO_TO_ASSISTANT_LIST,
+   GO_TO_SST_LIST,
+   GO_TO_FUEL_FORM,
+   GO_TO_SST_FORM,
+   GO_TO_ASSISTANT_FORM,
+   GO_TO_ESTABLISHMENT_REPORTS,
+   GO_TO_MAINTENANCE_REPORTS,
+   GO_TO_PLANTATION,
+   GO_TO_SELECT_PLANTATION_REPORT_TYPE,
+   GO_TO_PLANTATION_REPORT,
+   GO_TO_REPORT_LIST} from "../types";
+
+
+
+
+
 
 var Pagenavigator = null;
 
@@ -60,7 +89,7 @@ const initialState = {
   initialRoute:{ component: Login , key: "LOGIN_PAGE"  },
 };
 
-const navigationReducer = (state = initialState, action) => {
+const navigationReducer= (state = initialState, action) => {
 
 
   let currentPage = null;
@@ -121,6 +150,33 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: ProjectList , key: GO_TO_PROJECTS  });
       }
       return state;
+    case GO_TO_SST_LIST:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_SST_LIST
+      }
+      if(currentPage.key !=GO_TO_SST_LIST){
+        state.navigator.pushPage({ component: SSTList , key:GO_TO_SST_LIST  });
+      }
+      return state;
+    case GO_TO_ASSISTANT_LIST:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_ASSISTANT_LIST
+      }
+      if(currentPage.key !=GO_TO_ASSISTANT_LIST){
+        state.navigator.pushPage({ component: AssistanList , key:GO_TO_ASSISTANT_LIST  });
+      }
+      return state;
+    case GO_TO_ASSISTANT_FORM:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_ASSISTANT_FORM
+      }
+      if(currentPage.key !=GO_TO_ASSISTANT_FORM){
+        state.navigator.pushPage({ component: AssistanForm , key:GO_TO_ASSISTANT_FORM  });
+      }
+      return state;
     case GO_TO_FORESTAL_UNITS:
       state = {
         ...state,
@@ -137,6 +193,15 @@ const navigationReducer = (state = initialState, action) => {
       }
       if(currentPage.key != GO_TO_FORM_INVENTORY){
         state.navigator.pushPage({ component: FormInventory , key: GO_TO_FORM_INVENTORY  });
+      }
+      return state;
+    case GO_TO_FUEL_FORM:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_FUEL_FORM
+      }
+      if(currentPage.key != GO_TO_FUEL_FORM){
+        state.navigator.pushPage({ component: FormFuel , key: GO_TO_FUEL_FORM  });
       }
       return state;
     case GO_TO_FORM_PROCESS:
@@ -166,6 +231,17 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: RiskManagement , key: GO_TO_RISK_MANAGEMENT  });
       }
       return state;
+    case GO_TO_SST_FORM:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_SST_FORM
+      }
+      if(currentPage.key != GO_TO_SST_FORM){
+        setTimeout(()=>{
+          state.navigator.resetPage({ component: SSTForm , key: GO_TO_SST_FORM  });
+        },1)
+      }
+      return state;
     case GO_TO_HILLSIDE_COLLAPSE:
       state = {
         ...state,
@@ -184,6 +260,24 @@ const navigationReducer = (state = initialState, action) => {
         state.navigator.pushPage({ component: Rainfall , key: GO_TO_RAIN_FALL  });
       }
       return state;
+    case GO_TO_NAVIGATION_RESOUCE:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_NAVIGATION_RESOUCE
+      }
+      if(currentPage.key != GO_TO_NAVIGATION_RESOUCE){
+        state.navigator.pushPage({ component: NavigationResource , key: GO_TO_NAVIGATION_RESOUCE  });
+      }
+      return state;
+    case GO_TO_CIVIL_MANAGEMENT:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_CIVIL_MANAGEMENT
+      }
+      if(currentPage.key != GO_TO_CIVIL_MANAGEMENT){
+        state.navigator.pushPage({ component: CivilMain , key: GO_TO_CIVIL_MANAGEMENT  });
+      }
+      return state;
     case GO_TO_RIVER_COLLAPSE:
       state = {
         ...state,
@@ -191,6 +285,15 @@ const navigationReducer = (state = initialState, action) => {
       }
       if(currentPage.key != GO_TO_RIVER_COLLAPSE){
         state.navigator.pushPage({ component: RiverCollapse , key: GO_TO_RIVER_COLLAPSE  });
+      }
+      return state;
+    case GO_TO_MACHINERY_LIST:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_MACHINERY_LIST
+      }
+      if(currentPage.key != GO_TO_MACHINERY_LIST){
+        state.navigator.pushPage({ component: inventoryList , key: GO_TO_MACHINERY_LIST  });
       }
       return state;
     case GO_TO_TUNNEL_DEFORMATION:
@@ -236,7 +339,7 @@ const navigationReducer = (state = initialState, action) => {
         ...state,
         currentPagekey: GO_TO_INVENTORY_MANAGEMENT
       }
-      if(currentPage.key != GO_TO_RISK_REPORT){
+      if(currentPage.key != GO_TO_INVENTORY_MANAGEMENT){
         state.navigator.pushPage({ component: InventoryManagement , key: GO_TO_INVENTORY_MANAGEMENT  });
       }
       return state;
@@ -245,15 +348,55 @@ const navigationReducer = (state = initialState, action) => {
 
       state = {
         ...state,
-        currentPagekey: GO_TO_MACHINERY_FORM
       }
       if(currentPage.key != GO_TO_MACHINERY_FORM){
         state.navigator.pushPage({ component: MachineryForm , key: GO_TO_MACHINERY_FORM  });
       }
       return state;
 
-    case APP_ERROR:
+    //  Plantation
+    case GO_TO_PLANTATION:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_PLANTATION
+      };
+      if (currentPage.key != GO_TO_PLANTATION) {
+        state.navigator.pushPage( { component: Plantation, key: GO_TO_PLANTATION } );
+      }
+      return state;
 
+    case GO_TO_SELECT_PLANTATION_REPORT_TYPE:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_SELECT_PLANTATION_REPORT_TYPE
+      };
+      if (currentPage.key != GO_TO_SELECT_PLANTATION_REPORT_TYPE) {
+        state.navigator.pushPage( { component: SelectPlantationReportType, key: GO_TO_SELECT_PLANTATION_REPORT_TYPE } );
+      }
+      return state;
+
+    case GO_TO_PLANTATION_REPORT:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_PLANTATION_REPORT
+      };
+      if (currentPage.key != GO_TO_PLANTATION_REPORT) {
+        state.navigator.pushPage( { component: PlantationReport, key: GO_TO_PLANTATION_REPORT } );
+      }
+      console.log( state );
+      return state;
+
+    case GO_TO_REPORT_LIST:
+      state = {
+        ...state,
+        currentPagekey: GO_TO_REPORT_LIST
+      };
+      if (currentPage.key != GO_TO_REPORT_LIST) {
+        state.navigator.pushPage( { component: ReportList, key: GO_TO_REPORT_LIST } );
+      }
+      return state;
+
+    case APP_ERROR:
       state = {
         ...state,
         currentPagekey: GO_TO_LOGIN

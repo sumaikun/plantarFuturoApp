@@ -35,7 +35,7 @@ class Login extends Component {
 
   componentDidMount() {
     const backgContainer = document.getElementById('backgContainer');
-    console.log(backgContainer.clientHeight);
+    //console.log(backgContainer.clientHeight);
     this.setState({ backgHeight:backgContainer.clientHeight });
   }
 
@@ -74,7 +74,7 @@ class Login extends Component {
 
     if(height < this.state.backgHeight)
     {
-      //console.log("prevent that resize");
+      ////console.log("prevent that resize");
       backgContainer.style.height = this.state.backgHeight+"px";
     }
 
@@ -93,7 +93,9 @@ class Login extends Component {
               <div className="login-html" onScroll="no">
               <ReactResizeDetector handleWidth handleHeight onResize={this.onResize} />
                <div className="App">
-                <i class="fas fa-phone fa-lg fa-2x phone"></i>
+                 <a href="tel:460-6552">
+                   <i class="fas fa-phone fa-lg fa-2x phone"></i>
+                 </a>
                 <br/>
                 <img id='logo' className="App-logo" src={logo} />
                   <div id='logoTitle'>
@@ -120,10 +122,10 @@ class Login extends Component {
                   </div>
                   <a href="" className="a">Olvidaste tu contraseña?</a>
                 </div>
-                <div style={{display:'flex',justifyContent:'center', marginTop:'35%'}}>
-                      <img id='logo' className="Social-logo"  src={fbicon} />
-                      <img id='logo' className="Social-logo" src={insicon} />
-                      <img id='logo' className="Social-logo" src={youicon} />
+                <div style={{display:'flex',justifyContent:'center', marginTop:'25%'}}>
+                  <a target={'_blank'} href="https://www.facebook.com/plantarfuturoingenieria/"><img id='logo' className="Social-logo"  src={fbicon} /></a>
+                  <a target={'_blank'} href="https://www.instagram.com/plantarfuturo/"><img id='logo' className="Social-logo" src={insicon} /></a>
+                  <a target={'_blank'} href="https://www.youtube.com/watch?v=t_55VJA3p-M"><img id='logo' className="Social-logo" src={youicon} /></a>
                 </div>
               </div>
             </div>

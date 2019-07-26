@@ -33,11 +33,11 @@ class HillsideMovement extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.enableForm = this.enableForm.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.currentHillsideMovement)
     {
       this.setState({
@@ -49,7 +49,7 @@ class HillsideMovement extends Component {
           hour:this.props.appState.currentHillsideMovement.report_date.split(" ")[1]
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
@@ -58,8 +58,8 @@ class HillsideMovement extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -68,7 +68,7 @@ class HillsideMovement extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -92,8 +92,8 @@ class HillsideMovement extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("edit hall side movement");
+        //console.log(data);
+        //console.log("edit hall side movement");
         this.props.updateHallsideMovement(this.state.formData.id,data);
       }
       else
@@ -102,8 +102,8 @@ class HillsideMovement extends Component {
         data.user_id = this.props.appState.user.id;
         data.project_id = this.props.appState.selectedProject.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("create hall side movement");
+        //console.log(data);
+        //console.log("create hall side movement");
         this.props.createHallsideMovement(data);
 
       }
@@ -113,9 +113,83 @@ class HillsideMovement extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      console.log(this.state);
+      //console.log(this.state);
     });
 
+  }
+
+  checkRiskParamenter(value) {
+    if (value < 5) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "1"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 5 && value < 15) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "2"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 15 && value < 20) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "3"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 20 && value < 30) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "4"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+    else if (value >= 30) {
+      this.setState(
+        {
+          formData:{
+            ...this.state.formData,
+            level: "5"
+          }
+
+        },() => {
+          console.log(this.state);
+        }
+      );
+    }
+  }
+
+  setRiskLevel(event) {
+    if (event.target.value.length > 0) {
+      this.checkRiskParamenter(event.target.value);
+    }
   }
 
   contentPage(){
@@ -154,12 +228,12 @@ class HillsideMovement extends Component {
           <Row>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="longitude" value={this.state.formData.longitude} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
+                <Input type="number" step="any" style={styles.textInput} name="longitude" value={this.state.formData.longitude} onInput={this.setRiskLevel} onChange={this.handleChangeInput} placeholder="Longitud" disabled={this.state.isDisable} required />
               </Card>
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="width" value={this.state.formData.width} onChange={this.handleChangeInput} placeholder="Ancho" disabled={this.state.isDisable} required />
+                <Input type="number" step="any" style={styles.textInput} name="width" value={this.state.formData.width} onChange={this.handleChangeInput} placeholder="Ancho" disabled={this.state.isDisable} required />
               </Card>
             </Col>
             <Col width="49%">
@@ -197,11 +271,9 @@ class HillsideMovement extends Component {
           <Row>
             <Col width="99%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={this.state.isDisable} value={this.state.formData.level} >
+                <Select style={{width:"100%"}} onChange={this.handleChangeInput} name='level' disabled={true} value={this.state.formData.level} >
                   <option value="level" disabled selected>Estado de emergencia</option>
-                  <option value="1">
-                    Estado de emergencia: 1
-                  </option>
+                  <option value="1">Estado de emergencia: 1</option>
                   <option value="2">Estado de emergencia: 2</option>
                   <option value="3">Estado de emergencia: 3</option>
                   <option value="4">Estado de emergencia: 4</option>

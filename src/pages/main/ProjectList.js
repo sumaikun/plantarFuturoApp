@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
 import "../../css/Modal.css";
+import "../../css/style.css";
 
 //Onsen Ui
 import {  Col, Row, Card, Button, List, ListItem} from 'react-onsenui';
@@ -44,7 +45,7 @@ const styles = {
   accordionIcons:{
     "background-color": "#006828",
     "width": "25px",
-    "height": "15px",
+    "height": "25px",
     "border-radius": "50%",
     display: "flex",
     "justify-content": "center",
@@ -102,7 +103,7 @@ class ProjectList extends Component {
         let componentSuccess = (response) => {
 
           let reloadProjectId = this.state.projectIdToModify ? this.state.projectIdToModify : this.project_id;
-          // console.log(reloadProjectId);
+          // //console.log(reloadProjectId);
           //return;
           this.Code.value = "";
           let modal = document.querySelector('#my-modal');
@@ -115,7 +116,7 @@ class ProjectList extends Component {
         if(this.state.editMode)
         {
 
-          console.log(this.state);
+          //console.log(this.state);
           //return ;
           if(!this.state.isOfflineFunit)
           {
@@ -190,7 +191,7 @@ class ProjectList extends Component {
 
     let serverMemoryFunctionals = this.props.memory.serverFunctionalUnits;
 
-    //console.log(serverMemoryFunctionals);
+    ////console.log(serverMemoryFunctionals);
 
     return(
       functionalUnits.filter(unit => {
@@ -198,7 +199,7 @@ class ProjectList extends Component {
           }).map((funit, i) => {
 
             let foundIndex = serverMemoryFunctionals.findIndex( memory =>   memory.id == funit.id  );
-            //console.log("foundIndex"+foundIndex);
+            ////console.log("foundIndex"+foundIndex);
             funit = foundIndex != -1 ? serverMemoryFunctionals[foundIndex] : funit ;
 
           return(
@@ -209,7 +210,7 @@ class ProjectList extends Component {
                 fontWeight: "bold"}}
               >
                 <div className="center" style={{display: "flex",
-                  justifyContent: "space-around"
+                  justifyContent: "space-between"
                 }}>
 
                   <div onClick={()=>{
@@ -221,7 +222,7 @@ class ProjectList extends Component {
                       .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
                       .then(function(res) {
                         if(res){
-                          console.log("cancelar sincronización");
+                          //console.log("cancelar sincronización");
                           if(funit.ToSynchro)
                           {
                             self.props.removeFromOfflineFunctionalUnit(funit);
@@ -243,7 +244,7 @@ class ProjectList extends Component {
                     { funit.ToSynchro || funit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
 
                   </div>
-                  
+
                     <span onClick={()=>{
                       if(this.props.appState.isFetching)
                       {
@@ -275,7 +276,7 @@ class ProjectList extends Component {
 
   render() {
 
-    //console.log(this.props.appState);
+    console.log(this.props.appState);
 
     const { projects , currentPhase, functionalUnits  } = this.props.appState
 
@@ -309,25 +310,23 @@ class ProjectList extends Component {
         }
 
        }}>
-        { currentPhaseProjects.length > 0  ?
+        { currentPhaseProjects.length > 0   ?
           currentPhaseProjects.map((project, i) => {
-
-
               return(
 
-              <div onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
+              <div className={'select-project'} onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
                     console.log("fase de riesgos");
                     console.log(project); this.props.selectProject(project);
                     this.props.goToRiskManagement();
                   })(): (()=>{
-                      console.log(project); this.props.selectProject(project)
+                      //console.log(project); this.props.selectProject(project)
                     })()
                   }}>
 
                   <div className={ ( i < 1 ) ? 'first-gap-list-element' : 'gap-list-element' }></div>
                   <div  style={{display:"flex",justifyContent:"center"}} >
                     <div style={{width:"95%"}} >
-                      <ListAccordion counter={i+1} projectName={project.name} phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
+                      <ListAccordion counter={i+1} project={project} projectName={project.name} phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
                         <Row>
                           <Col width="6%">
                           </Col>
@@ -340,10 +339,10 @@ class ProjectList extends Component {
                                   [project.id] : this.state.functionalList[project.id] ? !this.state.functionalList[project.id] : true
                                 }
                               },()=>{
-                                console.log(this.state);
+                                //console.log(this.state);
                               });
                             }}>
-                            { this.props.appState.currentPhase != "3" ? 
+                            { this.props.appState.currentPhase != "3" ?
                               <CardOptionButton
                                 accordionIconsStyles={styles.accordionIcons}
                                 iconStyles={{fontSize:"10px", color:"white"}}
@@ -370,7 +369,7 @@ class ProjectList extends Component {
                             <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
                                 button.textContent = "Registrar";
                                 this.project_id = project.id; }}>
-                            { this.props.appState.currentPhase != "3" ? 
+                            { this.props.appState.currentPhase != "3" ?
                             <CardOptionButton
                               className="modal-btn"
                               accordionIconsStyles={styles.accordionIcons}

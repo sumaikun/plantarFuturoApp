@@ -6,6 +6,7 @@ import chart from "../../img/chart.png";
 import plant from "../../img/plant.png";
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
+import "../../css/style.css";
 import { workingRowStyles } from "../../jsStyles/Styles";
 
 
@@ -52,7 +53,7 @@ class ForestalUnitList extends Component {
 
   renderHeader(){
     return(
-      <ListHeader style={{position: "fixed", zIndex:1,width:"140%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
+      <ListHeader style={{position: "fixed", zIndex:1,width:"95%", fontSize: 15, padding:"0px",marginTop:"-40px"}} className="testClass">
         <Row>
           <Col width="42%" style={{
             backgroundColor: "rgba(0, 104, 40, 0.8)",
@@ -67,7 +68,7 @@ class ForestalUnitList extends Component {
               <span>Individuo Forestal</span>
             {/*</Card>*/}
           </Col>
-          <Col width="30%" style={{
+          <Col width="58%" style={{
             backgroundColor: "rgba(97, 175, 46, 0.88)",
             display:"flex",
             justifyContent:"center",
@@ -87,8 +88,8 @@ class ForestalUnitList extends Component {
 
   contentPage(currentPhase,forestalUnits){
 
-    //console.log("Unidades forestales");
-    //console.log(forestalUnits);
+    ////console.log("Unidades forestales");
+    ////console.log(forestalUnits);
     let foundIndex;
 
     forestalUnits.sort((a,b) => {
@@ -110,7 +111,7 @@ class ForestalUnitList extends Component {
             <input type="date" value={searchDate} onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
           </div>
           <div className={'plus-icon-container'} style={styles.searchButton} onClick={()=>{
-              console.log(currentPhase);
+              //console.log(currentPhase);
               this.props.setForestalUnit(null);
               switch(currentPhase)
               {
@@ -137,39 +138,30 @@ class ForestalUnitList extends Component {
 
 
         { forestalUnits.length > 0  ?
-
-          <List
-            renderHeader={this.renderHeader}>
-
-           {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
-
-             switch(currentPhase)
-             {
-               case 1:
-
-                 foundIndex = this.props.memory.serverForestUnitsPhase1.findIndex( memory =>   memory.id == unit.id  );
-                 //console.log("foundIndex"+foundIndex);
-                 unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase1[foundIndex] : unit ;
-
-                 break;
-               case 2:
-
-                 foundIndex = this.props.memory.serverForestUnitsPhase2.findIndex( memory =>   memory.id == unit.id  );
-                 //console.log("foundIndex"+foundIndex);
-                 unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase2[foundIndex] : unit ;
-
-                 break;
-               case 3:
-
-                foundIndex = this.props.memory.serverForestUnitsPhase3.findIndex( memory =>   memory.id == unit.id  );
-                //console.log("foundIndex"+foundIndex);
-                unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase3[foundIndex] : unit ;
-
-                 break;
-               default:
-                   break;
-             }
-
+        <div  style={{display:"flex",justifyContent:"center"}} >
+          <div style={{width: '95%'}}>
+            <List renderHeader={this.renderHeader}>
+              {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
+                switch(currentPhase)
+                {
+                  case 1:
+                    foundIndex = this.props.memory.serverForestUnitsPhase1.findIndex( memory =>   memory.id == unit.id  );
+                    //console.log("foundIndex"+foundIndex);
+                    unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase1[foundIndex] : unit ;
+                    break;
+                  case 2:
+                    foundIndex = this.props.memory.serverForestUnitsPhase2.findIndex( memory =>   memory.id == unit.id  );
+                    //console.log("foundIndex"+foundIndex);
+                    unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase2[foundIndex] : unit ;
+                    break;
+                  case 3:
+                    foundIndex = this.props.memory.serverForestUnitsPhase3.findIndex( memory =>   memory.id == unit.id  );
+                    //console.log("foundIndex"+foundIndex);
+                    unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase3[foundIndex] : unit ;
+                    break;
+                  default:
+                    break;
+                }
 
               return (
               <div>
@@ -193,10 +185,9 @@ class ForestalUnitList extends Component {
                   }}>
                   <div className="center" style={styles.mainListItem}>
                     <div onClick={(e)=>{
-
                       e.stopPropagation();
 
-                      console.log(unit);
+                      //console.log(unit);
 
                       let self = this;
 
@@ -206,7 +197,7 @@ class ForestalUnitList extends Component {
                         .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
                         .then(function(res) {
                           if(res){
-                            console.log("cancelar sincronización");
+                            //console.log("cancelar sincronización");
                             if(unit.ToSynchro)
                             {
                               if(currentPhase === 1)
@@ -248,7 +239,9 @@ class ForestalUnitList extends Component {
                       <span style={styles.counter}>{i+1}</span>
                       { unit.ToSynchro || unit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
                     </div>
-                    <span style={styles.projectName}>{unit.code}</span>
+                    <div>
+                      <span style={styles.projectName}>{unit.code}</span>
+                    </div>
                     <div>
                       <span style={styles.projectInfo}>{unit.state}</span>
                       <br/>
@@ -269,8 +262,9 @@ class ForestalUnitList extends Component {
               </div>
             );
           })}
-
-          </List>:<NotFound/>
+                </List>
+            </div>
+        </div> : <NotFound/>
 
         }
       </div>
@@ -282,7 +276,7 @@ class ForestalUnitList extends Component {
 
       let {  isFetching ,currentPhase , forestalUnits } = this.props.appState;
 
-      console.log(forestalUnits);
+      //console.log(forestalUnits);
 
       if(this.props.appState.currentFunctionalUnit.ToSynchro){
         forestalUnits = [];

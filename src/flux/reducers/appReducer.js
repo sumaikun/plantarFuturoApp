@@ -23,12 +23,29 @@ import { FETCH,
    SET_RIVER_COLLAPSE,
    SET_CURRENT_RISK_PHASE,
    SET_RISK_INDICATORS,
-   SET_RISK_OVERVIEW } from "../types";
-
+   SET_RISK_OVERVIEW,
+   SET_SST,
+   SET_INVENTORY,
+   SET_SST_ASSISTANTS,
+   SET_SST_VISITORS,
+   SET_SST_DATA,
+   SET_VISITOR_DATA,
+   SET_FUEL,
+   SET_LIST_USER,
+   SET_PLANTATION_REPORT_TYPE,
+   SET_PLANTATION_REPORTS,
+   SET_PLANTATION_REPORT,
+   SELECT_PLANTATION_PROJECT,
+   SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
+   SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA , SET_VISITOR_ASSISTANTS_DATA } from "../types";
 
 let initialUser = null;
 
-let initialProjects = []
+let initialProjects = [];
+
+let initialSST = [];
+
+let initialUsers = [];
 
 let initialForestalUnits = [];
 
@@ -52,6 +69,12 @@ let initialHillsideCollapse = null;
 let initialCurrentRainfall = null;
 
 let initialRiverCollapse = null;
+
+//  Plantation
+let initialEstablishmentReport = null;
+let initialMaintenanceReport = null;
+let initialListEstablishmentReport = [];
+let initialListMaintenanceReport = [];
 
 let storedData;
 
@@ -77,6 +100,7 @@ let defaultValues = {
 
 //
   RiskOverview: {},
+
   TunnelDeformationList: [],
   HillsideMovementList:[],
   RainfallList:[],
@@ -91,6 +115,29 @@ let defaultValues = {
 
   currentMachineForm: null,
 
+  // state list report SST
+  listSST: initialSST,
+  listSSTAssistants:initialSST,
+  listSSTVisitors: initialSST,
+  sstData:{},
+  visitorData:initialSST,
+  project_data:{},
+  arrayVisitorsAssistens: [],
+  //state list users
+  listUser: initialUsers,
+
+  //  Plantation
+  plantationProject: null,
+  plantationReportToEdit: null,
+  plantationReportType: null,
+  plantationReports: [],
+  establishmentDefaultActivities: [],
+  maintenanceDefaultActivities: [],
+
+  listEstablishmentReport: initialListEstablishmentReport,
+  listMaintenanceReport: initialListMaintenanceReport,
+  establishmentReport: initialEstablishmentReport,
+  maintenanceReport: initialMaintenanceReport,
 }
 
 try
@@ -102,10 +149,10 @@ try
  }
 }
 catch(err){
-  console.log("error getting data");
+  //console.log("error getting data");
 }
 
-console.log(storedData);
+//console.log(storedData);
 
 const initialState =  storedData ? storedData.appState : defaultValues;
 
@@ -128,13 +175,13 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentPhase:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
     case SET_FUNCTIONAL_UNITS:
 
       let functionalArray = state.functionalUnits;
 
-      console.log(functionalArray);
+      ////console.log(functionalArray);
       let result ;
 
       action.payload.forEach(load => {
@@ -155,7 +202,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         functionalUnits:functionalArray
       }
-      console.log(state);
+      ////console.log(state);
       return state;
     case RESET_FUNCTIONAL_UNITS:
       state={
@@ -167,7 +214,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        console.log(action.payload);
+        ////console.log(action.payload);
         let fid =  action.payload[0].functional_unit_id;
 
         state={
@@ -177,7 +224,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        console.log(state);
+        ////console.log(state);
       }
 
 
@@ -187,7 +234,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         forestalUnitE:action.payload
       }
-      console.log(state);
+      ////console.log(state);
     return state;
     case FETCH:
       state={
@@ -207,6 +254,12 @@ const appReducer = (state = initialState, action) => {
       RiskOverview:action.payload
     }
     return state;
+    case SET_LIST_USER:
+      state={
+        ...state,
+        listUser:action.payload
+      }
+      return state;
     case MENU_OPEN:
       state={
         ...state,
@@ -214,31 +267,45 @@ const appReducer = (state = initialState, action) => {
       }
       return state;
     case MENU_CLOSE:
-      console.log("exec here");
+      ////console.log("exec here");
       state={
         ...state,
         isOpen:false
       }
       return state;
+    case SET_FUEL:
+      state={
+        ...state,
+        forestalUnitE:action.payload
+      }
+      console.log(state);
+    return state;
+    case SET_INVENTORY:
+      state={
+        ...state,
+        forestalUnitE:action.payload
+      }
+      console.log(state);
+    return state;
     case SET_FUNCTIONAL_UNIT:
       state={
         ...state,
         currentFunctionalUnit:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
     case SELECT_PROJECT:
       state={
         ...state,
         selectedProject:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
     case SET_TUNNEL_DEFORMATION_LIST:
 
       if(action.payload.length > 0)
       {
-        console.log(action.payload);
+        ////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -248,15 +315,14 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        console.log(state);
+        ////console.log(state);
         return state;
       }
-
     case HILL_SIDE_MOVEMENT_LIST:
 
       if(action.payload.length > 0)
       {
-        console.log(action.payload);
+        ////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -266,7 +332,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        console.log(state);
+        ////console.log(state);
         return state;
       }
 
@@ -275,7 +341,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        console.log(action.payload);
+        ////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -285,7 +351,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        console.log(state);
+        ////console.log(state);
         return state;
       }
 
@@ -293,7 +359,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        console.log(action.payload);
+        ////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -303,7 +369,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        console.log(state);
+        ////console.log(state);
         return state;
       }
 
@@ -311,7 +377,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        console.log(action.payload);
+        ////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -321,10 +387,9 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        console.log(state);
+        ////console.log(state);
         return state;
       }
-
 
     case SET_TUNNEL_DEFORMATION:
 
@@ -332,7 +397,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentTunnelDeformation:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
 
     case SET_HILL_SIDE_MOVEMENT:
@@ -341,7 +406,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentHillsideMovement:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
 
     case SET_RAIN_FALL:
@@ -350,7 +415,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentRainfall:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
 
     case SET_HILL_SIDE_COLLAPSE:
@@ -359,7 +424,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentHillsideCollapse:action.payload
       }
-      console.log(state);
+      ////console.log(state);
       return state;
 
     case SET_RIVER_COLLAPSE:
@@ -368,7 +433,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentRiverCollapse:action.payload
       }
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_CURRENT_RISK_PHASE:
@@ -377,7 +442,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentRiskPhase:action.payload
       }
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_RISK_INDICATORS:
@@ -386,6 +451,99 @@ const appReducer = (state = initialState, action) => {
         ...state,
         riskIndicators:action.payload
       }
+      //console.log(state);
+      return state;
+    // State SST
+    case SET_SST:
+      state={
+        ...state,
+        listSST:action.payload
+      }
+      return state;
+    case SET_SST_ASSISTANTS:
+      state={
+        ...state,
+        listSSTAssistants:action.payload
+      }
+      return state;
+    case SET_SST_VISITORS:
+      state={
+        ...state,
+        listSSTVisitors:action.payload
+      }
+      return state;
+    case SET_SST_DATA:
+        state={
+          ...state,
+          sstData:action.payload
+        }
+      return state;
+    case SET_VISITOR_DATA:
+         state={
+           ...state,
+           sstVisitor:action.payload
+         }
+       return state;
+    case SET_VISITOR_ASSISTANTS_DATA:
+      state={
+        ...state,
+        arrayVisitorsAssistens:action.payload
+      }
+    return state;
+   //SET_VISITOR_ASSISTANTS_DATA
+    case PROJECT_DATA:
+        state={
+          ...state,
+          project_data:action.payload
+        }
+      return state;
+    //  Plantation
+
+    case SET_PLANTATION_REPORT_TYPE:
+      state = {
+        ...state,
+        plantationReportType: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_ESTABLISHMENT_DEFAULT_ACTIVITIES:
+      state = {
+        ...state,
+        establishmentDefaultActivities: action.payload
+      };
+      console.log(state);
+      return state;
+
+    case SET_MAINTENANCE_DEFAULT_ACTIVITIES:
+      state = {
+        ...state,
+        maintenanceDefaultActivities: action.payload
+      };
+      console.log(state);
+      return state;
+
+    case SET_PLANTATION_REPORTS:
+      state = {
+        ...state,
+        plantationReports: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SET_PLANTATION_REPORT:
+      state = {
+        ...state,
+        plantationReportToEdit: action.payload
+      }
+      console.log(state);
+      return state;
+
+    case SELECT_PLANTATION_PROJECT:
+      state = {
+        ...state,
+        plantationProject: action.payload
+      };
       console.log(state);
       return state;
 

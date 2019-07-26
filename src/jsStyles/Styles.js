@@ -37,16 +37,18 @@ export const formCardStyles = {
     textAlign:"center"
   },
   disableButton:{
+    textAlign: "center",
     marginLeft: "6px",
+    marginRight: "6px",
     color: "white",
-    fontSize:"12px",
+    fontSize:"14px",
     padding:'5px',
     marginTop:"1px",
     marginBottom:"5px",
     backgroundColor:"#61af2e",
     boxShadow:"rgba(0, 0, 0, 0.85) 0px 1px 1px -2px",
     color: "white",
-    width:"30%",
+    width:"96.5%",
     borderRadius:"10%"
   }
 }
@@ -55,7 +57,7 @@ export const workingRowStyles =
 {
   mainListItem:{
     display: "flex",
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   counter:{
     color: "#e6e7e8"
@@ -64,7 +66,8 @@ export const workingRowStyles =
     color: "#352865",
     fontSize: "18px",
     fontWeight: "400",
-    fontFamily: "Raleway"
+    fontFamily: "Raleway",
+    whiteSpace: "normal",
   },
   projectInfo:{
     color: "#e6e7e8",

@@ -43,7 +43,7 @@ class CardOptionButton extends Component {
 
 
     return (
-      <Card style={styles.accordionButtons} className={this.props.className}>
+      <Card style={ styles.accordionButtons } className={this.props.className}>
         <div style={this.props.accordionIconsStyles}>
           <i style={this.props.iconStyles} className={this.props.iconReference}></i>
         </div>
@@ -51,7 +51,7 @@ class CardOptionButton extends Component {
           {this.props.title}
         </div>
         <div>
-          <img  className="Social-logo" style={this.props.imgStyles}  src={this.props.image} />
+          <img className="Social-logo" style={this.props.imgStyles}  src={this.props.image} />
         </div>
       </Card>
     );

@@ -1,7 +1,12 @@
 import { GO_TO_LOGIN, GO_TO_MANAGEMENT, GO_TO_PROJECTS, GO_TO_FORESTAL_UNITS, GO_BACK, GO_TO_FORM_INVENTORY,
    INSERT_NAVIGATOR, GO_TO_FORM_PROCESS, GO_TO_FORM_COMPENSATION, GO_TO_RISK_MANAGEMENT, GO_TO_HILLSIDE_COLLAPSE,
    GO_TO_HILLSIDE_MOVEMENT,  GO_TO_RAIN_FALL, GO_TO_RIVER_COLLAPSE, GO_TO_TUNNEL_DEFORMATION, GO_TO_RISK_INDICATORS,
-   GO_TO_INVENTORY_MANAGEMENT, GO_TO_MACHINERY_FORM, APP_ERROR, GO_TO_RISK_OVERVIEW } from "../types";
+   GO_TO_INVENTORY_MANAGEMENT, GO_TO_MACHINERY_FORM, APP_ERROR, GO_TO_RISK_OVERVIEW, GO_TO_NAVIGATION_RESOUCE, GO_TO_MACHINERY_LIST,
+   GO_TO_CIVIL_MANAGEMENT,GO_TO_SST_LIST, GO_TO_SST_FORM, GO_TO_ASSISTANT_LIST, GO_TO_FUEL_FORM, GO_TO_ASSISTANT_FORM, 
+   GO_TO_PLANTATION,
+   GO_TO_SELECT_PLANTATION_REPORT_TYPE,
+   GO_TO_PLANTATION_REPORT,
+   GO_TO_REPORT_LIST } from "../types";
 
 import { closeMenu , notFetching } from "./appActions";
 
@@ -29,7 +34,6 @@ export const goToForestalUnits = () => ({
 export const goToInventoryForm = () => ({
   type: GO_TO_FORM_INVENTORY
 });
-
 export const goToProcessForm = () => ({
   type:GO_TO_FORM_PROCESS
 });
@@ -74,15 +78,61 @@ export const goToRiskIndicator = () => ({
   type: GO_TO_RISK_INDICATORS
 });
 
+export const goToNavigationResource = () => ({
+  type:  GO_TO_NAVIGATION_RESOUCE
+});
+
+export const goToMachineryList = () => ({
+  type: GO_TO_MACHINERY_LIST
+});
 
 //Inventarios de elementos
+export const goToSSTForm = () => ({
+  type: GO_TO_SST_FORM
+})
+export const goToSSTList = () => ({
+  type:GO_TO_SST_LIST
+});
 
 export const goToInventoryManagement = () =>({
   type: GO_TO_INVENTORY_MANAGEMENT
 });
 
+export const goToFuelForm =() =>({
+  type: GO_TO_FUEL_FORM
+})
+
+export const goToAssistantList = () =>({
+  type: GO_TO_ASSISTANT_LIST
+})
+
+export const goToAssistantForm = () =>({
+  type: GO_TO_ASSISTANT_FORM
+})
+
+ export const goToCivilManagement = () =>({
+  type: GO_TO_CIVIL_MANAGEMENT
+ });
+
 export const goToMachineryForm = () =>({
   type: GO_TO_MACHINERY_FORM
+});
+
+//  Plantation
+export const goToPlantation = () => ({
+  type: GO_TO_PLANTATION
+});
+
+export const goToReportList = () => ({
+  type: GO_TO_REPORT_LIST
+});
+
+export const goToSelectPlantationReportType = () => ({
+  type: GO_TO_SELECT_PLANTATION_REPORT_TYPE
+});
+
+export const goToPlantationReport = () => ({
+  type: GO_TO_PLANTATION_REPORT
 });
 
 export const runfromStorage = (data) => {

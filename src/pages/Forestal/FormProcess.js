@@ -62,8 +62,15 @@ const styles = {
   },
   buttonCard:{
     backgroundColor:"rgb(97, 175, 46)",
-    width:"100%",
-    textAlign:"center"
+    //width:"100%",
+    textAlign:"center",
+    width: "85%",
+    height: "35px",
+    margin: "0 auto",
+    padding: "0",
+    display: "table-cell",
+    lineHeight: "35px",
+    verticalAlign: "middle",
   },
   textInCard:{
     fontSize:"14px",
@@ -71,6 +78,21 @@ const styles = {
     color:"grey",
     fontWeight:"bold",
     borderStyle: "dotted"
+  },
+  uploadFile:{
+    backgroundColor:"rgb(97, 175, 46)",
+    //width:"100%",
+    textAlign:"center",
+    width: "85%",
+    height: "35px",
+    margin: "3px auto",
+    padding: "0",
+    display: "table-cell",
+    lineHeight: "35px",
+    verticalAlign: "middle",
+    borderRadius: "5px",
+    fontSize: "17px",
+    color: "white"
   }
 }
 
@@ -89,23 +111,23 @@ class FormProcess extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.forestalUnitE)
     {
 
 
       if(this.props.appState.forestalUnitE.products)
       {
-        console.log("try to change");
+        //console.log("try to change");
           this.props.appState.forestalUnitE.products = this.props.appState.forestalUnitE.products == "Leña" ? 1 :
           this.props.appState.forestalUnitE.products == "Madera" ? 2 : null;
 
-        console.log(this.props.appState.forestalUnitE.products);
+        //console.log(this.props.appState.forestalUnitE.products);
       }
 
       if(this.props.appState.forestalUnitE.treatment)
       {
-          console.log("try to change");
+          //console.log("try to change");
           this.props.appState.forestalUnitE.treatment = this.props.appState.forestalUnitE.treatment == "Tala" ? 1 :
           this.props.appState.forestalUnitE.treatment == "Perman. Y/poda" ? 2 :
           this.props.appState.forestalUnitE.treatment == "Bloque y T." ? 3 :
@@ -118,7 +140,7 @@ class FormProcess extends Component {
           ...this.props.appState.forestalUnitE
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
 
@@ -129,12 +151,12 @@ class FormProcess extends Component {
     const  fileType = file['type'];
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     if (validImageTypes.includes(fileType)) {
-       console.log(key);
+       //console.log(key);
        let self = this;
        getInputFileBase64(e.target.files[0]).then(
          base64Image => {
 
-         //console.log(base64Image);
+         ////console.log(base64Image);
 
                  self.setState({
                    formData:
@@ -143,7 +165,7 @@ class FormProcess extends Component {
                      [key]:base64Image
                    }
                  },()=>{
-                     console.log(self.state);
+                     //console.log(self.state);
                  });
        });
    }
@@ -157,9 +179,9 @@ class FormProcess extends Component {
 
       let self = this;
 
-      console.log("react ambit prev cordova");
+      //console.log("react ambit prev cordova");
 
-      console.log(self);
+      //console.log(self);
 
       if (window.cordova) {
 
@@ -167,12 +189,12 @@ class FormProcess extends Component {
 
           getFileContentAsBase64(image,function(base64Image){
 
-            console.log("react ambit post cordova");
+            //console.log("react ambit post cordova");
 
-            //console.log(self);
+            ////console.log(self);
 
             //window.open(base64Image);
-            console.log(base64Image);
+            //console.log(base64Image);
             // Then you'll be able to handle the myimage.png file as base64
 
             self.setState({
@@ -182,7 +204,7 @@ class FormProcess extends Component {
                 [key]:base64Image
               }
             },()=>{
-                console.log(self.state);
+                //console.log(self.state);
             });
 
 
@@ -194,7 +216,7 @@ class FormProcess extends Component {
             correctOrientation : true
         });
       } else{
-        console.log("please run the cordova project");
+        //console.log("please run the cordova project");
       }
 
 
@@ -204,8 +226,8 @@ class FormProcess extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -214,7 +236,7 @@ class FormProcess extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -232,9 +254,9 @@ class FormProcess extends Component {
     {
       if(this.props.appState.forestalUnitE)
       {
-        console.log("editMode");
-        console.log(this.state.formData);
-        console.log(this.state.formData.id);
+        //console.log("editMode");
+        //console.log(this.state.formData);
+        //console.log(this.state.formData.id);
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
 
@@ -264,7 +286,7 @@ class FormProcess extends Component {
 
 
         this.props.createForestUnitPhase2(data);
-        console.log("createMode");
+        //console.log("createMode");
       }
     }
     else{
@@ -428,7 +450,7 @@ class FormProcess extends Component {
           </Row>
 
           <Row>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput} >
                 <Select onChange={this.handleChangeInput} style={{width:"100%"}} name='condition' value = {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
@@ -442,7 +464,7 @@ class FormProcess extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
               <Select onChange={this.handleChangeInput} style={{width:"100%"}} value = {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
@@ -456,12 +478,12 @@ class FormProcess extends Component {
               </Select>
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" step="any" />
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" step="any" />
               </Card>
@@ -501,7 +523,7 @@ class FormProcess extends Component {
 
 
           <Row>
-            <Col width="50%">
+            <Col width="100%">
               <Card style={styles.cardInput}>
                 <Select style={{width:"100%"}} name="products" onChange={this.handleChangeInput} value={this.state.formData.products} required>
                   <option value="" disabled selected>Posible uso</option>
@@ -545,9 +567,7 @@ class FormProcess extends Component {
                     <Button style={{...styles.buttonCard, 'font-size':"13px"}}
                       onClick={()=>{this.saveImage('general_image')}}
                     >Tomar foto</Button>
-                    <label className="fileContainer" style={{ "font-size": "17px",
-                      color: "white"
-                    }}>
+                    <label className="fileContainer" style={ styles.uploadFile }>
                       Subir archivo
                       <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
                          />
@@ -570,9 +590,7 @@ class FormProcess extends Component {
                     <Button style={{...styles.buttonCard, 'font-size':"13px"}}
                       onClick={()=>{this.saveImage('id_image')}}
                     >Tomar foto</Button>
-                    <label className="fileContainer" style={{ "font-size": "17px",
-                      color: "white"
-                    }}>
+                    <label className="fileContainer" style={ styles.uploadFile }>
                       Subir archivo
                       <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}
                          />
@@ -605,9 +623,7 @@ class FormProcess extends Component {
                   <Button style={styles.buttonCard}
                     onClick={()=>{this.saveImage('after_image')}}
                   >Tomar foto</Button>
-                  <label className="fileContainer" style={{ "font-size": "17px",
-                    color: "white"
-                  }}>
+                  <label className="fileContainer" style={ styles.uploadFile }>
                     Subir archivo
                     <input  type="file" onChange={(event)=>{this.fileUpload("after_image",event)}}
                        />

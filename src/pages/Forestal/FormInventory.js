@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //sources
 import "../../css/simpleForm.css";
+import "../../css/style.css";
 import placeholderImage from "../../img/image-placeholder.png";
 
 //Onsen Ui
@@ -30,7 +31,7 @@ import { getFileContentAsBase64 , getInputFileBase64 } from '../../helpers/image
 
 const styles = {
   cardInput:{
-    height: "40px",
+    height: "30px",
     display: "flex",
     alignItems: "center",
     padding:"3px"
@@ -62,8 +63,30 @@ const styles = {
   },
   buttonCard:{
     backgroundColor:"rgb(97, 175, 46)",
-    width:"100%",
-    textAlign:"center"
+    //width:"100%",
+    textAlign:"center",
+    width: "85%",
+    height: "35px",
+    margin: "0 auto",
+    padding: "0",
+    display: "table-cell",
+    lineHeight: "35px",
+    verticalAlign: "middle",
+  },
+  uploadFile:{
+    backgroundColor:"rgb(97, 175, 46)",
+    //width:"100%",
+    textAlign:"center",
+    width: "85%",
+    height: "35px",
+    margin: "3px auto",
+    padding: "0",
+    display: "table-cell",
+    lineHeight: "35px",
+    verticalAlign: "middle",
+    borderRadius: "5px",
+    fontSize: "17px",
+    color: "white"
   }
 }
 
@@ -76,11 +99,11 @@ class FormInventory extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
+    //console.log(this.props);
     if(this.props.appState.forestalUnitE)
     {
       this.setState({
@@ -89,25 +112,25 @@ class FormInventory extends Component {
           ...this.props.appState.forestalUnitE
         }
       },()=>{
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
 
 
   fileUpload(key,e){
-    //console.log(e.target.files);
+    ////console.log(e.target.files);
 
      const file = e.target.files[0];
      const  fileType = file['type'];
      const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
      if (validImageTypes.includes(fileType)) {
-        console.log(key);
+        //console.log(key);
         let self = this;
         getInputFileBase64(e.target.files[0]).then(
           base64Image => {
 
-          //console.log(base64Image);
+          ////console.log(base64Image);
 
                   self.setState({
                     formData:
@@ -116,7 +139,7 @@ class FormInventory extends Component {
                       [key]:base64Image
                     }
                   },()=>{
-                      console.log(self.state);
+                      //console.log(self.state);
                   });
         });
     }
@@ -130,9 +153,9 @@ class FormInventory extends Component {
 
       let self = this;
 
-      console.log("react ambit prev cordova");
+      //console.log("react ambit prev cordova");
 
-      console.log(self);
+      //console.log(self);
 
       if (window.cordova) {
 
@@ -140,12 +163,12 @@ class FormInventory extends Component {
 
             getFileContentAsBase64(image,function(base64Image){
 
-              console.log("react ambit post cordova");
+              //console.log("react ambit post cordova");
 
-              console.log(self);
+              //console.log(self);
 
               //window.open(base64Image);
-              console.log(base64Image);
+              //console.log(base64Image);
               // Then you'll be able to handle the myimage.png file as base64
 
               self.setState({
@@ -155,7 +178,7 @@ class FormInventory extends Component {
                   [key]:base64Image
                 }
               },()=>{
-                  console.log(self.state);
+                  //console.log(self.state);
               });
 
 
@@ -168,7 +191,7 @@ class FormInventory extends Component {
         });
 
       } else{
-        console.log("please run the cordova project");
+        //console.log("please run the cordova project");
       }
 
 
@@ -178,8 +201,8 @@ class FormInventory extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -188,7 +211,7 @@ class FormInventory extends Component {
            }
 
          },() => {
-           console.log(this.state);
+           //console.log(this.state);
          }
        );
     }
@@ -207,9 +230,9 @@ class FormInventory extends Component {
     {
       if(this.props.appState.forestalUnitE)
       {
-        console.log("editMode");
-        console.log(this.state.formData);
-        console.log(this.state.formData.id);
+        //console.log("editMode");
+        //console.log(this.state.formData);
+        //console.log(this.state.formData.id);
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         //return;
@@ -242,7 +265,7 @@ class FormInventory extends Component {
         this.props.createForestUnitPhase1(data);
 
         //this.props.goBack();
-        console.log("createMode");
+        //console.log("createMode");
 
       }
     }
@@ -358,7 +381,7 @@ class FormInventory extends Component {
             </Col>
           </Row>
           <Row>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput} >
                 <Select onChange={this.handleChangeInput} style={{width:"100%"}} name='condition' value = {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
@@ -372,7 +395,7 @@ class FormInventory extends Component {
                 </Select>
               </Card>
             </Col>
-            <Col width="30%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
               <Select onChange={this.handleChangeInput} style={{width:"100%"}} value = {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
@@ -386,12 +409,12 @@ class FormInventory extends Component {
               </Select>
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" step="any" />
               </Card>
             </Col>
-            <Col width="20%">
+            <Col width="25%">
               <Card style={styles.cardInput}>
                 <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" step="any" />
               </Card>
@@ -407,9 +430,7 @@ class FormInventory extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="wayPoint" decimal required />
-
+                <Input onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="text" required />
               </Card>
             </Col>
           </Row>
@@ -443,12 +464,10 @@ class FormInventory extends Component {
                 <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
               </div>
               <Row>
-                <Button style={styles.buttonCard}
+                <Button className='take-picture-button' style={styles.buttonCard}
                   onClick={()=>{this.saveImage("general_image")}}
                 >Tomar foto</Button>
-                <label className="fileContainer" style={{ "font-size": "17px",
-                  color: "white"
-                }}>
+                <label className="fileContainer" style={ styles.uploadFile }>
                   Subir archivo
                   <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
                      />
@@ -480,9 +499,7 @@ class FormInventory extends Component {
                 <Button style={styles.buttonCard}
                   onClick={()=>{this.saveImage("id_image")}}
                 >Tomar foto</Button>
-                <label className="fileContainer" style={{ "font-size": "17px",
-                  color: "white"
-                }}>
+                <label className="fileContainer" style={ styles.uploadFile }>
                   Subir archivo
                   <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}   />
                 </label>
@@ -512,12 +529,9 @@ class FormInventory extends Component {
               <Button style={styles.buttonCard}
                 onClick={()=>{this.saveImage("reference_image")}}
               >Tomar foto</Button>
-              <label className="fileContainer" style={{ "font-size": "17px",
-                color: "white"
-              }}>
+              <label className="fileContainer" style={ styles.uploadFile }>
                 Subir archivo
-                <input  type="file" onChange={(event)=>{this.fileUpload("reference_image",event)}}
-                   />
+                <input  type="file" onChange={(event)=>{this.fileUpload("reference_image",event)}}/>
               </label>
             </Row>
           </Card>

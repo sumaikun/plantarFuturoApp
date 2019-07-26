@@ -45,7 +45,7 @@ export const createFunctionalUnit = (data,componentSuccess) => {
   }
 }
 
-export const getFunctionalUnits = (id,SuccessCallBack) => {
+export const getFunctionalUnits = (id, SuccessCallBack) => {
   return async dispatch => {
 
       if(!navigator.onLine)
