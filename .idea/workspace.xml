@@ -3,10 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="42776259-f3c5-45ea-80ea-735ed65f5990" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/static/js/main.90e584b6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/platforms/android/app/src/main/assets/www/static/js/main.90e584b6.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollapseMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/flux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/types.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/asset-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/asset-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/service-worker.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,6 +105,8 @@
       <workItem from="1564101768425" duration="1200000" />
       <workItem from="1564108243473" duration="5194000" />
       <workItem from="1564129695696" duration="1686000" />
+      <workItem from="1564156059337" duration="583000" />
+      <workItem from="1564173616135" duration="1193000" />
     </task>
     <servers />
   </component>

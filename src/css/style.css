@@ -92,10 +92,18 @@
     display: flex;
     justify-content: center;
     color: rgba(255, 255, 255, 0.2);
+    margin-top: 7px;
 }
 
 .collapse-menu-footer-futuro {
     color: rgba(255, 198, 39, 0.3);
+}
+
+.collapse-menu-footer-version {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.25);
 }
     /* List */
 .collapse-menu-list {

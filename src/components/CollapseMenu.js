@@ -69,6 +69,7 @@ import { connect } from 'react-redux';
 
 // CSS
 import './../css/style.css';
+import { VERSION } from "../flux/types";
 
 class CollapseMenu extends Component {
 
@@ -379,8 +380,8 @@ class CollapseMenu extends Component {
           </List>
         </div>
         <BottomToolbar modifier="material" style={{backgroundColor:"#2a6317"}}>
-          <br/>
           <span className={'collapse-menu-footer'} style={{fontWeight:"bold",fontStyle:"italic"}}>Plantar <span className={'collapse-menu-footer-futuro'} style={{fontWeight:"bold",fontStyle:"italic"}}>Futuro</span></span>
+          <span className={'flex-center collapse-menu-footer-version'}>{`v${VERSION}`}</span>
         </BottomToolbar>
       </Page>
     );
