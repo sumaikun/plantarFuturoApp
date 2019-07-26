@@ -562,19 +562,18 @@ class FormProcess extends Component {
                 <div>
                   <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.general_image ?  null :
-                  <Row>
-                    <Button style={{...styles.buttonCard, 'font-size':"13px"}}
-                      onClick={()=>{this.saveImage('general_image')}}
-                    >Tomar foto</Button>
-                    <label className="fileContainer" style={ styles.uploadFile }>
-                      Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
-                         />
-                    </label>
-                  </Row>
-                }
-
+                <Row>
+                  <Button
+                    style={styles.buttonCard}
+                    onClick={()=>{this.saveImage('general_image')}}
+                  >
+                    Tomar foto
+                  </Button>
+                  <label className="fileContainer" style={ styles.uploadFile }>
+                    Subir archivo
+                    <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}} />
+                  </label>
+                </Row>
               </Card>
             </Col>
 
@@ -584,19 +583,18 @@ class FormProcess extends Component {
                 <div>
                   <img src={this.state.formData.id_image ? this.state.formData.id_image : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.id_image ?
-                  null:
-                  <Row>
-                    <Button style={{...styles.buttonCard, 'font-size':"13px"}}
-                      onClick={()=>{this.saveImage('id_image')}}
-                    >Tomar foto</Button>
-                    <label className="fileContainer" style={ styles.uploadFile }>
-                      Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}
-                         />
-                    </label>
-                  </Row>
-                }
+                <Row>
+                  <Button
+                    style={styles.buttonCard}
+                    onClick={()=>{this.saveImage('id_image')}}
+                  >
+                    Tomar foto
+                  </Button>
+                  <label className="fileContainer" style={ styles.uploadFile }>
+                    Subir archivo
+                    <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}} />
+                  </label>
+                </Row>
               </Card>
             </Col>
 
