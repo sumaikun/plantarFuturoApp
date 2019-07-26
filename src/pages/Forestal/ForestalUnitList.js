@@ -102,43 +102,41 @@ class ForestalUnitList extends Component {
 
     return(
     <div>
-    <div style={{backgroundColor:"orange", position:"fixed", width:"100%", zIndex:"1"}}>
-      <div className="login-form" >
+      <div className={'filter-container'} style={{backgroundColor:"orange", position:"fixed", width:"100%", zIndex:"1"}}>
+        <div className="login-form" >
 
-        <div className="group" style={styles.searchInputContainer}>
-          <div>
-            <input id="search" value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} className="input fontAwesome" placeholder="Buscar" type="text" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} />
-            <input type="date" value={searchDate} onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
-          </div>
-          <div className={'plus-icon-container'} style={styles.searchButton} onClick={()=>{
-              //console.log(currentPhase);
-              this.props.setForestalUnit(null);
-              switch(currentPhase)
-              {
-                case 1:
-                  this.props.goToInventoryForm();
-                  break;
-                case 2:
-                  this.props.goToProcessForm();
-                  break;
-                case 3:
-                  this.props.goToCompensationForm();
-                  break;
-                default:
+          <div className="group" style={styles.searchInputContainer}>
+            <div>
+              <input id="search" value={searchName} name="buscador" onChange={e => this.setState({ searchName: e.target.value })} className="input fontAwesome" placeholder="Buscar" type="text" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"10px"}} />
+              <input type="date" value={searchDate} onChange={e => this.setState({ searchDate: e.target.value })} className="input fontAwesome" style={{fontFamily:'Arial', marginTop:"8px", width:"90%", height:"2px"}} />
+            </div>
+            <div className={'plus-icon-container'} style={styles.searchButton} onClick={()=>{
+                //console.log(currentPhase);
+                this.props.setForestalUnit(null);
+                switch(currentPhase)
+                {
+                  case 1:
+                    this.props.goToInventoryForm();
                     break;
-              }
+                  case 2:
+                    this.props.goToProcessForm();
+                    break;
+                  case 3:
+                    this.props.goToCompensationForm();
+                    break;
+                  default:
+                      break;
+                }
 
-            }}>
-            <span className="fas fa-plus fontAwesome plus-icon" ></span>
+              }}>
+              <span className="fas fa-plus fontAwesome plus-icon" ></span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br/><br/><br/><br/><br/><br/><br/>
-
 
         { forestalUnits.length > 0  ?
-        <div  style={{display:"flex",justifyContent:"center"}} >
+        <div className={'list-container-and-header'} style={{display:"flex",justifyContent:"center"}} >
           <div style={{width: '95%'}}>
             <List renderHeader={this.renderHeader}>
               {forestalUnits.filter(f => {
@@ -266,7 +264,7 @@ class ForestalUnitList extends Component {
           })}
                 </List>
             </div>
-        </div> : <NotFound/>
+        </div> : <div className={'not-found'}><NotFound/></div>
 
         }
       </div>

@@ -55,7 +55,7 @@ class ReportList extends Component {
 
   renderHeader(){
     return(
-      <ListHeader className="list-header" style={{position: "absolute", width:"95%", fontSize: 15, padding:"0px", marginTop:"-40px"}} >
+      <ListHeader style={{position: "fixed", zIndex: 1, width:"95%", fontSize: 15, padding:"0px", marginTop:"-40px"}} >
         <Row>
           <Col width="100%" style={{
             backgroundColor: "rgba(0, 104, 40, 0.8)",
@@ -85,7 +85,7 @@ class ReportList extends Component {
 
     return(
       <div>
-          <div className={'filter-container'} style={{backgroundColor:"orange", position:"fixed", width:"100%"}}>
+          <div className={'filter-container'} style={{backgroundColor:"orange", position:"fixed", width:"100%", zIndex:"1"}}>
             <div className="login-form" >
               <div className="group" style={styles.searchInputContainer}>
                 <div>

@@ -81,14 +81,16 @@ class ListAccordion extends Component {
     return (
       <List key={1}>
         <ListItem key={1} tappable class="accordion" onclick="fn.toggle(this)">
-          <div className="center" style={styles.mainListItem}>
-            <span style={styles.counter}>{this.props.counter}</span>
-            <div className={'list__accordion__center'}>
-              <span className={'project-list-title-font'} style={styles.projectName}>{this.props.projectName}</span>
-              <span style={styles.projectInfo}>{this.props.projectInfo}</span>
-            </div>
-            <div style={styles.buttonContainer}>
-              <div style={styles.ProjectButton} /><span onClick={()=>{this.props.goToNavigationResource();  this.props.getGoToResourceMain(this.props.project)}} >...</span>
+          <div className={'left'}>
+            <span className={'list-counter'}>{this.props.counter}</span>
+          </div>
+          <div className={'center'}>
+            <span className={'project-list-title-font project-list-project-name margin-between-right'}>{this.props.projectName}</span>
+            <span className={'project-list-project-info margin-between-left'}>{this.props.projectInfo}</span>
+          </div>
+          <div className={'right'}>
+            <div className={'button-container'}>
+              <div className={'tree-dots-button'}><span>...</span></div>
             </div>
           </div>
         </ListItem>

@@ -2,37 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42776259-f3c5-45ea-80ea-735ed65f5990" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/modalAssitant.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/flux/actions/ResourceMain.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/SST/absence.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/SST/assistance.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/SST/assitant/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/SST/visit/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollapseMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollapseMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ListAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListAccordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/LoginActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/LoginActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/Plantation/PlantationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/Plantation/PlantationActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/appActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/appActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/forestalUnitActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/forestalUnitActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/projectsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/projectsActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/sst/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/sst/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/actions/visitor/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/actions/visitor/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/reducers/appReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/reducers/appReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/reducers/memoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/reducers/memoryReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/flux/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/flux/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/handleRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/handleRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Forestal/FormProcess.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Forestal/FormProcess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Plantation/PlantationReport.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Plantation/PlantationReport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SST/AsistantList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SST/AsistantList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SST/AssistantForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SST/AssistantForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SST/SSTForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SST/SSTForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SST/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SST/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/ProjectList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/ProjectList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/ProjectManagement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/ProjectManagement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/ResourceMain.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/ResourceMain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
