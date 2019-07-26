@@ -244,7 +244,7 @@ class ProjectList extends Component {
                     { funit.ToSynchro || funit.ToSynchroEdit ?  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
 
                   </div>
-                  
+
                     <span onClick={()=>{
                       if(this.props.appState.isFetching)
                       {
@@ -276,7 +276,7 @@ class ProjectList extends Component {
 
   render() {
 
-    ////console.log(this.props.appState);
+    console.log(this.props.appState);
 
     const { projects , currentPhase, functionalUnits  } = this.props.appState
 
@@ -306,14 +306,12 @@ class ProjectList extends Component {
 
         if(!this.props.appState.isFetching)
         {
-            this.props.getProjectByUser(this.props.appState.user.id);
+            this.props.getProjectByUser(this.props.appState.user);
         }
 
        }}>
         { currentPhaseProjects.length > 0   ?
           currentPhaseProjects.map((project, i) => {
-
-
               return(
 
               <div className={'select-project'} onClick={()=>{ this.props.appState.currentPhase == "4" ? (()=>{
@@ -328,7 +326,7 @@ class ProjectList extends Component {
                   <div className={ ( i < 1 ) ? 'first-gap-list-element' : 'gap-list-element' }></div>
                   <div  style={{display:"flex",justifyContent:"center"}} >
                     <div style={{width:"95%"}} >
-                      <ListAccordion counter={i+1} projectName={project.name} phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
+                      <ListAccordion counter={i+1} project={project} projectName={project.name} phase={this.props.appState.currentPhase}  projectInfo={project.customer.name} >
                         <Row>
                           <Col width="6%">
                           </Col>
@@ -344,7 +342,7 @@ class ProjectList extends Component {
                                 //console.log(this.state);
                               });
                             }}>
-                            { this.props.appState.currentPhase != "3" ? 
+                            { this.props.appState.currentPhase != "3" ?
                               <CardOptionButton
                                 accordionIconsStyles={styles.accordionIcons}
                                 iconStyles={{fontSize:"10px", color:"white"}}

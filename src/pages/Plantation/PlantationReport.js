@@ -108,8 +108,22 @@ class PlantationReport extends Component {
       console.log(event.target.name);
       console.log(event.target.value);
 
-      let obj = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
+      console.log(this.state);
+
+      let self = this;
+
+      this.helperActivitiesArray =   this.state.formData.activities;
+
+      this.helperActivitiesArray[index] = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
+
+      /*let obj = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
       this.helperActivitiesArray[index] = obj;
+
+      this.helperActivitiesArray = obj;*/
+
+      console.log(this.helperActivitiesArray);
+
+      //return;
 
       this.setState(
         {
@@ -172,6 +186,8 @@ class PlantationReport extends Component {
         activity.quantity = null;
       }
     });
+
+
 
     if ( this.props.appState.isFetching ) {
       return Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
@@ -256,7 +272,7 @@ class PlantationReport extends Component {
                     style={styles.textInput}
                     type="number"
                     name={ 'hours' }
-                    value={ this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null }
+                    value={ this.state.formData.activities[activityIndex] ? ( ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ) && this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null }
                     placeholder="Horas"
                     disabled={this.state.isDisable || !this.state.formData.activities[activityIndex] }
                     onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
@@ -270,7 +286,7 @@ class PlantationReport extends Component {
                     style={styles.textInput}
                     type="number"
                     name={ 'quantity' }
-                    value={ this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].quantity ? this.state.formData.activities[activityIndex].quantity : null ) : null }
+                    value={ this.state.formData.activities[activityIndex] ? ( ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ) && this.state.formData.activities[activityIndex].quantity ? this.state.formData.activities[activityIndex].quantity : null ) : null }
                     placeholder={ activity.measuring_unit }
                     disabled={ this.state.isDisable || !this.state.formData.activities[activityIndex] }
                     onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
@@ -286,7 +302,7 @@ class PlantationReport extends Component {
                   style={styles.textInput}
                   type="number"
                   name={ 'hours' }
-                  value={ this.state.formData.activities ? ( this.state.formData.activities[activityIndex] ? ( this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null ) : null }
+                  value={ this.state.formData.activities ? ( this.state.formData.activities[activityIndex] ? ( ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ) && this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null ) : null }
                   placeholder="Horas" disabled={this.state.isDisable || !this.state.formData.activities[activityIndex] }
                   onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
                   required={ this.state.formData.activities[activityIndex] }
@@ -472,12 +488,12 @@ class PlantationReport extends Component {
     switch ( plantationReportType ) {
       case 1:
         headerTitle = 'ESTABLECIMIENTO';
-        activities = establishmentDefaultActivities;
+        activities = establishmentDefaultActivities ? establishmentDefaultActivities : activities ;
         break;
 
       case 2:
         headerTitle = 'MANTENIMIENTO';
-        activities = maintenanceDefaultActivities;
+        activities = maintenanceDefaultActivities ? maintenanceDefaultActivities : activities ;
         break;
 
       default:

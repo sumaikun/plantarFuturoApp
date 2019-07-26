@@ -29,6 +29,8 @@ class SSTForm extends Component {
     this.state = {
       isDisable:false ,
       formData:this.props.sst,
+      assistants:this.props.listSSTAssistants,
+      visitors:this.props.listSSTVisitors,
       selectSearch:{}
     };
   }
@@ -49,11 +51,27 @@ class SSTForm extends Component {
     }
     if (event.target.value[0] == "=") event.target.value = event.target.value.substr(1)
   }
+
   submitData(e){
     e.preventDefault();
     let {formData} = this.state //
-    ,  {project_id }  = this.props
-    , data = {...formData, project_id}
+    ,  {project_id, sst}  = this.props
+    , data = {
+      goal: formData.goal,
+      location: formData.location,
+      notes: formData.notes,
+      progress_img1: null,
+      progress_img2: null,
+      progress_img3: null,
+      progress_img4: null,
+      project_id: project_id,
+      report_date:`${formData.date} ${formData.hour}` ,
+      responsible: formData.responsible,
+      assistants: [],
+      visitors:[]
+    }
+    //console.log(data);
+    if (sst.id) return  this.props.handleChangeUpdate(sst.id, data) //console.log('update');
     this.props.handleChangeCreate(data);
   }
   enableForm(){
@@ -61,6 +79,7 @@ class SSTForm extends Component {
   }
   render() {
     const { isFetching } = this.props.appState;
+
     if (isFetching) {
       return <div style={{backgroundColor:"white",height:"100%"}}>
         <Loading/>
@@ -90,14 +109,14 @@ class SSTForm extends Component {
             <Col width="54%">
               <Card style={Styles.cardInput}>
                   <label>Lugar:</label>
-                <Input type="text" name="place" onChange={this.handleChangeInput.bind(this)} value={this.state.formData.location} disabled={this.state.isDisable}/>
+                  <Input style={Styles.textInput} type="text" name="location" value={this.state.formData.location} onChange={this.handleChangeInput.bind(this)} disabled={this.state.isDisable} />
               </Card>
             </Col>
           </Row>
           <Row>
             <Col width="99%">
               <Card style={{...Styles.cardInput, height:"auto"}}>
-                <Input onChange={this.handleChangeInput.bind(this)} name="goal" style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.goal}  placeholder="Objetivo" disabled={this.state.isDisable} />
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="goal" value={this.state.formData.goal} onChange={this.handleChangeInput.bind(this)} placeholder="objetivo" ></textarea>
               </Card>
             </Col>
           </Row>
@@ -146,7 +165,7 @@ class SSTForm extends Component {
             <Col width="99%">
               <Card style={{...Styles.cardInput, height:"auto"}}>
 
-                <textarea onChange={this.handleChangeInput} style={{width:"100%",border:"0",height:"80px"}} name="objetive" value={this.state.formData.notes}  placeholder="Comentarios" disabled={this.state.isDisable} ></textarea>
+                <textarea onChange={this.handleChangeInput}style={{width:"100%",border:"0",height:"80px"}} name="notes" value={this.state.formData.notes} onChange={this.handleChangeInput.bind(this)} placeholder="Comentarios" ></textarea>
 
               </Card>
             </Col>
@@ -282,6 +301,8 @@ class SSTForm extends Component {
 const mapStateToProps = state => {
   return {
     sst:  state.appState.sstData,
+    listSSTVisitors: state.appState.listSSTVisitors,
+    listSSTAssistants: state.appState.listSSTAssistants,
     appState: state.appState,
     project_id: state.appState.sstData.project_id
   };
@@ -291,7 +312,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     goToAssistantList: ()=> {dispatch(goToAssistantList())},
     handleChangeCreate: (data)=>{dispatch(createReportSST(data))},
-    handleChangeUpdate: (data)=>{dispatch(updateReportSST(data))},
+    handleChangeUpdate: (id, data)=>{dispatch(updateReportSST(id, data))},
     loadListAssistants: (idSST)=> {dispatch(getSSTAssistants(idSST))},
     loadListVisitors: (idSST)=> {dispatch(getSSTVisitors(idSST))},
   }

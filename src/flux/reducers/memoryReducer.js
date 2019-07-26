@@ -252,7 +252,7 @@ const memoryReducer = (state = initialState, action) => {
 
       return state;
 
-    case UPDATE_SERVER_FOREST_UNIT_PHASE2:
+    case UPDATE_OFFLINE_FOREST_UNIT_PHASE2:
 
       state = updateFromState(state,'offLineForestUnitsPhase2',action);
 

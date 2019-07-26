@@ -24,6 +24,6 @@ export * from "./Activity/ActivityActions";
 export * from "./sst/"
 export * from "./visitor/"
 export * from "./user/"
-
+export * from './ResourceMain'
 //memoryActions
 export * from "./memoryActions";

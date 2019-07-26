@@ -141,7 +141,9 @@ class ForestalUnitList extends Component {
         <div  style={{display:"flex",justifyContent:"center"}} >
           <div style={{width: '95%'}}>
             <List renderHeader={this.renderHeader}>
-              {forestalUnits.filter(f => f.created_at.split(' ')[0].includes(searchDate)).filter(e => e.code.includes(searchName)).map((unit, i) => {
+              {forestalUnits.filter(f => {
+                return f.created_at? f.created_at.split(' ')[0].includes(searchDate): null; 
+              }).filter(e => e.code.includes(searchName)).map((unit, i) => {
                 switch(currentPhase)
                 {
                   case 1:

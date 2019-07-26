@@ -159,7 +159,7 @@ class ProjectManagement extends Component {
           <CardButton
             imgIcon = {civil}
             title="Ingeniería Civíl"
-            subtitle="Total proyectos"
+            subtitle="Total Reportes"
             infoContainer="Ultima actualizacion 13/05/2019 9:25 am"
             />
         </div>

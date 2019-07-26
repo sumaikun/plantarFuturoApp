@@ -2,8 +2,6 @@ import { Request } from '../../../helpers/request'
 import { fetching , notFetching, setSSTVisitors} from "../appActions";
 import { GET_VISITOR_URL } from "../../types";
 import Ons from 'onsenui';
-import moment from 'moment';
-
 
 /// Cargar los visitantes de SST
 export function getSSTVisitors  (id, successCallBack  ,errorCallBack)  {

@@ -22,7 +22,7 @@ const fetchLoginOnline = (dispatch ,data) => {
   let SuccessCallBack = (response) => {
     dispatch(notFetching());
     dispatch(setUser(response.data));
-    dispatch(getProjectByUser(response.data.id));
+    dispatch(getProjectByUser(response.data));
     dispatch( getPlantationReports() );             //  Esta funcion trae los reportes de plantacion de todos los pryectos de plantacion
     dispatch(goToMain());
   }
