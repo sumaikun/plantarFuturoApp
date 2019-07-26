@@ -26,12 +26,13 @@ import RiskReport from '../../pages/RiskManagement/RiskReport'
 //Inventory Management
 import SSTForm from '../../pages/SST/SSTForm'
 import SSTList from '../../pages/SST/index'
-import AssistanList from '../../pages/SST/AsistantList'
+import AssistanList from '../../pages/SST/assitant/'
 import CivilMain from '../../pages/main/CivilMain'
 import inventoryList from '../../pages/InventoryManagement/InventoryUnitList'
 import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
-import AssistanForm from '../../pages/SST/AssistantForm'
+import AssistanForm from '../../pages/SST/visit/AssistantForm'
+import VisitanList from '../../pages/SST/visit/'
 
 //  Plantation
 import Plantation from '../../pages/Plantation/Plantation';
@@ -65,6 +66,7 @@ import { GO_TO_LOGIN,
    GO_TO_RISK_OVERVIEW,
    GO_TO_MACHINERY_LIST,
    GO_TO_ASSISTANT_LIST,
+   GO_TO_VISITANT_LIST,
    GO_TO_SST_LIST,
    GO_TO_FUEL_FORM,
    GO_TO_SST_FORM,
@@ -166,6 +168,15 @@ const navigationReducer= (state = initialState, action) => {
       }
       if(currentPage.key !=GO_TO_ASSISTANT_LIST){
         state.navigator.pushPage({ component: AssistanList , key:GO_TO_ASSISTANT_LIST  });
+      }
+      return state;
+    case GO_TO_VISITANT_LIST:
+      state = {
+        ...state,
+        currentPagekey:GO_TO_VISITANT_LIST
+      }
+      if(currentPage.key !=GO_TO_VISITANT_LIST){
+        state.navigator.pushPage({ component: VisitanList , key:GO_TO_VISITANT_LIST  });
       }
       return state;
     case GO_TO_ASSISTANT_FORM:

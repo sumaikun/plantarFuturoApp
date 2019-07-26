@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //sources
 import inventory from "../../img/checkList.png";
 import fuel from "../../img/fuel.png";
+import sst from "../../img/SST.png";
 import "../../css/accordion.css";
 import "../../css/Modal.css";
 
@@ -68,6 +69,7 @@ class ResourceMain extends Component {
         <div style={{height:"10px"}} ></div>
         <div onClick={()=>{this.props.goToSSTList()}}>
           <CardButton
+            imgIcon = {sst}
             title="Informe SST"
             />
           </div>
@@ -80,7 +82,7 @@ class ResourceMain extends Component {
     const { isFetching } = this.props;
     console.log(this.props);
     return (
-      <AppPage  title={["CONTROL DE ", <strong>RECURSOS</strong>]}>
+      <AppPage  title={["Formulario de ", <strong>Asistentes</strong>]} backButton={true} backButtonCallBack={()=>{ }}>
 
           {
             isFetching ?

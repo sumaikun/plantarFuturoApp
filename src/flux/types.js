@@ -25,8 +25,7 @@ export const GO_TO_CIVIL_MANAGEMENT = "GO_TO_CIVIL_MANAGEMENT";
 export const GO_TO_SST_LIST = 'GO_TO_SST_LIST';
 export const GO_TO_SST_FORM = "GO_TO_SST_FORM";
 export const GO_TO_ASSISTANT_LIST = "GO_TO_ASSISTANT_LIST";
-
-
+export const GO_TO_VISITANT_LIST = "GO_TO_VISITANT_LIST";
 
 //general app states
 export const FETCH = "FETCH";

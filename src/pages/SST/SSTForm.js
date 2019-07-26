@@ -19,7 +19,7 @@ import AppPage from '../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
-import { goToAssistantList, createReportSST,updateReportSST, getSSTAssistants, getSSTVisitors } from '../../flux/actions';
+import { goToAssistantList, goToVisitantList, createReportSST,updateReportSST, getSSTAssistants, getSSTVisitors } from '../../flux/actions';
 //helper
 
 
@@ -139,7 +139,6 @@ class SSTForm extends Component {
 
           </Row>
           <Row>
-
             <Card width="99%" style={{width:"99%",
                 borderLeft: "yellow",
                 borderStyle: "solid",
@@ -158,7 +157,24 @@ class SSTForm extends Component {
                 </div>
               </div>
             </Card>
-
+            <Card width="99%" style={{width:"99%",
+                borderLeft: "yellow",
+                borderStyle: "solid",
+                borderWidth: "0px 0px 0px 10px"}}>
+              <div style={{...Styles.buttonContainer, "background-color":'white'}}>
+                <div className="margin" style={Styles.imageIcon}>
+                    <i style={{color:"#30bfce"}} className="fas fa-user font Awesome"></i>
+                </div>
+                <div style={{position:"absolute", marginLeft:"30%"}}  onClick={()=>{this.props.goToVisitantList()}}>
+                  <span style={{color:"gray"}}>Listado de visitantes</span>
+                </div>
+                <div>
+                  <button className="nextButton" style={{marginLeft:"80%"}} >
+                    <i className="fas fa-arrow-right font Awesome"></i>
+                  </button>
+                </div>
+              </div>
+            </Card>
           </Row>
 
           <Row>
@@ -189,18 +205,18 @@ class SSTForm extends Component {
               <br/>
               <Card style={Styles.greenCard} >
                 <div>
-                  <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
+                  <img src={this.state.formData.progress_img1 ? this.state.formData.progress_img1 : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.general_image ?  null :
+                {this.state.formData.progress_img1 ?  null :
                   <Row>
                     <Button style={{...Styles.buttonCard, fontSize:"13px"}}
-                      onClick={()=>{this.saveImage('general_image')}}
+                      onClick={()=>{this.saveImage('progress_img1')}}
                     >Tomar foto</Button>
                     <label className="fileContainer" style={{ fontSize: "12px",
                       color: "white"
                     }}>
                       Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                      <input  type="file" onChange={(event)=>{this.fileUpload("progress_img1",event)}}
                          />
                     </label>
                   </Row>
@@ -213,19 +229,19 @@ class SSTForm extends Component {
               <br/>
               <Card style={Styles.greenCard} >
                 <div>
-                  <img src={this.state.formData.id_image ? this.state.formData.id_image : placeholderImage } style={{width:"100%"}} />
+                  <img src={this.state.formData.progress_img2 ? this.state.formData.progress_img2 : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.id_image ?
+                {this.state.formData.progress_img2 ?
                   null:
                   <Row>
                     <Button style={{...Styles.buttonCard, fontSize:"13px"}}
-                      onClick={()=>{this.saveImage('id_image')}}
+                      onClick={()=>{this.saveImage('progress_img2')}}
                     >Tomar foto</Button>
                     <label className="fileContainer" style={{ fontSize: "12px",
                       color: "white"
                     }}>
                       Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}
+                      <input  type="file" onChange={(event)=>{this.fileUpload("progress_img2",event)}}
                          />
                     </label>
                   </Row>
@@ -241,18 +257,18 @@ class SSTForm extends Component {
               <br/>
               <Card style={Styles.greenCard} >
                 <div>
-                  <img src={this.state.formData.general_image ? this.state.formData.general_image : placeholderImage } style={{width:"100%"}} />
+                  <img src={this.state.formData.progress_img3 ? this.state.formData.progress_img3 : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.general_image ?  null :
+                {this.state.formData.progress_img3 ?  null :
                   <Row>
                     <Button style={{...Styles.buttonCard, fontSize:"13px"}}
-                      onClick={()=>{this.saveImage('general_image')}}
+                      onClick={()=>{this.saveImage('progress_img3')}}
                     >Tomar foto</Button>
                     <label className="fileContainer" style={{ fontSize: "12px",
                       color: "white"
                     }}>
                       Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                      <input  type="file" onChange={(event)=>{this.fileUpload("progress_img3",event)}}
                          />
                     </label>
                   </Row>
@@ -265,19 +281,19 @@ class SSTForm extends Component {
               <br/>
               <Card style={Styles.greenCard} >
                 <div>
-                  <img src={this.state.formData.id_image ? this.state.formData.id_image : placeholderImage } style={{width:"100%"}} />
+                  <img src={this.state.formData.progress_img4 ? this.state.formData.progress_img4 : placeholderImage } style={{width:"100%"}} />
                 </div>
-                {this.state.formData.id_image ?
+                {this.state.formData.progress_img4 ?
                   null:
                   <Row>
                     <Button style={{...Styles.buttonCard, fontSize:"13px"}}
-                      onClick={()=>{this.saveImage('id_image')}}
+                      onClick={()=>{this.saveImage('progress_img4')}}
                     >Tomar foto</Button>
                     <label className="fileContainer" style={{ fontSize: "12px",
                       color: "white"
                     }}>
                       Subir archivo
-                      <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}
+                      <input  type="file" onChange={(event)=>{this.fileUpload("progress_img4",event)}}
                          />
                     </label>
                   </Row>
@@ -311,6 +327,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     goToAssistantList: ()=> {dispatch(goToAssistantList())},
+    goToVisitantList: ()=> {dispatch(goToVisitantList())},
     handleChangeCreate: (data)=>{dispatch(createReportSST(data))},
     handleChangeUpdate: (id, data)=>{dispatch(updateReportSST(id, data))},
     loadListAssistants: (idSST)=> {dispatch(getSSTAssistants(idSST))},

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 //sources
-import "../../css/simpleForm.css";
+import "../../../css/simpleForm.css";
 
-import Styles from  './styles'
+import Styles from  '../styles'
 
 //Onsen Ui
 import {  Col, Row, Card, Button, Input, Select } from 'react-onsenui';
@@ -10,15 +10,15 @@ import {  Col, Row, Card, Button, Input, Select } from 'react-onsenui';
 //Libraries
 
 //components
-import Loading from "../../components/Loading";
+import Loading from "../../../components/Loading";
 
 //container
-import AppPage from '../../containers/AppPage';
+import AppPage from '../../../containers/AppPage';
 
 //flux
 import { connect } from 'react-redux';
 
-import {createVisitor, updateVisitor} from '../../flux/actions';
+import {createVisitor, updateVisitor} from '../../../flux/actions';
 //helper
 
 
