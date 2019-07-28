@@ -31,7 +31,7 @@ import CivilMain from '../../pages/main/CivilMain'
 import inventoryList from '../../pages/InventoryManagement/InventoryUnitList'
 import InventoryManagement from '../../pages/InventoryManagement/InventoryManagement'
 import MachineryForm from '../../pages/InventoryManagement/MachineryForm'
-import AssistanForm from '../../pages/SST/visit/AssistantForm'
+import AssistanForm from '../../pages/SST/visit/visitantForm'
 import VisitanList from '../../pages/SST/visit/'
 
 //  Plantation

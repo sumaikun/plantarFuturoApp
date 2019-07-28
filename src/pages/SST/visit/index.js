@@ -83,9 +83,24 @@ class visitantList extends Component {
     super(props);
     this.state={
       modalVisitant:false,
-      formData:[]
+      formData:[],
+      modalData:[]
     }
     this.renderHeader = this.renderHeader.bind(this);
+  }
+  add(){
+    let { modalData, formData } = this.state;
+    let visitors = [
+      ...modalData,
+      ...formData,
+      {
+        //visitor_id: visitor_id,
+        notes :  formData.notes
+      }
+    ]
+    this.setState({ modalData : visitors });
+    console.log(modalData);
+    console.log(visitors);
   }
   componentDidMount(){
     this.props.getList(this.props.project_id);
@@ -229,7 +244,7 @@ class visitantList extends Component {
         </Row>
         <Row>
           <Col  width="50%" style={ styles.modalCell }>
-            <Button onClick={()=>{this.onCreateAssiten()}} modifier="large--cta">
+            <Button onClick={this.add.bind(this)} modifier="large--cta">
                 Registrar
             </Button>
           </Col>

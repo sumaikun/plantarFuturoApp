@@ -86,13 +86,32 @@ class AsistantList extends Component {
     this.state={
       modalAssitant:false,
       modalAbsence:false,
-      formData:[]
+      formData:[],
+      modalData:[]
     }
     this.renderHeader = this.renderHeader.bind(this);
   }
   componentDidMount(){
     this.props.getList(this.props.project_id);
     this.props.getListUser(this.props.project_id)
+  }
+  add(){
+    let { modalData, formData } = this.state;
+    let visitors = [
+      ...modalData,
+      ...formData,
+      {
+        //assistance : assistance,
+        checkIn :  formData.checkIn,
+        checkout :  formData.checkout,
+        reason :  formData.reason,
+        notes :  formData.notes,
+        contractor_id :  formData.contractor_id,
+      }
+    ]
+    this.setState({ modalData : visitors });
+    console.log(modalData);
+    console.log(visitors);
   }
   handleChangeInput(event){
 
@@ -120,7 +139,7 @@ class AsistantList extends Component {
   opCloseAbsence(){
     this.setState({modalAbsence: false})
   }
-
+  
   onCreateAssiten(){
     console.log(this.state.formData);
     this.setState({modalAssitant: true})
@@ -239,7 +258,7 @@ class AsistantList extends Component {
             <span>Entrada: </span>
           </Col>
           <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Input name="checkIn"  onChange={this.handleChangeInput.bind(this)} />
+            <Input type="hour" name="checkIn"  onChange={this.handleChangeInput.bind(this)} />
           </Col>
         </Row>
 
@@ -248,7 +267,7 @@ class AsistantList extends Component {
             <span>Salida</span>
           </Col>
           <Col  width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Input name="checkout" onChange={this.handleChangeInput.bind(this)}  />
+            <Input name="hour" onChange={this.handleChangeInput.bind(this)}  />
           </Col>
         </Row>
         <Row>
