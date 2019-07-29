@@ -98,7 +98,7 @@ class visitantList extends Component {
         notes :  formData.notes
       }
     ]
-    this.setState({ modalData : visitors });
+    this.setState({ modalData : visitors, modalVisitant: false });
     console.log(modalData);
     console.log(visitors);
   }

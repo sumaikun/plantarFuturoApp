@@ -97,7 +97,7 @@ class AsistantList extends Component {
   }
   add(){
     let { modalData, formData } = this.state;
-    let visitors = [
+    let assistants = [
       ...modalData,
       ...formData,
       {
@@ -109,9 +109,9 @@ class AsistantList extends Component {
         contractor_id :  formData.contractor_id,
       }
     ]
-    this.setState({ modalData : visitors });
+    this.setState({ modalData : assistants,modalAssitant: false, modalAbsence: false });
     console.log(modalData);
-    console.log(visitors);
+    console.log(assistants);
   }
   handleChangeInput(event){
 
@@ -258,7 +258,7 @@ class AsistantList extends Component {
             <span>Entrada: </span>
           </Col>
           <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Input type="hour" name="checkIn"  onChange={this.handleChangeInput.bind(this)} />
+            <Input type="time" name="checkIn"  onChange={this.handleChangeInput.bind(this)} />
           </Col>
         </Row>
 
@@ -267,12 +267,12 @@ class AsistantList extends Component {
             <span>Salida</span>
           </Col>
           <Col  width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Input name="hour" onChange={this.handleChangeInput.bind(this)}  />
+            <Input type="time" name="checkout" onChange={this.handleChangeInput.bind(this)}  />
           </Col>
         </Row>
         <Row>
           <Col  width="50%" style={ styles.modalCell }>
-            <Button onClick={()=>{this.onCreateAssiten()}} modifier="large--cta">
+            <Button onClick={()=>{this.add()}} modifier="large--cta">
                 REGISTRAR
             </Button>
           </Col>
@@ -296,7 +296,7 @@ class AsistantList extends Component {
             <span>Incapacidad</span>
           </Col>
           <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Radio name="excuse"  />
+            <Radio value="1" name="reason"  onChange={this.handleChangeInput.bind(this)} />
           </Col>
         </Row>
 
@@ -305,7 +305,7 @@ class AsistantList extends Component {
             <span>Permiso</span>
           </Col>
           <Col width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Radio name="excuse"  />
+            <Radio value="2" name="reason"  onChange={this.handleChangeInput.bind(this)} />
           </Col>
         </Row>
 
@@ -314,11 +314,11 @@ class AsistantList extends Component {
             <span>Injustificado</span>
           </Col>
           <Col  width="25%" style={{ ...styles.modalCell , ...styles.modalColumn }} >
-            <Radio name="excuse"  />
+            <Radio value="3" name="reason"  onChange={this.handleChangeInput.bind(this)}  />
           </Col>
         </Row>
         <Row>
-          <Col width="50%" style={ styles.modalCell }>
+          <Col width="50%" onClick={()=>{this.add()}} style={ styles.modalCell }>
             <Button modifier="large--cta">
               REGISTRAR
             </Button>

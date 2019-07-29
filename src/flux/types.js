@@ -5,7 +5,7 @@ const LOCAL_MODE = true;
 //ajax
 export const SUCCESS = "SUCCESS";
 export const FAILURE = "FAILURE";
-export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test' : 'https://plantarfuturo.com/test';
+export const BASE_URL = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'https://plantarfuturo.com/test' : 'https://plantarfuturo.com/ws';
 //USER
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
