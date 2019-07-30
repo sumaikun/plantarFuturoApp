@@ -36,7 +36,7 @@ class Rainfall extends Component {
     this.enableForm = this.enableForm.bind(this);
     this.checkRiskParamenter = this.checkRiskParamenter.bind(this);
     this.setRiskLevel = this.setRiskLevel.bind(this);
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
@@ -54,7 +54,7 @@ class Rainfall extends Component {
           finish:moment(new Date(this.props.appState.currentRainfall.finish)).utc().format().slice(0, -4)
         }
       },()=>{
-        //console.log(this.state);
+        ////console.log(this.state);
       });
     }
   }
@@ -62,7 +62,7 @@ class Rainfall extends Component {
   enableForm(){
 
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      //console.log(this.state);
+      ////console.log(this.state);
     });
 
   }
@@ -71,8 +71,8 @@ class Rainfall extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      //console.log(event.target.name);
-      //console.log(event.target.value);
+      ////console.log(event.target.name);
+      ////console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -81,7 +81,7 @@ class Rainfall extends Component {
            }
 
          },() => {
-           //console.log(this.state);
+           ////console.log(this.state);
          }
        );
     }
@@ -104,7 +104,7 @@ class Rainfall extends Component {
       let data = this.state.formData;
       data.user_id = this.props.appState.user.id;
       data.report_date = data.date+" "+data.hour;
-      //console.log(data);
+      ////console.log(data);
       this.props.updateRainfall(this.state.formData.id,data);
     }
     else
@@ -113,7 +113,7 @@ class Rainfall extends Component {
       data.user_id = this.props.appState.user.id;
       data.project_id = this.props.appState.selectedProject.id;
       data.report_date = data.date+" "+data.hour;
-      //console.log(data);
+      ////console.log(data);
       this.props.createRainfall(data);
 
     }
@@ -131,7 +131,7 @@ class Rainfall extends Component {
           }
 
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -144,7 +144,7 @@ class Rainfall extends Component {
           }
 
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -157,7 +157,7 @@ class Rainfall extends Component {
           }
 
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -170,7 +170,7 @@ class Rainfall extends Component {
           }
 
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -183,7 +183,7 @@ class Rainfall extends Component {
           }
 
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }

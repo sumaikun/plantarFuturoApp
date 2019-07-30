@@ -15,7 +15,7 @@ export const createHillsideCollapse = (data,successCallBack  ,errorCallBack) => 
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineHillSideColl(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Recorrido de ladera guardado en memoria!"});
@@ -53,17 +53,17 @@ export const updateHillsideCollapse = (id,data,successCallBack  ,errorCallBack) 
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
 
       if(!data.ToSynchro)
       {
-        console.log("editar del servidor");
+        //console.log("editar del servidor");
         dispatch(updateServerHillSideColl(data));
         dispatch(goBack());
       }
       else
       {
-        console.log("editar offline");
+        //console.log("editar offline");
         dispatch(updateOfflineHillSideColl(data));
         dispatch(goBack());
       }

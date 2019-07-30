@@ -17,7 +17,7 @@ export const createTunnelDeformation = (data,successCallBack  ,errorCallBack) =>
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineTunnelDeformation(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Deformacion de tunel guardada en memoria!"});
@@ -55,17 +55,17 @@ export const updateTunnelDeformation = (id,data,successCallBack  ,errorCallBack)
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
 
       if(!data.ToSynchro)
       {
-        console.log("editar del servidor");
+        //console.log("editar del servidor");
         dispatch(updateServerTunnelDeformation(data));
         dispatch(goBack());
       }
       else
       {
-        console.log("editar offline");
+        //console.log("editar offline");
         dispatch(updateOfflineTunnelDeformation(data));
         dispatch(goBack());
       }

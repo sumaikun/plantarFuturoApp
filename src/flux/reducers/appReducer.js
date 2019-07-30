@@ -157,10 +157,10 @@ try
   }
 }
 catch(err){
-  //console.log("error getting data");
+  ////console.log("error getting data");
 }
 
-//console.log(storedData);
+////console.log(storedData);
 
 const initialState =  storedData ? storedData.appState : defaultValues;
 
@@ -183,13 +183,13 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentPhase:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
     case SET_FUNCTIONAL_UNITS:
 
       let functionalArray = state.functionalUnits;
 
-      ////console.log(functionalArray);
+      //////console.log(functionalArray);
       let result ;
 
       action.payload.forEach(load => {
@@ -210,7 +210,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         functionalUnits:functionalArray
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
     case RESET_FUNCTIONAL_UNITS:
       state={
@@ -222,7 +222,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        ////console.log(action.payload);
+        //////console.log(action.payload);
         let fid =  action.payload[0].functional_unit_id;
 
         state={
@@ -232,7 +232,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        ////console.log(state);
+        //////console.log(state);
       }
 
 
@@ -242,7 +242,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         forestalUnitE:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
     return state;
     case FETCH:
       state={
@@ -275,7 +275,7 @@ const appReducer = (state = initialState, action) => {
       }
       return state;
     case MENU_CLOSE:
-      ////console.log("exec here");
+      //////console.log("exec here");
       state={
         ...state,
         isOpen:false
@@ -286,34 +286,34 @@ const appReducer = (state = initialState, action) => {
         ...state,
         forestalUnitE:action.payload
       }
-      console.log(state);
+      //console.log(state);
     return state;
     case SET_INVENTORY:
       state={
         ...state,
         forestalUnitE:action.payload
       }
-      console.log(state);
+      //console.log(state);
     return state;
     case SET_FUNCTIONAL_UNIT:
       state={
         ...state,
         currentFunctionalUnit:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
     case SELECT_PROJECT:
       state={
         ...state,
         selectedProject:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
     case SET_TUNNEL_DEFORMATION_LIST:
 
       if(action.payload.length > 0)
       {
-        ////console.log(action.payload);
+        //////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -323,14 +323,14 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        ////console.log(state);
+        //////console.log(state);
         return state;
       }
     case HILL_SIDE_MOVEMENT_LIST:
 
       if(action.payload.length > 0)
       {
-        ////console.log(action.payload);
+        //////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -340,7 +340,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        ////console.log(state);
+        //////console.log(state);
         return state;
       }
 
@@ -349,7 +349,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        ////console.log(action.payload);
+        //////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -359,7 +359,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        ////console.log(state);
+        //////console.log(state);
         return state;
       }
 
@@ -367,7 +367,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        ////console.log(action.payload);
+        //////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -377,7 +377,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        ////console.log(state);
+        //////console.log(state);
         return state;
       }
 
@@ -385,7 +385,7 @@ const appReducer = (state = initialState, action) => {
 
       if(action.payload.length > 0)
       {
-        ////console.log(action.payload);
+        //////console.log(action.payload);
         let fid =  action.payload[0].project_id;
 
         state={
@@ -395,7 +395,7 @@ const appReducer = (state = initialState, action) => {
             [fid]:action.payload
           }
         }
-        ////console.log(state);
+        //////console.log(state);
         return state;
       }
 
@@ -405,7 +405,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentTunnelDeformation:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
 
     case SET_HILL_SIDE_MOVEMENT:
@@ -414,7 +414,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentHillsideMovement:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
 
     case SET_RAIN_FALL:
@@ -423,7 +423,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentRainfall:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
 
     case SET_HILL_SIDE_COLLAPSE:
@@ -432,7 +432,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentHillsideCollapse:action.payload
       }
-      ////console.log(state);
+      //////console.log(state);
       return state;
 
     case SET_RIVER_COLLAPSE:
@@ -441,7 +441,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentRiverCollapse:action.payload
       }
-      //console.log(state);
+      ////console.log(state);
       return state;
 
     case SET_CURRENT_RISK_PHASE:
@@ -450,7 +450,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         currentRiskPhase:action.payload
       }
-      //console.log(state);
+      ////console.log(state);
       return state;
 
     case SET_RISK_INDICATORS:
@@ -459,7 +459,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         riskIndicators:action.payload
       }
-      //console.log(state);
+      ////console.log(state);
       return state;
     // State SST
     case SET_SST:
@@ -512,7 +512,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         plantationReportType: action.payload
       }
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_ESTABLISHMENT_DEFAULT_ACTIVITIES:
@@ -520,7 +520,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         establishmentDefaultActivities: action.payload
       };
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_MAINTENANCE_DEFAULT_ACTIVITIES:
@@ -528,7 +528,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         maintenanceDefaultActivities: action.payload
       };
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_PLANTATION_REPORTS:
@@ -536,7 +536,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         plantationReports: action.payload
       }
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_PLANTATION_REPORT:
@@ -544,7 +544,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         plantationReportToEdit: action.payload
       }
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SELECT_PLANTATION_PROJECT:
@@ -552,7 +552,7 @@ const appReducer = (state = initialState, action) => {
         ...state,
         plantationProject: action.payload
       };
-      console.log(state);
+      //console.log(state);
       return state;
 
     case SET_NS_APP_STATE:

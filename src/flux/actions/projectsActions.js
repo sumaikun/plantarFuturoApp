@@ -18,7 +18,7 @@ export const fetchProjects = (id) => {
 
       if(!navigator.onLine)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
         dispatch(notFetching());
         return;
       }
@@ -51,7 +51,7 @@ export const getProjectByUser = (user) => {
       dispatch( getPlantationReports() );
       if(!navigator.onLine)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
         dispatch(notFetching());
         return;
       }
@@ -70,7 +70,7 @@ export const getProjectByUser = (user) => {
         dispatch(setProjects(response.data));
 
         response.data.forEach( project => {
-          console.log(project);
+          //console.log(project);
 
           let SuccessCallBack = (response) => {
 

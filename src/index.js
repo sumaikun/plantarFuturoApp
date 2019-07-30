@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+
+import { VERSION  } from  './flux/types';
+
 //assets
 
 import './index.css';
@@ -47,18 +50,87 @@ const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
 
-//console.log(storage);
+////console.log(storage);
 
 const mobileAppMode = true;
 
+var saveNowInStorage = true;
+
 store.subscribe( function () {
-  //console.log("listener activated");
-  //console.log(store.getState());
-  saveState(store.getState())
+  ////console.log("listener activated");
+  ////console.log(store.getState());
+
+    if(saveNowInStorage)
+    {
+      saveNowInStorage = false;
+      setTimeout(function(){
+        saveNowInStorage = true;
+        console.log("now save in storage");
+        saveState(store.getState());
+
+        /*window.NativeStorage.getItem("state",(state)=>{
+        },(error)=>{
+          console.log("soy un error al verificar el estado");
+          console.log(error);
+        });*/
+
+      }, 22000);
+
+    }else{
+      //console.log("save prevented");
+    }
+
+
 });
+
+
 
 const appInit = () =>
 {
+
+  if(window.cordova)
+  {
+    window.NativeStorage.getItem("VERSION",(version)=>{
+
+        try{
+          console.log("soy la version "+version);
+          if(version != VERSION)
+          {
+            console.log("Vaciando memoría");
+            window.NativeStorage.clear(()=>{
+              console.log("Data cleared");
+            },(error)=>{
+              console.log("error clearing data");
+              console.log(error);
+            });
+            window.NativeStorage.setItem("VERSION",VERSION, null, null);
+          }
+        }
+        catch(error){
+          console.log(error);
+        }
+
+    },(error)=>{
+
+      try{
+        console.log("soy un error de version");
+        console.log(error);
+        window.NativeStorage.clear(()=>{
+          console.log("Data cleared");
+        },(error)=>{
+          console.log("error clearing data");
+          console.log(error);
+        });
+        window.NativeStorage.setItem("VERSION",VERSION, null, null);
+      }
+      catch(error){
+        console.log(error);
+      }
+
+    });
+  }
+
+
   ReactDOM.render(
       <Provider store={store}>
         <ErrorBoundary>
@@ -75,7 +147,7 @@ if(mobileAppMode)
 }
 else
 {
-  console.log("app initialized as normal react project");
+  //console.log("app initialized as normal react project");
   appInit();
 }
 

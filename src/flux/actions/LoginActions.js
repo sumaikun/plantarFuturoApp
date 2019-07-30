@@ -13,7 +13,7 @@ import Ons from 'onsenui';
 import { getFromJsonString } from "../../helpers/objectMethods";
 
 const fetchLoginOnline = (dispatch ,data) => {
-  console.log(data);
+  //console.log(data);
 
   dispatch(fetching());
 
@@ -42,7 +42,7 @@ const fetchLoginOnline = (dispatch ,data) => {
 const fetchLoginOffline = (dispatch ,data) => {
 
     let memory =  getFromJsonString(localStorage.getItem('state'), "memory");
-    console.log(memory);
+    //console.log(memory);
 
     try{
       if(memory.userLogged.email ==  data.email &&  memory.userLogged.password == data.password)
@@ -55,7 +55,7 @@ const fetchLoginOffline = (dispatch ,data) => {
       Ons.notification.alert({title:"",message:"No puedes ingresar al sistema, no hay datos de usuarios guardados"});
     }
 
-    console.log("Soy una operacion offline");
+    //console.log("Soy una operacion offline");
 
 };
 

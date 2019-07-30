@@ -173,19 +173,19 @@ class ReportList extends Component {
   render() {
     let {  isFetching, plantationProject, plantationReports } = this.props.appState;
 
-    //console.log( plantationProject );
-    //console.log( plantationReports );
+    ////console.log( plantationProject );
+    ////console.log( plantationReports );
 
     let filteredPlantationReportsByProject = [];
 
     if ( plantationReports ) {
       filteredPlantationReportsByProject = plantationReports.filter( (pReport) => {
-        //console.log( plantationProject.id === parseInt( pReport.project_id ) );
+        ////console.log( plantationProject.id === parseInt( pReport.project_id ) );
         return ( plantationProject.id === parseInt( pReport.project_id ) );
       } );
     }
 
-    //console.log(exampleReports);
+    ////console.log(exampleReports);
 
     return (
       <AppPage title={["REPORTES"]} backButton={true} >

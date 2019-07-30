@@ -41,7 +41,7 @@ class SelectPlantationReportType extends Component {
   render() {
     const { plantationProject  } = this.props.appState;
 
-    console.log( plantationProject );
+    //console.log( plantationProject );
 
     return (
       <AppPage title={ [ <strong> { "REPORTE PLANTACION" } </strong> ] } backButton={true}>

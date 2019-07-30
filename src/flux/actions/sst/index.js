@@ -30,7 +30,7 @@ export function createReportSST(data, successCallBack  ,errorCallBack )  {
 
     /*if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
 
       data.created_at = new Date().toISOString().split('T')[0];
 
@@ -61,12 +61,12 @@ export function createReportSST(data, successCallBack  ,errorCallBack )  {
 
 // Actualizar reporte SST
 export function updateReportSST (id, data, successCallBack  ,errorCallBack ) {
-  console.log(id, data);
+  //console.log(id, data);
   return async dispatch => {
 
     /*if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
 
       data.created_at = new Date().toISOString().split('T')[0];
 
@@ -105,7 +105,7 @@ export function getSSTAssistants (id, successCallBack  ,errorCallBack)  {
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
         dispatch(setSSTAssistants(response.data));
-        console.log("hi sst assistants")
+        //console.log("hi sst assistants")
       }
 
       let ErrorCallBack = () => {
@@ -133,7 +133,7 @@ export function getSSTForm(data)  {
 }
 export function getSSTVisitorAssistants(assistants, visitor)  {
   let row = { ...assistants, ...visitor  }
-  console.log(row);
+  //console.log(row);
   return async dispatch => {
     dispatch(setSSTVisitorAssistants(row))
   }

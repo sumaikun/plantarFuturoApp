@@ -48,7 +48,7 @@ class AssistantForm extends Component {
   }
   submitData(e){
     e.preventDefault();
-    console.log(this.props.appState);
+    //console.log(this.props.appState);
     let {formData} = this.state
     ,  {project_id, visitor }  = this.props
     , data = {

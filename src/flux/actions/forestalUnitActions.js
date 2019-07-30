@@ -19,13 +19,13 @@ import { goBack } from "./navigationActions";
 export const getForestalUnits = (id) => {
   return async dispatch => {
 
-      //console.log(id);
+      ////console.log(id);
 
       dispatch(fetching());
 
       if(!navigator.onLine)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
         dispatch(notFetching());
         return;
       }
@@ -39,7 +39,7 @@ export const getForestalUnits = (id) => {
         dispatch(notFetching());
       }
 
-      console.log(String(GET_FORESTAL_UNITS_URL+id));
+      //console.log(String(GET_FORESTAL_UNITS_URL+id));
 
       Request.getRequest(
         GET_FORESTAL_UNITS_URL+id,
@@ -55,7 +55,7 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack ) =>
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
 
       data.created_at = new Date().toISOString().split('T')[0];
 
@@ -94,7 +94,7 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack ) =>
 export const updateForestUnitPhase1 = (id,data,successCallBack) => {
   return async dispatch => {
 
-      console.log(data);
+      //console.log(data);
 
       //Modifier string to int
        data.origin = data.origin === "1" || data.origin === 'Nativa'  ?  "1" :
@@ -120,17 +120,17 @@ export const updateForestUnitPhase1 = (id,data,successCallBack) => {
 
       if(!navigator.onLine || data.ToSynchro)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
 
         if(!data.ToSynchro)
         {
-          console.log("editar del servidor");
+          //console.log("editar del servidor");
           dispatch(updateServerForestUnitP1(data));
           dispatch(goBack());
         }
         else
         {
-          console.log("editar offline");
+          //console.log("editar offline");
           dispatch(updateOfflineForestUnitP1(data));
           dispatch(goBack());
         }
@@ -150,7 +150,7 @@ export const updateForestUnitPhase1 = (id,data,successCallBack) => {
       }
 
       let ErrorCallBack = (error) => {
-        console.log(error);
+        //console.log(error);
         Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido modificar la unidad forestal"});
         dispatch(notFetching());
       }
@@ -170,7 +170,7 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineForestUnitP2(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
@@ -204,7 +204,7 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
 export const updateForestUnitPhase2 = (id,data,successCallBack) => {
   return async dispatch => {
 
-      console.log(data);
+      //console.log(data);
 
       //Modifier string to int
        data.origin = data.origin === "1" || data.origin === 'Nativa'  ?  "1" :
@@ -229,7 +229,7 @@ export const updateForestUnitPhase2 = (id,data,successCallBack) => {
 
       if(!navigator.onLine || data.ToSynchro)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
 
         if(!data.ToSynchro)
         {
@@ -239,7 +239,7 @@ export const updateForestUnitPhase2 = (id,data,successCallBack) => {
         }
         else
         {
-          console.log("editar offline");
+          //console.log("editar offline");
           dispatch(updateOfflineForestUnitP2(data));
           dispatch(goBack());
         }
@@ -258,7 +258,7 @@ export const updateForestUnitPhase2 = (id,data,successCallBack) => {
       }
 
       let ErrorCallBack = (error) => {
-        console.log(error);
+        //console.log(error);
         Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido modificar la unidad forestal"});
         dispatch(notFetching());
       }
@@ -278,7 +278,7 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineForestUnitP3(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
@@ -312,7 +312,7 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
 export const updateForestUnitPhase3 = (id,data,successCallBack) => {
   return async dispatch => {
 
-      console.log(data);
+      //console.log(data);
 
       //Modifier string to int
        data.origin = data.origin === "1" || data.origin === 'Nativa'  ?  "1" :
@@ -337,17 +337,17 @@ export const updateForestUnitPhase3 = (id,data,successCallBack) => {
 
       if(!navigator.onLine || data.ToSynchro)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
 
         if(!data.ToSynchro)
         {
-          console.log("editar del servidor");
+          //console.log("editar del servidor");
           dispatch(updateServerForestUnitP3(data));
           dispatch(goBack());
         }
         else
         {
-          console.log("editar offline");
+          //console.log("editar offline");
           dispatch(updateOfflineForestUnitP3(data));
           dispatch(goBack());
         }
@@ -366,7 +366,7 @@ export const updateForestUnitPhase3 = (id,data,successCallBack) => {
       }
 
       let ErrorCallBack = (error) => {
-        console.log(error);
+        //console.log(error);
         Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido modificar la unidad forestal"});
         dispatch(notFetching());
       }

@@ -122,7 +122,7 @@ class AsistantList extends Component {
   }
 
   onCreateAssiten(){
-    console.log(this.state.formData);
+    //console.log(this.state.formData);
     this.setState({modalAssitant: true})
   }
   opCreateAbsence(){
@@ -130,7 +130,7 @@ class AsistantList extends Component {
   }
 
   onClickVisitorForm(memo) {
-    console.log(memo);
+    //console.log(memo);
     this.props.getSSTVisitor(memo, 'update')
     this.props.goToAssistantForm()
   }

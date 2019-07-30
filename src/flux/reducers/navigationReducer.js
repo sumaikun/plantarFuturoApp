@@ -116,7 +116,7 @@ const navigationReducer= (state = initialState, action) => {
         ...state,
         currentPagekey: GO_TO_LOGIN
       }
-      console.log(state);
+      //console.log(state);
       if(currentPage.key != GO_TO_LOGIN){
         state.navigator.resetPage({ component: Login , key: GO_TO_LOGIN  }, { animation: 'fade' });
       }
@@ -383,7 +383,7 @@ const navigationReducer= (state = initialState, action) => {
       if (currentPage.key != GO_TO_PLANTATION_REPORT) {
         state.navigator.pushPage( { component: PlantationReport, key: GO_TO_PLANTATION_REPORT } );
       }
-      console.log( state );
+      //console.log( state );
       return state;
 
     case GO_TO_REPORT_LIST:

@@ -78,7 +78,7 @@ class ResourceMain extends Component {
 
   render() {
     const { isFetching } = this.props;
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <AppPage  title={["CONTROL DE ", <strong>RECURSOS</strong>]}>
 

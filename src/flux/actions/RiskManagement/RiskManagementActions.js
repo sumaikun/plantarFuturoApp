@@ -69,7 +69,7 @@ export const getTunnelsDeformation = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }
@@ -106,7 +106,7 @@ export const getHillsidesMovement = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }
@@ -144,7 +144,7 @@ export const getRainfalls = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }
@@ -182,7 +182,7 @@ export const getHillsidesCollapse = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }
@@ -219,7 +219,7 @@ export const getRiversCollapse = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }
@@ -256,7 +256,7 @@ export const getRiskIndicators = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }

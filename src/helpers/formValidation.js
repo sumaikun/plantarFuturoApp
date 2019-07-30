@@ -10,7 +10,7 @@ export const formValidation = (inputs) =>{
       if(input.ref.value == "" || input.ref.value == null)
       {
           validation = false;
-          console.log(input.name);
+          //console.log(input.name);
           (i === inputs.length - 1) ? validationText += input.name+".":validationText += input.name+", ";
       }
 
@@ -37,13 +37,13 @@ export const Validation_400 = (array) => {
   let htmlMessage = "<ul>";
 
   array.forEach(message => {
-      console.log(message);
+      //console.log(message);
       htmlMessage += "<li>"+message+"</li>";
   });
 
   htmlMessage += "</ul>";
 
-  console.log(htmlMessage);
+  //console.log(htmlMessage);
 
   Ons.notification.alert({title:'¡Oops!',messageHTML:htmlMessage});
 }

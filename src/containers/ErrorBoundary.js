@@ -12,8 +12,8 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log(error);
-    console.log(errorInfo);
+    //console.log(error);
+    //console.log(errorInfo);
     // Catch errors in any components below and re-render with error message
     this.setState({
       error: error,

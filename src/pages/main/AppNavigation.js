@@ -31,75 +31,62 @@ class AppNavigation extends Component {
 
   componentDidMount(){
 
-    //console.log("Check if didmount can be found");
+    ////console.log("Check if didmount can be found");
 
     this.props.insertNavigator(this.navigator);
 
 
     if(window.cordova)
     {
-      //console.log("cordova version");
+
       let self = this;
 
-      /*window.NativeStorage.getItem("version",(version)=>{
 
-        if( version === null ||  version != VERSION )
-        {
-          window.NativeStorage.clear(()=>{
-            console.log("ns clear");
-            window.NativeStorage.setItem('version',VERSION,()=>{},error=>{
-              console.log("error setting version");
-            });
-          },error=>{
-            console.log("ns error on clear");
-          });
+      try
+      {
+        window.NativeStorage.getItem("state",(state)=>{
 
+          //state = JSON.parse(state);
 
-        }
-        else{
+          console.log("estado en el inicio de la app");
+          console.log(state);
 
-        }
-      });*/
-
-      window.NativeStorage.getItem("state",(state)=>{
-
-      console.log("ns Storage app orgin");
-
-        state = JSON.parse(state);
-
-        if(state.appState)
-        {
-          self.props.setAppStatefromNS(state.appState);
-        }
-
-        if(state.memory)
-        {
-          self.props.setMemoryStatefromNS(state.memory);
-        }
-
-        if(state.navigationIndex)
-        {
-          if(state.navigationIndex && state.navigationIndex != "GO_TO_LOGIN" )
+          if(state.appState)
           {
-            ////console.log(storedData.navigationIndex);
-            //this.props.runfromStorage(storedData.navigationIndex);
-            self.props.runfromStorage("GO_TO_MANAGEMENT");
+            self.props.setAppStatefromNS(state.appState);
           }
-        }
+
+          if(state.memory)
+          {
+            self.props.setMemoryStatefromNS(state.memory);
+          }
+
+          if(state.navigationIndex)
+          {
+            if(state.navigationIndex && state.navigationIndex != "GO_TO_LOGIN" )
+            {
+
+              self.props.runfromStorage("GO_TO_MANAGEMENT");
+            }
+          }
 
 
-      },(error)=>{
-        console.log("error ns"+error);
-      });
-
-
+        },(error)=>{
+          console.log("error iniciando el estado de la app");
+          console.log(error);
+        });
+      }
+      catch(error)
+      {
+        console.log(error);
+      }
 
     }
 
 
     if(!window.cordova){
 
-      console.log("not cordova version");
+      //console.log("not cordova version");
       //reload if new VERSION
       let version = localStorage.getItem('version');
 
@@ -110,12 +97,12 @@ class AppNavigation extends Component {
       }
 
       let storedData = JSON.parse(localStorage.getItem('state'));
-      //console.log(storedData);
+      ////console.log(storedData);
       if(storedData)
       {
         if(storedData.navigationIndex && storedData.navigationIndex != "GO_TO_LOGIN" )
         {
-          ////console.log(storedData.navigationIndex);
+          //////console.log(storedData.navigationIndex);
           //this.props.runfromStorage(storedData.navigationIndex);
           this.props.runfromStorage("GO_TO_MANAGEMENT");
         }
@@ -130,7 +117,7 @@ class AppNavigation extends Component {
     route.props.navigator = navigator;
     route.props.key = route.key;
 
-    ////console.log(React.createElement(route.component, route.props));
+    //////console.log(React.createElement(route.component, route.props));
     return React.createElement(route.component, route.props);
   }
 

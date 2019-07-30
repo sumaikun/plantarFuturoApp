@@ -6,7 +6,7 @@ import moment from 'moment';
 //Cargar repotes SST por proyecto
 export function  getListUsers (id)  {
   return async dispatch => {
-      console.log(GET_USERS_BY_PROJECT)
+      //console.log(GET_USERS_BY_PROJECT)
       dispatch(fetching());
 
       let SuccessCallBack = (response) => {

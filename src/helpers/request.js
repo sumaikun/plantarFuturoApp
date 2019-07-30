@@ -15,13 +15,13 @@ export const Request =
  {
     let request = axios.post(URL,DATA, axiosConfig).then( response => {
 
-      //console.log(response);
+      ////console.log(response);
 
       successCallBack ? successCallBack(response):null;
 
     }).catch( error => {
 
-      //console.log(error);
+      ////console.log(error);
       handleCodeError(error);
 
       errorCallBack ? errorCallBack(error):null;
@@ -34,13 +34,13 @@ export const Request =
 
     let request = axios.get(URL).then( response => {
 
-      //console.log(response);
+      ////console.log(response);
 
       successCallBack ? successCallBack(response):null;
 
     }).catch( error => {
 
-      //console.log(error);
+      ////console.log(error);
       handleCodeError(error);
 
       errorCallBack ? errorCallBack(error):null;
@@ -57,7 +57,7 @@ export const Request =
 
     }).catch( error => {
 
-      //console.log(error);
+      ////console.log(error);
       handleCodeError(error);
 
       errorCallBack ? errorCallBack(error):null;

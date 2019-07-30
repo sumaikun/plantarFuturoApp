@@ -18,7 +18,7 @@ export const getPlantationReports = () => {
       dispatch(notFetching());
     };
 
-    //console.log(String( "HERE GOES THE TYPE" + project_id));
+    ////console.log(String( "HERE GOES THE TYPE" + project_id));
 
     Request.getRequest(
       GET_PLANTATION_REPORTS,
@@ -41,7 +41,7 @@ export const getPlantationReportsByProject = (project_id) => {
       dispatch(notFetching());
     };
 
-    //console.log(String( "HERE GOES THE TYPE" + project_id));
+    ////console.log(String( "HERE GOES THE TYPE" + project_id));
 
     Request.getRequest(
       GET_PLANTATION_REPORTS_BY_PROJECT + project_id,
@@ -64,7 +64,7 @@ export const getPlantationReportById = (report_id) => {
       dispatch(notFetching());
     };
 
-    //console.log(String( "HERE GOES THE TYPE" + project_id));
+    ////console.log(String( "HERE GOES THE TYPE" + project_id));
 
     Request.getRequest(
       GET_PLANTATION_REPORT_BY_ID + report_id,
@@ -76,7 +76,7 @@ export const getPlantationReportById = (report_id) => {
 
 export const createReport = (data, componentSuccess = null) => {
   return async dispatch => {
-    console.log(data);
+    //console.log(data);
 
     dispatch(fetching());
 
@@ -112,7 +112,7 @@ export const updateReport = (plantation_report_id, data) => {
     }
 
     let ErrorCallBack = (error) => {
-      console.log(error);
+      //console.log(error);
       Ons.notification.alert({title:"¡Algo anda mal!", message:"No se ha podido actualizar el reporte de plantation"});
       dispatch(notFetching());
     }

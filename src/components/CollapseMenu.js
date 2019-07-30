@@ -126,11 +126,11 @@ class CollapseMenu extends Component {
                     offLineRiverCollapse, serverRiverCollapse
                   } = self.props.memory;
 
-                  console.log("Empezando a sincronizar actualizaciones del servidor");
+                  //console.log("Empezando a sincronizar actualizaciones del servidor");
 
                   serverFunctionalUnits.forEach(data => {
-                    console.log("server functional unit");
-                    console.log(data);
+                    //console.log("server functional unit");
+                    //console.log(data);
 
                     successMethod = (res) => {
                       Ons.notification.alert({title:"",message:"Unidad funcional sincronizada"});
@@ -145,7 +145,7 @@ class CollapseMenu extends Component {
 
                   let synchroForestalUnits = () => {
 
-                    console.log("Empezando a sincronizar unidades forestales");
+                    //console.log("Empezando a sincronizar unidades forestales");
 
                     serverForestUnitsPhase1.forEach( unit => {
                       method = (res) => {
@@ -203,12 +203,12 @@ class CollapseMenu extends Component {
                   }
                   else
                   {
-                    console.log("Empezando a sincronizar unidades funcionales");
+                    //console.log("Empezando a sincronizar unidades funcionales");
 
                     offLineFunctionalUnits.forEach(data => {
 
-                      console.log("off line functional unit");
-                      console.log(data);
+                      //console.log("off line functional unit");
+                      //console.log(data);
 
                       let p1 = offLineForestUnitsPhase1.filter( memory => memory.functional_unit_id == data.id );
                       let p2 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
@@ -216,7 +216,7 @@ class CollapseMenu extends Component {
 
                       successMethod = (response) => {
 
-                        //console.log(response);
+                        ////console.log(response);
 
                         let fid = response.id;
                         let method;
@@ -226,7 +226,7 @@ class CollapseMenu extends Component {
                         {
                           p1.forEach( unit => {
                             unit.functional_unit_id = fid;
-                            console.log(unit);
+                            //console.log(unit);
                             self.props.updateOfflineForestUnitP1(unit);
                           })
                         }
@@ -234,9 +234,9 @@ class CollapseMenu extends Component {
                         if(p2.length>0)
                         {
                           p2.forEach( unit => {
-                            console.log("unidad a sincronizar");
+                            //console.log("unidad a sincronizar");
                             unit.functional_unit_id = fid;
-                            console.log(unit);
+                            //console.log(unit);
                             self.props.updateOfflineForestUnitP2(unit);
                           })
                         }
@@ -245,7 +245,7 @@ class CollapseMenu extends Component {
                         {
                           p3.forEach( unit => {
                             unit.functional_unit_id = fid;
-                            console.log(unit);
+                            //console.log(unit);
                             self.props.updateOfflineForestUnitP3(unit);
                           })
                         }
@@ -259,10 +259,10 @@ class CollapseMenu extends Component {
                   }
 
 
-                  console.log("Sincronizar deformación de tunel");
+                  //console.log("Sincronizar deformación de tunel");
 
                   serverTunnelDeformations.forEach( unit => {
-                    console.log(unit);
+                    //console.log(unit);
                     method = (res) => {
                       self.props.notFetching();
                       self.props.removeFromTunnelDeformationServerUpdate(unit);
@@ -278,7 +278,7 @@ class CollapseMenu extends Component {
                     self.props.createTunnelDeformation(unit,method);
                   });
 
-                  console.log("Sincronizar deslizamientos de ladera");
+                  //console.log("Sincronizar deslizamientos de ladera");
 
 
                   serverHillSideMovements.forEach( unit => {
@@ -298,7 +298,7 @@ class CollapseMenu extends Component {
                   });
 
 
-                  console.log("Sincronizar precipitaciones");
+                  //console.log("Sincronizar precipitaciones");
 
 
                   serverRainFall.forEach( unit => {
@@ -317,7 +317,7 @@ class CollapseMenu extends Component {
                     self.props.createRainfall(unit,method);
                   });
 
-                  console.log("Sincronizar recorrido  de ladera");
+                  //console.log("Sincronizar recorrido  de ladera");
 
                   serverHillSideCollapse.forEach( unit => {
                     method = (res) => {
@@ -335,7 +335,7 @@ class CollapseMenu extends Component {
                     self.props.createHillsideCollapse(unit,method);
                   });
 
-                  console.log("Sincronizar recorrido  de quebrada");
+                  //console.log("Sincronizar recorrido  de quebrada");
 
                   serverRiverCollapse.forEach( unit => {
                     method = (res) => {
@@ -367,13 +367,13 @@ class CollapseMenu extends Component {
                   //localStorage.clear();
                   //localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
                   //localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'appState',true));
-                  //console.log(localStorage);
+                  ////console.log(localStorage);
                   if(window.cordova)
                   {
                     window.NativeStorage.clear(()=>{
-                      console.log("ns clear");                      
+                      //console.log("ns clear");                      
                     },error=>{
-                      console.log("ns error on clear");
+                      //console.log("ns error on clear");
                     });
                   }
 

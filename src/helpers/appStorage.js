@@ -13,7 +13,7 @@ export const loadState = () => {
 }
 export const saveState = (state) => {
   try {
-    //console.log(state);
+    ////console.log(state);
     if(state.navigation.currentPagekey)
     {
       let storeState = {
@@ -25,11 +25,11 @@ export const saveState = (state) => {
       let serializedData = JSON.stringify(fromJS(storeState).toJS());
 
       if(window.cordova) {
-        window.NativeStorage.setItem("state",serializedData,()=>{
-          //console.log("Guardando en nativeStorage");
-        },(error)=>{
+        try{
+          window.NativeStorage.setItem("state",serializedData,null,null);
+        }catch(error){
           console.log(error);
-        });
+        }
       }
       else{
         localStorage.setItem('state', serializedData)
@@ -37,11 +37,11 @@ export const saveState = (state) => {
 
     }
 
-    //console.log(localStorage.getItem('state'));
+    ////console.log(localStorage.getItem('state'));
   } catch (error) {
-    console.log("error salvando el estado");
+    //console.log("error salvando el estado");
     console.error(error);
-    //console.log(state);
+    ////console.log(state);
 	// Acá podemos capturar o crear cualquier log que deseemos en caso de que falle el salvado en el storage.
   }
 }

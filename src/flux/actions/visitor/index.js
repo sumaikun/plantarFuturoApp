@@ -12,7 +12,7 @@ export function getSSTVisitors  (id, successCallBack  ,errorCallBack)  {
       let SuccessCallBack = (response) => {
         dispatch(notFetching());
         dispatch(setSSTVisitors(response.data));
-        console.log("hi sst visitor")
+        //console.log("hi sst visitor")
       }
 
       let ErrorCallBack = () => {
@@ -28,7 +28,7 @@ export function getSSTVisitors  (id, successCallBack  ,errorCallBack)  {
 
 //crear
 export function createVisitor(data, successCallBack  ,errorCallBack )  {
-    console.log(data);
+    //console.log(data);
     return async dispatch => {
   
       let SuccessCallBack =  successCallBack ? successCallBack :  (response) => {

@@ -77,7 +77,7 @@ class ListAccordion extends Component {
   }
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <List key={1}>
         <ListItem key={1} tappable class="accordion" onclick="fn.toggle(this)">

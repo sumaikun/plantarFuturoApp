@@ -49,12 +49,12 @@ class PlantationReport extends Component {
     this.enableForm = this.enableForm.bind(this);
     this.itemActivity = this.itemActivity.bind(this);
     this.helperActivitiesArray = [];
-    console.log(this.props);
+    //console.log(this.props);
   }
 
   componentDidMount(){
-    console.log(this.props);
-    console.log( this.state.formData );
+    //console.log(this.props);
+    //console.log( this.state.formData );
 
     if( this.props.appState.plantationReportToEdit ) {
       let activitiesFromPlantationReportToEdit = this.props.appState.plantationReportToEdit.report_activities;
@@ -71,21 +71,21 @@ class PlantationReport extends Component {
           activities: activitiesFromPlantationReportToEdit,
         }
       },()=> {
-        console.log(this.state);
+        //console.log(this.state);
       });
     }
   }
 
   enableForm(){
     this.setState({ isDisable: !this.state.isDisable },()=>{
-      console.log(this.state);
+      //console.log(this.state);
     });
   }
 
   handleChangeInput(event){
     if(event.target.name && event.target.value.length > 0) {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
       this.setState(
         {
           formData:{
@@ -93,7 +93,7 @@ class PlantationReport extends Component {
             [event.target.name]: event.target.value
           }
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -105,10 +105,10 @@ class PlantationReport extends Component {
 
   handleArrayChangeInput(event, index){
     if(event.target.name && event.target.value.length > 0) {
-      console.log(event.target.name);
-      console.log(event.target.value);
+      //console.log(event.target.name);
+      //console.log(event.target.value);
 
-      console.log(this.state);
+      //console.log(this.state);
 
       let self = this;
 
@@ -121,7 +121,7 @@ class PlantationReport extends Component {
 
       this.helperActivitiesArray = obj;*/
 
-      console.log(this.helperActivitiesArray);
+      //console.log(this.helperActivitiesArray);
 
       //return;
 
@@ -132,7 +132,7 @@ class PlantationReport extends Component {
             activities: this.helperActivitiesArray,
           }
         },() => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -145,12 +145,12 @@ class PlantationReport extends Component {
   handleCheck(event, index, activity) {
     if ( event.target.checked ) {
       event.target.value = activity.id;
-      //console.log("checked");
+      ////console.log("checked");
       this.handleArrayChangeInput(event, index);
     }
     else {
       let currentArray = this.state.formData.activities;
-      //console.log(currentArray.length);
+      ////console.log(currentArray.length);
       if (currentArray.length > 0) {
         delete currentArray[index];
       }
@@ -158,7 +158,7 @@ class PlantationReport extends Component {
         currentArray = [];
       }
 
-      //console.log(currentArray);
+      ////console.log(currentArray);
 
       this.setState({
         formData: {
@@ -166,7 +166,7 @@ class PlantationReport extends Component {
           activities: currentArray
         }
       }, () => {
-          console.log(this.state);
+          //console.log(this.state);
         }
       );
     }
@@ -194,14 +194,14 @@ class PlantationReport extends Component {
     }
 
     if ( this.props.appState.plantationReportToEdit ) {
-      console.log( "Entro a edicion" );
+      //console.log( "Entro a edicion" );
       let data = this.state.formData;
       data.activities = act;
       //data.report_date = data.report_date.date + " " + data.report_date.hour;
       data.project_id = this.props.appState.plantationReportToEdit.project.id;
       data.type = this.props.appState.plantationReportToEdit.type;
       let plantation_report_id = this.props.appState.plantationReportToEdit.id;
-      console.log( data );
+      //console.log( data );
       this.props.updateReport( plantation_report_id, data );
     }
     else {
@@ -211,7 +211,7 @@ class PlantationReport extends Component {
       data.project_id = this.props.appState.plantationProject.id;
       data.type = this.props.appState.plantationReportType;
 
-      console.log( data );
+      //console.log( data );
       this.props.createReport( data );
     }
 
@@ -225,8 +225,8 @@ class PlantationReport extends Component {
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("edit hall side movement");
+        //console.log(data);
+        //console.log("edit hall side movement");
         this.props.updateHallsideMovement(this.state.formData.id,data);
       }
       else
@@ -235,8 +235,8 @@ class PlantationReport extends Component {
         data.user_id = this.props.appState.user.id;
         data.project_id = this.props.appState.selectedProject.id;
         data.report_date = data.date+" "+data.hour;
-        console.log(data);
-        console.log("create hall side movement");
+        //console.log(data);
+        //console.log("create hall side movement");
         this.props.createHallsideMovement(data);
 
       }*/

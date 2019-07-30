@@ -65,7 +65,7 @@ class RiskIndicators extends Component {
   }
 
   componenDidMount(){
-    //console.log(this.props.appState.riskIndicators);
+    ////console.log(this.props.appState.riskIndicators);
   }
 
 

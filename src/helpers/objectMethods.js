@@ -2,7 +2,7 @@
 //remove paramter from a json parsed in string
 
 export const removeFromJsonString = (jsonString,removeKey,returnString = false ) => {
-  //console.log(jsonString);
+  ////console.log(jsonString);
   let jsonObject =  JSON.parse(jsonString);
   delete jsonObject[removeKey];
   return returnString ? JSON.stringify(jsonObject) : jsonObject;
@@ -12,23 +12,23 @@ export const removeFromJsonString = (jsonString,removeKey,returnString = false )
 //get parameter from a json parsed in string
 
 export const getFromJsonString = (jsonString,getKey,returnString = false ) => {
-  //console.log(jsonString);
+  ////console.log(jsonString);
   try{
     let jsonObject =  JSON.parse(jsonString);
     return returnString ? JSON.stringify(jsonObject[getKey]) : jsonObject[getKey];
   }
   catch(error)
   {
-    console.log(error);
+    //console.log(error);
     return null;
   }
 
 }
 
 
-export const editOrAddToArray = (array , object , key) => {
+export const editOrAddToArray = (array , object ) => {
 
-        let foundIndex = array.findIndex(data => data[key] == object[key]);
+        let foundIndex = array.findIndex(data => data === object );
 
         if(foundIndex != -1)
         {

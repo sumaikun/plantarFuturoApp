@@ -70,8 +70,8 @@ class SSTForm extends Component {
       assistants: [],
       visitors:[]
     }
-    //console.log(data);
-    if (sst.id) return  this.props.handleChangeUpdate(sst.id, data) //console.log('update');
+    ////console.log(data);
+    if (sst.id) return  this.props.handleChangeUpdate(sst.id, data) ////console.log('update');
     this.props.handleChangeCreate(data);
   }
   enableForm(){

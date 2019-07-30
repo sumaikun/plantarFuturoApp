@@ -16,7 +16,7 @@ export const getDefaultActivitiesByType = (type_id) => {
     dispatch( fetching() );
 
     if(!navigator.onLine) {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       dispatch(notFetching());
       return;
     }
@@ -33,7 +33,7 @@ export const getDefaultActivitiesByType = (type_id) => {
       dispatch(notFetching());
     };
 
-    //console.log(String(GET_FORESTAL_UNITS_URL + project_id));
+    ////console.log(String(GET_FORESTAL_UNITS_URL + project_id));
 
     Request.getRequest(
       GET_DEFAULT_ACTIVITIES_BY_TYPE + type_id,

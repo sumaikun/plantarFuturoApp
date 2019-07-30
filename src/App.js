@@ -15,9 +15,9 @@ class App extends Component {
         this.setState({
           image
         });
-        console.log(this.state);
+        //console.log(this.state);
       }, console.log);
-    } else console.log("please run the cordova project");
+    } else //console.log("please run the cordova project");
   }
 
 

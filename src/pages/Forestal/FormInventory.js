@@ -99,11 +99,11 @@ class FormInventory extends Component {
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
-    //console.log(this.props);
+    ////console.log(this.props);
   }
 
   componentDidMount(){
-    //console.log(this.props);
+    ////console.log(this.props);
     if(this.props.appState.forestalUnitE)
     {
       this.setState({
@@ -112,25 +112,25 @@ class FormInventory extends Component {
           ...this.props.appState.forestalUnitE
         }
       },()=>{
-        //console.log(this.state);
+        ////console.log(this.state);
       });
     }
   }
 
 
   fileUpload(key,e){
-    ////console.log(e.target.files);
+    //////console.log(e.target.files);
 
      const file = e.target.files[0];
      const  fileType = file['type'];
      const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
      if (validImageTypes.includes(fileType)) {
-        //console.log(key);
+        ////console.log(key);
         let self = this;
         getInputFileBase64(e.target.files[0]).then(
           base64Image => {
 
-          ////console.log(base64Image);
+          //////console.log(base64Image);
 
                   self.setState({
                     formData:
@@ -139,7 +139,7 @@ class FormInventory extends Component {
                       [key]:base64Image
                     }
                   },()=>{
-                      //console.log(self.state);
+                      ////console.log(self.state);
                   });
         });
     }
@@ -153,9 +153,9 @@ class FormInventory extends Component {
 
       let self = this;
 
-      //console.log("react ambit prev cordova");
+      ////console.log("react ambit prev cordova");
 
-      //console.log(self);
+      ////console.log(self);
 
       if (window.cordova) {
 
@@ -163,12 +163,12 @@ class FormInventory extends Component {
 
             getFileContentAsBase64(image,function(base64Image){
 
-              //console.log("react ambit post cordova");
+              ////console.log("react ambit post cordova");
 
-              //console.log(self);
+              ////console.log(self);
 
               //window.open(base64Image);
-              //console.log(base64Image);
+              ////console.log(base64Image);
               // Then you'll be able to handle the myimage.png file as base64
 
               self.setState({
@@ -178,7 +178,7 @@ class FormInventory extends Component {
                   [key]:base64Image
                 }
               },()=>{
-                  //console.log(self.state);
+                  ////console.log(self.state);
               });
 
 
@@ -191,7 +191,7 @@ class FormInventory extends Component {
         });
 
       } else{
-        //console.log("please run the cordova project");
+        ////console.log("please run the cordova project");
       }
 
 
@@ -201,8 +201,8 @@ class FormInventory extends Component {
 
     if(event.target.name && event.target.value.length > -1)
     {
-      //console.log(event.target.name);
-      //console.log(event.target.value);
+      ////console.log(event.target.name);
+      ////console.log(event.target.value);
        this.setState(
          {
            formData:{
@@ -211,7 +211,7 @@ class FormInventory extends Component {
            }
 
          },() => {
-           //console.log(this.state);
+           ////console.log(this.state);
          }
        );
     }
@@ -230,9 +230,9 @@ class FormInventory extends Component {
     {
       if(this.props.appState.forestalUnitE)
       {
-        //console.log("editMode");
-        //console.log(this.state.formData);
-        //console.log(this.state.formData.id);
+        ////console.log("editMode");
+        ////console.log(this.state.formData);
+        ////console.log(this.state.formData.id);
         let data = this.state.formData;
         data.user_id = this.props.appState.user.id;
         //return;
@@ -265,7 +265,7 @@ class FormInventory extends Component {
         this.props.createForestUnitPhase1(data);
 
         //this.props.goBack();
-        //console.log("createMode");
+        ////console.log("createMode");
 
       }
     }

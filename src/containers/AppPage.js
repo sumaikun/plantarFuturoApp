@@ -46,14 +46,14 @@ class AppPage extends Component {
 
   constructor(props) {
     super(props);
-    //console.log(props);
+    ////console.log(props);
     this.appToolBar = this.appToolBar.bind(this);
     this.showMenu = this.showMenu.bind(this);
   }
 
   componentDidCatch(error, errorInfo) {
-    //console.log(error);
-    //console.log(errorInfo);
+    ////console.log(error);
+    ////console.log(errorInfo);
     // Catch errors in any components below and re-render with error message
     this.setState({
       error: error,
@@ -64,7 +64,7 @@ class AppPage extends Component {
 
   componentDidMount(){
 
-    //console.log(this.props.children);
+    ////console.log(this.props.children);
 
   }
 
@@ -87,7 +87,7 @@ class AppPage extends Component {
         { this.props.backButton  ?
           <div className='left' >
              <BackButton onClick={()=>{
-               console.log(this.props);
+               //console.log(this.props);
                if(!this.props.appState.isFetching)
                {
                  this.props.backButtonCallBack ? this.props.backButtonCallBack() : null
@@ -102,7 +102,7 @@ class AppPage extends Component {
 
 
   render() {
-    //console.log(this.props.styles);
+    ////console.log(this.props.styles);
     const { isFetching } = this.props.appState;
     return (
 

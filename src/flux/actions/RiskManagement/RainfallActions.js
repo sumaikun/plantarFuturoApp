@@ -15,7 +15,7 @@ export const createRainfall = (data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
       data.created_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineRainFall(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Precipitación guardada en memoria!"});
@@ -53,17 +53,17 @@ export const updateRainfall = (id,data,successCallBack  ,errorCallBack) => {
 
     if(!navigator.onLine)
     {
-      console.log("Modo offline");
+      //console.log("Modo offline");
 
       if(!data.ToSynchro)
       {
-        console.log("editar del servidor");
+        //console.log("editar del servidor");
         dispatch(updateServerRainFall(data));
         dispatch(goBack());
       }
       else
       {
-        console.log("editar offline");
+        //console.log("editar offline");
         dispatch(updateOfflineRainFall(data));
         dispatch(goBack());
       }

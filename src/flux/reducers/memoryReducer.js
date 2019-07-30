@@ -99,7 +99,7 @@ try
   }
 }
 catch(err){
-  //console.log("error getting data");
+  ////console.log("error getting data");
 }
 
 
@@ -123,14 +123,14 @@ const removeFromState = ( state, stateParameter, action ) => {
     [stateParameter]:workingVariable
   }
 
-  console.log(state);
+  //console.log(state);
 
   return state;
 }
 
 const updateFromState = ( state, stateParameter, action ) => {
 
-  //console.log(stateParameter);
+  console.log(stateParameter);
 
   if(!action.payload.ToSynchro)
   {
@@ -139,13 +139,15 @@ const updateFromState = ( state, stateParameter, action ) => {
 
   let workingVariable = state[stateParameter];
 
+  console.log(workingVariable);
+
   workingVariable = editOrAddToArray(workingVariable,action.payload);
 
   state = {
     ...state,
     [stateParameter]:workingVariable
   }
-  console.log(state);
+  //console.log(state);
   return state;
 }
 
@@ -163,7 +165,7 @@ const createOnState = ( state, stateParameter, action ) => {
     ]
   }
 
-  console.log(state);
+  //console.log(state);
 
   return state;
 
@@ -179,7 +181,7 @@ const memoryReducer = (state = initialState, action) => {
         ...state,
         userLogged:action.payload
       }
-      console.log(state);
+      //console.log(state);
       return state;
 
     case ADD_FUNCTIONAL_UNIT_OFFLINE:
@@ -254,6 +256,8 @@ const memoryReducer = (state = initialState, action) => {
 
       state = updateFromState(state,'serverForestUnitsPhase2',action);
 
+      console.log(state);
+
       return state;
 
     case UPDATE_OFFLINE_FOREST_UNIT_PHASE2:
@@ -286,7 +290,7 @@ const memoryReducer = (state = initialState, action) => {
 
       return state;
 
-    case UPDATE_SERVER_FOREST_UNIT_PHASE3:
+    case UPDATE_OFFLINE_FOREST_UNIT_PHASE3:
 
       state = updateFromState(state,'offLineForestUnitsPhase3',action);
 

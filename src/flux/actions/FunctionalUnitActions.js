@@ -11,7 +11,7 @@ export const createFunctionalUnit = (data,componentSuccess) => {
 
       if(!navigator.onLine)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
         data.ToSynchro = true;
         componentSuccess(data.project_id);
         dispatch(addOfflineFunctionalUnit(data));
@@ -19,7 +19,7 @@ export const createFunctionalUnit = (data,componentSuccess) => {
         return;
       }
 
-      console.log(data);
+      //console.log(data);
 
       dispatch(fetching());
 
@@ -34,7 +34,7 @@ export const createFunctionalUnit = (data,componentSuccess) => {
         dispatch(notFetching());
       }
 
-      console.log(String(FUNCTIONAL_UNIT_URL));
+      //console.log(String(FUNCTIONAL_UNIT_URL));
 
       Request.postRequest(
         FUNCTIONAL_UNIT_URL,
@@ -50,13 +50,13 @@ export const getFunctionalUnits = (id, SuccessCallBack) => {
 
       if(!navigator.onLine)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
         dispatch(notFetching());
         return;
       }
 
 
-      console.log(id);
+      //console.log(id);
 
       dispatch(fetching());
 
@@ -79,7 +79,7 @@ export const getFunctionalUnits = (id, SuccessCallBack) => {
         dispatch(notFetching());
       }
 
-      //console.log(String(FUNCTIONAL_UNIT_URL+id));
+      ////console.log(String(FUNCTIONAL_UNIT_URL+id));
 
       Request.getRequest(
         GET_FUNCTIONAL_UNITS+id,
@@ -93,11 +93,11 @@ export const getFunctionalUnits = (id, SuccessCallBack) => {
 export const updateFunctionalUnit = (id,data,componentSuccess) => {
   return async dispatch => {
 
-      console.log(data);
+      //console.log(data);
 
       if(!navigator.onLine)
       {
-        console.log("Modo offline");
+        //console.log("Modo offline");
         dispatch(notFetching());
         data.id = id;
 
