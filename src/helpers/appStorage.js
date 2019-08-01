@@ -22,9 +22,18 @@ export const saveState = (state) => {
         memory: state.memory,
       }
 
-      let serializedData = JSON.stringify(fromJS(storeState).toJS());
 
       if(window.cordova) {
+
+        let serializedAppState = JSON.stringify(fromJS(storeState.appState).toJS());
+
+        //console.log(serializedAppState);
+
+        let serializedMemoryState = JSON.stringify(fromJS(storeState.memory).toJS());
+
+        //console.log(serializedMemoryState);
+
+        //console.log(storeState.navigationIndex);
 
         let db ;
 
@@ -36,24 +45,44 @@ export const saveState = (state) => {
            console.log("save in database");
 
            db.transaction(function(tx) {
-                db.executeSql("insert into app_state (json_data) values (?) ", [serializedData], function (resultSet) {
-                  console.log(resultSet);
+
+                tx.executeSql("update app_state set json_data = ? , navigationIndex = ? where id = ? ", [serializedAppState,storeState.navigationIndex,1], function (resultSet) {
+
+                    console.log("App state saved");
+                    console.log(resultSet);
+
                 }, function(error) {
-                  console.log('SELECT APP error: ' + error.message);
+                  console.log('INSERT APP STATE error: ');
+                  console.log(error);
                 });
 
-              }, function(tx, error) {
-                console.log('SELECT STORAGE APP: ' + error.message);
-              },              
-              function() {
-                 // OK to close here:
-                 console.log('transaction ok');
-                 db.close(function() {
-                   console.log('database is closed ok');
-                 });
-               }
-            );
-         },error=>console.log(error));
+                tx.executeSql("update memory_state set json_data = ? where id = ? ", [serializedMemoryState,1], function (resultSet) {
+
+                    console.log("Memory state saved");
+                    console.log(resultSet);
+
+                }, function(error) {
+                  console.log('INSERT APP STATE error: ');
+                  console.log(error);
+                });
+
+            }, function(error) {
+              console.log('TRANSACTION STATE error: ');
+              console.log(error);
+            }/*,
+            function() {
+               // OK to close here:
+               console.log('Close Db');
+               db.close(function() {
+                 console.log('database is closed ok');
+               });
+             }*/
+          );
+         },error=>
+         {
+           console.log("error opening connection");
+           console.log(error)
+         });
 
         /*try{
           window.NativeStorage.setItem("state",serializedData,null,null);
@@ -62,6 +91,9 @@ export const saveState = (state) => {
         }*/
       }
       else{
+
+        let serializedData = JSON.stringify(fromJS(storeState).toJS());
+
         localStorage.setItem('state', serializedData)
       }
 

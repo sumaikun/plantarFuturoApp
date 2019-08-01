@@ -92,101 +92,157 @@ class AppNavigation extends Component {
 
          db.transaction( (tx) => {
 
-              tx.executeSql('CREATE TABLE IF NOT EXISTS app_version (version_number)');
-              tx.executeSql('CREATE TABLE IF NOT EXISTS app_state (json_data)');
+              tx.executeSql('CREATE TABLE IF NOT EXISTS app_state (json_data,navigationIndex, id)');
+              tx.executeSql('CREATE TABLE IF NOT EXISTS memory_state (json_data , id)');
+              tx.executeSql('CREATE TABLE IF NOT EXISTS app_version (version_number , id)',[],(tx, rs)=>{
 
-              tx.executeSql('SELECT version_number  FROM app_version ', [], function(tx, rs) {
+                  tx.executeSql('SELECT version_number  FROM app_version ', [], function(tx, rs) {
 
-              if(rs.rows.length == 0)
-              {
-                  console.log("insert into app_version (version_number) values ('"+VERSION+"') ");
-
-                  db.executeSql("insert into app_version (version_number) values (?) ", [VERSION], function (resultSet) {
-
-                  console.log(resultSet);
-
-                }, function(error) {
-                  console.log('SELECT VERSION error: ' + error.message);
-                });
-              }
-              else{
-                console.log("verificar versión");
-                console.log(rs.rows.item(0).version_number);
-
-                if( rs.rows.item(0).version_number != VERSION )
-                {
-                    console.log("version erase app state memory ");
-
-                    tx.executeSql(' TRUNCATE TABLE  app_state ');
-
-                    db.executeSql("insert into app_version (version_number) values (?) ", [VERSION], function (resultSet) {
+                  if(rs.rows.length == 0)
+                  {
+                      db.executeSql("insert into app_version (version_number, id) values (?,?) ", [VERSION,1], function (resultSet) {
 
                       console.log(resultSet);
 
                     }, function(error) {
-                      console.log('SELECT VERSION error: ' + error.message);
+                      console.log('INSERT VERSION error: ');
+                      console.log(error.message);
                     });
-                }
-
-              }
-
-
-            }, function(tx, error) {
-
-
-              console.log('SELECT error in APP VERSION : ' + error.message);
-
-
-            });
-
-            console.log("Ahora busca el estado");
-
-            tx.executeSql(" select json_data from app_state ", [], function (tx, rs) {
-
-              try{
-
-                let state = JSON.parse(rs.rows.item(0).json_data);
-
-                console.log(state);
-
-                if(state)
-                {
-                  if(state.appState)
-                  {
-                    self.props.setAppStatefromNS(state.appState);
                   }
+                  else{
+                    console.log("verificar versión");
+                    console.log(rs.rows.item(0).version_number);
 
-                  if(state.memory)
-                  {
-                    self.props.setMemoryStatefromNS(state.memory);
-                  }
-
-                  if(state.navigationIndex)
-                  {
-                    if(state.navigationIndex && state.navigationIndex != "GO_TO_LOGIN" )
+                    if( rs.rows.item(0).version_number != VERSION )
                     {
+                        console.log("version erase app state memory ");
 
-                      self.props.runfromStorage("GO_TO_MANAGEMENT");
+                        tx.executeSql(' TRUNCATE TABLE  app_state ');
+
+                        db.executeSql(" UPDATE app_version SET version_number = ? WHERE id = ? ", [VERSION,1], function (resultSet) {
+
+                          console.log(resultSet);
+
+                        }, function(error) {
+                          console.log('SELECT VERSION error: ');
+                          console.log(error.message);
+                        });
+                    }
+
+                  }
+
+                  console.log("Ahora busca el estado");
+
+                  tx.executeSql(" select json_data , navigationIndex from app_state ", [], function (tx, rs) {
+
+                    if(rs.rows.length == 0)
+                    {
+                        db.executeSql("insert into app_state (json_data, navigationIndex, id) values (?,?,?) ", ["","",1], function (resultSet) {
+
+                        console.log(resultSet);
+
+                      }, function(error) {
+                        console.log('INSERT VERSION error: ');
+                        console.log(error.message);
+                      });
+                    }
+                    else{
+
+                      console.log(rs);
+
+                      try{
+
+                        let state = JSON.parse(rs.rows.item(0).json_data);
+
+                        console.log(state);
+
+
+                          if(state)
+                          {
+                            self.props.setAppStatefromNS(state);
+                            self.props.runfromStorage("GO_TO_MANAGEMENT");
+                          }
+
+
+                          /*if(rs.rows.item(0).navigationIndex)
+                          {
+                            if(state.navigationIndex && state.navigationIndex != "GO_TO_LOGIN" )
+                            {
+
+                              self.props.runfromStorage("GO_TO_MANAGEMENT");
+                            }
+                          }*/
+
+
+
+                      }
+                      catch(error){
+                        console.log(error);
+                      }
+                    }
+
+
+                },error=>{
+                  console.log("Select error in app state");
+                  console.log(error);
+                });
+
+                tx.executeSql(" select json_data from memory_state ", [], function (tx, rs) {
+
+                  if(rs.rows.length == 0)
+                  {
+                      db.executeSql("insert into memory_state (json_data, id) values (?,?) ", ["",1], function (resultSet) {
+
+                      console.log(resultSet);
+
+                    }, function(error) {
+                      console.log('INSERT VERSION error: ');
+                      console.log(error.message);
+                    });
+                  }
+                  else{
+
+                    console.log(rs);
+
+                    try{
+
+                      let state = JSON.parse(rs.rows.item(0).json_data);
+
+                      console.log(state);
+
+                      if(state)
+                      {
+
+
+                        self.props.setMemoryStatefromNS(state);
+
+
+                      }
+
+                    }
+                    catch(error){
+                      console.log(error);
                     }
                   }
-                }
-
-
-              }
-              catch(error)
-              {
-                console.log("error inicializando el estado");
+              },error=>{
+                console.log("Select error in memory state");
                 console.log(error);
-              }
+              });
 
+
+              },error=>{
+                console.log(error);
+              });
 
             }, function(error) {
-              console.log('SELECT APP error: ' + error.message);
+              console.log('SELECT APP error: ');
+              console.log(error);
             });
 
           }, function(error) {
             // OK to close here:
-            console.log('transaction error: ' + error.message);
+            console.log('transaction error: ');
+            console.log(error);
             //db.close();
           }/*, function() {
             // OK to close here:

@@ -67,6 +67,10 @@ import { goToProjects, LogOut, setProjectPhase, goToMain,
  } from '../flux/actions';
 import { connect } from 'react-redux';
 
+import { getFileContentAsBase64 , getInputFileBase64 } from '../helpers/imageHandler';
+
+
+
 // CSS
 import './../css/style.css';
 
@@ -143,9 +147,13 @@ class CollapseMenu extends Component {
 
                   //functional units.
 
+
                   let synchroForestalUnits = () => {
 
                     //console.log("Empezando a sincronizar unidades forestales");
+
+                    let a; let b; let c;
+                    let promiseArray = [];
 
                     serverForestUnitsPhase1.forEach( unit => {
                       method = (res) => {
@@ -155,18 +163,52 @@ class CollapseMenu extends Component {
                       self.props.updateForestUnitPhase1(unit.id,unit,method);
                     });
 
+
                     serverForestUnitsPhase2.forEach( unit => {
-                      method = (res) => {
-                        self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP1(unit);
+
+                      if(unit.id_image)
+                      {
+                        a = getFileContentAsBase64(unit.id_image,function(base64Image){
+                          unit.id_image = base64Image;
+                          promiseArray.push(a);
+                        });
                       }
-                      self.props.updateForestUnitPhase2(unit.id,unit,method);
+
+                      if(unit.general_image)
+                      {
+                        b = getFileContentAsBase64(unit.general_image,function(base64Image){
+                          unit.general_image = base64Image;
+                          promiseArray.push(b);
+                        });
+                      }
+
+                      if(unit.after_image)
+                      {
+                        c = getFileContentAsBase64(unit.after_image,function(base64Image){
+                          unit.after_image = base64Image;
+                          promiseArray.push(c);
+                        });
+                      }
+
+                      //console.log(unit);
+
+                      Promise.all(promiseArray).then(values => {
+                        //console.log("after transform");
+                        //console.log(unit);
+                        method = (res) => {
+                          self.props.notFetching();
+                          self.props.removeFromOfflineForestUnitP2(unit);
+                        }
+                        self.props.updateForestUnitPhase2(unit.id,unit,method);
+
+                      });
+
                     });
 
                     serverForestUnitsPhase3.forEach( unit => {
                       method = (res) => {
                         self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP1(unit);
+                        self.props.removeFromOfflineForestUnitP3(unit);
                       }
                       self.props.updateForestUnitPhase3(unit.id,unit,method);
                     });
@@ -180,11 +222,41 @@ class CollapseMenu extends Component {
                     });
 
                     offLineForestUnitsPhase2.forEach( unit => {
-                      method = (res) => {
-                        self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP2(unit);
+
+                      if(unit.id_image)
+                      {
+                        a = getFileContentAsBase64(unit.id_image,function(base64Image){
+                          unit.id_image = base64Image;
+                          promiseArray.push(a);
+                        });
                       }
-                      self.props.createForestUnitPhase2(unit,method);
+
+                      if(unit.general_image)
+                      {
+                        b = getFileContentAsBase64(unit.general_image,function(base64Image){
+                          unit.general_image = base64Image;
+                          promiseArray.push(b);
+                        });
+                      }
+
+                      if(unit.after_image)
+                      {
+                        c = getFileContentAsBase64(unit.after_image,function(base64Image){
+                          unit.after_image = base64Image;
+                          promiseArray.push(c);
+                        });
+                      }
+
+                      //console.log(unit);
+
+                      Promise.all(promiseArray).then(values => {
+                        method = (res) => {
+                          self.props.notFetching();
+                          self.props.removeFromOfflineForestUnitP2(unit);
+                        }
+                        self.props.createForestUnitPhase2(unit,method);
+                      });
+
                     });
 
                     offLineForestUnitsPhase3.forEach( unit => {
@@ -371,7 +443,7 @@ class CollapseMenu extends Component {
                   if(window.cordova)
                   {
                     window.NativeStorage.clear(()=>{
-                      //console.log("ns clear");                      
+                      //console.log("ns clear");
                     },error=>{
                       //console.log("ns error on clear");
                     });

@@ -202,6 +202,25 @@ class FormProcess extends Component {
 
         navigator.camera.getPicture(image => {
 
+
+          if(!navigator.onLine)
+          {
+            console.log("No hay internet");
+            console.log(image);
+
+            self.setState({
+              formData:
+              {
+                ...self.state.formData,
+                [key]:image
+              }
+            },()=>{
+                ////console.log(self.state);
+            });
+
+            return;
+          }
+
           getFileContentAsBase64(image,function(base64Image){
 
             ////console.log("react ambit post cordova");
@@ -230,6 +249,8 @@ class FormProcess extends Component {
             quality : 40,
             correctOrientation : true
         });
+
+
       } else{
         ////console.log("please run the cordova project");
       }
