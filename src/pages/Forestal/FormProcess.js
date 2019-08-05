@@ -162,12 +162,29 @@ class FormProcess extends Component {
   }
 
   fileUpload(key,e){
+
+    console.log(e);
+
     const file = e.target.files[0];
     const  fileType = file['type'];
     const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
     if (validImageTypes.includes(fileType)) {
        ////console.log(key);
        let self = this;
+
+       if (window.cordova) {
+         if(!navigator.onLine)
+         {
+           console.log(e.target.files[0]);
+           window.requestFileSystem(window.TEMPORARY, 5 * 1024 * 1024, function (fs) {
+              console.log('file system open: ' + fs.name);
+              console.log(fs);
+          }, error => console.log(error));
+           //return;
+         }
+       }
+
+
        getInputFileBase64(e.target.files[0]).then(
          base64Image => {
 

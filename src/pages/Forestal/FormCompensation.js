@@ -165,6 +165,27 @@ class FormCompensation extends Component {
 
         navigator.camera.getPicture(image => {
 
+
+          if(!navigator.onLine)
+          {
+            console.log("No hay internet");
+            console.log(image);
+
+            self.setState({
+              formData:
+              {
+                ...self.state.formData,
+                general_image:image
+              }
+            },()=>{
+                ////console.log(self.state);
+            });
+
+            return;
+          }
+
+
+
           getFileContentAsBase64(image,function(base64Image){
 
             //////console.log("react ambit post cordova");
@@ -447,7 +468,7 @@ class FormCompensation extends Component {
               <br/>
               <Card>
                 <textarea onChange={this.handleChangeInput} style={{width:"100%",borderRadius:"10%",height:"80px", borderColor:"white"}} name="note" value={this.state.formData.note}  placeholder="Observaciones" disabled={this.state.isDisable}></textarea>
-                
+
               </Card>
             </Col>
           </Row>
@@ -477,7 +498,7 @@ class FormCompensation extends Component {
                 <label className="fileContainer" style={ styles.uploadFile }>
                   Subir archivo
                   <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
-                     />
+                    />
                 </label>
               </Row>
             </Card>

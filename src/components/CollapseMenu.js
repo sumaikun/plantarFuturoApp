@@ -67,7 +67,7 @@ import { goToProjects, LogOut, setProjectPhase, goToMain,
  } from '../flux/actions';
 import { connect } from 'react-redux';
 
-import { getFileContentAsBase64 , getInputFileBase64 } from '../helpers/imageHandler';
+import { getFileContentAsBase64 , getInputFileBase64 , forestUnitsImgConvert } from '../helpers/imageHandler';
 
 
 
@@ -150,108 +150,117 @@ class CollapseMenu extends Component {
 
                   let synchroForestalUnits = () => {
 
-                    //console.log("Empezando a sincronizar unidades forestales");
 
-                    let a; let b; let c;
-                    let promiseArray = [];
 
                     serverForestUnitsPhase1.forEach( unit => {
-                      method = (res) => {
-                        self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP1(unit);
-                      }
-                      self.props.updateForestUnitPhase1(unit.id,unit,method);
+
+                      let result = forestUnitsImgConvert(unit);
+
+                      unit = result.unit;
+
+                      let promiseArray = result.promiseArray;
+
+                      let proccess = () => {
+                          method = (res) => {
+                            self.props.notFetching();
+                            self.props.removeFromForestUnitP1ServerUpdate(unit);
+                          }
+                         self.props.updateForestUnitPhase1(unit.id,unit,method);
+                       }
+
+                       promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
+                         proccess();
+                       }):proccess();
+
                     });
 
 
                     serverForestUnitsPhase2.forEach( unit => {
 
-                      if(unit.id_image)
-                      {
-                        a = getFileContentAsBase64(unit.id_image,function(base64Image){
-                          unit.id_image = base64Image;
-                          promiseArray.push(a);
-                        });
-                      }
+                      console.log("server edit");
+                      console.log(unit);
 
-                      if(unit.general_image)
-                      {
-                        b = getFileContentAsBase64(unit.general_image,function(base64Image){
-                          unit.general_image = base64Image;
-                          promiseArray.push(b);
-                        });
-                      }
 
-                      if(unit.after_image)
-                      {
-                        c = getFileContentAsBase64(unit.after_image,function(base64Image){
-                          unit.after_image = base64Image;
-                          promiseArray.push(c);
-                        });
-                      }
+                      let result = forestUnitsImgConvert(unit);
 
-                      //console.log(unit);
+                      unit = result.unit;
 
-                      Promise.all(promiseArray).then(values => {
-                        //console.log("after transform");
-                        //console.log(unit);
+                      let promiseArray = result.promiseArray;
+
+
+                      let proccess = () => {
                         method = (res) => {
                           self.props.notFetching();
-                          self.props.removeFromOfflineForestUnitP2(unit);
+                          self.props.removeFromForestUnitP2ServerUpdate(unit);
                         }
                         self.props.updateForestUnitPhase2(unit.id,unit,method);
+                      }
 
-                      });
+                      promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
+                        proccess();
+                      }):proccess();
 
                     });
 
                     serverForestUnitsPhase3.forEach( unit => {
-                      method = (res) => {
-                        self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP3(unit);
-                      }
-                      self.props.updateForestUnitPhase3(unit.id,unit,method);
+
+                      let result = forestUnitsImgConvert(unit);
+
+                      unit = result.unit;
+
+                      let promiseArray = result.promiseArray;
+
+                      let proccess = () => {
+                          method = (res) => {
+                            self.props.notFetching();
+                            self.props.removeFromForestUnitP3ServerUpdate(unit);
+                          }
+                         self.props.updateForestUnitPhase3(unit.id,unit,method);
+                       }
+
+                       promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
+                         proccess();
+                       }):proccess();
+
                     });
 
                     offLineForestUnitsPhase1.forEach( unit => {
-                      method = (res) => {
-                        self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP1(unit);
-                      }
-                      self.props.createForestUnitPhase1(unit,method);
+
+                      let result = forestUnitsImgConvert(unit);
+
+                      unit = result.unit;
+
+                      let promiseArray = result.promiseArray;
+
+                      let proccess = () => {
+                          method = (res) => {
+                            self.props.notFetching();
+                            self.props.removeFromOfflineForestUnitP1(unit);
+                          }
+                         self.props.createForestUnitPhase1(unit,method);
+                       }
+
+                       promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
+                         proccess();
+                       }):proccess();
+
                     });
 
                     offLineForestUnitsPhase2.forEach( unit => {
 
-                      if(unit.id_image)
-                      {
-                        a = getFileContentAsBase64(unit.id_image,function(base64Image){
-                          unit.id_image = base64Image;
-                          promiseArray.push(a);
-                        });
-                      }
+                      console.log("server create");
+                      console.log(unit);
 
-                      if(unit.general_image)
-                      {
-                        b = getFileContentAsBase64(unit.general_image,function(base64Image){
-                          unit.general_image = base64Image;
-                          promiseArray.push(b);
-                        });
-                      }
+                      let result = forestUnitsImgConvert(unit);
 
-                      if(unit.after_image)
-                      {
-                        c = getFileContentAsBase64(unit.after_image,function(base64Image){
-                          unit.after_image = base64Image;
-                          promiseArray.push(c);
-                        });
-                      }
+                      unit = result.unit;
 
-                      //console.log(unit);
+                      let promiseArray = result.promiseArray;
 
                       Promise.all(promiseArray).then(values => {
                         method = (res) => {
                           self.props.notFetching();
+                          console.log("i try to remove forest unit p2");
                           self.props.removeFromOfflineForestUnitP2(unit);
                         }
                         self.props.createForestUnitPhase2(unit,method);
@@ -260,11 +269,25 @@ class CollapseMenu extends Component {
                     });
 
                     offLineForestUnitsPhase3.forEach( unit => {
-                      method = (res) => {
-                        self.props.notFetching();
-                        self.props.removeFromOfflineForestUnitP3(unit);
-                      }
-                      self.props.createForestUnitPhase3(unit,method);
+
+                      let result = forestUnitsImgConvert(unit);
+
+                      unit = result.unit;
+
+                      let promiseArray = result.promiseArray;
+
+                      let proccess = () => {
+                          method = (res) => {
+                            self.props.notFetching();
+                            self.props.removeFromOfflineForestUnitP3(unit);
+                          }
+                         self.props.createForestUnitPhase3(unit,method);
+                       }
+
+                       promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
+                         proccess();
+                       }):proccess();
+
                     });
 
                   }

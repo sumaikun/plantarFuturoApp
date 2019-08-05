@@ -129,7 +129,6 @@ class FormInventory extends Component {
         let self = this;
         getInputFileBase64(e.target.files[0]).then(
           base64Image => {
-
           //////console.log(base64Image);
 
                   self.setState({
@@ -160,6 +159,24 @@ class FormInventory extends Component {
       if (window.cordova) {
 
         navigator.camera.getPicture(image => {
+
+            if(!navigator.onLine)
+            {
+              console.log("No hay internet");
+              console.log(image);
+
+              self.setState({
+                formData:
+                {
+                  ...self.state.formData,
+                  [key]:image
+                }
+              },()=>{
+                  ////console.log(self.state);
+              });
+
+              return;
+            }
 
             getFileContentAsBase64(image,function(base64Image){
 
@@ -440,7 +457,7 @@ class FormInventory extends Component {
               <br/>
               <Card>
                 <textarea onChange={this.handleChangeInput}style={{width:"100%",borderRadius:"10%",height:"80px", borderColor:"white"}} name="note" value={this.state.formData.note}  placeholder="Observaciones"></textarea>
-                
+
               </Card>
             </Col>
           </Row>
