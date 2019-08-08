@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42776259-f3c5-45ea-80ea-735ed65f5990" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListAccordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListAccordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Forestal/ForestalUnitList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Plantation/ReportList.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="plantarFuturoApp" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1OWmVm1EPfAZVTRfJiIjWi4OmZ7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages/Plantation" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JulianBermudez\Desktop\App\plantarFuturoApp\src\pages\Plantation" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42776259-f3c5-45ea-80ea-735ed65f5990" name="Default Changelist" comment="" />
+      <created>1561314397042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1561314397042</updated>
+      <workItem from="1561314406421" duration="644000" />
+      <workItem from="1561326756270" duration="3687000" />
+      <workItem from="1561400266963" duration="34700000" />
+      <workItem from="1561511231075" duration="1613000" />
+      <workItem from="1561637359828" duration="4309000" />
+      <workItem from="1561670115873" duration="3264000" />
+      <workItem from="1561853157486" duration="6344000" />
+      <workItem from="1561955263930" duration="5909000" />
+      <workItem from="1561961437789" duration="963000" />
+      <workItem from="1562030096782" duration="1926000" />
+      <workItem from="1563050897914" duration="20000" />
+      <workItem from="1563072703313" duration="1835000" />
+      <workItem from="1563131945625" duration="18334000" />
+      <workItem from="1563196039346" duration="4960000" />
+      <workItem from="1563202920203" duration="32932000" />
+      <workItem from="1563307783293" duration="6256000" />
+      <workItem from="1563498468172" duration="958000" />
+      <workItem from="1563571933659" duration="24459000" />
+      <workItem from="1563638813530" duration="13882000" />
+      <workItem from="1563677454731" duration="5874000" />
+      <workItem from="1563738380770" duration="40399000" />
+      <workItem from="1563806528465" duration="14280000" />
+      <workItem from="1563924979551" duration="11000" />
+      <workItem from="1564100589686" duration="477000" />
+      <workItem from="1564101768425" duration="1200000" />
+      <workItem from="1564108243473" duration="5194000" />
+      <workItem from="1564129695696" duration="1686000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_WIDTH">
+                <map>
+                  <entry key="2" value="125" />
+                  <entry key="3" value="124" />
+                </map>
+              </option>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
