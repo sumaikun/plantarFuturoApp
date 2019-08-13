@@ -6,24 +6,24 @@ export const createFile = (filename,log,callback = null) => {
   if(window.cordova)
   {
     window.resolveLocalFileSystemURL(window.cordova.file.dataDirectory, function(dir) {
-      console.log(window.cordova.file.dataDirectory);
-      console.log("directorio");
-      console.log(dir);
-      console.log(filename);
+      //console.log(window.cordova.file.dataDirectory);
+      //console.log("directorio");
+      //console.log(dir);
+      //console.log(filename);
 
       dir.getFile(filename, {create:true}, function(fileEntry) {
 
-            console.log("file entry");
-            console.log(fileEntry);
+            //console.log("file entry");
+            //console.log(fileEntry);
 
             fileEntry.createWriter(function(fileWriter) {
-              console.log("file created");
+              //console.log("file created");
           		//fileWriter.seek(fileWriter.length);
               fileWriter.truncate(0);
 
           		var blob = new Blob([log], {type:'text/plain'});
           		fileWriter.write(blob);
-          		console.log("ok, in theory i worked");
+          		//console.log("ok, in theory i worked");
               callback ? callback() : false;
           	}, e => {
                 console.log("error writing file");
@@ -52,7 +52,7 @@ export const readFile = (filename,callback = null) => {
     		var reader = new FileReader();
 
     		reader.onloadend = function(e) {
-    			console.log("Text is: "+this.result);
+    			//console.log("Text is: "+this.result);
           callback ? callback(this.result) : false;
     		}
 

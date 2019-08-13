@@ -33,13 +33,13 @@ export const saveState = (state) => {
           {
 
               let a = () => {
-                console.log("data writed");
+                //console.log("data writed");
               }
               let storeText = JSON.stringify(fromJS(state.memory).toJS());
-              console.log("store text");
-              console.log(storeText);
+              //console.log("store text");
+              //console.log(storeText);
               createFile("memoryStorage.txt",storeText,a);
-            
+
           }
       }
 

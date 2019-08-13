@@ -110,6 +110,8 @@ class CollapseMenu extends Component {
               Ons.notification.confirm({title:"",message:'!Estas seguro!'}).then(function(res) {
                 res ? (()=>{
 
+                  var time = 0;
+
                   let successMethod;
 
                   let method;
@@ -156,16 +158,19 @@ class CollapseMenu extends Component {
 
                       let result = forestUnitsImgConvert(unit);
 
-                      unit = result.unit;
-
                       let promiseArray = result.promiseArray;
 
                       let proccess = () => {
+                          unit = result.unit;
+
                           method = (res) => {
                             self.props.notFetching();
                             self.props.removeFromForestUnitP1ServerUpdate(unit);
                           }
-                         self.props.updateForestUnitPhase1(unit.id,unit,method);
+                          setTimeout(function(){
+                            self.props.updateForestUnitPhase1(unit.id,unit,method);
+                            time = time + 500;
+                          }, time + 500);
                        }
 
                        promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
@@ -177,23 +182,31 @@ class CollapseMenu extends Component {
 
                     serverForestUnitsPhase2.forEach( unit => {
 
-                      console.log("server edit");
-                      console.log(unit);
+                      //console.log("server edit");
+                      //console.log(unit);
 
 
                       let result = forestUnitsImgConvert(unit);
 
-                      unit = result.unit;
-
                       let promiseArray = result.promiseArray;
 
-
                       let proccess = () => {
+
+                        unit = result.unit;
+
                         method = (res) => {
-                          self.props.notFetching();
-                          self.props.removeFromForestUnitP2ServerUpdate(unit);
+
+                            console.log("execute delete in memory");
+                            self.props.notFetching();
+                            self.props.removeFromForestUnitP2ServerUpdate(unit);
+
                         }
-                        self.props.updateForestUnitPhase2(unit.id,unit,method);
+
+                        setTimeout(function(){
+                          self.props.updateForestUnitPhase2(unit.id,unit,method);
+                          time = time+500;
+                        }, 500+time);
+
                       }
 
                       promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
@@ -206,11 +219,10 @@ class CollapseMenu extends Component {
 
                       let result = forestUnitsImgConvert(unit);
 
-                      unit = result.unit;
-
                       let promiseArray = result.promiseArray;
 
                       let proccess = () => {
+                          unit = result.unit;
                           method = (res) => {
                             self.props.notFetching();
                             self.props.removeFromForestUnitP3ServerUpdate(unit);
@@ -228,11 +240,12 @@ class CollapseMenu extends Component {
 
                       let result = forestUnitsImgConvert(unit);
 
-                      unit = result.unit;
-
                       let promiseArray = result.promiseArray;
 
                       let proccess = () => {
+
+                          unit = result.unit;
+
                           method = (res) => {
                             self.props.notFetching();
                             self.props.removeFromOfflineForestUnitP1(unit);
@@ -248,23 +261,32 @@ class CollapseMenu extends Component {
 
                     offLineForestUnitsPhase2.forEach( unit => {
 
-                      console.log("server create");
-                      console.log(unit);
+                      //console.log("server create");
+                      //console.log(unit);
+                      //console.log("server create");
 
                       let result = forestUnitsImgConvert(unit);
 
-                      unit = result.unit;
+                      //console.log(result);
 
                       let promiseArray = result.promiseArray;
 
-                      Promise.all(promiseArray).then(values => {
-                        method = (res) => {
-                          self.props.notFetching();
-                          console.log("i try to remove forest unit p2");
-                          self.props.removeFromOfflineForestUnitP2(unit);
-                        }
-                        self.props.createForestUnitPhase2(unit,method);
-                      });
+                      let proccess = () => {
+                          unit = result.unit;
+                          method = (res) => {
+                            self.props.notFetching();
+                            //console.log("i try to remove forest unit p2");
+                            self.props.removeFromOfflineForestUnitP2(unit);
+                          }
+                          setTimeout(function(){
+                            self.props.createForestUnitPhase2(unit,method);
+                            time = time+500;
+                          },time+500);
+                       }
+
+                       promiseArray.length > 0 ? Promise.all(promiseArray).then(values => {
+                         proccess();
+                       }):proccess();
 
                     });
 
@@ -277,6 +299,7 @@ class CollapseMenu extends Component {
                       let promiseArray = result.promiseArray;
 
                       let proccess = () => {
+                          unit = result.unit;
                           method = (res) => {
                             self.props.notFetching();
                             self.props.removeFromOfflineForestUnitP3(unit);
@@ -460,17 +483,9 @@ class CollapseMenu extends Component {
               Ons.notification.confirm({title:"",message:'!Estas seguro, esto borrar los datos de memoria!'}).then(function(res) {
                 res ? (()=>{
                   //localStorage.clear();
-                  //localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
-                  //localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'appState',true));
+                  localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
+                  localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'appState',true));
                   ////console.log(localStorage);
-                  if(window.cordova)
-                  {
-                    window.NativeStorage.clear(()=>{
-                      //console.log("ns clear");
-                    },error=>{
-                      //console.log("ns error on clear");
-                    });
-                  }
 
                   self.props.LogOut();
                 })() : false;

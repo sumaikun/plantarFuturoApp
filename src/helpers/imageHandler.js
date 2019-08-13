@@ -36,7 +36,8 @@ export const forestUnitsImgConvert = (unit) => {
 
   if(unit.id_image)
   {
-    if(!unit.id_image.indexOf("base64"))
+
+    if(unit.id_image.indexOf("base64") === -1)
     {
       let a = getFileContentAsBase64(unit.id_image,function(base64Image){
         unit.id_image = base64Image;
@@ -47,7 +48,7 @@ export const forestUnitsImgConvert = (unit) => {
 
   if(unit.general_image)
   {
-    if(!unit.general_image.indexOf("base64"))
+    if(unit.general_image.indexOf("base64") === -1)
     {
       let b = getFileContentAsBase64(unit.general_image,function(base64Image){
         unit.general_image = base64Image;
@@ -58,7 +59,7 @@ export const forestUnitsImgConvert = (unit) => {
 
   if(unit.after_image)
   {
-    if(!unit.after_image.indexOf("base64"))
+    if(unit.after_image.indexOf("base64") === -1)
     {
       let c = getFileContentAsBase64(unit.after_image,function(base64Image){
         unit.after_image = base64Image;
@@ -69,7 +70,7 @@ export const forestUnitsImgConvert = (unit) => {
 
   if(unit.reference_image)
   {
-    if(!unit.reference_image.indexOf("base64"))
+    if(unit.reference_image.indexOf("base64") === -1)
     {
        let d = getFileContentAsBase64(unit.reference_image,function(base64Image){
         unit.reference_image = base64Image;
