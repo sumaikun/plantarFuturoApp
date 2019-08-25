@@ -220,7 +220,7 @@ class FormProcess extends Component {
         navigator.camera.getPicture(image => {
 
 
-          if(!navigator.onLine)
+          /*if(!navigator.onLine)
           {
             console.log("No hay internet");
             console.log(image);
@@ -236,7 +236,7 @@ class FormProcess extends Component {
             });
 
             return;
-          }
+          }*/
 
           getFileContentAsBase64(image,function(base64Image){
 
@@ -255,7 +255,7 @@ class FormProcess extends Component {
                 [key]:base64Image
               }
             },()=>{
-                ////console.log(self.state);
+                console.log(self.state);
             });
 
 
@@ -264,7 +264,8 @@ class FormProcess extends Component {
 
         }, null,{
             quality : 40,
-            correctOrientation : true
+            correctOrientation : true,
+            //encodingType: navigator.camera.EncodingType.PNG
         });
 
 

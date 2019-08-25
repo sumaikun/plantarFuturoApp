@@ -188,6 +188,8 @@ class CollapseMenu extends Component {
 
                       let result = forestUnitsImgConvert(unit);
 
+                      console.log(result);
+
                       let promiseArray = result.promiseArray;
 
                       let proccess = () => {

@@ -160,7 +160,7 @@ class FormInventory extends Component {
 
         navigator.camera.getPicture(image => {
 
-            if(!navigator.onLine)
+            /*if(!navigator.onLine)
             {
               console.log("No hay internet");
               console.log(image);
@@ -176,7 +176,7 @@ class FormInventory extends Component {
               });
 
               return;
-            }
+            }*/
 
             getFileContentAsBase64(image,function(base64Image){
 
@@ -204,7 +204,8 @@ class FormInventory extends Component {
 
           }, null,{
             quality : 40,
-            correctOrientation : true
+            correctOrientation : true,
+            //encodingType: navigator.camera.EncodingType.PNG
         });
 
       } else{
