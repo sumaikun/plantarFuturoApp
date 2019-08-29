@@ -130,7 +130,7 @@ const removeFromState = ( state, stateParameter, action ) => {
 
 const updateFromState = ( state, stateParameter, action ) => {
 
-  console.log(stateParameter);
+  //console.log(stateParameter);
 
   if(!action.payload.ToSynchro)
   {
@@ -139,7 +139,7 @@ const updateFromState = ( state, stateParameter, action ) => {
 
   let workingVariable = state[stateParameter];
 
-  console.log(workingVariable);
+  //console.log(workingVariable);
 
   workingVariable = editOrAddToArray(workingVariable,action.payload);
 
@@ -256,13 +256,15 @@ const memoryReducer = (state = initialState, action) => {
 
       state = updateFromState(state,'serverForestUnitsPhase2',action);
 
-      console.log(state);
+      //console.log(state);
 
       return state;
 
     case UPDATE_OFFLINE_FOREST_UNIT_PHASE2:
 
       state = updateFromState(state,'offLineForestUnitsPhase2',action);
+
+      console.log(state);
 
       return state;
 

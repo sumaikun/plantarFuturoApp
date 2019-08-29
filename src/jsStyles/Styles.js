@@ -168,3 +168,29 @@ export const OverviewColors = {
     backgroundColor:"pink",
   }
 }
+
+export const grayIndicator = {
+  backgroundColor: "gray",
+  borderRadius: "100%",
+  width: "10px",
+  height: "10px",
+  borderColor:"black",
+  borderWidth:"2px",
+  borderStyle:"solid",
+  marginLeft: "15%",
+  position: "absolute",
+  marginTop: "-4px"
+}
+
+export const redIndicator = {
+  backgroundColor: "red",
+  borderRadius: "100%",
+  width: "10px",
+  height: "10px",
+  borderColor:"black",
+  borderWidth:"2px",
+  borderStyle:"solid",
+  marginLeft: "15%",
+  position: "absolute",
+  marginTop: "-4px"
+}

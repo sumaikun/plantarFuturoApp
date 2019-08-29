@@ -132,21 +132,6 @@ class CollapseMenu extends Component {
                     offLineRiverCollapse, serverRiverCollapse
                   } = self.props.memory;
 
-                  //console.log("Empezando a sincronizar actualizaciones del servidor");
-
-                  serverFunctionalUnits.forEach(data => {
-                    //console.log("server functional unit");
-                    //console.log(data);
-
-                    successMethod = (res) => {
-                      Ons.notification.alert({title:"",message:"Unidad funcional sincronizada"});
-                      self.props.removeFromFunctionalUnitServerUpdate(data);
-                    }
-
-                    self.props.updateFunctionalUnit(data.id,data,successMethod);
-
-                  });
-
                   //functional units.
 
 
@@ -315,6 +300,23 @@ class CollapseMenu extends Component {
 
                   }
 
+                  console.log("Empezando a sincronizar actualizaciones del servidor");
+
+                  serverFunctionalUnits.forEach(data => {
+                    //console.log("server functional unit");
+                    //console.log(data);
+
+                    successMethod = (res) => {
+                      Ons.notification.alert({title:"",message:"Unidad funcional sincronizada"});
+                      self.props.removeFromFunctionalUnitServerUpdate(data);
+                    }
+
+                    self.props.updateFunctionalUnit(data.id,data,successMethod);
+
+                  });
+
+
+
                   if(offLineFunctionalUnits.length == 0)
                   {
                     synchroForestalUnits();
@@ -330,7 +332,13 @@ class CollapseMenu extends Component {
 
                       let p1 = offLineForestUnitsPhase1.filter( memory => memory.functional_unit_id == data.id );
                       let p2 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
-                      let p3 = offLineForestUnitsPhase2.filter( memory => memory.functional_unit_id == data.id );
+                      let p3 = offLineForestUnitsPhase3.filter( memory => memory.functional_unit_id == data.id );
+
+                      console.log(p1);
+
+                      console.log(p2);
+
+                      console.log(p3);
 
                       successMethod = (response) => {
 
@@ -368,6 +376,7 @@ class CollapseMenu extends Component {
                           })
                         }
                         self.props.removeFromOfflineFunctionalUnit(data);
+                        console.log("sincronizar unidades forestal despues de crear unidad funcional");
                         synchroForestalUnits();
                       }
 

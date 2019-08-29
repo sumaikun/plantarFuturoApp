@@ -7,7 +7,7 @@ import plant from "../../img/plant.png";
 import yellowArrow from "../../img/yellowArrow.png";
 import "../../css/accordion.css";
 import "../../css/style.css";
-import { workingRowStyles } from "../../jsStyles/Styles";
+import { workingRowStyles , grayIndicator, redIndicator } from "../../jsStyles/Styles";
 
 
 
@@ -93,8 +93,8 @@ class ForestalUnitList extends Component {
     let foundIndex;
 
     forestalUnits.sort((a,b) => {
-      if (a.created_at > b.created_at) return -1
-      if (a.created_at < b.created_at) return 1
+      if (a.updated_at > b.updated_at) return -1
+      if (a.updated_at < b.updated_at) return 1
       return 0
     });
 
@@ -140,7 +140,7 @@ class ForestalUnitList extends Component {
           <div style={{width: '95%'}}>
             <List renderHeader={this.renderHeader}>
               {forestalUnits.filter(f => {
-                return f.created_at? f.created_at.split(' ')[0].includes(searchDate): null; 
+                return f.updated_at? f.updated_at.split(' ')[0].includes(searchDate): null;
               }).filter(e => e.code.includes(searchName)).map((unit, i) => {
                 switch(currentPhase)
                 {
@@ -244,8 +244,9 @@ class ForestalUnitList extends Component {
                     </div>
                     <div>
                       <span style={styles.projectInfo}>{unit.state}</span>
+                      <div style={  unit.updated_at === unit.created_at ? grayIndicator : redIndicator }></div>
                       <br/>
-                      <span style={styles.projectInfo}>{unit.created_at}</span>
+                      <span style={styles.projectInfo}>{unit.updated_at}</span>
                     </div>
                     <div style={styles.buttonContainer}>
                       <div style={styles.ProjectButton}>

@@ -102,7 +102,14 @@ class FormProcess extends Component {
     super(props);
     this.saveImage = this.saveImage.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} ,
+    this.state = { formData:{
+      origin:"1",
+      condition:"3",
+      health_status:"3",
+      treatment:"1",
+      cup_density:"2",
+      products:"1"
+    } ,
      selectSearch:{},
      projectInfo:this.props.appState.selectedProject
     };
@@ -315,6 +322,7 @@ class FormProcess extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
+          data.updated_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.updateOfflineForestUnitP2(data);
           this.props.goBack();
@@ -330,7 +338,7 @@ class FormProcess extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
-          data.created_at = new Date().toISOString().split('T')[0];
+          data.updated_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.addOfflineForestUnitP2(data);
           this.props.goBack();
@@ -509,7 +517,7 @@ class FormProcess extends Component {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
                   this.state.formData.condition === "2" || this.state.formData.condition === 'Regular' ? 2:
                   this.state.formData.condition === "3" || this.state.formData.condition === 'Bueno' ? 3: ''
-                } required>
+                } >
                   <option value="" disabled selected>Fisico</option>
                   <option value="1">Malo</option>
                   <option value="2">Regular</option>
@@ -523,7 +531,7 @@ class FormProcess extends Component {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
                 this.state.formData.health_status === "2" || this.state.formData.health_status === 'Regular' ? 2:
                 this.state.formData.health_status === "3" || this.state.formData.health_status === 'Bueno' ? 3: ''
-              }  name='health_status'  required>
+              }  name='health_status'  >
                 <option value="" disabled selected>Sanitario</option>
                 <option value="1">Malo</option>
                 <option value="2">Regular</option>
@@ -547,7 +555,7 @@ class FormProcess extends Component {
 
             <Col>
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} name="treatment" onChange={this.handleChangeInput} value={this.state.formData.treatment} required>
+                <Select style={{width:"100%"}} name="treatment" onChange={this.handleChangeInput} value={this.state.formData.treatment} >
                   <option value="" disabled selected>Tipo de manejo</option>
                   <option value="1">Tala</option>
                   <option value="2">Perman. Y/poda</option>
@@ -562,7 +570,7 @@ class FormProcess extends Component {
                 <Select style={{width:"100%"}} name="cup_density" onChange={this.handleChangeInput} value={this.state.formData.cup_density === "1" || this.state.formData.cup_density === 'Clara'  ?  1 :
                  this.state.formData.cup_density === "2" || this.state.formData.cup_density === 'Media'  ? 2 :
                  this.state.formData.cup_density === "3" || this.state.formData.cup_density === 'Espesa' ? 3:''
-              } required>
+              } >
                   <option value="" disabled selected>Densidad de copa</option>
                   <option value="1">Clara</option>
                   <option value="2">Media</option>
@@ -578,7 +586,7 @@ class FormProcess extends Component {
           <Row>
             <Col width="100%">
               <Card style={styles.cardInput}>
-                <Select style={{width:"100%"}} name="products" onChange={this.handleChangeInput} value={this.state.formData.products} required>
+                <Select style={{width:"100%"}} name="products" onChange={this.handleChangeInput} value={this.state.formData.products} >
                   <option value="" disabled selected>Posible uso</option>
                   <option value="1">Leña</option>
                   <option value="2">Madera</option>

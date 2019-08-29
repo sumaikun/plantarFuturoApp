@@ -276,7 +276,7 @@ class ProjectList extends Component {
 
   render() {
 
-    console.log(this.props.appState);
+    //console.log(this.props.appState);
 
     const { projects , currentPhase, functionalUnits  } = this.props.appState
 

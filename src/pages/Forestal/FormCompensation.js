@@ -100,7 +100,14 @@ class FormCompensation extends Component {
     super(props);
     this.saveImage = this.saveImage.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} , selectSearch:{} ,
+    this.state = { formData:{
+      origin:"1",
+      condition:"3",
+      health_status:"3",
+      treatment:"1",
+      cup_density:"2",
+      products:"1"
+    } , selectSearch:{} ,
       projectInfo:this.props.appState.selectedProject };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
@@ -262,6 +269,7 @@ class FormCompensation extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
+          data.updated_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.updateOfflineForestUnitP3(data);
           this.props.goBack();
@@ -277,7 +285,7 @@ class FormCompensation extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
-          data.created_at = new Date().toISOString().split('T')[0];
+          data.updated_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.addOfflineForestUnitP3(data);
           this.props.goBack();
@@ -323,7 +331,7 @@ class FormCompensation extends Component {
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="compensation_site" value={this.state.formData.compensation_site} onChange={this.handleChangeInput} maxLength={10}  placeholder="Sitio de compensacion"  required/>
+                <Input style={styles.textInput} name="compensation_site" value={this.state.formData.compensation_site} onChange={this.handleChangeInput} maxLength={10}  placeholder="Sitio de compensacion"  />
               </Card>
             </Col>
           </Row>
@@ -368,7 +376,7 @@ class FormCompensation extends Component {
               <Select style={{width:"100%"}} name="cup_density" onChange={this.handleChangeInput} value={this.state.formData.cup_density === "1" || this.state.formData.cup_density === 'Clara'  ?  1 :
                this.state.formData.cup_density === "2" || this.state.formData.cup_density === 'Media'  ? 2 :
                this.state.formData.cup_density === "3" || this.state.formData.cup_density === 'Espesa' ? 3:''
-            } required>
+            } >
                 <option value="" disabled selected>Densidad de copa</option>
                 <option value="1">Clara</option>
                 <option value="2">Media</option>
@@ -413,7 +421,7 @@ class FormCompensation extends Component {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
                   this.state.formData.condition === "2" || this.state.formData.condition === 'Regular' ? 2:
                   this.state.formData.condition === "3" || this.state.formData.condition === 'Bueno' ? 3: ''
-                } required>
+                } >
                   <option value="" disabled selected>Fisico</option>
                   <option value="1">Malo</option>
                   <option value="2">Regular</option>
@@ -427,7 +435,7 @@ class FormCompensation extends Component {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
                 this.state.formData.health_status === "2" || this.state.formData.health_status === 'Regular' ? 2:
                 this.state.formData.health_status === "3" || this.state.formData.health_status === 'Bueno' ? 3: ''
-              }  name='health_status'  required>
+              }  name='health_status'  >
                 <option value="" disabled selected>Sanitario</option>
                 <option value="1">Malo</option>
                 <option value="2">Regular</option>
@@ -457,7 +465,7 @@ class FormCompensation extends Component {
             <Col>
               <Card style={styles.cardInput}>
 
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="number" step="any" required />
+                <Input onChange={this.handleChangeInput}style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="number" step="any"/>
 
               </Card>
             </Col>

@@ -95,7 +95,14 @@ class FormInventory extends Component {
     super(props);
     this.saveImage = this.saveImage.bind(this);
     this.handleChangeInput = this.handleChangeInput.bind(this);
-    this.state = { formData:{} , selectSearch:{} };
+    this.state = { formData:{
+      origin:"1",
+      condition:"3",
+      health_status:"3",
+      treatment:"1",
+      cup_density:"2",
+      products:"1"
+    } , selectSearch:{} };
     this.submitData = this.submitData.bind(this);
     this.contentPage = this.contentPage.bind(this);
     this.fileUpload = this.fileUpload.bind(this);
@@ -256,6 +263,7 @@ class FormInventory extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
+          data.updated_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fuctional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.updateOfflineForestUnitP1(data);
           this.props.goBack();
@@ -272,7 +280,7 @@ class FormInventory extends Component {
 
         if(this.props.appState.currentFunctionalUnit.ToSynchro)
         {
-          data.created_at = new Date().toISOString().split('T')[0];
+          data.updated_at = new Date().toISOString().split('T')[0];
           Ons.notification.alert({title:"",message:"Esta registrando datos a una Unidad fucional no sincronizada se guardara en memoria hasta la sincronización"});
           this.props.addOfflineForestUnitP1(data);
           this.props.goBack();
@@ -357,7 +365,7 @@ class FormInventory extends Component {
               <Select style={{width:"100%"}} name="cup_density" onChange={this.handleChangeInput} value={this.state.formData.cup_density === "1" || this.state.formData.cup_density === 'Clara'  ?  1 :
                this.state.formData.cup_density === "2" || this.state.formData.cup_density === 'Media'  ? 2 :
                this.state.formData.cup_density === "3" || this.state.formData.cup_density === 'Espesa' ? 3:''
-            } required>
+            } >
                 <option value="" disabled selected>Densidad de copa</option>
                 <option value="1">Clara</option>
                 <option value="2">Media</option>
@@ -404,7 +412,7 @@ class FormInventory extends Component {
                   this.state.formData.condition === "1" || this.state.formData.condition === 'Malo' ? 1:
                   this.state.formData.condition === "2" || this.state.formData.condition === 'Regular' ? 2:
                   this.state.formData.condition === "3" || this.state.formData.condition === 'Bueno' ? 3: ''
-                } required>
+                } >
                   <option value="" disabled selected>Fisico</option>
                   <option value="1">Malo</option>
                   <option value="2">Regular</option>
@@ -418,7 +426,7 @@ class FormInventory extends Component {
                 this.state.formData.health_status === "1" || this.state.formData.health_status === 'Malo' ? 1:
                 this.state.formData.health_status === "2" || this.state.formData.health_status === 'Regular' ? 2:
                 this.state.formData.health_status === "3" || this.state.formData.health_status === 'Bueno' ? 3: ''
-              }  name='health_status'  required>
+              }  name='health_status'  >
                 <option value="" disabled selected>Sanitario</option>
                 <option value="1">Malo</option>
                 <option value="2">Regular</option>
@@ -447,7 +455,7 @@ class FormInventory extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="text" required />
+                <Input onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="text"  />
               </Card>
             </Col>
           </Row>

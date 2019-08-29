@@ -57,7 +57,7 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack ) =>
     {
       console.log("Modo offline");
 
-      data.created_at = new Date().toISOString().split('T')[0];
+      data.updated_at = new Date().toISOString().split('T')[0];
 
       dispatch(addOfflineForestUnitP1(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
@@ -171,7 +171,7 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-      data.created_at = new Date().toISOString().split('T')[0];
+      data.updated_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineForestUnitP2(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
       dispatch(goBack());
@@ -279,7 +279,7 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-      data.created_at = new Date().toISOString().split('T')[0];
+      data.updated_at = new Date().toISOString().split('T')[0];
       dispatch(addOfflineForestUnitP3(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
       dispatch(goBack());
