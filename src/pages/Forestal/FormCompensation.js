@@ -173,7 +173,7 @@ class FormCompensation extends Component {
         navigator.camera.getPicture(image => {
 
 
-          if(!navigator.onLine)
+          /*if(!navigator.onLine)
           {
             console.log("No hay internet");
             console.log(image);
@@ -189,7 +189,7 @@ class FormCompensation extends Component {
             });
 
             return;
-          }
+          }*/
 
 
 
@@ -219,7 +219,8 @@ class FormCompensation extends Component {
 
         }, null,{
             quality : 40,
-            correctOrientation : true
+            correctOrientation : true,
+            //encodingType: navigator.camera.EncodingType.PNG
         });
       } else{
         ////console.log("please run the cordova project");

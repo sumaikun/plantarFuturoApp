@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Jesus Vega\\Desktop\\App-dev\\cordova\\plantarFuturoApp\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\values_values.arsc.flat",
+            "outputFile": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Jesus Vega\\Desktop\\App-dev\\cordova\\plantarFuturoApp\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "source": "/Users/jesusvega/Desktop/App-dev/cordova/plantarFuturoApp/platforms/android/app/src/main/res/values/strings.xml",
                     "from": {
                         "startLines": "4,2,3",
                         "startColumns": "4,4,4",

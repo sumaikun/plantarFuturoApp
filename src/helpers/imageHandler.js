@@ -39,21 +39,36 @@ export const forestUnitsImgConvert = (unit) => {
 
     if(unit.id_image.indexOf("base64") === -1)
     {
-      let a = getFileContentAsBase64(unit.id_image,function(base64Image){
-        unit.id_image = base64Image;
-        promiseArray.push(a);
+      let a =  new Promise((resolve, reject) => {
+
+      getFileContentAsBase64(unit.id_image,function(base64Image){
+          unit.id_image = base64Image;
+          resolve("¡Éxito!");
+        });
       });
+
+      promiseArray.push(a);
+
     }
   }
 
   if(unit.general_image)
   {
+    console.log("verificar que pasa");
+    console.log(unit.general_image.indexOf("base64"));
     if(unit.general_image.indexOf("base64") === -1)
     {
-      let b = getFileContentAsBase64(unit.general_image,function(base64Image){
-        unit.general_image = base64Image;
-        promiseArray.push(b);
+      console.log("dentro de condición");
+      let b =  new Promise((resolve, reject) => {
+        getFileContentAsBase64(unit.general_image,function(base64Image){
+          console.log("base 64 equivalente");
+          console.log(base64Image);
+          unit.general_image = base64Image;
+          resolve("¡Éxito!");
+        });
       });
+
+      promiseArray.push(b);
     }
   }
 
@@ -61,10 +76,13 @@ export const forestUnitsImgConvert = (unit) => {
   {
     if(unit.after_image.indexOf("base64") === -1)
     {
-      let c = getFileContentAsBase64(unit.after_image,function(base64Image){
-        unit.after_image = base64Image;
-        promiseArray.push(c);
+      let c = new Promise((resolve, reject) => {
+          getFileContentAsBase64(unit.after_image,function(base64Image){
+          unit.after_image = base64Image;
+          resolve("¡Éxito!");
+        });
       });
+      promiseArray.push(c);
     }
   }
 
@@ -72,10 +90,13 @@ export const forestUnitsImgConvert = (unit) => {
   {
     if(unit.reference_image.indexOf("base64") === -1)
     {
-       let d = getFileContentAsBase64(unit.reference_image,function(base64Image){
-        unit.reference_image = base64Image;
-        promiseArray.push(d);
+       let d = new Promise((resolve, reject) => {
+         getFileContentAsBase64(unit.reference_image,function(base64Image){
+           unit.reference_image = base64Image;
+           resolve("¡Éxito!");
+         });
       });
+      promiseArray.push(d);
     }
   }
 
