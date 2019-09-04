@@ -91,11 +91,45 @@ class ForestalUnitList extends Component {
     //////console.log("Unidades forestales");
     //////console.log(forestalUnits);
     let foundIndex;
+    let index = 0;
+    forestalUnits.forEach(unit => {
+      switch(currentPhase)
+      {
+        case 1:
+          foundIndex = this.props.memory.serverForestUnitsPhase1.findIndex( memory =>   memory.id == unit.id  );
+          ////console.log("foundIndex"+foundIndex);
+          unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase1[foundIndex] : unit ;
+          break;
+        case 2:
+          foundIndex = this.props.memory.serverForestUnitsPhase2.findIndex( memory =>   memory.id == unit.id  );
+          ////console.log("foundIndex"+foundIndex);
+          unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase2[foundIndex] : unit ;
+          break;
+        case 3:
+          foundIndex = this.props.memory.serverForestUnitsPhase3.findIndex( memory =>   memory.id == unit.id  );
+          ////console.log("foundIndex"+foundIndex);
+          unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase3[foundIndex] : unit ;
+          break;
+        default:
+          break;
+      }
+      forestalUnits[index] = unit;
+      index++;
+    });
 
     forestalUnits.sort((a,b) => {
-      if (a.updated_at > b.updated_at) return -1
-      if (a.updated_at < b.updated_at) return 1
-      return 0
+      if (a.updated_at > b.updated_at){
+        //console.log(a);
+        //console.log(b);
+        return -1;
+      }
+      if (a.updated_at < b.updated_at){
+        //console.log(a.updated_at);
+        //console.log(b.updated_at);
+        //console.log("b bigger than a ");
+        return 1;
+      }
+      return 0;
     });
 
     const { searchName, searchDate } = this.state;
@@ -142,26 +176,6 @@ class ForestalUnitList extends Component {
               {forestalUnits.filter(f => {
                 return f.updated_at? f.updated_at.split(' ')[0].includes(searchDate): null;
               }).filter(e => e.code.includes(searchName)).map((unit, i) => {
-                switch(currentPhase)
-                {
-                  case 1:
-                    foundIndex = this.props.memory.serverForestUnitsPhase1.findIndex( memory =>   memory.id == unit.id  );
-                    ////console.log("foundIndex"+foundIndex);
-                    unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase1[foundIndex] : unit ;
-                    break;
-                  case 2:
-                    foundIndex = this.props.memory.serverForestUnitsPhase2.findIndex( memory =>   memory.id == unit.id  );
-                    ////console.log("foundIndex"+foundIndex);
-                    unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase2[foundIndex] : unit ;
-                    break;
-                  case 3:
-                    foundIndex = this.props.memory.serverForestUnitsPhase3.findIndex( memory =>   memory.id == unit.id  );
-                    ////console.log("foundIndex"+foundIndex);
-                    unit = foundIndex != -1 ? this.props.memory.serverForestUnitsPhase3[foundIndex] : unit ;
-                    break;
-                  default:
-                    break;
-                }
 
               return (
               <div>

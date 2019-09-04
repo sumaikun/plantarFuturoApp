@@ -1,13 +1,21 @@
 import { Validation_400, Validation_401, Validation_405, DefaultError } from "./formValidation";
 
 
+var alreadyReportered = false;
+
 export const handleCodeError = (error, message = null) => {
 
   if(!error.response && navigator.onLine)
   {
     console.log(error);
     //DefaultError(" Parece que tenemos un problema con el internet o la conexión al servidor ");
-    DefaultError(" ¡Sucedio un error inesperado, puede ser un error de conexión al servidor! ");
+    if(!alreadyReportered)
+    {
+      alreadyReportered = true;
+      DefaultError(" ¡Sucedio un error inesperado, puede ser un error de conexión al servidor! ");
+      setInterval(function(){ alreadyReportered = false; }, 8000);
+    }
+
     return;
   }
   else{

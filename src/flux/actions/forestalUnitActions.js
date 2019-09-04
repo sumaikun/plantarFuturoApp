@@ -57,7 +57,9 @@ export const createForestUnitPhase1 = (data,successCallBack  ,errorCallBack ) =>
     {
       console.log("Modo offline");
 
-      data.updated_at = new Date().toISOString().split('T')[0];
+      let now = new Date().toISOString().split('T');
+
+      data.updated_at = now[0]+" "+now[1].substring(0,8);
 
       dispatch(addOfflineForestUnitP1(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
@@ -122,6 +124,10 @@ export const updateForestUnitPhase1 = (id,data,successCallBack) => {
       {
         console.log("Modo offline");
 
+        let now = new Date().toISOString().split('T');
+
+        data.updated_at = now[0]+" "+now[1].substring(0,8);
+
         if(!data.ToSynchro)
         {
           console.log("editar del servidor");
@@ -171,7 +177,12 @@ export const createForestUnitPhase2 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-      data.updated_at = new Date().toISOString().split('T')[0];
+
+      let now = new Date().toISOString().split('T');
+
+      data.updated_at = now[0]+" "+now[1].substring(0,8);
+
+
       dispatch(addOfflineForestUnitP2(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
       dispatch(goBack());
@@ -229,7 +240,14 @@ export const updateForestUnitPhase2 = (id,data,successCallBack) => {
 
       if(!navigator.onLine || data.ToSynchro)
       {
+
+        let now = new Date().toISOString().split('T');
+
+        data.updated_at = now[0]+" "+now[1].substring(0,8);
+
         console.log("Modo offline");
+
+        console.log(new Date().toISOString().split('T'));
 
         if(!data.ToSynchro)
         {
@@ -279,7 +297,12 @@ export const createForestUnitPhase3 = (data,successCallBack  ,errorCallBack) => 
     if(!navigator.onLine)
     {
       console.log("Modo offline");
-      data.updated_at = new Date().toISOString().split('T')[0];
+
+      let now = new Date().toISOString().split('T');
+
+      data.updated_at = now[0]+" "+now[1].substring(0,8);
+
+
       dispatch(addOfflineForestUnitP3(data));
       Ons.notification.alert({title:"¡Que bien!",message:"¡Unidad forestal guardada en memoria!"});
       dispatch(goBack());
@@ -337,6 +360,10 @@ export const updateForestUnitPhase3 = (id,data,successCallBack) => {
 
       if(!navigator.onLine || data.ToSynchro)
       {
+        let now = new Date().toISOString().split('T');
+
+        data.updated_at = now[0]+" "+now[1].substring(0,8);
+
         console.log("Modo offline");
 
         if(!data.ToSynchro)

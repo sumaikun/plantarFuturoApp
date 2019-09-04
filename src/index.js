@@ -66,7 +66,7 @@ store.subscribe( function () {
     setTimeout(function(){
       nowSave = true;
       saveState(store.getState());
-    }, 4000);
+    }, 3000);
   }
 
 

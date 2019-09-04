@@ -28,7 +28,7 @@ export const getFromJsonString = (jsonString,getKey,returnString = false ) => {
 
 export const editOrAddToArray = (array , object ) => {
 
-        let foundIndex = array.findIndex(data => data === object );
+        let foundIndex = array.findIndex(data => data.id === object.id );
 
         if(foundIndex != -1)
         {

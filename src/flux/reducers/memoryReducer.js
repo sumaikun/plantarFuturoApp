@@ -139,7 +139,7 @@ const updateFromState = ( state, stateParameter, action ) => {
 
   let workingVariable = state[stateParameter];
 
-  //console.log(workingVariable);
+  console.log(workingVariable);
 
   workingVariable = editOrAddToArray(workingVariable,action.payload);
 

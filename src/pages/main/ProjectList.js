@@ -145,11 +145,29 @@ class ProjectList extends Component {
           return;
         }
 
+
+        //Crear unidad funcional
+        let found = false;
+
+        this.props.memory.offLineFunctionalUnits.forEach(offline => {
+          if( offline.project_id === this.project_id &&  offline.code === this.Code.value)
+          {
+            found = true;
+          }
+        })
+
+        if(found){
+            Ons.notification.alert({title:"¡Espera!",message:"Ya esta esta unidad funcional guardada en memoria"});
+            return;
+        }
+
         validation ?  this.props.createFunctionalUnit({
           code: this.Code.value,
           type: 1,
           project_id: this.project_id
         },componentSuccess) : false;
+
+
     }else{
       Ons.notification.alert({title:"¡Espera!",message:"Estamos realizando otro proceso en el momento"});
     }
@@ -402,7 +420,7 @@ class ProjectList extends Component {
           <form onSubmit={this.registerUnit}>
             <div className="input-icon-wrap">
               <span className="input-icon"><span className="fa fa-user fontAwesome"></span></span>
-              <input type="text" ref={(input) => this.Code = input} style={{width:"50%"}} className="input-with-icon" placeholder="Codigo" id="form-name"   maxLength="10"  required/>
+              <input type="text" ref={(input) => this.Code = input} style={{width:"50%"}} className="input-with-icon" autoCorrect="false" placeholder="Codigo" id="form-name"   maxLength="10"  required/>
             </div>
             <br/>
             <button  type="submit" id="functionalSubmitButton"   modifier="large"
