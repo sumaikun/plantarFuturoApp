@@ -314,24 +314,24 @@ class FormInventory extends Component {
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
+                <Input disableUnderline={true} style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
               </Card>
             </Col>
             {/*}<Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.dateInput} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
+                <Input disableUnderline={true} style={styles.dateInput} type="date" name="start_treatment" onChange={this.handleChangeInput}value={this.state.formData.start_treatment} required/>
               </Card>
             </Col>*/}
           </Row>
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Nombre" required />
+                <Input disableUnderline={true} style={styles.textInput} name="common_name" value={this.state.formData.common_name} onChange={this.handleChangeInput}placeholder="Nombre" required />
               </Card>
             </Col>
             <Col width="50%">
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="scientific_name" value={this.state.formData.scientific_name} onChange={this.handleChangeInput}placeholder="Nombre cientifico" />
+                <Input disableUnderline={true} style={styles.textInput} name="scientific_name" value={this.state.formData.scientific_name} onChange={this.handleChangeInput}placeholder="Nombre cientifico" />
               </Card>
             </Col>
           </Row>
@@ -349,17 +349,17 @@ class FormInventory extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="CAP" min="0" type="number" step="any" />
+                <Input disableUnderline={true} style={styles.textInput} name='cap_cm' onChange={this.handleChangeInput}value={this.state.formData.cap_cm} placeholder="CAP" min="0" type="number" step="any" />
               </Card>
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="number" step="any" />
+                <Input disableUnderline={true} style={styles.textInput} name="total_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.total_heigth_m} placeholder="HT" min="0" type="number" step="any" />
               </Card>
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="commercial_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.commercial_heigth_m} placeholder="HC" min="0" type="number" step="any" />
+                <Input disableUnderline={true} style={styles.textInput} name="commercial_heigth_m" onChange={this.handleChangeInput}value={this.state.formData.commercial_heigth_m} placeholder="HC" min="0" type="number" step="any" />
               </Card>
             </Col>
           </Row>
@@ -440,12 +440,12 @@ class FormInventory extends Component {
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" step="any" />
+                <Input disableUnderline={true} onChange={this.handleChangeInput}style={styles.textInput} name="x_cup_diameter_m" value={this.state.formData.x_cup_diameter_m} placeholder="X" min="0" type="number" step="any" />
               </Card>
             </Col>
             <Col width="25%">
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" step="any" />
+                <Input disableUnderline={true} onChange={this.handleChangeInput}style={styles.textInput} name="y_cup_diameter_m" value={this.state.formData.y_cup_diameter_m} placeholder="Y" min="0" type="number" step="any" />
               </Card>
             </Col>
           </Row>
@@ -459,7 +459,7 @@ class FormInventory extends Component {
             </Col>
             <Col>
               <Card style={styles.cardInput}>
-                <Input onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="text"  />
+                <Input disableUnderline={true} onChange={this.handleChangeInput} style={styles.textInput} name="waypoint" value={this.state.formData.waypoint}  placeholder="WayPoint" type="text"  />
               </Card>
             </Col>
           </Row>
@@ -498,7 +498,7 @@ class FormInventory extends Component {
                 >Tomar foto</Button>
                 <label className="fileContainer" style={ styles.uploadFile }>
                   Subir archivo
-                  <input  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
+                  <Input disableUnderline={true}  type="file" onChange={(event)=>{this.fileUpload("general_image",event)}}
                      />
                 </label>
               </Row>
@@ -530,7 +530,7 @@ class FormInventory extends Component {
                 >Tomar foto</Button>
                 <label className="fileContainer" style={ styles.uploadFile }>
                   Subir archivo
-                  <input  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}   />
+                  <Input disableUnderline={true}  type="file" onChange={(event)=>{this.fileUpload("id_image",event)}}   />
                 </label>
               </Row>
             </Card>
@@ -560,7 +560,7 @@ class FormInventory extends Component {
               >Tomar foto</Button>
               <label className="fileContainer" style={ styles.uploadFile }>
                 Subir archivo
-                <input  type="file" onChange={(event)=>{this.fileUpload("reference_image",event)}}/>
+                <Input disableUnderline={true}  type="file" onChange={(event)=>{this.fileUpload("reference_image",event)}}/>
               </label>
             </Row>
           </Card>

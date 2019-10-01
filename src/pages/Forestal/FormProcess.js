@@ -232,6 +232,9 @@ class FormProcess extends Component {
             console.log("No hay internet");
             console.log(image);
 
+            console.log(window.storageReference);
+
+
             self.setState({
               formData:
               {
@@ -372,7 +375,7 @@ class FormProcess extends Component {
           <Row>
             <Col>
               <Card style={styles.cardInput}>
-                <Input style={styles.textInput} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
+                <Input style={styles.textInput} disableUnderline={true} name="code" value={this.state.formData.code} onChange={this.handleChangeInput} maxLength={10}  placeholder="Codigo" maxLength="10" required/>
               </Card>
             </Col>
           </Row>

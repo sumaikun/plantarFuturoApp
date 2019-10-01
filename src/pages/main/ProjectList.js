@@ -70,6 +70,7 @@ class ProjectList extends Component {
     this.registerUnit = this.registerUnit.bind(this);
     this.editFunctionalUnit = this.editFunctionalUnit.bind(this);
     this.renderFunctionalList = this.renderFunctionalList.bind(this);
+    this.validateFuncionalUnit = this.validateFuncionalUnit.bind(this);
     this.state = {
       editMode:false,
       idToModify:null,
@@ -87,9 +88,54 @@ class ProjectList extends Component {
 
   }
 
+  validateFuncionalUnit(project_id){
+    //Crear unidad funcional
+    let found = false;
+
+    this.props.memory.offLineFunctionalUnits.forEach(offline => {
+      if( offline.project_id === project_id &&  offline.code.toLowerCase()  === this.Code.value.toLowerCase() )
+      {
+        found = true;
+      }
+    })
+
+    if(found == true){
+        Ons.notification.alert({title:"¡Espera!",message:"Ya esta esta unidad funcional guardada en memoria"});
+        return found;
+    }
+
+    //Verificar si el dato si existe en datos del servidor
+
+    let found2 = false;
+
+    this.props.appState.functionalUnits.forEach(data => {
+      if( data.project_id === project_id &&  data.code.toLowerCase()  === this.Code.value.toLowerCase() )
+      {
+        found2 = true;
+      }
+    })
+
+    if(found2 == true){
+        Ons.notification.alert({title:"¡Espera!",message:"Ya esta esta unidad funcional en el servidor"});
+        return found2;
+    }
+
+
+    return false;
+
+  }
+
   registerUnit(e){
 
     e.preventDefault();
+
+    console.log(this.validateFuncionalUnit(this.project_id));
+
+    if(!this.validateFuncionalUnit(this.project_id) == false)
+    {
+      console.log("is false");
+      return;
+    }
 
     if(!this.props.appState.isFetching)
     {
@@ -113,11 +159,19 @@ class ProjectList extends Component {
 
         }
 
-        if(this.state.editMode)
+        if(this.state.editMode == true)
         {
 
           //console.log(this.state);
           //return ;
+
+          if(this.validateFuncionalUnit(this.state.projectIdToModify) == false )
+          {
+            console.log("false on edit");
+            return;
+          }
+
+
           if(!this.state.isOfflineFunit)
           {
               validation ?  this.props.updateFunctionalUnit(this.state.idToModify,{
@@ -146,20 +200,7 @@ class ProjectList extends Component {
         }
 
 
-        //Crear unidad funcional
-        let found = false;
-
-        this.props.memory.offLineFunctionalUnits.forEach(offline => {
-          if( offline.project_id === this.project_id &&  offline.code === this.Code.value)
-          {
-            found = true;
-          }
-        })
-
-        if(found){
-            Ons.notification.alert({title:"¡Espera!",message:"Ya esta esta unidad funcional guardada en memoria"});
-            return;
-        }
+        console.log("here");
 
         validation ?  this.props.createFunctionalUnit({
           code: this.Code.value,
@@ -269,8 +310,16 @@ class ProjectList extends Component {
                         return Ons.notification.alert({title:"Espera",message:"Estamos cargando la información"});
                       }
                       console.log("nav");
-                      this.props.getForestalUnits(funit.id);
+
                       this.props.setFunctionalUnit(funit);
+
+                      //persist if this data change
+                      this.props.getForestalUnits(funit.id,null,null,false,()=>{
+                        window.saveAppState = true;
+                        console.log("Save if changed");
+                      });
+
+
                       this.props.goToForestalUnits();
                     }} >{ project.phase != "3" ? <div> {funit.code}</div> : <div> Indiviuo forestal {i+1} </div>
                   }</span>
@@ -384,9 +433,12 @@ class ProjectList extends Component {
                             </div>
                           </Col>
                           <Col width="47%">
-                            <div onClick={()=>{ let button = document.querySelector("#functionalSubmitButton");
+                            <div onClick={()=>{
+                                let button = document.querySelector("#functionalSubmitButton");
                                 button.textContent = "Registrar";
-                                this.project_id = project.id; }}>
+                                this.project_id = project.id;
+                            }}>
+
                             { this.props.appState.currentPhase != "3" ?
                             <CardOptionButton
                               className="modal-btn"
@@ -399,6 +451,7 @@ class ProjectList extends Component {
                               title="Nueva unidad funcional"
                               />: <div></div>
                             }
+
                             </div>
                           </Col>
                         </Row>

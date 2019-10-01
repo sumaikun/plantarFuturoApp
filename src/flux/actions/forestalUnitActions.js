@@ -16,12 +16,17 @@ import {
 
 import { goBack } from "./navigationActions";
 
-export const getForestalUnits = (id) => {
+export const getForestalUnits = (id, successCallBack = null  ,errorCallBack = null ,
+  keepFetching = false , aditionalSuccessLogic = null ) => {
   return async dispatch => {
 
       //console.log(id);
 
-      dispatch(fetching());
+      if(!keepFetching)
+      {
+        dispatch(fetching());
+      }
+
 
       if(!navigator.onLine)
       {
@@ -30,8 +35,17 @@ export const getForestalUnits = (id) => {
         return;
       }
 
-      let SuccessCallBack = (response) => {
-        dispatch(notFetching());
+      let SuccessCallBack =  successCallBack ? successCallBack :  (response) => {
+        if(!keepFetching)
+        {
+          dispatch(notFetching());
+        }
+
+        if(aditionalSuccessLogic)
+        {
+          aditionalSuccessLogic();
+        }
+
         dispatch(setForestalUnits(response.data));
       }
 

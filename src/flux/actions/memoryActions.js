@@ -312,7 +312,7 @@ export const removeFromOfflineRiverColl = (data) => ({
 });
 
 
-//SET STATE FROM NATIVE STORAGE
+//SET STATE FROM NATIVE STORAGE OR FILES
 
 export const setAppStatefromNS = (data) => ({
   type: SET_NS_APP_STATE,

@@ -119,11 +119,23 @@ class ReportList extends Component {
                         <div
                           className={'select-report'}
                           onClick={()=>{
-                            this.props.getDefaultActivitiesByType( parseInt( report.type ) );
-                            this.props.setPlantationReportType( parseInt( report.type ) );
-                            this.props.getPlantationReportsByProject( report.project.id );
-                            this.props.setPlantationReport( report );
-                            this.props.goToPlantationReport();
+
+
+                            let successCallBack = () => {
+
+                              this.props.setPlantationReportType( parseInt( report.type ) );
+                              this.props.getPlantationReportsByProject( report.project.id );
+                              this.props.setPlantationReport( report );
+
+                              this.props.goToPlantationReport();
+
+                            }
+
+                            this.props.getDefaultActivitiesByType( parseInt( report.type ) , successCallBack );
+
+
+                            
+                          
                           }}
                         >
                           <ListItem tappable onClick={()=>{

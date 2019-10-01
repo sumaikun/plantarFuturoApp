@@ -49,26 +49,105 @@ const initialData = loadState();
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
-const store = createStoreWithMiddleware(reducers);
+var store = createStoreWithMiddleware(reducers);
 
 //console.log(storage);
 
-const mobileAppMode = true;
 
-var nowSave = true;
+
+const mobileAppMode = false;
+
+//var nowSave = true;
+
+window.storageReference = store.getState();
+window.saveAppState = false;
+window.saveMemoryState = false;
 
 store.subscribe( function () {
-  //console.log("listener activated");
+  console.log("listener activated");
   //console.log(store.getState());
-  if(nowSave)
+  //console.log(window.nowSave);
+  /*if(nowSave || window.nowSave)
   {
+    console.log("Im going to save");
+    console.log(window.storageReference);
+    window.nowSave = false;
     nowSave = false;
     setTimeout(function(){
       nowSave = true;
       saveState(store.getState());
-    }, 3000);
+      window.storageReference = store.getState();
+      console.log(store.getState());
+    }, 3500);
+  }*/
+
+  if(window.saveMemoryState)
+  {
+    setTimeout(function(){
+
+      let currentState = store.getState();
+
+      if(window.storageReference)
+      {
+        if(currentState.memory==  window.storageReference.memory)
+        {
+          console.log("Storage igual, no guardo");
+          return;
+        }
+      }
+
+      saveState(store.getState(),false,true);
+
+      window.saveMemoryState = false;
+      window.storageReference = currentState;
+
+    }, 1500);
   }
 
+  if(!navigator.onLine && window.saveMemoryState == false)
+  {
+    console.log("intento guardar memoria offline");
+    setTimeout(function(){
+      let currentState = store.getState();
+      if(window.storageReference)
+      {
+        if(currentState.memory ==  window.storageReference.memory)
+        {
+          console.log("Storage de memoria igual, no guardo");
+          return;
+        }
+        else{
+          saveState(store.getState(),false,true);
+          window.storageReference = currentState;
+        }
+      }
+
+    }, 1500);
+
+  }
+
+  if(window.saveAppState)
+  {
+    setTimeout(function(){
+
+      let currentState = store.getState();
+
+      if(window.storageReference)
+      {
+        if(currentState.appState ==  window.storageReference.appState)
+        {
+          console.log("Storage igual, no guardo");
+          return;
+        }
+      }
+
+      saveState(store.getState(),true,false);
+
+      window.saveAppState = false;
+      window.storageReference = currentState;
+
+    }, 1500);
+  }
 
 });
 
@@ -77,6 +156,12 @@ const appInit = () => {
   if(window.cordova)
   {
 
+    //var myWorker = new Worker("background.js");
+
+    /*myWorker.onmessage = function (oEvent) {
+      console.log(oEvent.data);
+    };*/
+
     /*createFile("memoryStorage.txt","this is a test");
     setTimeout(function(){
       let a = (data) => {
@@ -84,6 +169,22 @@ const appInit = () => {
       }
       readFile("memoryStorage.txt",a);
     }, 10000);*/
+    document.addEventListener("pause", ()=>{
+      console.log("I am on pause");
+
+    }, false);
+
+    document.addEventListener("resume", ()=>{
+      console.log("I am on resume");
+
+    },false);
+
+
+    document.addEventListener("menubutton", ()=>{
+      console.log("I am on menubutton");
+
+    },false);
+
   }
 
   ReactDOM.render(

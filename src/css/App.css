@@ -57,3 +57,12 @@
 .input-icon, .input-with-icon {
   padding: 10px;
 }
+
+.card{
+  border-radius: 8px !important;
+}
+
+.text-input--mymodifier {
+  border: 1px solid #ccc;
+  color: red;
+}

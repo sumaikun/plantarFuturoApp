@@ -115,7 +115,7 @@ class ProjectManagement extends Component {
           </div>
           <div style={{height:"10px"}} ></div>
 
-        { this.props.appState.user.risk && phase4Projects.length > 0 ?
+        { this.props.appState.user ? this.props.appState.user.risk && phase4Projects.length > 0 ?
           <div>
             <div onClick={()=>{this.props.setProjectPhase(4),
               this.props.goToProjects()
@@ -128,7 +128,7 @@ class ProjectManagement extends Component {
                />
              </div>
             <div style={{height:"10px"}} ></div>
-           </div> : null
+           </div> : null : null
         }
 
         {

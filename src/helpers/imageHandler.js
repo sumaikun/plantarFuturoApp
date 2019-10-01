@@ -4,7 +4,8 @@ export const getFileContentAsBase64 = (path,callback) =>{
   window.resolveLocalFileSystemURL(path, gotFile, fail);
 
   function fail(e) {
-        alert('Cannot found requested file');
+        console.log('Cannot found requested file');
+        //alert('Cannot found requested file');
   }
 
   function gotFile(fileEntry) {

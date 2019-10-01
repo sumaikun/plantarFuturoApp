@@ -11,7 +11,7 @@ import Ons from 'onsenui';
 /*
 type_id (1: Establecimiento, 2: Mantenimiento, 3: Civil, 4: Plantación)
  */
-export const getDefaultActivitiesByType = (type_id) => {
+export const getDefaultActivitiesByType = (type_id , aftersuccessCallBack = null) => {
   return async dispatch => {
     dispatch( fetching() );
 
@@ -24,9 +24,16 @@ export const getDefaultActivitiesByType = (type_id) => {
     let SuccessCallBack = (response) => {
       dispatch(notFetching());
       if (type_id === 1)
+      {
         dispatch(setEstablishmentDefaultActivities(response.data));
+      }
       else if (type_id === 2)
+      {
+        
         dispatch(setMaintenanceDefaultActivities(response.data));
+ 
+      }
+        aftersuccessCallBack ? aftersuccessCallBack() : false; 
     };
 
     let ErrorCallBack = () => {

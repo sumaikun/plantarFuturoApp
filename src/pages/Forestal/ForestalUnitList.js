@@ -309,10 +309,14 @@ class ForestalUnitList extends Component {
             ));
           break;
         case 2:
-            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase2);
+            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase2.filter(
+              memory => memory.functional_unit_id === this.props.appState.currentFunctionalUnit.id
+            ));
           break;
         case 3:
-            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase3);
+            forestalUnits = forestalUnits.concat(this.props.memory.offLineForestUnitsPhase3.filter(
+              memory => memory.functional_unit_id === this.props.appState.currentFunctionalUnit.id
+            ));
           break;
         default:
             break;

@@ -37,7 +37,10 @@ import { FETCH,
    SET_PLANTATION_REPORT,
    SELECT_PLANTATION_PROJECT,
    SET_ESTABLISHMENT_DEFAULT_ACTIVITIES,
-   SET_MAINTENANCE_DEFAULT_ACTIVITIES, PROJECT_DATA , SET_VISITOR_ASSISTANTS_DATA } from "../types";
+   SET_MAINTENANCE_DEFAULT_ACTIVITIES,
+   PROJECT_DATA,
+   SET_VISITOR_ASSISTANTS_DATA,
+   SET_NS_APP_STATE   } from "../types";
 
 let initialUser = null;
 
@@ -139,22 +142,27 @@ let defaultValues = {
   establishmentReport: initialEstablishmentReport,
   maintenanceReport: initialMaintenanceReport,
 }
-
+/*
 try
 {
  storedData = JSON.parse(localStorage.getItem('state'));
+ console.log("intento tomar los valores de local storage");
  if(!storedData.appState)
  {
-   storedData = defaultValues;
+   console.log("los valores no existen en el local storage");
+   storedData.appState = defaultValues;
  }
+ console.log(storedData);
 }
 catch(err){
-  //console.log("error getting data");
-}
+  console.log("error initializaing app reducer");
+}*/
 
 //console.log(storedData);
 
-const initialState =  storedData ? storedData.appState : defaultValues;
+//const initialState =  storedData ? storedData.appState : defaultValues;
+
+const initialState = defaultValues;
 
 const appReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -546,6 +554,10 @@ const appReducer = (state = initialState, action) => {
       };
       console.log(state);
       return state;
+
+    case SET_NS_APP_STATE:
+
+      return action.payload;
 
     default:
       return state;

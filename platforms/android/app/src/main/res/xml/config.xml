@@ -36,4 +36,5 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
+    <preference name="KeepRunning" value="true" />
 </widget>

@@ -57,7 +57,63 @@ class PlantationReport extends Component {
     console.log( this.state.formData );
 
     if( this.props.appState.plantationReportToEdit ) {
-      let activitiesFromPlantationReportToEdit = this.props.appState.plantationReportToEdit.report_activities;
+
+      //console.log("here on edit");
+
+      //let activitiesFromPlantationReportToEdit = this.props.appState.plantationReportToEdit.report_activities;
+      
+      /*console.log("plantation report to edit");
+      console.log(this.props.appState.plantationReportToEdit);
+      
+      console.log("activities from plantation report");
+      console.log(activitiesFromPlantationReportToEdit);
+
+      console.log("Tipo de reporte");
+
+      console.log(this.props.appState.plantationReportType);
+
+      console.log(this.props.appState.establishmentDefaultActivities);
+
+      console.log(this.props.appState.maintenanceDefaultActivities);
+      
+      console.log(activitiesArray);*/
+
+       //Crear arreglo en edición
+
+       let activities = [];
+
+        if(this.props.appState.plantationReportType == 1)
+        {
+          activities = this.props.appState.establishmentDefaultActivities;
+        }
+        else{
+          activities = this.props.appState.maintenanceDefaultActivities;
+        }
+       
+       console.log(activities);
+ 
+       let activitiesArray = [];
+ 
+       this.props.appState.plantationReportToEdit.report_activities.forEach(activity => {
+ 
+         let index = activities.findIndex( data =>  data.id == activity.default_activity_id );
+ 
+         console.log(index);
+ 
+         activitiesArray[ index ] = {
+           default_activity_id:activity.default_activity_id,
+           hours:activity.hours,
+           quantity:activity.quantity 
+         }
+       });
+ 
+       console.log(activities);
+       console.log("Activities Array");
+       console.log(activitiesArray);
+ 
+      
+
+
       this.setState({
         isDisable:true,
         formData:{
@@ -68,7 +124,7 @@ class PlantationReport extends Component {
           report_date: this.props.appState.plantationReportToEdit.report_date,
           people_number: this.props.appState.plantationReportToEdit.people_number,
           location: this.props.appState.plantationReportToEdit.location,
-          activities: activitiesFromPlantationReportToEdit,
+          activities: activitiesArray,
         }
       },()=> {
         console.log(this.state);
@@ -488,7 +544,7 @@ class PlantationReport extends Component {
     switch ( plantationReportType ) {
       case 1:
         headerTitle = 'ESTABLECIMIENTO';
-        activities = establishmentDefaultActivities ? establishmentDefaultActivities : activities ;
+        activities = establishmentDefaultActivities ? establishmentDefaultActivities : activities ;        
         break;
 
       case 2:
@@ -499,8 +555,6 @@ class PlantationReport extends Component {
       default:
         break;
     }
-
-
 
     return (
       <AppPage  title={["", <strong> {headerTitle} </strong>]} backButton={true} backButtonCallBack={()=>{ }}>

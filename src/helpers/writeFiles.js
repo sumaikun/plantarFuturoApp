@@ -1,5 +1,5 @@
-var path = "file:///storage/emulated/0";
-var filename = "offlineData.txt";
+//var path = "file:///storage/emulated/0";
+//var filename = "offlineData.txt";
 
 export const createFile = (filename,log,callback = null) => {
 
@@ -39,11 +39,12 @@ export const createFile = (filename,log,callback = null) => {
 
 }
 
-export const readFile = (filename,callback = null) => {
+export const readFile = (filename,callback = null,errorcall = null) => {
 
     function fail(e) {
+      errorcall ? errorcall(e) : false;
     	console.log("FileSystem Error");
-    	console.log(e);
+    	console.log(e);      
     }
 
     function gotFile(fileEntry) {
@@ -62,7 +63,9 @@ export const readFile = (filename,callback = null) => {
     }
     if(window.cordova)
     {
-        window.resolveLocalFileSystemURL(window.cordova.file.dataDirectory + filename, gotFile, fail);
+        window.resolveLocalFileSystemURL(
+          window.cordova.file.dataDirectory + filename,
+           gotFile, fail);
     }else{ console.log("run cordova app"); }
 
 

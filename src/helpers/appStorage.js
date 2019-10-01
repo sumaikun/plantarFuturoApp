@@ -14,32 +14,50 @@ export const loadState = () => {
     return undefined // Si ocurre algun error, devuelvo undefined para cargar el state inicial.
   }
 }
-export const saveState = (state) => {
+export const saveState = (state,saveAppState = true ,saveMemory = true ) => {
   try {
     //console.log(state);
     if(state.navigation.currentPagekey)
     {
       let storeState = {
-        appState: state.appState,
         navigationIndex: state.navigation.currentPagekey,
       }
 
-      let serializedData = JSON.stringify(fromJS(storeState).toJS())
+      if(!window.cordova)
+      {
+        storeState.appState = state.appState;
+      }
+
+      let serializedData = JSON.stringify(fromJS(storeState).toJS());
+
+      console.log("ruta a guardar");
+
+      console.log(serializedData);
+
       localStorage.setItem('state', serializedData);
 
       if(window.cordova)
       {
-          if(state.memory)
+          if(state.appState && saveAppState)
           {
+            let a = () => {
+              console.log("appState writed");
+            }
+            let storeText = JSON.stringify(fromJS(state.appState).toJS());
+            //console.log("store text");
+            console.log(storeText);
+            createFile("appStorage.json",storeText,a);
+          }
 
+          if(state.memory && saveMemory)
+          {
               let a = () => {
                 //console.log("data writed");
               }
               let storeText = JSON.stringify(fromJS(state.memory).toJS());
               //console.log("store text");
               //console.log(storeText);
-              createFile("memoryStorage.txt",storeText,a);
-
+              createFile("memoryStorage.json",storeText,a);
           }
       }
 

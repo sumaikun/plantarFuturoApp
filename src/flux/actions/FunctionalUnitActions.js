@@ -45,7 +45,7 @@ export const createFunctionalUnit = (data,componentSuccess) => {
   }
 }
 
-export const getFunctionalUnits = (id, SuccessCallBack) => {
+export const getFunctionalUnits = (id, SuccessCallBack, keepFetching = false) => {
   return async dispatch => {
 
       if(!navigator.onLine)
@@ -58,12 +58,21 @@ export const getFunctionalUnits = (id, SuccessCallBack) => {
 
       console.log(id);
 
-      dispatch(fetching());
+      if(!keepFetching)
+      {
+        dispatch(fetching());
+      }
+
+
 
       if(!SuccessCallBack)
       {
         SuccessCallBack = (response) => {
-          dispatch(notFetching());
+
+          if(!keepFetching)
+          {
+            dispatch(notFetching());
+          }
 
           if(response.data.length == 0)
           {

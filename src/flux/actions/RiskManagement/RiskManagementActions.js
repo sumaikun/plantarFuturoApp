@@ -62,10 +62,14 @@ export const setTunnelDeformationList = (data) => ({
   payload: data
 });
 
-export const getTunnelsDeformation = (data,successCallBack  ,errorCallBack) => {
+export const getTunnelsDeformation = (data,successCallBack  ,errorCallBack
+  , keepFetching = false) => {
   return async dispatch => {
 
-    dispatch(fetching());
+    if(!keepFetching)
+    {
+      dispatch(fetching());
+    }
 
     if(!navigator.onLine)
     {
@@ -75,7 +79,12 @@ export const getTunnelsDeformation = (data,successCallBack  ,errorCallBack) => {
     }
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+
+      if(!keepFetching)
+      {
+        dispatch(notFetching());
+      }
+
       dispatch(setTunnelDeformationList(response.data));
     }
 
@@ -99,10 +108,14 @@ export const setHillsideMovementList = (data) => ({
   payload: data
 });
 
-export const getHillsidesMovement = (data,successCallBack  ,errorCallBack) => {
+export const getHillsidesMovement = (data,successCallBack  ,errorCallBack,
+  keepFetching = false) => {
   return async dispatch => {
 
-    dispatch(fetching());
+    if(!keepFetching)
+    {
+      dispatch(fetching());
+    }
 
     if(!navigator.onLine)
     {
@@ -112,7 +125,11 @@ export const getHillsidesMovement = (data,successCallBack  ,errorCallBack) => {
     }
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+      if(!keepFetching)
+      {
+        dispatch(notFetching());
+      }
+
       dispatch(setHillsideMovementList(response.data))
     }
 
@@ -137,10 +154,15 @@ export const setRainfallList = (data) => ({
 });
 
 
-export const getRainfalls = (data,successCallBack  ,errorCallBack) => {
+export const getRainfalls = (data,successCallBack  ,errorCallBack,
+   keepFetching = false ) => {
   return async dispatch => {
 
-    dispatch(fetching());
+    if(!keepFetching)
+    {
+      dispatch(fetching());
+    }
+
 
     if(!navigator.onLine)
     {
@@ -150,7 +172,11 @@ export const getRainfalls = (data,successCallBack  ,errorCallBack) => {
     }
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+      if(!keepFetching)
+      {
+          dispatch(notFetching());
+      }
+
       dispatch(setRainfallList(response.data));
     }
 
@@ -175,10 +201,16 @@ export const setHillSlideCollapseList = (data) => ({
   payload: data
 });
 
-export const getHillsidesCollapse = (data,successCallBack  ,errorCallBack) => {
+export const getHillsidesCollapse = (data,successCallBack  ,errorCallBack
+  , keepFetching = false) => {
   return async dispatch => {
 
-    dispatch(fetching());
+    if(!keepFetching)
+    {
+        dispatch(fetching());
+    }
+
+
 
     if(!navigator.onLine)
     {
@@ -188,7 +220,10 @@ export const getHillsidesCollapse = (data,successCallBack  ,errorCallBack) => {
     }
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+      if(!keepFetching)
+      {
+        dispatch(notFetching());
+      }
       dispatch(setHillSlideCollapseList(response.data));
     }
 
@@ -212,10 +247,14 @@ export const setRiverCollapseList = (data) => ({
   payload: data
 });
 
-export const getRiversCollapse = (data,successCallBack  ,errorCallBack) => {
+export const getRiversCollapse = (data,successCallBack  ,errorCallBack
+,keepFetching = false) => {
   return async dispatch => {
 
-    dispatch(fetching());
+    if(!keepFetching)
+    {
+      dispatch(fetching());
+    }
 
     if(!navigator.onLine)
     {
@@ -225,7 +264,11 @@ export const getRiversCollapse = (data,successCallBack  ,errorCallBack) => {
     }
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+      if(!keepFetching)
+      {
+          dispatch(notFetching());
+      }
+
       dispatch(setRiverCollapseList(response.data));
     }
 

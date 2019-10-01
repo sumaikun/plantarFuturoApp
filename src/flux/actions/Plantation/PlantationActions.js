@@ -5,17 +5,23 @@ import Ons from 'onsenui';
 import {updateOfflineForestUnitP1, updateServerForestUnitP1} from "../memoryActions";
 import {goBack} from "../navigationActions";
 
-export const getPlantationReports = () => {
+export const getPlantationReports = (keepFetching = false ) => {
   return async dispatch => {
     dispatch( fetching() );
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+      if(!keepFetching)
+      {
+          dispatch(notFetching());
+      }
+
       dispatch(setPlantationReports(response.data));
     };
 
     let ErrorCallBack = () => {
-      dispatch(notFetching());
+      
+        dispatch(notFetching());
+
     };
 
     //console.log(String( "HERE GOES THE TYPE" + project_id));

@@ -48,7 +48,7 @@ export const getProjectByUser = (user) => {
       let id = user.id;
 
       dispatch(fetching());
-      dispatch( getPlantationReports() );
+      dispatch( getPlantationReports(true) );
       if(!navigator.onLine)
       {
         console.log("Modo offline");
@@ -59,7 +59,7 @@ export const getProjectByUser = (user) => {
 
       let SuccessCallBack = (response) => {
 
-        dispatch(notFetching());
+        //dispatch(notFetching());
 
         if(response.status == "204")
         {
@@ -70,32 +70,52 @@ export const getProjectByUser = (user) => {
         dispatch(setProjects(response.data));
 
         response.data.forEach( project => {
-          console.log(project);
+          //console.log(project);
+
 
           let SuccessCallBack = (response) => {
 
-            dispatch(notFetching());
             if(response.data.length > 0){
-              response.data.forEach( functionalUnit => {
-                dispatch(getForestalUnits(functionalUnit.id))
+              response.data.forEach( (functionalUnit, index) => {
+                  if ( index == response.data.length - 1 ){
+
+                    setTimeout(function(){
+
+                      let callback = () => {
+                        window.saveAppState = true;
+                        console.log("last data downloaded");
+                        console.log(window.storageReference);
+                      }
+
+                      dispatch(getForestalUnits(functionalUnit.id,null,null,false
+                        ,callback));
+
+                    }, 6000);
+
+                  }
+                  else{
+                      dispatch(getForestalUnits(functionalUnit.id,null,null,true))
+                  }
               });
             }
-
             dispatch(setFunctionalUnits(response.data));
+            //dispatch(notFetching());
           }
+
+
           if(project.phase != 4)
           {
-              dispatch(getFunctionalUnits(project.id,SuccessCallBack));
+              dispatch(getFunctionalUnits(project.id,SuccessCallBack,true));
           }
           else{
               if(user.risk)
               {
-                dispatch(getTunnelsDeformation(project.id));
-                dispatch(getHillsidesMovement(project.id));
-                dispatch(getRainfalls(project.id));
-                dispatch(getHillsidesCollapse(project.id));
-                dispatch(getRiversCollapse(project.id));
-              }              
+                dispatch(getTunnelsDeformation(project.id, null, null, true));
+                dispatch(getHillsidesMovement(project.id, null, null, true));
+                dispatch(getRainfalls(project.id, null, null, true));
+                dispatch(getHillsidesCollapse(project.id, null, null, true));
+                dispatch(getRiversCollapse(project.id, null, null, true));
+              }
           }
 
         });
