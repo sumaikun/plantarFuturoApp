@@ -2,7 +2,11 @@ import { Request } from '../../../helpers/request';
 import { fetching , notFetching, setPlantationReports, setPlantationReport } from "../appActions";
 import { GET_PLANTATION_REPORTS, GET_PLANTATION_REPORTS_BY_PROJECT, GET_PLANTATION_REPORT_BY_ID, CREATE_PLANTATION_REPORT, UPDATE_PLANTATION_REPORT, BASE_URL } from "../../types";
 import Ons from 'onsenui';
-import {updateOfflineForestUnitP1, updateServerForestUnitP1} from "../memoryActions";
+import {
+  addOfflinePlantationReport,
+  updateServerPlantationReport,
+  updateOfflinePlantationReport
+} from "../memoryActions";
 import {goBack} from "../navigationActions";
 
 export const getPlantationReports = (keepFetching = false ) => {
@@ -84,6 +88,15 @@ export const createReport = (data, componentSuccess = null) => {
   return async dispatch => {
     console.log(data);
 
+    if(!navigator.onLine)
+    {
+      console.log("Modo offline");
+      dispatch(addOfflinePlantationReport(data));
+      Ons.notification.alert({title:"¡Que bien!",message:"¡Reporte de plantación creado offline!"});
+      dispatch(goBack());
+      return;
+    }
+
     dispatch(fetching());
 
     let SuccessCallBack = (response) => {
@@ -109,6 +122,30 @@ export const createReport = (data, componentSuccess = null) => {
 
 export const updateReport = (plantation_report_id, data) => {
   return async dispatch => {
+
+    if(!navigator.onLine || data.ToSynchro)
+      {
+        console.log("Modo offline");
+       
+        if(!data.ToSynchro)
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerPlantationReport(data));
+          dispatch(goBack());
+        }
+        else
+        {
+          console.log("editar offline");
+          dispatch(updateOfflinePlantationReport(data));
+          dispatch(goBack());
+        }
+
+        Ons.notification.alert({title:"¡Que bien!",message:"¡Reporte de plantación editado en memoria!"});
+        return;
+      }
+
+
+
     dispatch(fetching());
 
     let SuccessCallBack = (response) => {

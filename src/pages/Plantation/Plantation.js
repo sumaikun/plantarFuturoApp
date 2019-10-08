@@ -76,8 +76,13 @@ class Plantation extends Component {
       <AppPage title={ [ <strong> { "PLANTACION" } </strong> ] }
                backButton={true}
                backButtonCallBack={ () => {
-                 if (!this.props.appState.isFetching) { this.props.getProjectByUser(this.props.appState.user.id); }
-               } }
+                 if (!this.props.appState.isFetching) {  
+                  if(this.props.appState.user.id)
+                  {
+                    this.props.getProjectByUser(this.props.appState.user.id);
+                  }
+                }
+               }}
       >
         { ( plantationProjects.length > 0 ) ?
           plantationProjects.map((pProject, i) => {

@@ -52,6 +52,13 @@ import {
    REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
    REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE,
 
+
+   ADD_PLANTATION_REPORT_OFFLINE,
+   UPDATE_SERVER_PLANTATION_REPORT_OFFLINE,
+   UPDATE_PLANTATION_REPORT_OFFLINE,
+   REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE,
+   REMOVE_FROM_PLANTATION_REPORT_OFFLINE,
+
    SET_NS_APP_STATE,
    SET_NS_MEMORY_STATE
 
@@ -310,6 +317,36 @@ export const removeFromOfflineRiverColl = (data) => ({
   type: REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE,
   payload: data
 });
+
+
+//plantation report
+
+export const addOfflinePlantationReport = (data) => ({
+  type: ADD_PLANTATION_REPORT_OFFLINE,
+  payload: data
+});
+
+export const updateServerPlantationReport = (data) => ({
+  type: UPDATE_SERVER_PLANTATION_REPORT_OFFLINE,
+  payload: data
+});
+
+
+export const updateOfflinePlantationReport = (data) => ({
+  type: UPDATE_PLANTATION_REPORT_OFFLINE,
+  payload: data
+});
+
+export const removeFromPlantationReportUpdate = (data) => ({
+  type: REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE,
+  payload: data
+});
+
+export const removeFromOfflinePlantationReport = (data) => ({
+  type: REMOVE_FROM_PLANTATION_REPORT_OFFLINE,
+  payload: data
+});
+
 
 
 //SET STATE FROM NATIVE STORAGE OR FILES

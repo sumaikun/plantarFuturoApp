@@ -167,6 +167,14 @@ export const GET_PLANTATION_REPORTS_BY_PROJECT = window.location.href.indexOf('l
 export const GET_PLANTATION_REPORT_BY_ID = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://plantarfuturo.com/test/api/daily-report/' : 'https://plantarfuturo.com/ws/api/daily-report/';
 export const UPDATE_PLANTATION_REPORT = window.location.href.indexOf('localhost') > 0 && LOCAL_MODE ? 'http://plantarfuturo.com/test/api/daily-report/' : 'https://plantarfuturo.com/ws/api/daily-report/';
 
+// OFFLINE
+
+export const ADD_PLANTATION_REPORT_OFFLINE = "ADD_PLANTATION_REPORT_OFFLINE";
+export const UPDATE_SERVER_PLANTATION_REPORT_OFFLINE = "UPDATE_SERVER_PLANTATION_REPORT_OFFLINE";
+export const UPDATE_PLANTATION_REPORT_OFFLINE = "UPDATE_PLANTATION_REPORT_OFFLINE";
+export const REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE = "REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE";
+export const REMOVE_FROM_PLANTATION_REPORT_OFFLINE = "REMOVE_FROM_PLANTATION_REPORT_OFFLINE";
+
   //  Setters
 export const SET_PLANTATION_REPORT_TYPE = "SET_PLANTATION_REPORT_TYPE";
 export const SET_ESTABLISHMENT_DEFAULT_ACTIVITIES = "SET_ESTABLISHMENT_DEFAULT_ACTIVITIES";

@@ -49,6 +49,14 @@ UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
 UPDATE_RIVER_COLLAPSE_OFFLINE,
 REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE,
 REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE,
+
+ADD_PLANTATION_REPORT_OFFLINE,
+UPDATE_SERVER_PLANTATION_REPORT_OFFLINE,
+UPDATE_PLANTATION_REPORT_OFFLINE,
+REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE,
+REMOVE_FROM_PLANTATION_REPORT_OFFLINE,
+
+
 SET_NS_MEMORY_STATE
 
  }  from "../types";
@@ -85,6 +93,9 @@ let defaultValues = {
 
   offLineRiverCollapse:[],
   serverRiverCollapse:[],
+
+  offLinePlantationReport:[],
+  serverPlantationReport:[]
 
 }
 
@@ -462,6 +473,67 @@ const memoryReducer = (state = initialState, action) => {
       state = removeFromState(state,'offLineRiverCollapse',action);
 
       return state;
+
+ case ADD_RIVER_COLLAPSE_OFFLINE:
+
+      state = createOnState(state,'offLineRiverCollapse',action);
+
+      return state;
+
+    case UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE:
+
+      state = updateFromState(state,'serverRiverCollapse',action);
+
+      return state;
+
+    case UPDATE_RIVER_COLLAPSE_OFFLINE:
+
+      state = updateFromState(state,'offLineRiverCollapse',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_SERVER_RIVER_COLLAPSE_OFFLINE:
+
+      state = removeFromState(state,'serverRiverCollapse',action);
+
+      return state;
+
+    case REMOVE_FROM_UPDATE_RIVER_COLLAPSE_OFFLINE:
+
+      state = removeFromState(state,'offLineRiverCollapse',action);
+
+      return state;
+
+
+  case ADD_PLANTATION_REPORT_OFFLINE:
+
+    state = createOnState(state,'offLineRiverCollapse',action);
+
+    return state;
+
+  case UPDATE_SERVER_PLANTATION_REPORT_OFFLINE:
+
+    state = updateFromState(state,'serverRiverCollapse',action);
+
+    return state;
+
+  case UPDATE_PLANTATION_REPORT_OFFLINE:
+
+    state = updateFromState(state,'offLineRiverCollapse',action);
+
+    return state;
+
+  case REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE:
+
+    state = removeFromState(state,'serverRiverCollapse',action);
+
+    return state;
+
+  case REMOVE_FROM_PLANTATION_REPORT_OFFLINE:
+
+    state = removeFromState(state,'offLineRiverCollapse',action);
+
+    return state;
 
     case SET_NS_MEMORY_STATE:
 
