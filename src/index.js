@@ -55,7 +55,7 @@ var store = createStoreWithMiddleware(reducers);
 
 
 
-const mobileAppMode = false;
+const mobileAppMode = true;
 
 //var nowSave = true;
 

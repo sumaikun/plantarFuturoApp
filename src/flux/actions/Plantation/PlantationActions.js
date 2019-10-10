@@ -61,7 +61,7 @@ export const getPlantationReportsByProject = (project_id, keepFetching = false) 
 
     let SuccessCallBack = (response) => {
       
-      if(keepFetching)
+      if(!keepFetching)
       {
         dispatch(notFetching());
       }
