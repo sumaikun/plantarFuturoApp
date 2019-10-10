@@ -507,31 +507,31 @@ const memoryReducer = (state = initialState, action) => {
 
   case ADD_PLANTATION_REPORT_OFFLINE:
 
-    state = createOnState(state,'offLineRiverCollapse',action);
+    state = createOnState(state,'offLinePlantationReport',action);
 
     return state;
 
   case UPDATE_SERVER_PLANTATION_REPORT_OFFLINE:
 
-    state = updateFromState(state,'serverRiverCollapse',action);
+    state = updateFromState(state,'serverPlantationReport',action);
 
     return state;
 
   case UPDATE_PLANTATION_REPORT_OFFLINE:
 
-    state = updateFromState(state,'offLineRiverCollapse',action);
+    state = updateFromState(state,'offLinePlantationReport',action);
 
     return state;
 
   case REMOVE_FROM_UPDATE_SERVER_PLANTATION_REPORT_OFFLINE:
 
-    state = removeFromState(state,'serverRiverCollapse',action);
+    state = removeFromState(state,'serverPlantationReport',action);
 
     return state;
 
   case REMOVE_FROM_PLANTATION_REPORT_OFFLINE:
 
-    state = removeFromState(state,'offLineRiverCollapse',action);
+    state = removeFromState(state,'offLinePlantationReport',action); 
 
     return state;
 

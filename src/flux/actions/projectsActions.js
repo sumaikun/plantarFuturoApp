@@ -2,7 +2,8 @@ import { Request } from '../../helpers/request'
 import { fetching , notFetching , setProjects , setFunctionalUnits } from "./appActions";
 import { getFunctionalUnits  } from "./FunctionalUnitActions";
 import { getForestalUnits } from "./forestalUnitActions";
-import { getPlantationReports } from "./Plantation/PlantationActions";
+import { getPlantationReports, getPlantationReportsByProject } from "./Plantation/PlantationActions";
+import { getDefaultActivitiesByType  } from "./Activity/ActivityActions"; 
 import { getTunnelsDeformation, getHillsidesMovement, getRainfalls,
    getHillsidesCollapse,
    getRiversCollapse } from "./RiskManagement/RiskManagementActions";
@@ -48,7 +49,7 @@ export const getProjectByUser = (user) => {
       let id = user.id;
 
       dispatch(fetching());
-      dispatch( getPlantationReports(true) );
+      
       if(!navigator.onLine)
       {
         console.log("Modo offline");
@@ -56,6 +57,10 @@ export const getProjectByUser = (user) => {
         return;
       }
 
+      //dispatch( getPlantationReports(true) );
+
+      dispatch( getDefaultActivitiesByType(1) );
+      dispatch( getDefaultActivitiesByType(2) );
 
       let SuccessCallBack = (response) => {
 
@@ -103,7 +108,7 @@ export const getProjectByUser = (user) => {
           }
 
 
-          if(project.phase != 4)
+          if(project.phase != 4 && project.phase != 5)
           {
               dispatch(getFunctionalUnits(project.id,SuccessCallBack,true));
           }
@@ -115,6 +120,12 @@ export const getProjectByUser = (user) => {
                 dispatch(getRainfalls(project.id, null, null, true));
                 dispatch(getHillsidesCollapse(project.id, null, null, true));
                 dispatch(getRiversCollapse(project.id, null, null, true));
+              } 
+              
+              if(project.phase == 5)
+              {
+                console.log("obtener proyecto de plantación");
+                dispatch(getPlantationReportsByProject(project.id,true));
               }
           }
 

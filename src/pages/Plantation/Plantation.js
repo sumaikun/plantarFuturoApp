@@ -68,6 +68,8 @@ class Plantation extends Component {
   render() {
     let { projects , currentPhase } = this.props.appState;
 
+    console.log("fase de proyecto plantación "+currentPhase)
+
     const plantationProjects = projects.filter( project => {
       return ( parseInt(project.phase) === currentPhase );
     });
@@ -77,9 +79,10 @@ class Plantation extends Component {
                backButton={true}
                backButtonCallBack={ () => {
                  if (!this.props.appState.isFetching) {  
-                  if(this.props.appState.user.id)
+                  if(this.props.appState.user.id  != null)
                   {
-                    this.props.getProjectByUser(this.props.appState.user.id);
+                    //console.log("id del usuario "+this.props.appState.user.id);
+                    this.props.getProjectByUser(this.props.appState.user);
                   }
                 }
                }}
@@ -94,6 +97,7 @@ class Plantation extends Component {
                   onClick={ ( ) => {
                     this.props.selectPlantationProject( pProject );
                     this.props.getPlantationReportsByProject( pProject.id );
+                    this.props.goToReportList();
                     //this.props.getPlantationReports( );
                   } }
                 >
@@ -110,8 +114,8 @@ class Plantation extends Component {
                           </Col>
                           <Col width="47%">
                             <div onClick={ () => {
-                              this.props.getPlantationReportsByProject( pProject.id );
-                              this.props.goToReportList();
+                              //this.props.getPlantationReportsByProject( pProject.id );
+                              //this.props.goToReportList();
                             } }
                             >
                               <CardOptionButton

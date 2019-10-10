@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 //sources
-import checkList from "../../img/checkList.png";
-import tree from "../../img/tree.png";
-import chart from "../../img/chart.png";
-import plant from "../../img/plant.png";
-import yellowArrow from "../../img/yellowArrow.png";
+
 import "../../css/accordion.css";
 import "../../css/style.css";
 import { workingRowStyles } from "../../jsStyles/Styles";
@@ -35,6 +31,11 @@ import {
   getDefaultActivitiesByType,
   getPlantationReportById,
   getPlantationReportsByProject,
+
+
+  removeFromPlantationReportUpdate,
+  removeFromOfflinePlantationReport
+
 } from '../../flux/actions';
 
 import { connect } from 'react-redux';
@@ -124,17 +125,23 @@ class ReportList extends Component {
                             let successCallBack = () => {
 
                               this.props.setPlantationReportType( parseInt( report.type ) );
-                              this.props.getPlantationReportsByProject( report.project.id );
+                              //this.props.getPlantationReportsByProject( report.project.id );
+
+                              console.log("insertar reporte de plantación");
+                              console.log(report);
+
                               this.props.setPlantationReport( report );
 
                               this.props.goToPlantationReport();
 
                             }
 
-                            this.props.getDefaultActivitiesByType( parseInt( report.type ) , successCallBack );
-
-
-                            
+                            if(!navigator.onLine) {
+                              successCallBack();
+                            }
+                            else{
+                              this.props.getDefaultActivitiesByType( parseInt( report.type ) , successCallBack );
+                            }                        
                           
                           }}
                         >
@@ -150,6 +157,35 @@ class ReportList extends Component {
                               <span className={'list-counter'}>{ i+1 }</span>
                             </div>
                             <div className={'center'}>
+
+                              <div onClick={(e)=>{
+                                
+                                e.stopPropagation();                      
+                                let self = this;
+
+                                
+                                  Ons
+                                  .notification.confirm({ title:'',message: '¿Deseas eliminar los datos de memoría?' })
+                                  .then(function(res) {
+                                    if(res){
+                                      if(report.ToSynchro)
+                                      {
+                                        self.props.removeFromOfflinePlantationReport(report);
+                                      }
+                                      if(report.ToSynchroEdit)
+                                      {
+                                        self.props.removeFromPlantationReportUpdate(report);
+                                      }
+                                    }
+                                  });
+                                }} 
+                              >
+                              
+                              { report.ToSynchro || report.ToSynchroEdit ?
+                                  <i class="fas fa-wifi" style={{marginLeft:"5px"}} ></i> : null }
+
+                              </div>
+
                               <span className={'project-list-title-font project-list-project-name margin-between-right'}>{ report.report_date }</span>
                               <span className={'project-list-project-info margin-between-left'}>{ parseInt( report.type ) === 1 ? 'ESTABLECIMIENTO' : 'MANTENIMIENTO' }</span>
                             </div>
@@ -197,6 +233,37 @@ class ReportList extends Component {
       } );
     }
 
+    let foundIndex;
+
+    let index = 0;
+    
+    filteredPlantationReportsByProject.forEach(  record =>{
+
+      foundIndex = this.props.memory.serverPlantationReport.findIndex( memory =>   memory.id == record.id  );
+          console.log("foundIndex"+foundIndex);
+      record = foundIndex != -1 ? this.props.memory.serverPlantationReport[foundIndex] : record ;
+
+      filteredPlantationReportsByProject[index] = record;
+      index++;
+
+    });
+
+    //console.log("datos offline");
+
+    //console.log(this.props.memory.offLinePlantationReport);
+
+    //console.log(plantationProject.id);
+
+    /*console.log(this.props.memory.offLinePlantationReport.filter(
+      report => report.project_id == plantationProject.id
+    ));*/
+
+    //add offline records
+    filteredPlantationReportsByProject = filteredPlantationReportsByProject.concat(this.props.memory.offLinePlantationReport.filter(
+      report => report.project_id == plantationProject.id
+    ));
+
+
     //console.log(exampleReports);
 
     return (
@@ -235,4 +302,10 @@ export default  connect(mapStateToProps, {
   getDefaultActivitiesByType,
   getPlantationReportById,
   getPlantationReportsByProject,
+
+  // MEMORY ACTIONS
+
+  removeFromOfflinePlantationReport,
+  removeFromPlantationReportUpdate
+
 })(ReportList);

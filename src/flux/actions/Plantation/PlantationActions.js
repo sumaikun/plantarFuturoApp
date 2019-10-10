@@ -9,8 +9,15 @@ import {
 } from "../memoryActions";
 import {goBack} from "../navigationActions";
 
-export const getPlantationReports = (keepFetching = false ) => {
+export const getPlantationReports = (keepFetching = false ) => {  
+
   return async dispatch => {
+
+    if(!navigator.onLine)
+    {
+      return;
+    }
+
     dispatch( fetching() );
 
     let SuccessCallBack = (response) => {
@@ -38,12 +45,28 @@ export const getPlantationReports = (keepFetching = false ) => {
   };
 };
 
-export const getPlantationReportsByProject = (project_id) => {
+export const getPlantationReportsByProject = (project_id, keepFetching = false) => {    
+
   return async dispatch => {
-    dispatch( fetching() );
+
+    if(!navigator.onLine)
+    {
+      return;
+    }
+    
+    if(!keepFetching)
+    {
+      dispatch( fetching() );
+    }
 
     let SuccessCallBack = (response) => {
-      dispatch(notFetching());
+      
+      if(keepFetching)
+      {
+        dispatch(notFetching());
+      }
+      
+      
       dispatch(setPlantationReports(response.data));
     };
 
@@ -62,7 +85,14 @@ export const getPlantationReportsByProject = (project_id) => {
 };
 
 export const getPlantationReportById = (report_id) => {
+ 
   return async dispatch => {
+
+    if(!navigator.onLine)
+    {
+      return;
+    }
+  
     dispatch( fetching() );
 
     let SuccessCallBack = (response) => {
@@ -126,17 +156,21 @@ export const updateReport = (plantation_report_id, data) => {
     if(!navigator.onLine || data.ToSynchro)
       {
         console.log("Modo offline");
-       
-        if(!data.ToSynchro)
-        {
-          console.log("editar del servidor");
-          dispatch(updateServerPlantationReport(data));
-          dispatch(goBack());
-        }
-        else
+        
+        data.id = plantation_report_id;
+        
+        console.log(data.ToSynchro);
+
+        if(data.ToSynchro)
         {
           console.log("editar offline");
           dispatch(updateOfflinePlantationReport(data));
+          dispatch(goBack());          
+        }
+        else
+        {
+          console.log("editar del servidor");
+          dispatch(updateServerPlantationReport(data));
           dispatch(goBack());
         }
 

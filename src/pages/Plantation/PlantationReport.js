@@ -90,22 +90,49 @@ class PlantationReport extends Component {
           activities = this.props.appState.maintenanceDefaultActivities;
         }
        
+       console.log("actividades");
        console.log(activities);
+
+       console.log(this.props.appState.plantationReportToEdit); 
  
        let activitiesArray = [];
- 
-       this.props.appState.plantationReportToEdit.report_activities.forEach(activity => {
- 
-         let index = activities.findIndex( data =>  data.id == activity.default_activity_id );
- 
-         console.log(index);
- 
-         activitiesArray[ index ] = {
-           default_activity_id:activity.default_activity_id,
-           hours:activity.hours,
-           quantity:activity.quantity 
-         }
-       });
+        
+       if(this.props.appState.plantationReportToEdit.activities)
+       {
+        this.props.appState.plantationReportToEdit.activities.forEach( activity =>{
+
+          let index = activities.findIndex( data =>  data.id == activity.default_activity_id );
+      
+            //console.log(index);
+    
+            activitiesArray[ index ] = {
+              default_activity_id:activity.default_activity_id,
+              hours:activity.hours,
+              quantity:activity.quantity 
+            }
+        });
+         //activitiesArray = this.props.appState.plantationReportToEdit.activities;
+       }else
+       {
+          if(this.props.appState.plantationReportToEdit.report_activities){
+            this.props.appState.plantationReportToEdit.report_activities.forEach(activity => {
+  
+              let index = activities.findIndex( data =>  data.id == activity.default_activity_id );
+      
+              //console.log(index);
+      
+              activitiesArray[ index ] = {
+                default_activity_id:activity.default_activity_id,
+                hours:activity.hours,
+                quantity:activity.quantity 
+              }
+            });
+          }
+       }
+
+        
+        
+       
  
        console.log(activities);
        console.log("Activities Array");
@@ -252,9 +279,20 @@ class PlantationReport extends Component {
     if ( this.props.appState.plantationReportToEdit ) {
       console.log( "Entro a edicion" );
       let data = this.state.formData;
+
+      if(this.props.appState.plantationReportToEdit.ToSynchro)
+      {
+        data.ToSynchro = true;
+      }
+
+      if(this.props.appState.plantationReportToEdit.ToSynchroEdit)
+      {
+        data.ToSynchroEdit = true;
+      }
+
       data.activities = act;
       //data.report_date = data.report_date.date + " " + data.report_date.hour;
-      data.project_id = this.props.appState.plantationReportToEdit.project.id;
+      data.project_id = this.props.appState.plantationReportToEdit.project_id;
       data.type = this.props.appState.plantationReportToEdit.type;
       let plantation_report_id = this.props.appState.plantationReportToEdit.id;
       console.log( data );

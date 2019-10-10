@@ -64,7 +64,7 @@ window.saveAppState = false;
 window.saveMemoryState = false;
 
 store.subscribe( function () {
-  console.log("listener activated");
+  //console.log("listener activated");
   //console.log(store.getState());
   //console.log(window.nowSave);
   /*if(nowSave || window.nowSave)
@@ -106,14 +106,14 @@ store.subscribe( function () {
 
   if(!navigator.onLine && window.saveMemoryState == false)
   {
-    console.log("intento guardar memoria offline");
+    //console.log("intento guardar memoria offline");
     setTimeout(function(){
       let currentState = store.getState();
       if(window.storageReference)
       {
         if(currentState.memory ==  window.storageReference.memory)
         {
-          console.log("Storage de memoria igual, no guardo");
+          //console.log("Storage de memoria igual, no guardo");
           return;
         }
         else{
@@ -136,7 +136,7 @@ store.subscribe( function () {
       {
         if(currentState.appState ==  window.storageReference.appState)
         {
-          console.log("Storage igual, no guardo");
+          //console.log("Storage igual, no guardo");
           return;
         }
       }
