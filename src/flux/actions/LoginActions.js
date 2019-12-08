@@ -12,19 +12,43 @@ import Ons from 'onsenui';
 
 import { getFromJsonString } from "../../helpers/objectMethods";
 
+import { deleteFile } from "../../helpers/writeFiles";
+
 const fetchLoginOnline = (dispatch ,data) => {
-  console.log(data);
+  //console.log(data);
 
   dispatch(fetching());
 
-  dispatch(addLoggedUser(data));
+  //dispatch(addLoggedUser(data));
 
   let SuccessCallBack = (response) => {
+    let userData = JSON.stringify(data);
+
+    let userLogged =  JSON.parse(localStorage.getItem('userLogged'));
+    if(userLogged)
+    {
+      if(userLogged.email !=  data.email)
+      {
+        deleteFile("appStorage.json");
+
+        deleteFile("memoryStorage.json");
+      }
+      else{
+        console.log("mismo usuario");
+      }
+      
+    }
+      
+
+    console.log(userData);
+    localStorage.setItem('userLogged', userData);
+       
     dispatch(notFetching());
     dispatch(setUser(response.data));
     dispatch(getProjectByUser(response.data));
     //dispatch( getPlantationReports() );             //  Esta funcion trae los reportes de plantacion de todos los pryectos de plantacion
     dispatch(goToMain());
+    
   }
 
   let ErrorCallBack = () => {
@@ -41,11 +65,13 @@ const fetchLoginOnline = (dispatch ,data) => {
 
 const fetchLoginOffline = (dispatch ,data) => {
 
-    let memory =  getFromJsonString(localStorage.getItem('state'), "memory");
-    console.log(memory);
+    //let userLogged =  getFromJsonString(localStorage.getItem('userLogged'), "memory");
+
+    let userLogged =  JSON.parse(localStorage.getItem('userLogged'));
+    console.log(userLogged);
 
     try{
-      if(memory.userLogged.email ==  data.email &&  memory.userLogged.password == data.password)
+      if(userLogged.email ==  data.email &&  userLogged.password == data.password)
       {
         dispatch(goToMain());
       }

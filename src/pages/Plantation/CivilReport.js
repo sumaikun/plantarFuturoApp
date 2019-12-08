@@ -234,22 +234,15 @@ class CivilReport extends Component {
     }
    
     handleArrayChangeInput(event, index){
-        if(event.target.name && event.target.value.length > 0) {
+        if(event.target.name && event.target.value.length > -1) {
           console.log(event.target.name);
           console.log(event.target.value);
     
-          console.log(this.state);
-    
-          let self = this;
+          console.log(this.state);    
     
           this.helperActivitiesArray =   this.state.formData.activities;
     
           this.helperActivitiesArray[index] = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
-    
-          /*let obj = { ...this.state.formData.activities[index], [event.target.name]: event.target.value };
-          this.helperActivitiesArray[index] = obj;
-    
-          this.helperActivitiesArray = obj;*/
     
           console.log(this.helperActivitiesArray);
     
@@ -369,7 +362,7 @@ class CivilReport extends Component {
                         name={ 'hours' }
                         value={ this.state.formData.activities[activityIndex] ? ( ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ) && this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null }                       
                         disabled={this.state.isDisable || !this.state.formData.activities[activityIndex] }
-                        onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
+                        onBlur={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
                         required={ this.state.formData.activities[activityIndex] }
                       />
                     </Card>
@@ -379,13 +372,12 @@ class CivilReport extends Component {
                     <Card style={styles.cardInput}>
                       <Input
                         style={styles.textInput}
-                        type="text"
-                        pattern="[0-9]*"
+                        type="number"
                         step="any"
                         name={ 'quantity' }
                         value={ this.state.formData.activities[activityIndex] ? ( ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ) && this.state.formData.activities[activityIndex].quantity ? this.state.formData.activities[activityIndex].quantity : null ) : null }                        
                         disabled={ this.state.isDisable || !this.state.formData.activities[activityIndex] }
-                        onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
+                        onBlur={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
                         required={ this.state.formData.activities[activityIndex] }
                       />
                     </Card>
@@ -396,12 +388,12 @@ class CivilReport extends Component {
                   <Card style={styles.cardInput}>
                     <Input
                       style={styles.textInput}
-                      type="text"
-                      pattern="[0-9]*"
+                      type="number"
+                      step="any"
                       name={ 'hours' }
                       value={ this.state.formData.activities ? ( this.state.formData.activities[activityIndex] ? ( ( this.state.formData.activities[activityIndex].default_activity_id == activity.id.toString() ) && this.state.formData.activities[activityIndex].hours ? this.state.formData.activities[activityIndex].hours : null ) : null ) : null }
                       placeholder="Horas" disabled={this.state.isDisable || !this.state.formData.activities[activityIndex] }
-                      onChange={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
+                      onBlur={ (event) => { this.handleArrayChangeInput(event, activityIndex ) } }
                       required={ this.state.formData.activities[activityIndex] }
                     />
                   </Card>

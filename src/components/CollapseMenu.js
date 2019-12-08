@@ -89,7 +89,7 @@ import { synchroDataToServer  } from  '../helpers/synchroScript';
 import './../css/style.css';
 
 
-import { deleteFile } from "../helpers/writeFiles";
+
 
 class CollapseMenu extends Component {
 
@@ -133,14 +133,15 @@ class CollapseMenu extends Component {
               let self = this;
               Ons.notification.confirm({title:"",message:'!Estas seguro, esto borrar los datos de memoria!'}).then(function(res) {
                 res ? (()=>{
-                  localStorage.clear();
+                  localStorage.removeItem('state'); 
+                  //localStorage.clear();
                   //localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'navigationIndex',true));
                   //localStorage.setItem("state",removeFromJsonString(localStorage.getItem("state"),'appState',true));
                   ////console.log(localStorage);
 
-                  deleteFile("appStorage.json");
+                  //deleteFile("appStorage.json");
 
-                  deleteFile("memoryStorage.json");
+                  //deleteFile("memoryStorage.json");
 
                   self.props.LogOut();
                 })() : false;
