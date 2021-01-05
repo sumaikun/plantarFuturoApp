@@ -7,7 +7,7 @@
     "main": "index.js",
     "homepage": "./",
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.21.1",
         "cordova-android": "^8.1.0",
         "cordova-plugin-background-mode": "^0.7.3",
         "cordova-plugin-camera": "^4.0.3",
